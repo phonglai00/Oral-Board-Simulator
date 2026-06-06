@@ -8,6 +8,20 @@ function earned(score, pts) {
 
 const LABEL = { 3: 'Pass', 2: 'Borderline', 1: 'Fail' }
 
+function ScoreMeter({ label, value, max = 5 }) {
+  const pct = Math.round((value / max) * 100)
+  const colorClass = value >= 4 ? 'meter-high' : value === 3 ? 'meter-mid' : 'meter-low'
+  return (
+    <div className="score-meter">
+      <div className="meter-label">{label}</div>
+      <div className="meter-bar-wrap">
+        <div className={`meter-bar ${colorClass}`} style={{ width: `${pct}%` }} />
+      </div>
+      <div className="meter-value">{value}/{max}</div>
+    </div>
+  )
+}
+
 export function Scorecard({ caseData, results, onRestart }) {
   const { total, possible, verdict, pct } = useMemo(() => {
     const possible = caseData.totalPoints
@@ -45,54 +59,80 @@ export function Scorecard({ caseData, results, onRestart }) {
       </div>
 
       <div className="result-list">
-        {results.map((r, i) => (
-          <div key={r.questionId} className={`result-card sc-${r.score}`}>
-            <div className="result-header">
-              <span className="rh-num">Q{i + 1}</span>
-              <span className={`rh-label sc-label-${r.score}`}>{LABEL[r.score]}</span>
-              <span className="rh-pts">
-                {earned(r.score, r.points)} / {r.points} pt{r.points > 1 ? 's' : ''}
-              </span>
-            </div>
-
-            <p className="r-question">{r.question}</p>
-
-            <div className="r-answers">
-              <div className="r-answer-block">
-                <div className="r-answer-label">Your Answer</div>
-                <p>{r.candidateAnswer}</p>
+        {results.map((r, i) => {
+          const q = caseData.questions.find(q => q.id === r.questionId)
+          return (
+            <div key={r.questionId} className={`result-card sc-${r.score}`}>
+              <div className="result-header">
+                <span className="rh-num">Q{i + 1}</span>
+                <span className={`rh-label sc-label-${r.score}`}>{LABEL[r.score]}</span>
+                <span className="rh-pts">
+                  {earned(r.score, r.points)} / {r.points} pt{r.points > 1 ? 's' : ''}
+                </span>
               </div>
-              {r.followUpAnswer && (
-                <div className="r-answer-block followup-answer">
-                  <div className="r-answer-label">Your Addendum</div>
-                  <p>{r.followUpAnswer}</p>
+
+              <p className="r-question">{r.question}</p>
+
+              {(r.correctness != null || r.completeness != null) && (
+                <div className="dual-scores">
+                  {r.correctness != null && (
+                    <ScoreMeter label="Correctness" value={r.correctness} />
+                  )}
+                  {r.completeness != null && (
+                    <ScoreMeter label="Completeness" value={r.completeness} />
+                  )}
                 </div>
               )}
-              <div className="r-answer-block ideal">
-                <div className="r-answer-label">Ideal Answer</div>
-                <p>{r.idealAnswer}</p>
+
+              <div className="r-answers">
+                <div className="r-answer-block">
+                  <div className="r-answer-label">Your Answer</div>
+                  <p>{r.candidateAnswer}</p>
+                </div>
+                {r.followUpAnswer && (
+                  <div className="r-answer-block followup-answer">
+                    <div className="r-answer-label">Your Addendum</div>
+                    <p>{r.followUpAnswer}</p>
+                  </div>
+                )}
+                <div className="r-answer-block ideal">
+                  <div className="r-answer-label">Ideal Answer</div>
+                  <p>{r.idealAnswer}</p>
+                </div>
               </div>
+
+              {r.pointsMissed?.length > 0 && (
+                <div className="r-points missed">
+                  <div className="r-answer-label">Key Points Missed</div>
+                  <ul>
+                    {r.pointsMissed.map((pt, j) => <li key={j}>{pt}</li>)}
+                  </ul>
+                </div>
+              )}
+
+              {r.pointsCovered?.length > 0 && (
+                <div className="r-points covered">
+                  <div className="r-answer-label">Points Covered</div>
+                  <ul>
+                    {r.pointsCovered.map((pt, j) => <li key={j}>{pt}</li>)}
+                  </ul>
+                </div>
+              )}
+
+              {q?.teachingPoints?.length > 0 && (
+                <div className="r-teaching">
+                  <div className="r-answer-label teaching-label">Key Teaching Points</div>
+                  <ul>
+                    {q.teachingPoints.map((pt, j) => <li key={j}>{pt}</li>)}
+                  </ul>
+                  {q.acogReference && (
+                    <div className="acog-ref">{q.acogReference}</div>
+                  )}
+                </div>
+              )}
             </div>
-
-            {r.pointsMissed?.length > 0 && (
-              <div className="r-points missed">
-                <div className="r-answer-label">Key Points Missed</div>
-                <ul>
-                  {r.pointsMissed.map((pt, j) => <li key={j}>{pt}</li>)}
-                </ul>
-              </div>
-            )}
-
-            {r.pointsCovered?.length > 0 && (
-              <div className="r-points covered">
-                <div className="r-answer-label">Points Covered</div>
-                <ul>
-                  {r.pointsCovered.map((pt, j) => <li key={j}>{pt}</li>)}
-                </ul>
-              </div>
-            )}
-          </div>
-        ))}
+          )
+        })}
       </div>
 
       <button className="btn-primary restart-btn" onClick={onRestart}>

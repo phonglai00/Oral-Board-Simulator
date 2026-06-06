@@ -6,6 +6,7 @@ import { FollowUp } from './FollowUp'
 import { ExaminerResponse } from './ExaminerResponse'
 import { scoreAnswer } from '../services/anthropic'
 import { useElevenLabs } from '../hooks/useElevenLabs'
+import { shouldShowProbe } from '../utils/scoringPrompt'
 
 const PHASE = { INPUT: 'input', SCORING: 'scoring', FOLLOWUP: 'followup', EXAMINER: 'examiner' }
 
@@ -15,14 +16,21 @@ export function ExamSession({ caseData, onComplete }) {
   const [currentResult, setCurrentResult] = useState(null)
   const [error, setError] = useState(null)
   const resultsRef = useRef([])
+  const questionsRef = useRef([])
 
   const { speak, stop, replay, isSpeaking, isLoading } = useElevenLabs()
 
   const question = caseData.questions[qIdx]
   const total = caseData.questions.length
 
+  // Build a brief case context string for the scoring prompt
+  const caseContext = caseData.questions
+    .slice(0, qIdx + 1)
+    .map(q => q.context)
+    .filter(Boolean)
+    .join(' ')
+
   // Auto-read vignette + question whenever a new question appears.
-  // Pass as separate segments so useSpeech inserts a natural pause between them.
   useEffect(() => {
     const segments = [question.context, question.question].filter(Boolean)
     const id = setTimeout(() => speak(segments), 250)
@@ -31,40 +39,53 @@ export function ExamSession({ caseData, onComplete }) {
   }, [qIdx])
 
   const handleAnswer = useCallback(async (candidateAnswer) => {
-    stop() // silence the examiner the moment the student submits
+    stop()
     setPhase(PHASE.SCORING)
     setError(null)
+
+    // Track question text for SessionScorecard
+    questionsRef.current = [...questionsRef.current, question.question]
+
     try {
-      const scored = await scoreAnswer({
+      const result = await scoreAnswer({
         question: question.question,
         idealAnswer: question.idealAnswer,
         candidateAnswer,
-        points: question.points,
+        caseContext,
+        caseId: `Case ${caseData.id}`,
       })
-      const result = {
+
+      const fullResult = {
         questionId: question.id,
         question: question.question,
         idealAnswer: question.idealAnswer,
         candidateAnswer,
         followUpAnswer: null,
         points: question.points,
-        ...scored,
+        ...result,
       }
-      resultsRef.current = [...resultsRef.current, result]
-      setCurrentResult(result)
-      // Only ask follow-up for incomplete answers (score 1 or 2)
-      setPhase(scored.score < 3 ? PHASE.FOLLOWUP : PHASE.EXAMINER)
+
+      resultsRef.current = [...resultsRef.current, fullResult]
+      setCurrentResult(fullResult)
+
+      // Speak the AI feedback aloud
+      if (result.feedback) {
+        speak(result.feedback)
+      }
+
+      // Use probe logic from scoringPrompt utility
+      setPhase(shouldShowProbe(result) ? PHASE.FOLLOWUP : PHASE.EXAMINER)
     } catch (err) {
       setError('Connection error: ' + err.message + ' — please try again.')
+      questionsRef.current = questionsRef.current.slice(0, -1)
       setPhase(PHASE.INPUT)
     }
-  }, [question])
+  }, [question, caseContext, caseData.id])
 
   const handleFollowUp = useCallback((followUpText) => {
     const updatedResult = {
       ...currentResult,
       followUpAnswer: followUpText || null,
-      examinerResponse: 'Thank you.',
     }
     resultsRef.current = [...resultsRef.current.slice(0, -1), updatedResult]
     setCurrentResult(updatedResult)
@@ -74,7 +95,14 @@ export function ExamSession({ caseData, onComplete }) {
   const handleContinue = useCallback(() => {
     const isLast = qIdx + 1 >= total
     if (isLast) {
-      onComplete(resultsRef.current)
+      const transcript = resultsRef.current.map(r => ({
+        question:     r.question,
+        answer:       r.followUpAnswer ? `${r.candidateAnswer} [addendum: ${r.followUpAnswer}]` : r.candidateAnswer,
+        correctness:  r.correctness,
+        completeness: r.completeness,
+        feedback:     r.feedback,
+      }))
+      onComplete(resultsRef.current, questionsRef.current, transcript)
     } else {
       setCurrentResult(null)
       setQIdx(i => i + 1)
@@ -83,7 +111,14 @@ export function ExamSession({ caseData, onComplete }) {
   }, [qIdx, total, onComplete])
 
   const handleTimeExpire = useCallback(() => {
-    onComplete(resultsRef.current)
+    const transcript = resultsRef.current.map(r => ({
+      question:     r.question,
+      answer:       r.followUpAnswer ? `${r.candidateAnswer} [addendum: ${r.followUpAnswer}]` : r.candidateAnswer,
+      correctness:  r.correctness,
+      completeness: r.completeness,
+      feedback:     r.feedback,
+    }))
+    onComplete(resultsRef.current, questionsRef.current, transcript)
   }, [onComplete])
 
   return (
@@ -120,13 +155,13 @@ export function ExamSession({ caseData, onComplete }) {
           </div>
         )}
 
-        {phase === PHASE.FOLLOWUP && (
-          <FollowUp onSubmit={handleFollowUp} />
+        {phase === PHASE.FOLLOWUP && currentResult?.probe && (
+          <FollowUp probe={currentResult.probe} onSubmit={handleFollowUp} />
         )}
 
         {phase === PHASE.EXAMINER && currentResult && (
           <ExaminerResponse
-            response={currentResult.examinerResponse}
+            response={currentResult.feedback || 'Thank you.'}
             onContinue={handleContinue}
             isLast={qIdx + 1 >= total}
           />

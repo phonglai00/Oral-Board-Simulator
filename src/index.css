@@ -598,6 +598,91 @@ button:disabled { opacity: 0.38; cursor: not-allowed; }
 .r-points.covered ul li { color: #70c080; }
 .r-points.covered ul li::before { content: '✓'; color: var(--pass); }
 
+/* ── Dual scoring meters ───────────────────────────────── */
+.dual-scores {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.875rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+}
+.score-meter {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.meter-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  width: 6.5rem;
+  flex-shrink: 0;
+}
+.meter-bar-wrap {
+  flex: 1;
+  height: 8px;
+  background: var(--bg-raised);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.meter-bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+.meter-bar.meter-high { background: var(--pass); }
+.meter-bar.meter-mid  { background: var(--marginal); }
+.meter-bar.meter-low  { background: var(--fail); }
+.meter-value {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text);
+  width: 2.5rem;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ── Teaching points ───────────────────────────────────── */
+.r-teaching {
+  padding: 0.875rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(200, 169, 110, 0.04);
+}
+.r-teaching:last-child { border-bottom: none; }
+.teaching-label { color: var(--gold) !important; }
+.r-teaching ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 0.4rem;
+}
+.r-teaching ul li {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  padding-left: 1.2rem;
+  position: relative;
+  color: var(--text);
+}
+.r-teaching ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--gold-dim);
+  font-size: 0.75rem;
+}
+.acog-ref {
+  margin-top: 0.65rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
 .restart-btn { align-self: center; margin-top: 0.5rem; }
 
 /* ── Safe area (iPhone notch) ──────────────────────────── */
