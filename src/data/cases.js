@@ -2,6 +2,7 @@ export const CASES = [
   {
     id: 'D',
     topic: 'Hypertension In Pregnancy',
+    difficulty: 'standard',
     totalPoints: 7,
     scoring: {
       pass:     { threshold: 5, percent: 71 },

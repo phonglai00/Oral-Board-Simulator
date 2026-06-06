@@ -36,12 +36,13 @@ export async function testConnection() {
   return callAPI([{ role: 'user', content: 'Reply with exactly: API connection successful' }], 30)
 }
 
-export async function scoreAnswer({ question, idealAnswer, candidateAnswer, caseContext, caseId }) {
+export async function scoreAnswer({ question, idealAnswer, candidateAnswer, caseContext, caseId, difficulty }) {
   const { system, user } = buildScoringPrompt(
     question,
     candidateAnswer,
     caseContext || idealAnswer,
     caseId || '',
+    difficulty || 'standard',
   )
   const raw = await callAPI([{ role: 'user', content: user }], 800, system)
   return parseScoringResponse(raw)

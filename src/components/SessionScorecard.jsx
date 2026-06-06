@@ -169,18 +169,48 @@ function QuestionRow({ index, question, result }) {
   return (
     <div style={{
       background: '#fff',
-      border: '1px solid #e0e4ea',
+      border: result.isDangerous ? '2px solid #f5b8b8' : '1px solid #e0e4ea',
       borderRadius: 12,
       padding: '16px 20px',
       marginBottom: 12,
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16, flexWrap: 'wrap' }}>
-        {/* Question text */}
+        {/* Question text + badges */}
         <div style={{ flex: 1, minWidth: 200 }}>
-          <p style={{ fontSize: 12, fontWeight: 700, color: '#888', textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 4px' }}>
-            Question {index + 1}
-          </p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4, flexWrap: 'wrap' }}>
+            <p style={{ fontSize: 12, fontWeight: 700, color: '#888', textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0 }}>
+              Question {index + 1}
+            </p>
+            {result.isDangerous && (
+              <span style={{
+                display: 'inline-flex', alignItems: 'center', gap: 4,
+                padding: '2px 8px', background: '#fdecea', border: '1px solid #f5b8b8',
+                borderRadius: 12, fontSize: 11, fontWeight: 700, color: '#8b1a1a',
+              }}>
+                ⚠️ Dangerous Answer
+              </span>
+            )}
+            {result.isCurveball && !result.isDangerous && (
+              <span style={{
+                display: 'inline-flex', alignItems: 'center', gap: 4,
+                padding: '2px 8px', background: '#fffbe6', border: '1px solid #ffe58f',
+                borderRadius: 12, fontSize: 11, fontWeight: 700, color: '#7c5c00',
+              }}>
+                💡 Common Trap
+              </span>
+            )}
+          </div>
           <p style={{ fontSize: 14, color: '#222', margin: '0 0 8px', lineHeight: 1.5 }}>{question}</p>
+          {result.isDangerous && result.dangerousReason && (
+            <p style={{ fontSize: 13, color: '#8b1a1a', background: '#fdecea', padding: '6px 10px', borderRadius: 6, margin: '0 0 8px', lineHeight: 1.5 }}>
+              ⚠️ {result.dangerousReason}
+            </p>
+          )}
+          {result.isCurveball && result.curveballNote && (
+            <p style={{ fontSize: 13, color: '#7c5c00', background: '#fffbe6', padding: '6px 10px', borderRadius: 6, margin: '0 0 8px', lineHeight: 1.5 }}>
+              💡 Common trap — here's what examiners look for: {result.curveballNote}
+            </p>
+          )}
           {result.feedback && (
             <p style={{ fontSize: 13, color: '#555', fontStyle: 'italic', margin: 0, lineHeight: 1.5 }}>
               {result.feedback}
