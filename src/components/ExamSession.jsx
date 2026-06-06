@@ -54,12 +54,19 @@ function pick(pool, id) {
   return pool[Math.abs(id) % pool.length]
 }
 
+// Mobile browsers are slower to release the audio context after playback
+function isMobile() {
+  return /Mobi|Android/i.test(navigator.userAgent) || window.innerWidth < 768
+}
+
 export function ExamSession({ caseData, onComplete }) {
   const [qIdx,          setQIdx]          = useState(0)
   const [phase,         setPhase]         = useState(PHASE.INPUT)
   const [currentResult, setCurrentResult] = useState(null)
   const [examinerText,  setExaminerText]  = useState('')
   const [error,         setError]         = useState(null)
+  // micReady becomes true only after question audio fully ends + 500 ms buffer
+  const [micReady,      setMicReady]      = useState(false)
 
   const resultsRef   = useRef([])
   const questionsRef = useRef([])
@@ -77,11 +84,35 @@ export function ExamSession({ caseData, onComplete }) {
     .filter(Boolean)
     .join(' ')
 
-  // Auto-read vignette + question on each new question
+  // ── Strict audio → mic sequence for each new question ────────────────────
+  // Step 1: render question text (already done when effect fires)
+  // Step 2: wait 800 ms (+ 400 ms on mobile)
+  // Step 3: play ElevenLabs audio  — speak() returns a Promise
+  // Step 4: await audio complete
+  // Step 5: wait 500 ms
+  // Step 6: setMicReady(true) — VoiceInput shows pulse animation
+  // Step 7: user taps mic → SpeechRecognition.start()
   useEffect(() => {
-    const segments = [question.context, question.question].filter(Boolean)
-    const id = setTimeout(() => speak(segments), 250)
-    return () => { clearTimeout(id); stop() }
+    let cancelled = false
+    setMicReady(false)
+
+    const run = async () => {
+      const delay = 800 + (isMobile() ? 400 : 0)
+      await new Promise(r => setTimeout(r, delay))
+      if (cancelled) return
+
+      const segments = [question.context, question.question].filter(Boolean)
+      await speak(segments)     // resolves when audio playback ends
+      if (cancelled) return
+
+      await new Promise(r => setTimeout(r, 500))
+      if (cancelled) return
+
+      setMicReady(true)
+    }
+
+    run()
+    return () => { cancelled = true; stop() }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [qIdx])
 
@@ -105,6 +136,7 @@ export function ExamSession({ caseData, onComplete }) {
     } else {
       setCurrentResult(null)
       setExaminerText('')
+      setMicReady(false)
       setQIdx(i => i + 1)
       setPhase(PHASE.INPUT)
     }
@@ -128,6 +160,7 @@ export function ExamSession({ caseData, onComplete }) {
   // ── Primary answer handler ────────────────────────────────────────────────────
   const handleAnswer = useCallback(async (candidateAnswer) => {
     stop()
+    setMicReady(false)
     setPhase(PHASE.SCORING)
     setError(null)
 
@@ -198,7 +231,7 @@ export function ExamSession({ caseData, onComplete }) {
       questionsRef.current = questionsRef.current.slice(0, -1)
       setPhase(PHASE.INPUT)
     }
-  }, [question, caseContext, caseData.id, difficulty, advance, commitPivot])
+  }, [question, caseContext, caseData.id, difficulty, advance, commitPivot, stop])
 
   // ── Follow-up after reflect/consequence pushback ──────────────────────────────
   // Re-scores the follow-up so we can detect if the student is doubling down.
@@ -214,14 +247,14 @@ export function ExamSession({ caseData, onComplete }) {
 
     try {
       const followUpResult = await scoreAnswer({
-        question:       question.question,
-        idealAnswer:    question.idealAnswer,
+        question:        question.question,
+        idealAnswer:     question.idealAnswer,
         candidateAnswer: followUpText,
         caseContext,
-        caseId:         `Case ${caseData.id}`,
+        caseId:          `Case ${caseData.id}`,
         difficulty,
-        isFollowUp:     true,
-        priorAnswer:    currentResult.candidateAnswer,
+        isFollowUp:      true,
+        priorAnswer:     currentResult.candidateAnswer,
       })
 
       // Student doubled down → pivot
@@ -239,14 +272,14 @@ export function ExamSession({ caseData, onComplete }) {
       // Student corrected / improved — update scores with follow-up result
       const updated = {
         ...currentResult,
-        followUpAnswer: followUpText,
-        correctness:            followUpResult.correctness,
-        completeness:           followUpResult.completeness,
-        correctness_rationale:  followUpResult.correctness_rationale,
-        completeness_rationale: followUpResult.completeness_rationale,
-        feedback:               followUpResult.feedback,
+        followUpAnswer:          followUpText,
+        correctness:             followUpResult.correctness,
+        completeness:            followUpResult.completeness,
+        correctness_rationale:   followUpResult.correctness_rationale,
+        completeness_rationale:  followUpResult.completeness_rationale,
+        feedback:                followUpResult.feedback,
         // Preserve original danger/curveball flags unless follow-up clears them
-        isDangerous:    currentResult.isDangerous && followUpResult.isDangerous,
+        isDangerous:     currentResult.isDangerous && followUpResult.isDangerous,
         dangerousReason: followUpResult.isDangerous
           ? followUpResult.dangerousReason
           : currentResult.dangerousReason,
@@ -271,7 +304,7 @@ export function ExamSession({ caseData, onComplete }) {
       setExaminerText(phrase)
       setPhase(PHASE.EXAMINER)
     }
-  }, [currentResult, question, caseContext, caseData.id, difficulty, commitPivot])
+  }, [currentResult, question, caseContext, caseData.id, difficulty, commitPivot, stop])
 
   // ── Follow-up after standard "Is there anything else?" probe ─────────────────
   // Stores the follow-up text and advances. No further probes or pivots.
@@ -322,7 +355,11 @@ export function ExamSession({ caseData, onComplete }) {
         {phase === PHASE.INPUT && (
           <>
             {error && <div className="error-msg">{error}</div>}
-            <VoiceInput onSubmit={handleAnswer} disabled={false} />
+            <VoiceInput
+              onSubmit={handleAnswer}
+              disabled={false}
+              micReady={micReady}
+            />
           </>
         )}
 
