@@ -2,13 +2,11 @@ import { useState, useCallback, useRef, useEffect } from 'react'
 import { Timer } from './Timer'
 import { QuestionCard } from './QuestionCard'
 import { VoiceInput } from './VoiceInput'
-import { FollowUp } from './FollowUp'
 import { ExaminerResponse } from './ExaminerResponse'
 import { scoreAnswer } from '../services/anthropic'
 import { useElevenLabs } from '../hooks/useElevenLabs'
-import { shouldShowProbe } from '../utils/scoringPrompt'
 
-const PHASE = { INPUT: 'input', SCORING: 'scoring', FOLLOWUP: 'followup', EXAMINER: 'examiner' }
+const PHASE = { INPUT: 'input', SCORING: 'scoring', EXAMINER: 'examiner' }
 
 export function ExamSession({ caseData, onComplete }) {
   const [qIdx, setQIdx] = useState(0)
@@ -68,13 +66,14 @@ export function ExamSession({ caseData, onComplete }) {
       resultsRef.current = [...resultsRef.current, fullResult]
       setCurrentResult(fullResult)
 
-      // Speak the AI feedback aloud
-      if (result.feedback) {
-        speak(result.feedback)
-      }
+      // Speak a brief neutral phrase — no feedback or scores during the exam
+      const NEUTRAL = ['Thank you.', 'Got it.', 'Okay.', 'I see.', 'Alright.']
+      const neutral = NEUTRAL[question.id % NEUTRAL.length]
+      speak(neutral)
+      fullResult._neutralPhrase = neutral
 
-      // Use probe logic from scoringPrompt utility
-      setPhase(shouldShowProbe(result) ? PHASE.FOLLOWUP : PHASE.EXAMINER)
+      // Always move straight to next question — no probe during exam
+      setPhase(PHASE.EXAMINER)
     } catch (err) {
       setError('Connection error: ' + err.message + ' — please try again.')
       questionsRef.current = questionsRef.current.slice(0, -1)
@@ -82,15 +81,6 @@ export function ExamSession({ caseData, onComplete }) {
     }
   }, [question, caseContext, caseData.id])
 
-  const handleFollowUp = useCallback((followUpText) => {
-    const updatedResult = {
-      ...currentResult,
-      followUpAnswer: followUpText || null,
-    }
-    resultsRef.current = [...resultsRef.current.slice(0, -1), updatedResult]
-    setCurrentResult(updatedResult)
-    setPhase(PHASE.EXAMINER)
-  }, [currentResult])
 
   const handleContinue = useCallback(() => {
     const isLast = qIdx + 1 >= total
@@ -155,13 +145,9 @@ export function ExamSession({ caseData, onComplete }) {
           </div>
         )}
 
-        {phase === PHASE.FOLLOWUP && currentResult?.probe && (
-          <FollowUp probe={currentResult.probe} onSubmit={handleFollowUp} />
-        )}
-
         {phase === PHASE.EXAMINER && currentResult && (
           <ExaminerResponse
-            response={currentResult.feedback || 'Thank you.'}
+            response={currentResult._neutralPhrase || 'Thank you.'}
             onContinue={handleContinue}
             isLast={qIdx + 1 >= total}
           />
