@@ -7,6 +7,10 @@ import { ExaminerResponse } from './ExaminerResponse'
 import { scoreAnswer } from '../services/anthropic'
 import { useElevenLabs } from '../hooks/useElevenLabs'
 import { isStrongAnswer, shouldShowProbe } from '../utils/scoringPrompt'
+// ── Grader v2 — developer testing infrastructure (zero production impact) ─────
+import { scoreAnswerV2 } from '../services/graderV2'
+import { logV2Comparison } from '../utils/graderV2Log'
+import { GraderV2Panel } from './GraderV2Panel'
 
 // ── Phase constants ───────────────────────────────────────────────────────────
 // Per-question flow:
@@ -59,7 +63,7 @@ function isMobile() {
   return /Mobi|Android/i.test(navigator.userAgent) || window.innerWidth < 768
 }
 
-export function ExamSession({ caseData, onComplete }) {
+export function ExamSession({ caseData, onComplete, isDevMode = false }) {
   const [qIdx,          setQIdx]          = useState(0)
   const [phase,         setPhase]         = useState(PHASE.INPUT)
   const [currentResult, setCurrentResult] = useState(null)
@@ -67,6 +71,9 @@ export function ExamSession({ caseData, onComplete }) {
   const [error,         setError]         = useState(null)
   // micReady becomes true only after question audio fully ends + 500 ms buffer
   const [micReady,      setMicReady]      = useState(false)
+  // ── Grader v2 dev state — completely isolated from production logic ────────
+  const [v2Result,      setV2Result]      = useState(null)
+  const [v2Loading,     setV2Loading]     = useState(false)
 
   const resultsRef   = useRef([])
   const questionsRef = useRef([])
@@ -137,6 +144,8 @@ export function ExamSession({ caseData, onComplete }) {
       setCurrentResult(null)
       setExaminerText('')
       setMicReady(false)
+      setV2Result(null)
+      setV2Loading(false)
       setQIdx(i => i + 1)
       setPhase(PHASE.INPUT)
     }
@@ -188,6 +197,35 @@ export function ExamSession({ caseData, onComplete }) {
 
       resultsRef.current = [...resultsRef.current, fullResult]
       setCurrentResult(fullResult)
+
+      // ── Grader v2: fire async alongside production routing — non-blocking ──
+      // isDevMode is false for all production users; this block never executes in prod.
+      if (isDevMode) {
+        setV2Loading(true)
+        setV2Result(null)
+        scoreAnswerV2({
+          vignette:        question.context || '',
+          question:        question.question,
+          candidateAnswer,
+          idealAnswer:     question.idealAnswer || '',
+          difficulty,
+        })
+          .then(v2r => {
+            setV2Result(v2r)
+            setV2Loading(false)
+            logV2Comparison({
+              questionId:     question.id,
+              candidateAnswer,
+              currentResult:  fullResult,
+              v2Result:       v2r,
+            })
+          })
+          .catch(err => {
+            console.error('[GraderV2] Scoring failed:', err.message)
+            setV2Loading(false)
+          })
+      }
+      // ── End Grader v2 block ───────────────────────────────────────────────
 
       // ── 1. PIVOT: complete absence of core knowledge ──────────────────────
       if (result.pushbackMode === 'pivot') {
@@ -395,6 +433,16 @@ export function ExamSession({ caseData, onComplete }) {
           />
         )}
       </main>
+
+      {/* Grader v2 developer panel — only rendered when dev mode is active */}
+      {isDevMode && (
+        <GraderV2Panel
+          currentResult={currentResult}
+          v2Result={v2Result}
+          v2Loading={v2Loading}
+          questionId={question.id}
+        />
+      )}
     </div>
   )
 }

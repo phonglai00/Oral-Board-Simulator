@@ -4,11 +4,16 @@ import { StartScreen } from './components/StartScreen'
 import { ExamSession } from './components/ExamSession'
 import SessionScorecard from './components/SessionScorecard'
 import { CASES } from './data/cases'
+// Developer testing — Grader v2 keyboard toggle (Ctrl+Shift+G)
+// Registering here keeps the shortcut active on every screen.
+import { useGraderV2DevMode } from './hooks/useGraderV2DevMode'
 
 const SCREEN = { API_TEST: 'api_test', START: 'start', EXAM: 'exam', SCORE: 'score' }
 
 export default function App() {
   const [screen, setScreen] = useState(SCREEN.API_TEST)
+  // isDevMode drives the hidden Grader v2 comparison panel — no UI exposure
+  const { isDevMode } = useGraderV2DevMode()
   const [results, setResults] = useState([])
   const [questions, setQuestions] = useState([])
   const [transcript, setTranscript] = useState([])
@@ -40,6 +45,7 @@ export default function App() {
         <ExamSession
           caseData={caseData}
           onComplete={handleComplete}
+          isDevMode={isDevMode}
         />
       )}
       {screen === SCREEN.SCORE && (
