@@ -1,0 +1,778 @@
+{
+  "version": "1.0.0",
+  "frozen": "2026-06-09",
+  "grader_spec_version": "1.0.0",
+  "grader_spec_frozen": "2026-06-06",
+  "description": "ABOG Grader v2 Evaluation Dataset — Phase 7 Validation Infrastructure. Five cross-case questions, seven archetypes each, 35 benchmark answers total. Scores derived deterministically from frozen Grader v2 specification (graderV2Prompt.js v1.0.0).",
+  "recovery_rule": "If the candidate ultimately states missing concepts after examiner prompting, preserve content credit. This rule is encoded in archetype answer text, not enforced by the harness.",
+  "rambling_rule": "Rambling alone does not remove content credit if key concepts are ultimately stated. Rambling reduces focus_score but does not reduce diagnostic_score, management_score, or safety_score when key concepts are present.",
+  "score_tolerance": 1,
+  "probability_tolerance": 15,
+  "questions": [
+    {
+      "id": "Q1",
+      "source_case": "OB1-A",
+      "source_question_number": 2,
+      "topic": "NST Interpretation",
+      "difficulty": "standard",
+      "vignette": "A 23-year-old 1G/0P at 39 3/7 weeks EGA called complaining of decreased fetal movement all day. She called back after two hours without any fetal movement. She has been instructed to come in for a non-stress test (NST).",
+      "question": "How do you interpret a NST?",
+      "ideal_answer": "Reactive NST = at least 2 accelerations of 15 beats above the baseline lasting at least 15 seconds over a 20-minute period. Nonreactive = does not meet these criteria in 40 minutes.",
+      "validation_note": "Definitional question. Safety and management dimensions are not stressed; this question validates Diagnostic and Terminology dimension scoring across the 1-5 scale, plus flag detection on archetypes F and G.",
+      "archetypes": [
+        {
+          "id": "A",
+          "label": "Pass-Strong",
+          "candidate_answer": "A reactive NST requires at least two accelerations within a 20-minute window, each peaking at least 15 beats per minute above the fetal heart rate baseline and lasting at least 15 seconds from onset to return. A nonreactive NST is one that fails to demonstrate these criteria within 40 minutes of monitoring, even with vibroacoustic or fetal acoustic stimulation.",
+          "rationale": "All five key criteria present: count (2), amplitude (15 bpm), duration (15 sec), reactive window (20 min), nonreactive window (40 min). Precise, organized, correct terminology.",
+          "expected": {
+            "safety_score": 5,
+            "diagnostic_score": 5,
+            "management_score": 5,
+            "focus_score": 5,
+            "terminology_score": 5,
+            "communication_score": 5,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 100,
+            "abog_label": "Pass"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "B",
+          "label": "Pass-Adequate",
+          "candidate_answer": "For a reactive NST, I look for at least two accelerations of 15 beats per minute above the baseline, each lasting at least 15 seconds. If I do not see that pattern after 40 minutes of monitoring, the strip is considered nonreactive.",
+          "rationale": "Missing: 20-minute reactive assessment window. Has: count (2), amplitude (15 bpm), duration (15 sec), nonreactive window (40 min). One minor omission; core criteria correct.",
+          "expected": {
+            "safety_score": 5,
+            "diagnostic_score": 4,
+            "management_score": 5,
+            "focus_score": 4,
+            "terminology_score": 4,
+            "communication_score": 4,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 93,
+            "abog_label": "Pass"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "C",
+          "label": "Borderline-High",
+          "candidate_answer": "A reactive NST means I see at least two fetal heart rate accelerations of at least 15 beats above the baseline during the monitoring period. If I do not see a reactive pattern, that is considered nonreactive. I would also pay attention to the overall baseline rate and variability as part of my assessment of the strip.",
+          "rationale": "Missing: 15-second duration criterion AND both time windows (20-min reactive, 40-min nonreactive). Adds tangential variability comment (not wrong, but not what was asked). Two meaningful omissions from the diagnostic criteria.",
+          "expected": {
+            "safety_score": 5,
+            "diagnostic_score": 3,
+            "management_score": 5,
+            "focus_score": 3,
+            "terminology_score": 3,
+            "communication_score": 3,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 86,
+            "abog_label": "Pass"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "D",
+          "label": "Borderline-Low",
+          "candidate_answer": "Reactive means the fetal heart rate is accelerating with fetal movement, which tells us the baby is doing okay. Nonreactive means there are not enough accelerations on the strip. I would watch the strip for about 20 minutes to decide.",
+          "rationale": "No specific numeric criteria stated (no 15/15 numbers). Misattributes the 20-minute window as the nonreactive decision point (should be 40 min). Lay terminology throughout. Concept is correct but completely non-specific.",
+          "expected": {
+            "safety_score": 5,
+            "diagnostic_score": 2,
+            "management_score": 5,
+            "focus_score": 3,
+            "terminology_score": 2,
+            "communication_score": 2,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 80,
+            "abog_label": "Pass"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "E",
+          "label": "Fail-Incomplete",
+          "candidate_answer": "Reactive means the baby's heart rate looks good and is responding. Nonreactive means it is not responding the way we want. We would watch her on the monitor and decide what to do from there.",
+          "rationale": "No criteria whatsoever. Purely lay descriptive language. No medical terminology. No clinical content beyond the concept that reactive is good and nonreactive is not.",
+          "expected": {
+            "safety_score": 5,
+            "diagnostic_score": 1,
+            "management_score": 5,
+            "focus_score": 2,
+            "terminology_score": 1,
+            "communication_score": 1,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 73,
+            "abog_label": "Pass"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "F",
+          "label": "Fail-Dangerous",
+          "candidate_answer": "A reactive NST requires one acceleration of at least 15 beats above the baseline lasting at least 15 seconds within a 20-minute window. If the NST is nonreactive, that confirms fetal distress, and I would inform the patient she needs to be delivered immediately without any further workup.",
+          "rationale": "Two errors: (1) requires only one acceleration instead of two; (2) states nonreactive NST confirms fetal distress requiring immediate delivery — dangerous because a nonreactive NST requires further evaluation (BPP, CST) before delivery is indicated. Triggers isDangerous.",
+          "expected": {
+            "safety_score": 2,
+            "diagnostic_score": 2,
+            "management_score": 1,
+            "focus_score": 3,
+            "terminology_score": 2,
+            "communication_score": 3,
+            "recovery_score": 1,
+            "isDangerous": true,
+            "isCurveball": false,
+            "pass_probability": 35,
+            "abog_label": "Fail"
+          },
+          "safety_override_expected": true
+        },
+        {
+          "id": "G",
+          "label": "Fail-Curveball",
+          "candidate_answer": "A reactive NST requires at least two accelerations of 10 beats per minute above the baseline lasting at least 10 seconds. If this pattern is not seen within 20 minutes, the NST is nonreactive.",
+          "rationale": "Applies the pre-32-week criteria (10x10 rule) to a 39-week patient. Classic ABOG board trap: technically valid before 32 weeks but wrong for this term patient. Also states incorrect nonreactive window (20 min instead of 40 min). Triggers isCurveball.",
+          "expected": {
+            "safety_score": 3,
+            "diagnostic_score": 2,
+            "management_score": 4,
+            "focus_score": 4,
+            "terminology_score": 3,
+            "communication_score": 4,
+            "recovery_score": 1,
+            "isDangerous": false,
+            "isCurveball": true,
+            "pass_probability": 59,
+            "abog_label": "Borderline"
+          },
+          "safety_override_expected": false
+        }
+      ]
+    },
+    {
+      "id": "Q2",
+      "source_case": "OB1-A",
+      "source_question_number": 4,
+      "topic": "Term Nonreactive NST Management",
+      "difficulty": "standard",
+      "vignette": "A 23-year-old 1G/0P at 39 3/7 weeks EGA called complaining of decreased fetal movement all day. After two hours without fetal movement, she came in for an NST. The NST was nonreactive after 20 minutes and remained nonreactive after extension to 40 minutes with vibroacoustic stimulation.",
+      "question": "Do your recommendations change?",
+      "ideal_answer": "Since she is at term, proceed with plans to deliver. Options include contraction stress test (CST) or BPP for further evaluation, but at term with a nonreactive NST, delivery is the appropriate next step.",
+      "validation_note": "Management decision with safety stakes. Tests whether the grader correctly identifies delivery as the primary recommendation at term, and scores dangerous delay appropriately.",
+      "archetypes": [
+        {
+          "id": "A",
+          "label": "Pass-Strong",
+          "candidate_answer": "Yes, my recommendations change significantly at this gestational age. Since she is at term — 39 and 3/7 weeks — a persistently nonreactive NST after 40 minutes with stimulation is an indication to proceed toward delivery. While a BPP or contraction stress test could provide additional information, the risk-benefit calculation at term clearly favors delivery over continued antepartum surveillance. I would admit her, assess cervical status, and proceed with induction of labor with cervical ripening agents if the cervix is unfavorable.",
+          "rationale": "All elements present: delivery as primary recommendation, term gestational age explicitly cited, BPP/CST acknowledged as options, induction plan specified. Clear rationale provided.",
+          "expected": {
+            "safety_score": 5,
+            "diagnostic_score": 5,
+            "management_score": 5,
+            "focus_score": 5,
+            "terminology_score": 5,
+            "communication_score": 5,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 100,
+            "abog_label": "Pass"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "B",
+          "label": "Pass-Adequate",
+          "candidate_answer": "Yes. She is at term, so the next step is to proceed with delivery. I would admit her for induction. A biophysical profile might give additional information if the clinical picture is unclear, but at 39 weeks with a persistently nonreactive NST, delivery is the right move. I would not send her home.",
+          "rationale": "Correct primary recommendation (delivery). Mentions BPP as an option. Does not specify cervical assessment or induction details. Slightly less structured but core management correct.",
+          "expected": {
+            "safety_score": 5,
+            "diagnostic_score": 4,
+            "management_score": 4,
+            "focus_score": 4,
+            "terminology_score": 4,
+            "communication_score": 4,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 88,
+            "abog_label": "Pass"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "C",
+          "label": "Borderline-High",
+          "candidate_answer": "At term, I would want more information before committing to delivery. I would order a biophysical profile. If the BPP score is 6 or less, I would then proceed with delivery. I would not send her home given how long the strip has been nonreactive.",
+          "rationale": "Uses BPP as the primary next step rather than leading with delivery. Not wrong clinically, but ABOG expects delivery to be the primary recommendation at term. Correct instinct (do not send home), wrong ordering of priorities.",
+          "expected": {
+            "safety_score": 4,
+            "diagnostic_score": 4,
+            "management_score": 3,
+            "focus_score": 3,
+            "terminology_score": 3,
+            "communication_score": 3,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 74,
+            "abog_label": "Pass"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "D",
+          "label": "Borderline-Low",
+          "candidate_answer": "I would continue to monitor her and have her perform kick counts for another hour or two. If the strip is still not reactive, I might repeat it in the morning. I want to confirm this is a real finding and not just because the baby is sleeping.",
+          "rationale": "Watchful waiting at term with a persistently nonreactive NST is inappropriate. Misses the urgency. Does not recommend delivery. 24-hour delay is a meaningful safety gap. No self-correction.",
+          "expected": {
+            "safety_score": 2,
+            "diagnostic_score": 2,
+            "management_score": 2,
+            "focus_score": 3,
+            "terminology_score": 2,
+            "communication_score": 2,
+            "recovery_score": 2,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 41,
+            "abog_label": "Fail"
+          },
+          "safety_override_expected": true
+        },
+        {
+          "id": "E",
+          "label": "Fail-Incomplete",
+          "candidate_answer": "I would keep her comfortable and monitored overnight to see how things develop. If she is still having decreased fetal movement in the morning, I would reassess at that point.",
+          "rationale": "No active management. No delivery, no BPP, no CST. Proposes overnight observation for a term patient with a persistently nonreactive NST — a clear failure of action. No self-correction.",
+          "expected": {
+            "safety_score": 2,
+            "diagnostic_score": 1,
+            "management_score": 1,
+            "focus_score": 2,
+            "terminology_score": 1,
+            "communication_score": 2,
+            "recovery_score": 1,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 28,
+            "abog_label": "Fail"
+          },
+          "safety_override_expected": true
+        },
+        {
+          "id": "F",
+          "label": "Fail-Dangerous",
+          "candidate_answer": "No, my recommendations would not change. A nonreactive NST requires further evaluation and I would not rush to deliver based on this tracing alone. I would admit her for continued monitoring and repeat the NST in 24 hours. If it remains nonreactive at that point, we could discuss delivery options.",
+          "rationale": "Explicitly states do not rush to deliver and proposes 24-hour observation at term. Directly dangerous: a persistently nonreactive NST at 39 weeks warrants same-day delivery evaluation, not 24-hour observation. High risk of fetal compromise during delay. isDangerous triggered.",
+          "expected": {
+            "safety_score": 1,
+            "diagnostic_score": 1,
+            "management_score": 1,
+            "focus_score": 3,
+            "terminology_score": 2,
+            "communication_score": 3,
+            "recovery_score": 1,
+            "isDangerous": true,
+            "isCurveball": false,
+            "pass_probability": 25,
+            "abog_label": "Fail"
+          },
+          "safety_override_expected": true
+        },
+        {
+          "id": "G",
+          "label": "Fail-Curveball",
+          "candidate_answer": "Yes. Since the NST is nonreactive at term, I would perform an amniocentesis to assess fetal lung maturity using the L/S ratio and phosphatidylglycerol. Once I have confirmed lung maturity, I would then proceed with induction of labor.",
+          "rationale": "Classic board trap: lung maturity testing (L/S ratio, phosphatidylglycerol) is obsolete and not indicated at 39 weeks — lungs are considered mature at term. This delays necessary delivery with an unnecessary and outdated procedure. isCurveball triggered.",
+          "expected": {
+            "safety_score": 3,
+            "diagnostic_score": 2,
+            "management_score": 2,
+            "focus_score": 3,
+            "terminology_score": 3,
+            "communication_score": 3,
+            "recovery_score": 1,
+            "isDangerous": false,
+            "isCurveball": true,
+            "pass_probability": 47,
+            "abog_label": "Fail"
+          },
+          "safety_override_expected": false
+        }
+      ]
+    },
+    {
+      "id": "Q3",
+      "source_case": "OB1-C",
+      "source_question_number": 1,
+      "topic": "Acute Fetal Bradycardia After Epidural",
+      "difficulty": "advanced",
+      "vignette": "A 24-year-old 1G/0P at 40 weeks EGA is in active labor, 4 cm dilated, and has just received an epidural. You are at the nurses station when the alarms sound. You glance up and note a fetal bradycardia on the central monitor.",
+      "question": "How do you proceed?",
+      "ideal_answer": "Confirm it is fetal and not maternal heart rate. Check maternal BP (most likely cause is epidural-induced hypotension — give IVF bolus and ephedrine 5mg IV). Reposition mother (left lateral). Apply maternal oxygen. Consider placing FSE. Vaginal exam to rule out prolapsed cord. Consider IV/SQ terbutaline (0.25 mg SQ) for uterine tachysystole. Alert OR for possible stat C/S.",
+      "validation_note": "Most dimension-diverse question. Richest safety stakes. Dangerous archetype has clear harmful actions. Curveball archetype diagnoses AFE prematurely without attempting first-line resuscitation.",
+      "archetypes": [
+        {
+          "id": "A",
+          "label": "Pass-Strong",
+          "candidate_answer": "First, I would confirm the bradycardia is fetal and not maternal — the external monitor can capture the maternal pulse, especially after an epidural. I would go to the bedside immediately. I would check maternal blood pressure, as epidural-induced hypotension is the most common cause of acute fetal bradycardia immediately following epidural placement. I would give a rapid IV fluid bolus and administer ephedrine 5 to 10 milligrams IV if she is hypotensive. I would reposition her to left lateral decubitus to relieve aortocaval compression, apply maternal oxygen by non-rebreather mask, and perform a sterile vaginal exam to rule out prolapsed umbilical cord. I would place a fetal scalp electrode for continuous direct monitoring. If uterine tachysystole is contributing, I would administer terbutaline 0.25 milligrams subcutaneously. I would alert the OR team and anesthesia for a possible emergent cesarean if the bradycardia does not resolve with these measures.",
+          "rationale": "All nine key elements present: confirm fetal vs maternal, go to bedside, BP check, ephedrine with dose, left lateral reposition, maternal O2, vaginal exam for cord prolapse, FSE placement, terbutaline for tachysystole, OR alert. Correct priority order.",
+          "expected": {
+            "safety_score": 5,
+            "diagnostic_score": 5,
+            "management_score": 5,
+            "focus_score": 5,
+            "terminology_score": 5,
+            "communication_score": 5,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 100,
+            "abog_label": "Pass"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "B",
+          "label": "Pass-Adequate",
+          "candidate_answer": "I would go to the bedside immediately and check maternal blood pressure — epidural hypotension is the most likely cause. If she is hypotensive, I would give a bolus of IV fluids and ephedrine. I would reposition her to the left lateral position, apply maternal oxygen, and perform a vaginal exam to rule out cord prolapse. I would notify the OR team in case we need to move quickly to cesarean delivery.",
+          "rationale": "Missing: confirm fetal vs maternal HR, FSE placement, terbutaline. Has all other core actions: BP check, ephedrine, repositioning, O2, vaginal exam, OR alert. Core resuscitation correct.",
+          "expected": {
+            "safety_score": 5,
+            "diagnostic_score": 4,
+            "management_score": 4,
+            "focus_score": 4,
+            "terminology_score": 4,
+            "communication_score": 4,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 88,
+            "abog_label": "Pass"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "C",
+          "label": "Borderline-High",
+          "candidate_answer": "I would go to the room and have her turn to her left side and apply maternal oxygen. I would check her blood pressure and give IV fluids if needed. I would call the anesthesiologist and be prepared to go to the OR quickly if the fetal heart rate does not recover.",
+          "rationale": "Missing: confirm fetal vs maternal, ephedrine by name or dose, vaginal exam for cord prolapse, FSE, terbutaline. Hypotension treatment vague (IV fluids without ephedrine). No vasoconstrictor named. Core positioning and O2 correct.",
+          "expected": {
+            "safety_score": 4,
+            "diagnostic_score": 3,
+            "management_score": 3,
+            "focus_score": 3,
+            "terminology_score": 3,
+            "communication_score": 3,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 70,
+            "abog_label": "Pass"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "D",
+          "label": "Borderline-Low",
+          "candidate_answer": "I would apply maternal oxygen and have her turn to her left side. I would call the nurse and watch the monitor closely to see if the fetal heart rate recovers on its own.",
+          "rationale": "Only O2 and repositioning. No BP check, no ephedrine, no vaginal exam, no OR alert. Passive observation for an acute bradycardia. No clinical errors stated — just absence of necessary actions — so recovery=5.",
+          "expected": {
+            "safety_score": 3,
+            "diagnostic_score": 2,
+            "management_score": 2,
+            "focus_score": 3,
+            "terminology_score": 2,
+            "communication_score": 2,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 53,
+            "abog_label": "Fail"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "E",
+          "label": "Fail-Incomplete",
+          "candidate_answer": "I would call for help and go to the bedside to assess the situation. I would watch the fetal monitor and see if the heart rate recovers.",
+          "rationale": "No clinical actions taken. No recognition of etiology. No interventions beyond calling for help. Safety=2 because failure to act in an acute bradycardia is a harmful omission with foreseeable patient risk.",
+          "expected": {
+            "safety_score": 2,
+            "diagnostic_score": 1,
+            "management_score": 1,
+            "focus_score": 2,
+            "terminology_score": 1,
+            "communication_score": 1,
+            "recovery_score": 1,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 27,
+            "abog_label": "Fail"
+          },
+          "safety_override_expected": true
+        },
+        {
+          "id": "F",
+          "label": "Fail-Dangerous",
+          "candidate_answer": "Given the acute bradycardia, I would apply fundal pressure to help deliver the baby as quickly as possible, while simultaneously starting a Pitocin infusion to augment contractions and expedite delivery.",
+          "rationale": "Fundal pressure is contraindicated — worsens cord impaction and shoulder dystocia. Pitocin during acute bradycardia caused by cord compression or tachysystole would worsen fetal compromise. Both actions are directly harmful. isDangerous triggered.",
+          "expected": {
+            "safety_score": 1,
+            "diagnostic_score": 1,
+            "management_score": 1,
+            "focus_score": 3,
+            "terminology_score": 3,
+            "communication_score": 3,
+            "recovery_score": 1,
+            "isDangerous": true,
+            "isCurveball": false,
+            "pass_probability": 26,
+            "abog_label": "Fail"
+          },
+          "safety_override_expected": true
+        },
+        {
+          "id": "G",
+          "label": "Fail-Curveball",
+          "candidate_answer": "Given the acute bradycardia immediately after the epidural, I would assume this is an amniotic fluid embolism. I would activate the massive transfusion protocol, call a crash team, and prepare the patient for emergency hysterectomy, as this is a catastrophic AFE event requiring immediate surgical intervention.",
+          "rationale": "Premature and incorrect diagnosis of AFE — the extreme outlier — without attempting any first-line post-epidural resuscitation (BP check, repositioning, O2). The board trap is anchoring on the worst-case diagnosis and skipping effective simple interventions. isCurveball triggered. Safety override applies (safety=2, recovery=1).",
+          "expected": {
+            "safety_score": 2,
+            "diagnostic_score": 2,
+            "management_score": 2,
+            "focus_score": 2,
+            "terminology_score": 4,
+            "communication_score": 3,
+            "recovery_score": 1,
+            "isDangerous": false,
+            "isCurveball": true,
+            "pass_probability": 41,
+            "abog_label": "Fail"
+          },
+          "safety_override_expected": true
+        }
+      ]
+    },
+    {
+      "id": "Q4",
+      "source_case": "OB1-D",
+      "source_question_number": 4,
+      "topic": "Severe Preeclampsia Management",
+      "difficulty": "advanced",
+      "vignette": "A 17-year-old 1G/0P at 34 3/7 weeks with a family history of preeclampsia presented with worsening edema and was found to have BP 146/84 with 1+ proteinuria. She was placed on bed rest. Now rounding that evening: BP is persistently greater than 160/110, DTRs 3-4+, severe headache unrelieved by Percocet. Labs: SGOT 80 U/L, SGPT 60 U/L, 24-hour urine protein 5.6 grams. Urine output 180 cc on one void.",
+      "question": "How would you manage her?",
+      "ideal_answer": "She absolutely needs to be delivered. If the cervix is unripe, start cervical ripening and/or Pitocin induction — it would be inappropriate to perform an immediate cesarean. Start/continue magnesium sulfate 4-6g IV loading dose then 2g/hour. Antihypertensive options: Nifedipine IR 10-20 mg PO q20 min PRN x3; Labetalol 20 mg IV then 40 mg q10 min PRN; Hydralazine 5-10 mg IV q15-20 min PRN. Judicious fluid management with Foley and strict I&Os.",
+      "validation_note": "Safety-critical management question. F archetype tests Methergine contraindication (dangerous in hypertension). G archetype tests delivery route knowledge (vaginal preferred; cesarean is the curveball). Curveball produces Borderline ABOG score.",
+      "archetypes": [
+        {
+          "id": "A",
+          "label": "Pass-Strong",
+          "candidate_answer": "This patient has worsened to severe preeclampsia with multi-organ involvement — persistent severe-range hypertension, elevated liver enzymes, heavy proteinuria, and oliguria. Delivery is the definitive treatment and she needs to be delivered now. I would not immediately perform a cesarean — I would assess her cervix and proceed with induction using a cervical ripening agent if the cervix is unfavorable, then Pitocin augmentation. Vaginal delivery is preferred. I would load magnesium sulfate at 4 to 6 grams intravenously over 15 to 20 minutes, then continue at 2 grams per hour for seizure prophylaxis. For blood pressure control — to keep systolic below 160 and diastolic below 110 — I would use labetalol 20 milligrams IV, repeating at 40 then 80 milligrams every 10 minutes as needed, or nifedipine immediate-release 10 to 20 milligrams orally every 20 minutes, or hydralazine 5 to 10 milligrams IV every 15 to 20 minutes. I would place a Foley catheter and maintain strict intake and output monitoring given the oliguria. Fluid management must be judicious to avoid pulmonary edema.",
+          "rationale": "All elements present: delivery named as definitive treatment, explicit vaginal delivery preference over cesarean, Mg loading and maintenance doses, three specific antihypertensives with doses, fluid management and oliguria addressed.",
+          "expected": {
+            "safety_score": 5,
+            "diagnostic_score": 5,
+            "management_score": 5,
+            "focus_score": 5,
+            "terminology_score": 5,
+            "communication_score": 5,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 100,
+            "abog_label": "Pass"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "B",
+          "label": "Pass-Adequate",
+          "candidate_answer": "She needs to be delivered — this is severe preeclampsia with end-organ damage. I would proceed with induction of labor. I would start magnesium sulfate for seizure prophylaxis and treat her blood pressure with labetalol or nifedipine to bring it below 160/110. I would monitor her intake and output carefully given the oliguria.",
+          "rationale": "Correct primary recommendation (delivery), Mg mentioned, antihypertensives named by class. Missing: explicit vaginal delivery preference over cesarean, specific doses, three-agent antihypertensive menu.",
+          "expected": {
+            "safety_score": 5,
+            "diagnostic_score": 4,
+            "management_score": 4,
+            "focus_score": 4,
+            "terminology_score": 4,
+            "communication_score": 4,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 88,
+            "abog_label": "Pass"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "C",
+          "label": "Borderline-High",
+          "candidate_answer": "I would start magnesium sulfate for seizure prophylaxis and give IV antihypertensives to control her blood pressure. Given the severity of her disease, I would discuss with maternal-fetal medicine and likely proceed with delivery by cesarean section given how sick she is.",
+          "rationale": "Mg and antihypertensives mentioned without doses. Significant error: recommends cesarean as the delivery route — vaginal delivery is preferred in severe preeclampsia. Does not name specific antihypertensive agents.",
+          "expected": {
+            "safety_score": 4,
+            "diagnostic_score": 3,
+            "management_score": 3,
+            "focus_score": 3,
+            "terminology_score": 3,
+            "communication_score": 3,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 70,
+            "abog_label": "Pass"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "D",
+          "label": "Borderline-Low",
+          "candidate_answer": "I would give her blood pressure medication to try to control her hypertension and watch her labs closely. I may need to consider delivery if she continues to worsen, but I want to give her medications a chance to work first.",
+          "rationale": "Vague BP management (no agents named). No Mg sulfate mentioned. No clear delivery recommendation — delivery contingent on further deterioration. No fluid management plan. No self-correction (recovery=5 because no false statements, just absence).",
+          "expected": {
+            "safety_score": 3,
+            "diagnostic_score": 2,
+            "management_score": 2,
+            "focus_score": 3,
+            "terminology_score": 2,
+            "communication_score": 2,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 53,
+            "abog_label": "Fail"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "E",
+          "label": "Fail-Incomplete",
+          "candidate_answer": "This is a very serious situation. I would watch her vital signs closely and call for help. We would need to control her blood pressure with medications and monitor her carefully.",
+          "rationale": "No specific management. No Mg, no delivery plan, no agents named, no fluid management. Safety=2 because failing to deliver a patient with severe preeclampsia and active end-organ damage is a harmful omission.",
+          "expected": {
+            "safety_score": 2,
+            "diagnostic_score": 1,
+            "management_score": 1,
+            "focus_score": 2,
+            "terminology_score": 1,
+            "communication_score": 1,
+            "recovery_score": 1,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 27,
+            "abog_label": "Fail"
+          },
+          "safety_override_expected": true
+        },
+        {
+          "id": "F",
+          "label": "Fail-Dangerous",
+          "candidate_answer": "To control her severe hypertension, I would administer methylergonovine — Methergine — 0.2 milligrams intramuscularly, as this is a potent vasoactive agent that can help lower her blood pressure. I would also continue expectant management to try to prolong the pregnancy and give the baby more time to mature, since she is only 34 weeks.",
+          "rationale": "Two direct dangers: (1) Methergine is contraindicated in hypertension — it is an ergot alkaloid that causes systemic vasoconstriction and will worsen her blood pressure, risking hypertensive crisis or stroke; (2) expectant management with active severe preeclampsia and end-organ damage at 34 weeks is inappropriate — delivery is indicated. isDangerous triggered.",
+          "expected": {
+            "safety_score": 1,
+            "diagnostic_score": 1,
+            "management_score": 1,
+            "focus_score": 3,
+            "terminology_score": 3,
+            "communication_score": 3,
+            "recovery_score": 1,
+            "isDangerous": true,
+            "isCurveball": false,
+            "pass_probability": 26,
+            "abog_label": "Fail"
+          },
+          "safety_override_expected": true
+        },
+        {
+          "id": "G",
+          "label": "Fail-Curveball",
+          "candidate_answer": "Given the severity of her condition and the risk of sudden deterioration, I would proceed immediately to emergency cesarean delivery without attempting induction. Trying to labor a patient this sick could lead to an eclamptic seizure or fetal compromise, and the fastest way to treat her disease is to deliver by cesarean now.",
+          "rationale": "Classic board trap: confusing deliver urgently with deliver by cesarean. Vaginal delivery is preferred in severe preeclampsia; cesarean is reserved for standard obstetric indications. Bypasses appropriate management steps. isCurveball triggered. Produces Borderline ABOG score because delivery rationale is otherwise correct.",
+          "expected": {
+            "safety_score": 3,
+            "diagnostic_score": 3,
+            "management_score": 3,
+            "focus_score": 4,
+            "terminology_score": 4,
+            "communication_score": 4,
+            "recovery_score": 1,
+            "isDangerous": false,
+            "isCurveball": true,
+            "pass_probability": 59,
+            "abog_label": "Borderline"
+          },
+          "safety_override_expected": false
+        }
+      ]
+    },
+    {
+      "id": "Q5",
+      "source_case": "OB2-D",
+      "source_question_number": 3,
+      "topic": "Uterotonic Selection — Postpartum Hemorrhage",
+      "difficulty": "advanced",
+      "vignette": "A 24-year-old 2G/1P delivered a term 4500 gram infant after a 2-hour second stage complicated by a shoulder dystocia. Five minutes after delivery of the placenta, a large gush of blood was noted. The uterus firms transiently but she continues to bleed. Help has been called, uterine massage performed, GU lacerations inspected, and the placenta confirmed intact. Large-bore IV access is established.",
+      "question": "What uterotonic would you use and why?",
+      "ideal_answer": "No single agent is superior — use based on clinical context and contraindications. Options: Oxytocin (Pitocin) 10 IU IM or 10-40 IU in 1L NS infusion; Methylergonovine (Methergine) 0.2 mg IM — contraindicated in hypertension; Carboprost (Hemabate) 0.25 mg IM — contraindicated in asthma; Misoprostol (Cytotec) 600-1000 mcg rectal/sublingual — no absolute contraindications. ACOG checklist recommends Methergine as first-line after Pitocin failure in normotensive patients.",
+      "validation_note": "Pharmacology question with contraindication knowledge as key safety element. F archetype is dangerous: administers Hemabate regardless of asthma history. G archetype is a curveball: erythromycin is not a uterotonic.",
+      "archetypes": [
+        {
+          "id": "A",
+          "label": "Pass-Strong",
+          "candidate_answer": "I would start with oxytocin as the first-line agent — 10 units IM or 10 to 40 units in a liter of normal saline as an infusion, if not already running. If atony persists, my choice of second-line agent depends on her clinical status. If she is normotensive, methylergonovine — Methergine — 0.2 milligrams IM is effective, but I must confirm she is not hypertensive first, because Methergine is contraindicated in hypertension due to its vasoconstrictive properties. Carboprost — Hemabate — 0.25 milligrams IM is a potent prostaglandin F2-alpha that is highly effective for refractory atony, but it is contraindicated in asthma due to the risk of bronchoconstriction. Misoprostol 800 to 1000 micrograms rectally has no absolute contraindications and is useful even with limited IV access. I would also administer tranexamic acid 1 gram IV as an adjunct to reduce fibrinolysis.",
+          "rationale": "All four agents named with doses. Both key contraindications stated explicitly (Methergine/HTN, Hemabate/asthma). Oxytocin as first-line. TXA mentioned. Clinical context emphasized before selecting agent.",
+          "expected": {
+            "safety_score": 5,
+            "diagnostic_score": 5,
+            "management_score": 5,
+            "focus_score": 5,
+            "terminology_score": 5,
+            "communication_score": 5,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 100,
+            "abog_label": "Pass"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "B",
+          "label": "Pass-Adequate",
+          "candidate_answer": "Oxytocin is my first-line agent. If that does not control the bleeding, I would add Methergine 0.2 milligrams IM — but only if she is not hypertensive, since it is contraindicated in hypertension. Carboprost is another option but is contraindicated in asthma. Misoprostol has no absolute contraindications and is a good backup. The choice between agents really depends on the patient's blood pressure and any history of asthma.",
+          "rationale": "All four agents named. Both contraindications stated. Missing: doses for carboprost and misoprostol, tranexamic acid. Good clinical reasoning about patient-specific selection.",
+          "expected": {
+            "safety_score": 5,
+            "diagnostic_score": 4,
+            "management_score": 4,
+            "focus_score": 4,
+            "terminology_score": 4,
+            "communication_score": 4,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 88,
+            "abog_label": "Pass"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "C",
+          "label": "Borderline-High",
+          "candidate_answer": "I would start with Pitocin and escalate to Hemabate or Methergine if needed. Misoprostol is also available. I would use multiple agents if one alone does not control the bleeding. The goal is to get the uterus to contract and maintain tone.",
+          "rationale": "Agents named without doses and critically without contraindications. Failing to state Methergine is contraindicated in HTN and Hemabate in asthma is a meaningful safety gap — this candidate would administer a contraindicated drug without checking. Safety=3 (potential for harm).",
+          "expected": {
+            "safety_score": 3,
+            "diagnostic_score": 3,
+            "management_score": 3,
+            "focus_score": 3,
+            "terminology_score": 3,
+            "communication_score": 3,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 64,
+            "abog_label": "Borderline"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "D",
+          "label": "Borderline-Low",
+          "candidate_answer": "I would give Pitocin and Methergine. If those do not work, I would take her to the OR for surgical management. The priority is stopping the bleeding.",
+          "rationale": "Only two agents mentioned. No contraindications stated. No carboprost or misoprostol. Jumps to OR without exhausting second-line medical options. No clinical errors stated — just incomplete — so recovery=5.",
+          "expected": {
+            "safety_score": 3,
+            "diagnostic_score": 2,
+            "management_score": 2,
+            "focus_score": 3,
+            "terminology_score": 2,
+            "communication_score": 2,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 53,
+            "abog_label": "Fail"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "E",
+          "label": "Fail-Incomplete",
+          "candidate_answer": "I would give Pitocin and call for help. We need to get the bleeding under control as quickly as possible.",
+          "rationale": "Only oxytocin mentioned. No contraindications, no second-line agents, no escalation plan. Minimal clinical content beyond first-line agent. No clinical errors stated — just absence — so recovery=5.",
+          "expected": {
+            "safety_score": 3,
+            "diagnostic_score": 1,
+            "management_score": 1,
+            "focus_score": 2,
+            "terminology_score": 2,
+            "communication_score": 2,
+            "recovery_score": 5,
+            "isDangerous": false,
+            "isCurveball": false,
+            "pass_probability": 43,
+            "abog_label": "Fail"
+          },
+          "safety_override_expected": false
+        },
+        {
+          "id": "F",
+          "label": "Fail-Dangerous",
+          "candidate_answer": "Since Pitocin is already running, I would escalate immediately to carboprost — Hemabate — as it is the most potent uterotonic available. I would administer it right away regardless of her medical history, because stopping maternal hemorrhage is the priority and we cannot afford to wait.",
+          "rationale": "Explicitly states regardless of her medical history — meaning this candidate would administer Hemabate to a patient with asthma, causing life-threatening bronchospasm. Direct, foreseeable patient harm from ignoring a known contraindication. isDangerous triggered. Safety override applies (safety=1, recovery=1).",
+          "expected": {
+            "safety_score": 1,
+            "diagnostic_score": 2,
+            "management_score": 1,
+            "focus_score": 3,
+            "terminology_score": 3,
+            "communication_score": 3,
+            "recovery_score": 1,
+            "isDangerous": true,
+            "isCurveball": false,
+            "pass_probability": 30,
+            "abog_label": "Fail"
+          },
+          "safety_override_expected": true
+        },
+        {
+          "id": "G",
+          "label": "Fail-Curveball",
+          "candidate_answer": "Since this patient has had a prolonged labor and is at risk for infection, I would administer erythromycin intravenously — it has pro-motility properties that stimulate uterine contractions and can help the atonic uterus regain tone. I would also continue the Pitocin infusion alongside it.",
+          "rationale": "Classic curveball: erythromycin is a macrolide antibiotic with gastric pro-kinetic properties — it is not a uterotonic and has no established role in PPH management. Confusing its peripheral use in gastroparesis or antibiotic prophylaxis with uterotonic therapy is a board trap. isCurveball triggered.",
+          "expected": {
+            "safety_score": 3,
+            "diagnostic_score": 1,
+            "management_score": 1,
+            "focus_score": 3,
+            "terminology_score": 3,
+            "communication_score": 3,
+            "recovery_score": 1,
+            "isDangerous": false,
+            "isCurveball": true,
+            "pass_probability": 38,
+            "abog_label": "Fail"
+          },
+          "safety_override_expected": false
+        }
+      ]
+    }
+  ]
+}

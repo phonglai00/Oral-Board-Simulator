@@ -1,0 +1,4587 @@
+{
+  "version": "1.0.0",
+  "status": "complete",
+  "run_timestamp": "2026-06-10T02:25:50.901Z",
+  "dataset_version": "1.0.0",
+  "grader_spec_version": "1.0.0",
+  "grader_spec_frozen": "2026-06-06",
+  "scoring_model": "claude-haiku-4-5-20251001",
+  "score_tolerance": 1,
+  "probability_tolerance": 15,
+  "summary": {
+    "total": 35,
+    "passed": 10,
+    "failed": 25,
+    "pass_rate": 29
+  },
+  "dimension_accuracy": {
+    "safety_score": {
+      "passed": 31,
+      "total": 35,
+      "pass_rate": 89
+    },
+    "diagnostic_score": {
+      "passed": 25,
+      "total": 35,
+      "pass_rate": 71
+    },
+    "management_score": {
+      "passed": 31,
+      "total": 35,
+      "pass_rate": 89
+    },
+    "focus_score": {
+      "passed": 33,
+      "total": 35,
+      "pass_rate": 94
+    },
+    "terminology_score": {
+      "passed": 24,
+      "total": 35,
+      "pass_rate": 69
+    },
+    "communication_score": {
+      "passed": 30,
+      "total": 35,
+      "pass_rate": 86
+    },
+    "recovery_score": {
+      "passed": 33,
+      "total": 35,
+      "pass_rate": 94
+    }
+  },
+  "flag_accuracy": {
+    "isDangerous": {
+      "passed": 23,
+      "total": 35,
+      "pass_rate": 66
+    },
+    "isCurveball": {
+      "passed": 25,
+      "total": 35,
+      "pass_rate": 71
+    }
+  },
+  "by_question": {
+    "Q1": {
+      "topic": "NST Interpretation",
+      "passed": 3,
+      "total": 7,
+      "pass_rate": 43
+    },
+    "Q2": {
+      "topic": "Term Nonreactive NST Management",
+      "passed": 2,
+      "total": 7,
+      "pass_rate": 29
+    },
+    "Q3": {
+      "topic": "Acute Fetal Bradycardia After Epidural",
+      "passed": 1,
+      "total": 7,
+      "pass_rate": 14
+    },
+    "Q4": {
+      "topic": "Severe Preeclampsia Management",
+      "passed": 2,
+      "total": 7,
+      "pass_rate": 29
+    },
+    "Q5": {
+      "topic": "Uterotonic Selection — Postpartum Hemorrhage",
+      "passed": 2,
+      "total": 7,
+      "pass_rate": 29
+    }
+  },
+  "results": [
+    {
+      "question_id": "Q1",
+      "question_topic": "NST Interpretation",
+      "archetype_id": "A",
+      "archetype_label": "Pass-Strong",
+      "actual": {
+        "safety_score": 5,
+        "diagnostic_score": 5,
+        "management_score": 5,
+        "focus_score": 5,
+        "terminology_score": 5,
+        "communication_score": 5,
+        "recovery_score": 5,
+        "pass_probability": 100,
+        "abog_score": 3,
+        "abog_label": "Pass",
+        "isDangerous": false,
+        "dangerousReason": "",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Precisely defined reactive NST criteria with all quantitative parameters correct (2 accelerations, 15 bpm rise, 15-second duration, 20-minute window)",
+          "Correctly included the 40-minute nonreactive threshold and appropriately mentioned vibroacoustic stimulation as an adjunctive maneuver to clarify borderline tracings",
+          "Used precise medical terminology throughout with clear, well-organized explanation suitable for board-level obstetric practice"
+        ],
+        "gaps": [],
+        "teaching_points": [
+          {
+            "pearl": "Vibroacoustic or fetal acoustic stimulation should be applied if the NST is nonreactive at 20 minutes to attempt to provoke fetal accelerations and clarify the tracing before declaring a nonreactive NST at 40 minutes.",
+            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+          },
+          {
+            "pearl": "Decreased fetal movement reported by mother warrants immediate NST; if nonreactive, further evaluation with ultrasound and consideration of delivery is indicated at term (≥39 weeks) due to increased stillbirth risk.",
+            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 5,
+        "diagnostic_score": 5,
+        "management_score": 5,
+        "focus_score": 5,
+        "terminology_score": 5,
+        "communication_score": 5,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 100,
+        "abog_label": "Pass"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 100,
+          "expected": 100,
+          "delta": 0,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Pass",
+          "expected": "Pass",
+          "pass": true
+        },
+        "all_dims_pass": true,
+        "overall_pass": true
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q1",
+      "question_topic": "NST Interpretation",
+      "archetype_id": "B",
+      "archetype_label": "Pass-Adequate",
+      "actual": {
+        "safety_score": 5,
+        "diagnostic_score": 5,
+        "management_score": 5,
+        "focus_score": 5,
+        "terminology_score": 5,
+        "communication_score": 5,
+        "recovery_score": 5,
+        "pass_probability": 100,
+        "abog_score": 3,
+        "abog_label": "Pass",
+        "isDangerous": false,
+        "dangerousReason": "",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Correctly defined reactive NST with precise numerical criteria (2 accelerations, 15 bpm above baseline, 15 seconds duration)",
+          "Accurately stated the 40-minute monitoring window for determining nonreactivity",
+          "Clear, concise presentation of NST interpretation criteria"
+        ],
+        "gaps": [],
+        "teaching_points": [
+          {
+            "pearl": "A reactive NST in the third trimester is highly reassuring and typically allows for conservative management; a nonreactive NST warrants further evaluation with contraction stress test, biophysical profile, or delivery consideration depending on gestational age and clinical context.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+          },
+          {
+            "pearl": "In the context of decreased fetal movement at term (39 3/7 weeks), a reactive NST provides reassurance, but clinical judgment about delivery timing should incorporate maternal age, parity, and presence of any other risk factors.",
+            "acog_reference": "Committee Opinion 189 — Maternal Perception of Fetal Activity"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 5,
+        "diagnostic_score": 4,
+        "management_score": 5,
+        "focus_score": 4,
+        "terminology_score": 4,
+        "communication_score": 4,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 93,
+        "abog_label": "Pass"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 100,
+          "expected": 93,
+          "delta": 7,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Pass",
+          "expected": "Pass",
+          "pass": true
+        },
+        "all_dims_pass": true,
+        "overall_pass": true
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q1",
+      "question_topic": "NST Interpretation",
+      "archetype_id": "C",
+      "archetype_label": "Borderline-High",
+      "actual": {
+        "safety_score": 4,
+        "diagnostic_score": 4,
+        "management_score": 3,
+        "focus_score": 3,
+        "terminology_score": 4,
+        "communication_score": 4,
+        "recovery_score": 5,
+        "pass_probability": 76,
+        "abog_score": 3,
+        "abog_label": "Pass",
+        "isDangerous": false,
+        "dangerousReason": "",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Correctly identified the core criterion of at least 2 accelerations ≥15 bpm above baseline for reactivity",
+          "Appropriately emphasized assessment of baseline rate and variability as additional important strip parameters",
+          "Demonstrated understanding of the nonreactive pattern as failure to meet reactive criteria"
+        ],
+        "gaps": [
+          "Omitted the specific duration requirement that accelerations must last at least 15 seconds",
+          "Failed to specify the standard monitoring window of 20 minutes for a reactive NST (or 40 minutes if initially nonreactive)",
+          "Did not address subsequent management implications (e.g., what to do if NST is nonreactive, vibroacoustic stimulation, further testing)"
+        ],
+        "teaching_points": [
+          {
+            "pearl": "A reactive NST requires ≥2 accelerations of ≥15 bpm lasting ≥15 seconds in a 20-minute window; if nonreactive after 20 minutes, continue monitoring for an additional 20 minutes before further intervention.",
+            "acog_reference": "Practice Bulletin 209 — Antepartum Fetal Surveillance"
+          },
+          {
+            "pearl": "Assessment of baseline fetal heart rate (110–160 bpm), variability (moderate = 6–25 bpm), and the presence of decelerations are essential components of NST interpretation and guide clinical decision-making.",
+            "acog_reference": "Practice Bulletin 209 — Antepartum Fetal Surveillance"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 5,
+        "diagnostic_score": 3,
+        "management_score": 5,
+        "focus_score": 3,
+        "terminology_score": 3,
+        "communication_score": 3,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 86,
+        "abog_label": "Pass"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 4,
+            "expected": 5,
+            "delta": -1,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 4,
+            "expected": 3,
+            "delta": 1,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 3,
+            "expected": 5,
+            "delta": -2,
+            "pass": false
+          },
+          "focus_score": {
+            "actual": 3,
+            "expected": 3,
+            "delta": 0,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 4,
+            "expected": 3,
+            "delta": 1,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 4,
+            "expected": 3,
+            "delta": 1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 76,
+          "expected": 86,
+          "delta": -10,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Pass",
+          "expected": "Pass",
+          "pass": true
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q1",
+      "question_topic": "NST Interpretation",
+      "archetype_id": "D",
+      "archetype_label": "Borderline-Low",
+      "actual": {
+        "safety_score": 3,
+        "diagnostic_score": 3,
+        "management_score": 2,
+        "focus_score": 3,
+        "terminology_score": 3,
+        "communication_score": 3,
+        "recovery_score": 5,
+        "pass_probability": 59,
+        "abog_score": 2,
+        "abog_label": "Borderline",
+        "isDangerous": false,
+        "dangerousReason": "",
+        "isCurveball": true,
+        "curveballReason": "Candidate correctly identifies reactive vs nonreactive but fails to specify the quantitative criteria (2 accelerations of 15 bpm × 15 seconds in 20 minutes) and omits the critical protocol that nonreactive NSTs require 40-minute observation; this imprecision could lead to premature termination of testing and missed detection of fetal compromise.",
+        "strengths": [
+          "Correctly identified that reactivity is associated with fetal movement and reassurance of fetal well-being.",
+          "Appropriately recognized that nonreactivity represents an abnormal finding requiring further evaluation."
+        ],
+        "gaps": [
+          "Failed to specify the exact quantitative criteria for a reactive NST (2 accelerations of 15 bpm lasting ≥15 seconds within 20 minutes).",
+          "Did not mention that nonreactive strips require extension to 40 minutes before declaring the test nonreactive.",
+          "No mention of next steps if NST is nonreactive (e.g., vibroacoustic stimulation, ultrasound assessment, delivery consideration at term)."
+        ],
+        "teaching_points": [
+          {
+            "pearl": "A reactive NST requires at least 2 accelerations of ≥15 beats above baseline, each lasting ≥15 seconds, within a 20-minute window; if criteria are not met in 20 minutes, continue to 40 minutes before declaring nonreactive.",
+            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+          },
+          {
+            "pearl": "A nonreactive NST at term (≥39 weeks) with decreased fetal movement warrants prompt evaluation for fetal jeopardy and consideration of delivery, especially in the context of a clinical complaint.",
+            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+          },
+          {
+            "pearl": "Vibroacoustic stimulation or fetal scalp stimulation can be used to clarify a nonreactive NST; if NST remains nonreactive or concerning features are present, further evaluation with ultrasound or delivery is indicated.",
+            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 5,
+        "diagnostic_score": 2,
+        "management_score": 5,
+        "focus_score": 3,
+        "terminology_score": 2,
+        "communication_score": 2,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 80,
+        "abog_label": "Pass"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 3,
+            "expected": 5,
+            "delta": -2,
+            "pass": false
+          },
+          "diagnostic_score": {
+            "actual": 3,
+            "expected": 2,
+            "delta": 1,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 2,
+            "expected": 5,
+            "delta": -3,
+            "pass": false
+          },
+          "focus_score": {
+            "actual": 3,
+            "expected": 3,
+            "delta": 0,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 3,
+            "expected": 2,
+            "delta": 1,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 3,
+            "expected": 2,
+            "delta": 1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 59,
+          "expected": 80,
+          "delta": -21,
+          "pass": false
+        },
+        "isDangerous": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": true,
+          "expected": false,
+          "pass": false
+        },
+        "abog_label": {
+          "actual": "Borderline",
+          "expected": "Pass",
+          "pass": true
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q1",
+      "question_topic": "NST Interpretation",
+      "archetype_id": "E",
+      "archetype_label": "Fail-Incomplete",
+      "actual": {
+        "safety_score": 3,
+        "diagnostic_score": 2,
+        "management_score": 2,
+        "focus_score": 2,
+        "terminology_score": 2,
+        "communication_score": 3,
+        "recovery_score": 5,
+        "pass_probability": 53,
+        "abog_score": 1,
+        "abog_label": "Fail",
+        "isDangerous": false,
+        "dangerousReason": "",
+        "isCurveball": true,
+        "curveballReason": "Candidate fails to provide the specific, quantitative criteria for NST interpretation (2 accelerations of 15 bpm for 15 seconds in 20 minutes), which is a board-level requirement for this standard, frequently tested scenario.",
+        "strengths": [
+          "Correctly identifies that a reactive NST indicates appropriate fetal response",
+          "Appropriately indicates further monitoring is needed based on NST results",
+          "Demonstrates appropriate awareness that clinical decision-making follows NST interpretation"
+        ],
+        "gaps": [
+          "Omits the specific quantitative criteria for reactivity: 2 accelerations of 15 beats above baseline lasting 15 seconds in a 20-minute window",
+          "Does not define nonreactive NST with the corresponding numerical criteria or the 40-minute observation period",
+          "Vague language ('looks good,' 'responding the way we want') lacks the precision required for board-level NST interpretation",
+          "No mention of what 'watching her on the monitor' entails next (e.g., NST extension, vibroacoustic stimulation, contraction stress test, or delivery)"
+        ],
+        "teaching_points": [
+          {
+            "pearl": "A reactive NST is defined by at least 2 fetal heart rate accelerations of 15 bpm above baseline, each lasting at least 15 seconds, within a 20-minute observation window; nonreactive is failure to meet these criteria within 40 minutes.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+          },
+          {
+            "pearl": "In the setting of decreased fetal movement at term, a nonreactive NST mandates further evaluation—vibroacoustic stimulation, contraction stress test, or delivery depending on clinical context and maternal-fetal status.",
+            "acog_reference": "Committee Opinion 626 — Fetal Sensory, Cognitive, and Behavioral Development"
+          },
+          {
+            "pearl": "Quantitative, reproducible criteria for NST interpretation are essential for standardized obstetric care and are a core competency for board certification.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 5,
+        "diagnostic_score": 1,
+        "management_score": 5,
+        "focus_score": 2,
+        "terminology_score": 1,
+        "communication_score": 1,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 73,
+        "abog_label": "Pass"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 3,
+            "expected": 5,
+            "delta": -2,
+            "pass": false
+          },
+          "diagnostic_score": {
+            "actual": 2,
+            "expected": 1,
+            "delta": 1,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 2,
+            "expected": 5,
+            "delta": -3,
+            "pass": false
+          },
+          "focus_score": {
+            "actual": 2,
+            "expected": 2,
+            "delta": 0,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 2,
+            "expected": 1,
+            "delta": 1,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 3,
+            "expected": 1,
+            "delta": 2,
+            "pass": false
+          },
+          "recovery_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 53,
+          "expected": 73,
+          "delta": -20,
+          "pass": false
+        },
+        "isDangerous": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": true,
+          "expected": false,
+          "pass": false
+        },
+        "abog_label": {
+          "actual": "Fail",
+          "expected": "Pass",
+          "pass": false
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q1",
+      "question_topic": "NST Interpretation",
+      "archetype_id": "F",
+      "archetype_label": "Fail-Dangerous",
+      "actual": {
+        "safety_score": 2,
+        "diagnostic_score": 2,
+        "management_score": 1,
+        "focus_score": 3,
+        "terminology_score": 3,
+        "communication_score": 4,
+        "recovery_score": 2,
+        "pass_probability": 39,
+        "abog_score": 1,
+        "abog_label": "Fail",
+        "isDangerous": true,
+        "dangerousReason": "Candidate recommends immediate delivery without further workup (e.g., fetal scalp stimulation, vibroacoustic stimulation, or ultrasound assessment) based solely on a single nonreactive NST, which violates standard of care and exposes patient to unnecessary operative delivery.",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Recognizes that a nonreactive NST warrants clinical action and delivery planning.",
+          "Correctly identifies baseline acceleration criteria (15 beats × 15 seconds).",
+          "Appropriately recognizes decreased fetal movement as a concerning presentation requiring NST."
+        ],
+        "gaps": [
+          "Requires TWO accelerations (not one) in 20 minutes for a reactive NST.",
+          "Assumes nonreactive NST automatically confirms fetal distress without considering confounders (sleep, medications, prematurity) or further testing.",
+          "Omits standard next steps: fetal scalp stimulation, vibroacoustic stimulation, or ultrasound (amniotic fluid volume, fetal anomalies, cord) before delivery decision.",
+          "Fails to discuss role of obstetric ultrasound, biophysical profile, or modified biophysical profile to clarify fetal status.",
+          "No discussion of appropriate counseling, informed consent, or consideration of vaginal delivery as an option if fetal reassurance is achieved."
+        ],
+        "teaching_points": [
+          {
+            "pearl": "A single nonreactive NST is NOT diagnostic of fetal distress and should trigger further testing (scalp stimulation, vibroacoustic stimulation, or biophysical profile) before delivery is indicated.",
+            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+          },
+          {
+            "pearl": "Reactive NST requires a minimum of TWO accelerations of ≥15 bpm lasting ≥15 seconds within a 20-minute window; nonreactive NST does not meet these criteria within 40 minutes.",
+            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+          },
+          {
+            "pearl": "Decreased fetal movement in a term patient warrants NST, and if nonreactive, escalation to ultrasound assessment of amniotic fluid, placental function, and fetal anatomy before intervention.",
+            "acog_reference": "Committee Opinion 687 — Approaches to Limit Intervention During Labor and Delivery"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 2,
+        "diagnostic_score": 2,
+        "management_score": 1,
+        "focus_score": 3,
+        "terminology_score": 2,
+        "communication_score": 3,
+        "recovery_score": 1,
+        "isDangerous": true,
+        "isCurveball": false,
+        "pass_probability": 35,
+        "abog_label": "Fail"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 2,
+            "expected": 2,
+            "delta": 0,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 2,
+            "expected": 2,
+            "delta": 0,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 3,
+            "expected": 3,
+            "delta": 0,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 3,
+            "expected": 2,
+            "delta": 1,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 4,
+            "expected": 3,
+            "delta": 1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 2,
+            "expected": 1,
+            "delta": 1,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 39,
+          "expected": 35,
+          "delta": 4,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Fail",
+          "expected": "Fail",
+          "pass": true
+        },
+        "all_dims_pass": true,
+        "overall_pass": true
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q1",
+      "question_topic": "NST Interpretation",
+      "archetype_id": "G",
+      "archetype_label": "Fail-Curveball",
+      "actual": {
+        "safety_score": 2,
+        "diagnostic_score": 2,
+        "management_score": 1,
+        "focus_score": 5,
+        "terminology_score": 4,
+        "communication_score": 5,
+        "recovery_score": 1,
+        "pass_probability": 41,
+        "abog_score": 1,
+        "abog_label": "Fail",
+        "isDangerous": true,
+        "dangerousReason": "Candidate uses subthreshold criteria (10 bpm for 10 seconds) instead of standard criteria (15 bpm for 15 seconds), risking misclassification of truly nonreactive NSTs as reactive and delaying necessary intervention for fetal compromise.",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Correctly identified the two-acceleration requirement for reactivity",
+          "Correctly defined nonreactivity as failure to meet criteria within a specified timeframe",
+          "Answer is concise, focused, and directly addresses the question asked"
+        ],
+        "gaps": [
+          "Critical error: stated acceleration threshold of 10 bpm instead of 15 bpm above baseline",
+          "Critical error: stated acceleration duration of 10 seconds instead of 15 seconds",
+          "Did not specify the 40-minute observation window for nonreactive NSTs; only mentioned 20 minutes, which is incomplete"
+        ],
+        "teaching_points": [
+          {
+            "pearl": "A reactive NST requires at least 2 accelerations of ≥15 bpm above baseline lasting ≥15 seconds within a 20-minute window; if criteria are not met, continue monitoring up to 40 minutes before classifying as nonreactive.",
+            "acog_reference": "Practice Bulletin 209 — Antepartum Fetal Surveillance"
+          },
+          {
+            "pearl": "Subthreshold accelerations (10 bpm × 10 sec) are not sufficient for reactivity and may represent a false reassurance signal, particularly dangerous in a patient with decreased fetal movement (concerning for acute fetal compromise).",
+            "acog_reference": "Practice Bulletin 209 — Antepartum Fetal Surveillance"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 3,
+        "diagnostic_score": 2,
+        "management_score": 4,
+        "focus_score": 4,
+        "terminology_score": 3,
+        "communication_score": 4,
+        "recovery_score": 1,
+        "isDangerous": false,
+        "isCurveball": true,
+        "pass_probability": 59,
+        "abog_label": "Borderline"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 2,
+            "expected": 3,
+            "delta": -1,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 2,
+            "expected": 2,
+            "delta": 0,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 1,
+            "expected": 4,
+            "delta": -3,
+            "pass": false
+          },
+          "focus_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 4,
+            "expected": 3,
+            "delta": 1,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 41,
+          "expected": 59,
+          "delta": -18,
+          "pass": false
+        },
+        "isDangerous": {
+          "actual": true,
+          "expected": false,
+          "pass": false
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": true,
+          "pass": false
+        },
+        "abog_label": {
+          "actual": "Fail",
+          "expected": "Borderline",
+          "pass": true
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q2",
+      "question_topic": "Term Nonreactive NST Management",
+      "archetype_id": "A",
+      "archetype_label": "Pass-Strong",
+      "actual": {
+        "safety_score": 5,
+        "diagnostic_score": 5,
+        "management_score": 5,
+        "focus_score": 5,
+        "terminology_score": 5,
+        "communication_score": 5,
+        "recovery_score": 5,
+        "pass_probability": 100,
+        "abog_score": 3,
+        "abog_label": "Pass",
+        "isDangerous": false,
+        "dangerousReason": "",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Correctly identified that persistently nonreactive NST at term is an indication for delivery, not further surveillance",
+          "Appropriately recognized the gestational age (term) makes the risk-benefit calculation favor delivery over additional testing",
+          "Included logical next steps: admission, cervical assessment, and conditional use of cervical ripening based on cervical status"
+        ],
+        "gaps": [],
+        "teaching_points": [
+          {
+            "pearl": "A persistently nonreactive NST after adequate stimulation at term mandates delivery, as continued antepartum surveillance carries unacceptable risk in this clinical context.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+          },
+          {
+            "pearl": "Cervical status assessment guides the induction approach: favorable cervix favors vaginal delivery induction; unfavorable cervix may require cervical ripening or mechanical methods.",
+            "acog_reference": "Practice Bulletin 107 — Induction of Labor"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 5,
+        "diagnostic_score": 5,
+        "management_score": 5,
+        "focus_score": 5,
+        "terminology_score": 5,
+        "communication_score": 5,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 100,
+        "abog_label": "Pass"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 100,
+          "expected": 100,
+          "delta": 0,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Pass",
+          "expected": "Pass",
+          "pass": true
+        },
+        "all_dims_pass": true,
+        "overall_pass": true
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q2",
+      "question_topic": "Term Nonreactive NST Management",
+      "archetype_id": "B",
+      "archetype_label": "Pass-Adequate",
+      "actual": {
+        "safety_score": 5,
+        "diagnostic_score": 5,
+        "management_score": 5,
+        "focus_score": 5,
+        "terminology_score": 5,
+        "communication_score": 5,
+        "recovery_score": 5,
+        "pass_probability": 100,
+        "abog_score": 3,
+        "abog_label": "Pass",
+        "isDangerous": false,
+        "dangerousReason": "",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Correctly identified term gestation as the pivotal clinical factor requiring delivery rather than further testing",
+          "Appropriately ruled out discharge home, demonstrating recognition of fetal jeopardy in this scenario",
+          "Mentioned biophysical profile as an optional adjunct while maintaining clear primacy of delivery as the appropriate next step"
+        ],
+        "gaps": [],
+        "teaching_points": [
+          {
+            "pearl": "A persistently nonreactive NST at term with decreased fetal movement mandates delivery; further testing delays appropriate intervention when gestational age permits safe delivery.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+          },
+          {
+            "pearl": "At term (≥39 weeks), the CST and BPP are optional confirmatory tests but should not delay delivery when clinical indicators such as nonreactive NST and decreased fetal movement are present.",
+            "acog_reference": "Practice Bulletin 116 — Antepartum Fetal Surveillance"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 5,
+        "diagnostic_score": 4,
+        "management_score": 4,
+        "focus_score": 4,
+        "terminology_score": 4,
+        "communication_score": 4,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 88,
+        "abog_label": "Pass"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 100,
+          "expected": 88,
+          "delta": 12,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Pass",
+          "expected": "Pass",
+          "pass": true
+        },
+        "all_dims_pass": true,
+        "overall_pass": true
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q2",
+      "question_topic": "Term Nonreactive NST Management",
+      "archetype_id": "C",
+      "archetype_label": "Borderline-High",
+      "actual": {
+        "safety_score": 4,
+        "diagnostic_score": 4,
+        "management_score": 3,
+        "focus_score": 3,
+        "terminology_score": 5,
+        "communication_score": 5,
+        "recovery_score": 5,
+        "pass_probability": 78,
+        "abog_score": 3,
+        "abog_label": "Pass",
+        "isDangerous": false,
+        "dangerousReason": "",
+        "isCurveball": true,
+        "curveballReason": "At term with a persistently nonreactive NST and decreased fetal movement, delivery is the standard-of-care next step; ordering a BPP adds unnecessary delay rather than improving fetal assessment accuracy.",
+        "strengths": [
+          "Correctly identified that the patient should not be discharged home given the nonreactive NST and decreased fetal movement.",
+          "Appropriately used BPP threshold (≤6) as a decision point for delivery.",
+          "Used precise terminology throughout (biophysical profile, nonreactive NST)."
+        ],
+        "gaps": [
+          "Failed to recognize that at term gestation with a nonreactive NST, delivery is the standard recommendation and does not require intervening BPP; a BPP is typically reserved for preterm gestations with nonreactive NSTs.",
+          "Did not acknowledge that the 40-minute NST extension with vibroacoustic stimulation already represents adequate fetal assessment; further testing delays appropriate care.",
+          "Missed the opportunity to address delivery timing and method (spontaneous trial of labor vs. induction) in the management plan."
+        ],
+        "teaching_points": [
+          {
+            "pearl": "At term (≥39 weeks), a persistently nonreactive NST with decreased fetal movement warrants delivery; further testing with BPP does not improve neonatal outcomes and delays appropriate care.",
+            "acog_reference": "Practice Bulletin 189 — Antepartum Fetal Surveillance"
+          },
+          {
+            "pearl": "Biophysical profile is most useful for evaluation of nonreactive NSTs in the preterm period; at term, a nonreactive NST is sufficient indication for delivery.",
+            "acog_reference": "Practice Bulletin 189 — Antepartum Fetal Surveillance"
+          },
+          {
+            "pearl": "Decreased fetal movement at term combined with a nonreactive NST reflects significant fetal compromise and mandates expeditious delivery to prevent perinatal morbidity and mortality.",
+            "acog_reference": "Committee Opinion 805 — Fetal Assessment in the Antepartum Period"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 4,
+        "diagnostic_score": 4,
+        "management_score": 3,
+        "focus_score": 3,
+        "terminology_score": 3,
+        "communication_score": 3,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 74,
+        "abog_label": "Pass"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 4,
+            "expected": 4,
+            "delta": 0,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 4,
+            "expected": 4,
+            "delta": 0,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 3,
+            "expected": 3,
+            "delta": 0,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 3,
+            "expected": 3,
+            "delta": 0,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 5,
+            "expected": 3,
+            "delta": 2,
+            "pass": false
+          },
+          "communication_score": {
+            "actual": 5,
+            "expected": 3,
+            "delta": 2,
+            "pass": false
+          },
+          "recovery_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 78,
+          "expected": 74,
+          "delta": 4,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": true,
+          "expected": false,
+          "pass": false
+        },
+        "abog_label": {
+          "actual": "Pass",
+          "expected": "Pass",
+          "pass": true
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q2",
+      "question_topic": "Term Nonreactive NST Management",
+      "archetype_id": "D",
+      "archetype_label": "Borderline-Low",
+      "actual": {
+        "safety_score": 2,
+        "diagnostic_score": 2,
+        "management_score": 1,
+        "focus_score": 2,
+        "terminology_score": 4,
+        "communication_score": 3,
+        "recovery_score": 1,
+        "pass_probability": 36,
+        "abog_score": 1,
+        "abog_label": "Fail",
+        "isDangerous": true,
+        "dangerousReason": "Delaying delivery at term (39 3/7 weeks) with a nonreactive NST after adequate stimulation, choosing outpatient monitoring instead of proceeding to delivery, risks fetal demise from unrecognized intrauterine pathology.",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Candidate correctly identifies that fetal sleep state can temporarily reduce FHR variability and acknowledges the need to confirm the finding."
+        ],
+        "gaps": [
+          "Fails to recognize that at term (39 3/7 weeks), a nonreactive NST after vibroacoustic stimulation is an indication for delivery, not further outpatient observation.",
+          "Does not mention appropriate next steps for further evaluation (BPP or CST) before delivery if additional testing were considered.",
+          "Suggests unsafe delay by deferring re-evaluation to 'morning' rather than proceeding with expedited delivery or timely further testing.",
+          "Misses the critical distinction between preterm (where conservative management may be appropriate) and term gestation (where delivery is indicated)."
+        ],
+        "teaching_points": [
+          {
+            "pearl": "At term gestation with a nonreactive NST after adequate stimulation (vibroacoustic), delivery is the appropriate management; further outpatient observation delays necessary intervention and risks fetal demise.",
+            "acog_reference": "Practice Bulletin 229 — Antepartum Fetal Assessment"
+          },
+          {
+            "pearl": "Fetal sleep cycles typically last 20–40 minutes; when an NST remains nonreactive after 40 minutes with vibroacoustic stimulation at term, this is abnormal and mandates immediate action (delivery or rapid further testing), not reassurance.",
+            "acog_reference": "Practice Bulletin 229 — Antepartum Fetal Assessment"
+          },
+          {
+            "pearl": "Decreased fetal movement (decreased kick counts) is a clinical complaint that requires urgent evaluation; combined with a nonreactive NST at term, it is a clear delivery indication.",
+            "acog_reference": "Practice Bulletin 189 — Patient-Initiated Fetal Movement-Guided Antenatal Testing"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 2,
+        "diagnostic_score": 2,
+        "management_score": 2,
+        "focus_score": 3,
+        "terminology_score": 2,
+        "communication_score": 2,
+        "recovery_score": 2,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 41,
+        "abog_label": "Fail"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 2,
+            "expected": 2,
+            "delta": 0,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 2,
+            "expected": 2,
+            "delta": 0,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 1,
+            "expected": 2,
+            "delta": -1,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 2,
+            "expected": 3,
+            "delta": -1,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 4,
+            "expected": 2,
+            "delta": 2,
+            "pass": false
+          },
+          "communication_score": {
+            "actual": 3,
+            "expected": 2,
+            "delta": 1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 1,
+            "expected": 2,
+            "delta": -1,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 36,
+          "expected": 41,
+          "delta": -5,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": true,
+          "expected": false,
+          "pass": false
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Fail",
+          "expected": "Fail",
+          "pass": true
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q2",
+      "question_topic": "Term Nonreactive NST Management",
+      "archetype_id": "E",
+      "archetype_label": "Fail-Incomplete",
+      "actual": {
+        "safety_score": 1,
+        "diagnostic_score": 2,
+        "management_score": 1,
+        "focus_score": 2,
+        "terminology_score": 4,
+        "communication_score": 4,
+        "recovery_score": 1,
+        "pass_probability": 31,
+        "abog_score": 1,
+        "abog_label": "Fail",
+        "isDangerous": true,
+        "dangerousReason": "Candidate recommends deferring delivery for overnight observation in a term patient with a nonreactive NST and decreased fetal movement—a scenario with high risk of intrauterine fetal death. Delayed delivery is contraindicated.",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Appropriate use of terminology ('decreased fetal movement,' 'reassess').",
+          "Acknowledges the clinical problem and proposes a follow-up plan (though inappropriate timing)."
+        ],
+        "gaps": [
+          "Fails to recognize that a nonreactive NST at term with decreased fetal movement is a clear indication for delivery, not expectant management.",
+          "Does not consider fetal well-being urgency; overnight delay significantly increases risk of stillbirth in this scenario.",
+          "No mention of delivery options (induction, cesarean) or further testing (CST or BPP if pursuing conservative approach, which is not recommended here).",
+          "Misses the key distinction that at term, a nonreactive NST with decreased fetal movement requires expedited delivery rather than observation."
+        ],
+        "teaching_points": [
+          {
+            "pearl": "A nonreactive NST at ≥37 weeks with decreased fetal movement mandates delivery; expectant management overnight is contraindicated and exposes the fetus to unacceptable risk of intrauterine fetal death.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+          },
+          {
+            "pearl": "Decreased fetal movement is a maternal perception that warrants objective fetal assessment (NST, BPP, or CST); nonreactivity on NST at term is an indication for delivery, not observation.",
+            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+          },
+          {
+            "pearl": "The combination of decreased fetal movement AND nonreactive NST at term creates a high-risk situation; delay in delivery significantly increases perinatal morbidity and mortality.",
+            "acog_reference": "Committee Opinion 656 — Decreased Fetal Movement"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 2,
+        "diagnostic_score": 1,
+        "management_score": 1,
+        "focus_score": 2,
+        "terminology_score": 1,
+        "communication_score": 2,
+        "recovery_score": 1,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 28,
+        "abog_label": "Fail"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 1,
+            "expected": 2,
+            "delta": -1,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 2,
+            "expected": 1,
+            "delta": 1,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 2,
+            "expected": 2,
+            "delta": 0,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 4,
+            "expected": 1,
+            "delta": 3,
+            "pass": false
+          },
+          "communication_score": {
+            "actual": 4,
+            "expected": 2,
+            "delta": 2,
+            "pass": false
+          },
+          "recovery_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 31,
+          "expected": 28,
+          "delta": 3,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": true,
+          "expected": false,
+          "pass": false
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Fail",
+          "expected": "Fail",
+          "pass": true
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q2",
+      "question_topic": "Term Nonreactive NST Management",
+      "archetype_id": "F",
+      "archetype_label": "Fail-Dangerous",
+      "actual": {
+        "safety_score": 2,
+        "diagnostic_score": 2,
+        "management_score": 1,
+        "focus_score": 2,
+        "terminology_score": 4,
+        "communication_score": 4,
+        "recovery_score": 1,
+        "pass_probability": 37,
+        "abog_score": 1,
+        "abog_label": "Fail",
+        "isDangerous": true,
+        "dangerousReason": "Candidate recommends delaying delivery and repeating NST in 24 hours at term with persistent nonreactive NST and decreased fetal movement, creating foreseen risk of stillbirth and compromised fetal outcome.",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Recognizes that nonreactive NST requires further evaluation beyond the initial tracing.",
+          "Uses appropriate terminology (nonreactive NST, continued monitoring) and communicates reasoning clearly."
+        ],
+        "gaps": [
+          "Fails to recognize that at term (39 3/7 weeks), a nonreactive NST with decreased fetal movement is an indication for delivery, not observation.",
+          "Does not offer or mention appropriate next steps at term such as CST or BPP as intermediate testing before delivery.",
+          "Recommends 24-hour delayed reassessment, which is inappropriate management of presumed fetal compromise at term and contradicts standard of care.",
+          "Does not address the clinical context: patient is already at term, presenting with decreased fetal movement, and NST remains nonreactive after vibroacoustic stimulation—all indications for prompt delivery."
+        ],
+        "teaching_points": [
+          {
+            "pearl": "At term (≥39 weeks), a nonreactive NST with decreased fetal movement is an indication for delivery via IOL or cesarean section; expectant management and repeat testing in 24 hours is not appropriate and delays necessary intervention.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+          },
+          {
+            "pearl": "Decreased fetal movement at term combined with nonreactive NST unresponsive to vibroacoustic stimulation signals potential fetal compromise and warrants delivery planning within hours, not days.",
+            "acog_reference": "Committee Opinion 789 — Delivery of a Newborn With Meconium-Stained Amniotic Fluid"
+          },
+          {
+            "pearl": "While CST or BPP may occasionally be used at term to further stratify risk in isolated nonreactive NST, they should not delay delivery when clinical context (decreased movement + nonreactive + term gestation) indicates fetal compromise.",
+            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 1,
+        "diagnostic_score": 1,
+        "management_score": 1,
+        "focus_score": 3,
+        "terminology_score": 2,
+        "communication_score": 3,
+        "recovery_score": 1,
+        "isDangerous": true,
+        "isCurveball": false,
+        "pass_probability": 25,
+        "abog_label": "Fail"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 2,
+            "expected": 1,
+            "delta": 1,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 2,
+            "expected": 1,
+            "delta": 1,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 2,
+            "expected": 3,
+            "delta": -1,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 4,
+            "expected": 2,
+            "delta": 2,
+            "pass": false
+          },
+          "communication_score": {
+            "actual": 4,
+            "expected": 3,
+            "delta": 1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 37,
+          "expected": 25,
+          "delta": 12,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Fail",
+          "expected": "Fail",
+          "pass": true
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q2",
+      "question_topic": "Term Nonreactive NST Management",
+      "archetype_id": "G",
+      "archetype_label": "Fail-Curveball",
+      "actual": {
+        "safety_score": 2,
+        "diagnostic_score": 2,
+        "management_score": 1,
+        "focus_score": 2,
+        "terminology_score": 4,
+        "communication_score": 4,
+        "recovery_score": 1,
+        "pass_probability": 37,
+        "abog_score": 1,
+        "abog_label": "Fail",
+        "isDangerous": true,
+        "dangerousReason": "Amniocentesis delays delivery in a term patient with nonreactive NST, creating unnecessary risk of intrauterine fetal death. At 39+3 weeks, fetal lung maturity is assured; testing for it is contraindicated and dangerous.",
+        "isCurveball": true,
+        "curveballReason": "Candidate conflates preterm delivery rationale (need to confirm lung maturity before elective preterm delivery) with term delivery (where fetal viability is not in question and nonreactive NST mandates urgent delivery, not testing).",
+        "strengths": [
+          "Correctly identified that the nonreactive NST at term warrants a change in management and delivery planning.",
+          "Appropriate use of L/S ratio and phosphatidylglycerol terminology for fetal lung maturity assessment."
+        ],
+        "gaps": [
+          "Failed to recognize that at term (39+3 weeks), fetal lung maturity testing is unnecessary and delays indicated delivery.",
+          "Did not proceed directly to delivery (via induction or cesarean) as the standard of care for nonreactive NST at term with decreased fetal movement.",
+          "Missed that amniocentesis itself carries small but real risk of infection, rupture of membranes, and bleeding—risks unjustified when delivery is already indicated."
+        ],
+        "teaching_points": [
+          {
+            "pearl": "At term (≥39 weeks), a nonreactive NST with decreased fetal movement mandates delivery without delay; fetal lung maturity testing is irrelevant and contraindicated because viability is assured.",
+            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+          },
+          {
+            "pearl": "Amniocentesis for fetal lung maturity is reserved for preterm pregnancies where delivery is being considered before 39 weeks; it should never delay delivery in term pregnancies with abnormal fetal status.",
+            "acog_reference": "Practice Bulletin 238 — Antenatal Corticosteroid Therapy for Fetal Maturation"
+          },
+          {
+            "pearl": "Nonreactive NST at term with decreased fetal movement is equivalent to fetal compromise and calls for urgent delivery (induction or cesarean depending on clinical context), not further testing.",
+            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 3,
+        "diagnostic_score": 2,
+        "management_score": 2,
+        "focus_score": 3,
+        "terminology_score": 3,
+        "communication_score": 3,
+        "recovery_score": 1,
+        "isDangerous": false,
+        "isCurveball": true,
+        "pass_probability": 47,
+        "abog_label": "Fail"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 2,
+            "expected": 3,
+            "delta": -1,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 2,
+            "expected": 2,
+            "delta": 0,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 1,
+            "expected": 2,
+            "delta": -1,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 2,
+            "expected": 3,
+            "delta": -1,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 4,
+            "expected": 3,
+            "delta": 1,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 4,
+            "expected": 3,
+            "delta": 1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 37,
+          "expected": 47,
+          "delta": -10,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": true,
+          "expected": false,
+          "pass": false
+        },
+        "isCurveball": {
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Fail",
+          "expected": "Fail",
+          "pass": true
+        },
+        "all_dims_pass": true,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q3",
+      "question_topic": "Acute Fetal Bradycardia After Epidural",
+      "archetype_id": "A",
+      "archetype_label": "Pass-Strong",
+      "actual": {
+        "safety_score": 4,
+        "diagnostic_score": 5,
+        "management_score": 4,
+        "focus_score": 5,
+        "terminology_score": 5,
+        "communication_score": 5,
+        "recovery_score": 5,
+        "pass_probability": 89,
+        "abog_score": 3,
+        "abog_label": "Pass",
+        "isDangerous": false,
+        "dangerousReason": "",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Correctly identified maternal hypotension from epidural as the most likely etiology and immediately addressed it with IV fluids and ephedrine dosing.",
+          "Systematically performed all core maternal resuscitation interventions (repositioning, oxygen, fluid bolus, vasopressor) in appropriate sequence.",
+          "Appropriately ruled out prolapsed cord via vaginal examination before assuming benign cause.",
+          "Correctly identified the need for escalation (FSE placement, terbutaline for tachysystole, OR notification) with appropriate conditional decision-making."
+        ],
+        "gaps": [
+          "Ephedrine dosing: candidate stated '5 to 10 milligrams IV,' but standard dosing for perioperative hypotension is 5 mg IV push repeated every 5–10 minutes as needed; the upper range is less commonly stated as a single bolus dose and could introduce dosing ambiguity."
+        ],
+        "teaching_points": [
+          {
+            "pearl": "Acute fetal bradycardia within minutes of epidural placement is maternal hypotension until proven otherwise; maternal vital signs are the first diagnostic step, not advanced fetal testing.",
+            "acog_reference": "Practice Bulletin 234 — Intrapartum Fetal Heart Rate Monitoring"
+          },
+          {
+            "pearl": "Ephedrine 5 mg IV is the standard first-line vasopressor for epidural-induced hypotension in labor; it preserves uterine perfusion better than pure α-agonists and should be given promptly while fluid resuscitation is ongoing.",
+            "acog_reference": "Practice Bulletin 234 — Intrapartum Fetal Heart Rate Monitoring"
+          },
+          {
+            "pearl": "Confirmation that bradycardia is fetal (not double-counting maternal heart rate) is mandatory before initiating interventions, especially in the post-epidural period when maternal tachycardia from anxiety or hypotension can be misread.",
+            "acog_reference": "Practice Bulletin 234 — Intrapartum Fetal Heart Rate Monitoring"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 5,
+        "diagnostic_score": 5,
+        "management_score": 5,
+        "focus_score": 5,
+        "terminology_score": 5,
+        "communication_score": 5,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 100,
+        "abog_label": "Pass"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 4,
+            "expected": 5,
+            "delta": -1,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 4,
+            "expected": 5,
+            "delta": -1,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 89,
+          "expected": 100,
+          "delta": -11,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Pass",
+          "expected": "Pass",
+          "pass": true
+        },
+        "all_dims_pass": true,
+        "overall_pass": true
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q3",
+      "question_topic": "Acute Fetal Bradycardia After Epidural",
+      "archetype_id": "B",
+      "archetype_label": "Pass-Adequate",
+      "actual": {
+        "safety_score": 4,
+        "diagnostic_score": 4,
+        "management_score": 4,
+        "focus_score": 5,
+        "terminology_score": 5,
+        "communication_score": 5,
+        "recovery_score": 5,
+        "pass_probability": 85,
+        "abog_score": 3,
+        "abog_label": "Pass",
+        "isDangerous": false,
+        "dangerousReason": "",
+        "isCurveball": true,
+        "curveballReason": "Candidate did not mention confirming fetal vs. maternal heart rate first or placing a fetal scalp electrode (FSE) for reliable continuous monitoring in this acute bradycardia scenario.",
+        "strengths": [
+          "Correctly identified epidural-induced hypotension as the most likely cause and appropriate initial management with IVF bolus and ephedrine.",
+          "Appropriately prioritized immediate bedside assessment, maternal repositioning, and oxygen supplementation in correct sequence.",
+          "Correctly performed vaginal exam to rule out cord prolapse and appropriately notified OR team for standby cesarean delivery."
+        ],
+        "gaps": [
+          "Did not explicitly mention confirming fetal heart rate (rather than maternal) on the monitor as the first critical step.",
+          "Omitted consideration of fetal scalp electrode (FSE) placement for more reliable continuous fetal monitoring in setting of acute bradycardia.",
+          "Did not mention assessment for or management of uterine tachysystole with terbutaline if present."
+        ],
+        "teaching_points": [
+          {
+            "pearl": "In acute fetal bradycardia with recent epidural, always confirm the alarm is fetal (not maternal) and assess maternal hemodynamics first—epidural hypotension is the most common reversible cause and responds rapidly to IV fluids and vasopressors.",
+            "acog_reference": "Practice Bulletin 106 — Intrapartum Fetal Heart Rate Monitoring: Nomenclature, Interpretation, and General Management Principles"
+          },
+          {
+            "pearl": "When fetal heart rate cannot be reliably obtained or monitored (as may occur with transabdominal monitoring during acute deceleration), placement of a fetal scalp electrode provides the clearest tracing for interpretation and guides subsequent management intensity.",
+            "acog_reference": "Practice Bulletin 106 — Intrapartum Fetal Heart Rate Monitoring: Nomenclature, Interpretation, and General Management Principles"
+          },
+          {
+            "pearl": "Consider maternal tachysystole as a contributing factor to fetal bradycardia and address with position changes, IV hydration, and terbutaline (0.25 mg SQ/IV) if indicated, while simultaneously preparing for emergent delivery if bradycardia persists.",
+            "acog_reference": "Practice Bulletin 106 — Intrapartum Fetal Heart Rate Monitoring: Nomenclature, Interpretation, and General Management Principles"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 5,
+        "diagnostic_score": 4,
+        "management_score": 4,
+        "focus_score": 4,
+        "terminology_score": 4,
+        "communication_score": 4,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 88,
+        "abog_label": "Pass"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 4,
+            "expected": 5,
+            "delta": -1,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 4,
+            "expected": 4,
+            "delta": 0,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 4,
+            "expected": 4,
+            "delta": 0,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 85,
+          "expected": 88,
+          "delta": -3,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": true,
+          "expected": false,
+          "pass": false
+        },
+        "abog_label": {
+          "actual": "Pass",
+          "expected": "Pass",
+          "pass": true
+        },
+        "all_dims_pass": true,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q3",
+      "question_topic": "Acute Fetal Bradycardia After Epidural",
+      "archetype_id": "C",
+      "archetype_label": "Borderline-High",
+      "actual": {
+        "safety_score": 3,
+        "diagnostic_score": 3,
+        "management_score": 3,
+        "focus_score": 4,
+        "terminology_score": 4,
+        "communication_score": 4,
+        "recovery_score": 5,
+        "pass_probability": 67,
+        "abog_score": 2,
+        "abog_label": "Borderline",
+        "isDangerous": false,
+        "dangerousReason": "",
+        "isCurveball": true,
+        "curveballReason": "Candidate omits fetal heart rate confirmation (maternal vs. fetal origin) and does not perform vaginal exam to rule out prolapsed cord—a critical safety step in bradycardia management.",
+        "strengths": [
+          "Correctly identified left lateral positioning as first intervention.",
+          "Appropriately incorporated maternal oxygen administration.",
+          "Recognized need to check blood pressure and initiate IV fluid resuscitation for epidural-induced hypotension.",
+          "Demonstrated appropriate escalation by notifying anesthesia and preparing for operative delivery."
+        ],
+        "gaps": [
+          "Failed to confirm fetal origin of bradycardia (could be maternal; critical first step).",
+          "Omitted vaginal examination to rule out prolapsed umbilical cord—essential before other interventions.",
+          "Did not mention fetal scalp electrode (FSE) placement to improve signal reliability and rule out artifact.",
+          "No mention of specific vasopressor (ephedrine) dosing or administration for hypotension management.",
+          "Did not address assessment or management of uterine tachysystole or offer terbutaline if present."
+        ],
+        "teaching_points": [
+          {
+            "pearl": "First step in fetal bradycardia is confirmation it is fetal (not maternal) heart rate—check maternal pulse and EKG simultaneously to avoid false alarm and unnecessary operative intervention.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+          },
+          {
+            "pearl": "Prolapsed umbilical cord must be ruled out immediately by vaginal examination in any fetal bradycardia, especially in the setting of recent epidural placement or membrane rupture—missing this diagnosis delays critical operative delivery.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+          },
+          {
+            "pearl": "Epidural-induced maternal hypotension is the most common cause of fetal bradycardia in labor; treat with immediate left lateral positioning, maternal oxygen, IV fluid bolus (500–1000 mL), and IV ephedrine 5–10 mg if hypotension persists.",
+            "acog_reference": "Practice Bulletin 209 — Obstetric Anesthesia"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 4,
+        "diagnostic_score": 3,
+        "management_score": 3,
+        "focus_score": 3,
+        "terminology_score": 3,
+        "communication_score": 3,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 70,
+        "abog_label": "Pass"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 3,
+            "expected": 4,
+            "delta": -1,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 3,
+            "expected": 3,
+            "delta": 0,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 3,
+            "expected": 3,
+            "delta": 0,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 4,
+            "expected": 3,
+            "delta": 1,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 4,
+            "expected": 3,
+            "delta": 1,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 4,
+            "expected": 3,
+            "delta": 1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 67,
+          "expected": 70,
+          "delta": -3,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": true,
+          "expected": false,
+          "pass": false
+        },
+        "abog_label": {
+          "actual": "Borderline",
+          "expected": "Pass",
+          "pass": true
+        },
+        "all_dims_pass": true,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q3",
+      "question_topic": "Acute Fetal Bradycardia After Epidural",
+      "archetype_id": "D",
+      "archetype_label": "Borderline-Low",
+      "actual": {
+        "safety_score": 2,
+        "diagnostic_score": 2,
+        "management_score": 1,
+        "focus_score": 2,
+        "terminology_score": 4,
+        "communication_score": 4,
+        "recovery_score": 5,
+        "pass_probability": 45,
+        "abog_score": 1,
+        "abog_label": "Fail",
+        "isDangerous": true,
+        "dangerousReason": "Candidate fails to assess for epidural-induced hypotension, obtain IV access/fluids, perform vaginal exam to rule out prolapsed cord, or alert the operating room—omissions that could result in catastrophic fetal injury or death from delayed recognition of a correctable or emergent condition.",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Correctly identified the need to apply maternal oxygen in the setting of fetal bradycardia.",
+          "Appropriately recommended left lateral positioning to improve placental perfusion.",
+          "Clear, organized communication of initial steps."
+        ],
+        "gaps": [
+          "Failed to confirm fetal versus maternal heart rate—critical first step in any bradycardia response.",
+          "Did not assess or address epidural-induced hypotension (most common cause in this scenario), including BP check, IV fluid bolus, or vasopressor administration.",
+          "Omitted vaginal examination to rule out umbilical cord prolapse, a time-sensitive emergency.",
+          "Did not mention continuous fetal monitoring or fetal scalp electrode placement for more accurate assessment.",
+          "Failed to alert the operating room or consider readiness for emergent cesarean delivery.",
+          "No consideration of uterine tachysystole or use of tocolytics if indicated.",
+          "Passive monitoring ('watch closely to see if it recovers on its own') is dangerously insufficient for fetal bradycardia in active labor."
+        ],
+        "teaching_points": [
+          {
+            "pearl": "Fetal bradycardia in labor after epidural placement is hypotension until proven otherwise—check maternal BP immediately and treat with crystalloid bolus and vasopressor (ephedrine 5 mg IV or phenylephrine) before attributing to other causes.",
+            "acog_reference": "Practice Bulletin 188 — Analgesia and Anesthesia for Labor and Delivery"
+          },
+          {
+            "pearl": "Always perform a rapid vaginal exam in any case of acute fetal bradycardia to exclude umbilical cord prolapse, which requires immediate delivery.",
+            "acog_reference": "Practice Bulletin 209 — Umbilical Cord Blood Gas and Lactate Testing"
+          },
+          {
+            "pearl": "The 'watchful waiting' approach to fetal bradycardia delays diagnosis and treatment of correctable causes; activate the resuscitation cascade (position, oxygen, IV access, fluid bolus, and OR alert) within the first minutes of detection.",
+            "acog_reference": "Practice Bulletin 230 — Management of Intrapartum Fetal Heart Rate Tracings"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 3,
+        "diagnostic_score": 2,
+        "management_score": 2,
+        "focus_score": 3,
+        "terminology_score": 2,
+        "communication_score": 2,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 53,
+        "abog_label": "Fail"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 2,
+            "expected": 3,
+            "delta": -1,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 2,
+            "expected": 2,
+            "delta": 0,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 1,
+            "expected": 2,
+            "delta": -1,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 2,
+            "expected": 3,
+            "delta": -1,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 4,
+            "expected": 2,
+            "delta": 2,
+            "pass": false
+          },
+          "communication_score": {
+            "actual": 4,
+            "expected": 2,
+            "delta": 2,
+            "pass": false
+          },
+          "recovery_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 45,
+          "expected": 53,
+          "delta": -8,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": true,
+          "expected": false,
+          "pass": false
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Fail",
+          "expected": "Fail",
+          "pass": true
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q3",
+      "question_topic": "Acute Fetal Bradycardia After Epidural",
+      "archetype_id": "E",
+      "archetype_label": "Fail-Incomplete",
+      "actual": {
+        "safety_score": 2,
+        "diagnostic_score": 2,
+        "management_score": 1,
+        "focus_score": 2,
+        "terminology_score": 3,
+        "communication_score": 2,
+        "recovery_score": 1,
+        "pass_probability": 34,
+        "abog_score": 1,
+        "abog_label": "Fail",
+        "isDangerous": true,
+        "dangerousReason": "Candidate fails to address the most likely cause of fetal bradycardia in the immediate post-epidural period (maternal hypotension) and omits critical interventions including IV fluid bolus, maternal repositioning, oxygen, and vaginal exam to rule out cord prolapse — dangerous delay in life-saving care.",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Correctly recognizes the need to call for help and go to bedside to personally assess.",
+          "Acknowledges fetal heart rate monitoring as part of the response."
+        ],
+        "gaps": [
+          "Does not mention checking maternal vital signs (especially blood pressure) or recognizing epidural-induced hypotension as the most likely diagnosis.",
+          "Omits critical interventions: IV fluid bolus, maternal repositioning to left lateral, supplemental oxygen, and ephedrine.",
+          "No mention of vaginal exam to exclude prolapsed umbilical cord.",
+          "No mention of fetal scalp electrode application to confirm fetal vs. maternal heart rate.",
+          "Does not address uterine tachysystole or mention terbutaline.",
+          "Fails to alert the operating room or discuss delivery contingency planning.",
+          "Passive 'watchful waiting' approach is inappropriate for an unexplained fetal bradycardia in active labor."
+        ],
+        "teaching_points": [
+          {
+            "pearl": "Fetal bradycardia within minutes of epidural placement is epidural hypotension until proven otherwise — immediately check maternal BP, administer IV fluid bolus (500–1000 mL) and vasopressor (ephedrine 5–10 mg IV), reposition left lateral, and apply oxygen.",
+            "acog_reference": "Practice Bulletin 209 — Obstetric Analgesia and Anesthesia"
+          },
+          {
+            "pearl": "Fetal bradycardia demands action: rule out prolapsed cord on exam, confirm fetal signal with FSE, and prepare for operative delivery if no rapid recovery after maternal resuscitation.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+          },
+          {
+            "pearl": "Passive monitoring of fetal bradycardia without simultaneous maternal hemodynamic support and rule-out of emergent causes (cord prolapse, uterine rupture) risks perinatal death or hypoxic-ischemic encephalopathy.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 2,
+        "diagnostic_score": 1,
+        "management_score": 1,
+        "focus_score": 2,
+        "terminology_score": 1,
+        "communication_score": 1,
+        "recovery_score": 1,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 27,
+        "abog_label": "Fail"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 2,
+            "expected": 2,
+            "delta": 0,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 2,
+            "expected": 1,
+            "delta": 1,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 2,
+            "expected": 2,
+            "delta": 0,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 3,
+            "expected": 1,
+            "delta": 2,
+            "pass": false
+          },
+          "communication_score": {
+            "actual": 2,
+            "expected": 1,
+            "delta": 1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 34,
+          "expected": 27,
+          "delta": 7,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": true,
+          "expected": false,
+          "pass": false
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Fail",
+          "expected": "Fail",
+          "pass": true
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q3",
+      "question_topic": "Acute Fetal Bradycardia After Epidural",
+      "archetype_id": "F",
+      "archetype_label": "Fail-Dangerous",
+      "actual": {
+        "safety_score": 1,
+        "diagnostic_score": 1,
+        "management_score": 1,
+        "focus_score": 1,
+        "terminology_score": 3,
+        "communication_score": 2,
+        "recovery_score": 1,
+        "pass_probability": 23,
+        "abog_score": 1,
+        "abog_label": "Fail",
+        "isDangerous": true,
+        "dangerousReason": "Fundal pressure during fetal bradycardia is contraindicated and dangerous; it increases uterine pressure without addressing the underlying cause (likely hypotension or cord compression), worsening fetal hypoxia. Pitocin augmentation during acute fetal distress is similarly contraindicated and delays appropriate resuscitation.",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [],
+        "gaps": [
+          "No mention of confirming fetal versus maternal heart rate or checking maternal vital signs (blood pressure).",
+          "Fails to address epidural-induced hypotension (most common cause) with IV fluids and vasopressors (ephedrine).",
+          "Omits left lateral positioning and supplemental oxygen, the initial life-support interventions.",
+          "No consideration of prolapsed umbilical cord via vaginal examination.",
+          "No mention of fetal scalp electrode placement for confirmation or continuous monitoring.",
+          "Endorses two directly harmful interventions: fundal pressure and Pitocin augmentation during fetal distress."
+        ],
+        "teaching_points": [
+          {
+            "pearl": "Fetal bradycardia in labor requires immediate diagnosis of cause (maternal hypotension from epidural, prolapsed cord, placental abruption, uterine hyperstimulation) before any augmentation or operative intervention; treat maternal hypotension first with IV fluids, vasopressors, and position change.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+          },
+          {
+            "pearl": "Fundal pressure is contraindicated in acute fetal distress because it increases intrauterine pressure without improving placental perfusion and may worsen cord compression or hypoxia; focus instead on maternal resuscitation and left lateral positioning.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+          },
+          {
+            "pearl": "Pitocin augmentation during non-reassuring fetal heart rate tracing increases the risk of uterine hyperstimulation and worsens fetal oxygenation; it should be discontinued and uterine tachysystole managed with tocolytics (terbutaline) if needed.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 1,
+        "diagnostic_score": 1,
+        "management_score": 1,
+        "focus_score": 3,
+        "terminology_score": 3,
+        "communication_score": 3,
+        "recovery_score": 1,
+        "isDangerous": true,
+        "isCurveball": false,
+        "pass_probability": 26,
+        "abog_label": "Fail"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 1,
+            "expected": 3,
+            "delta": -2,
+            "pass": false
+          },
+          "terminology_score": {
+            "actual": 3,
+            "expected": 3,
+            "delta": 0,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 2,
+            "expected": 3,
+            "delta": -1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 23,
+          "expected": 26,
+          "delta": -3,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Fail",
+          "expected": "Fail",
+          "pass": true
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q3",
+      "question_topic": "Acute Fetal Bradycardia After Epidural",
+      "archetype_id": "G",
+      "archetype_label": "Fail-Curveball",
+      "actual": {
+        "safety_score": 1,
+        "diagnostic_score": 1,
+        "management_score": 1,
+        "focus_score": 1,
+        "terminology_score": 4,
+        "communication_score": 3,
+        "recovery_score": 1,
+        "pass_probability": 25,
+        "abog_score": 1,
+        "abog_label": "Fail",
+        "isDangerous": true,
+        "dangerousReason": "Candidate catastrophizes a common, treatable iatrogenic complication (epidural hypotension) into a rare life-threatening diagnosis and commits to emergency hysterectomy without any diagnostic confirmation, maternal assessment, or attempt at conservative management—this would directly harm the patient and fetus.",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Appropriate use of medical terminology (amniotic fluid embolism, massive transfusion protocol, hysterectomy).",
+          "Demonstrates awareness that fetal bradycardia is an urgent clinical finding requiring rapid response."
+        ],
+        "gaps": [
+          "Fails to confirm the bradycardia is fetal (not maternal artifact) before any intervention.",
+          "Does not assess maternal vital signs—specifically BP—which is the most likely cause of bradycardia in this scenario (post-epidural hypotension).",
+          "Omits basic resuscitative maneuvers (left lateral positioning, oxygen, IV fluid bolus, vasopressor) that are first-line and highly effective.",
+          "Jumps immediately to hysterectomy without any diagnostic confirmation of AFE or attempt at conservative management.",
+          "Does not perform vaginal exam to rule out cord prolapse.",
+          "Does not consider intrauterine resuscitation measures (repositioning, oxygen, increased perfusion).",
+          "Massive transfusion and hysterectomy are inappropriate when the patient is not yet proven to have hemorrhage, coagulopathy, or unresponsive shock."
+        ],
+        "teaching_points": [
+          {
+            "pearl": "Fetal bradycardia in the immediate post-epidural period is epidural hypotension until proven otherwise—treat with maternal BP correction (IVF, vasopressors), positioning, and oxygen before invoking rare diagnoses.",
+            "acog_reference": "Practice Bulletin 193 — Obstetric Anesthesia"
+          },
+          {
+            "pearl": "The differential for intrapartum fetal bradycardia includes cord prolapse, placental abruption, uterine hyperstimulation, and maternal hypotension; AFE is exceptionally rare and presents with maternal hemodynamic collapse, respiratory distress, and coagulopathy—not isolated fetal bradycardia.",
+            "acog_reference": "Committee Opinion 657 — Amniotic Fluid Embolism"
+          },
+          {
+            "pearl": "Always confirm the bradycardia is fetal (check maternal pulse), assess maternal hemodynamics, and optimize oxygenation and perfusion before jumping to catastrophic surgical intervention.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 2,
+        "diagnostic_score": 2,
+        "management_score": 2,
+        "focus_score": 2,
+        "terminology_score": 4,
+        "communication_score": 3,
+        "recovery_score": 1,
+        "isDangerous": false,
+        "isCurveball": true,
+        "pass_probability": 41,
+        "abog_label": "Fail"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 1,
+            "expected": 2,
+            "delta": -1,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 1,
+            "expected": 2,
+            "delta": -1,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 1,
+            "expected": 2,
+            "delta": -1,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 1,
+            "expected": 2,
+            "delta": -1,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 4,
+            "expected": 4,
+            "delta": 0,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 3,
+            "expected": 3,
+            "delta": 0,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 25,
+          "expected": 41,
+          "delta": -16,
+          "pass": false
+        },
+        "isDangerous": {
+          "actual": true,
+          "expected": false,
+          "pass": false
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": true,
+          "pass": false
+        },
+        "abog_label": {
+          "actual": "Fail",
+          "expected": "Fail",
+          "pass": true
+        },
+        "all_dims_pass": true,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q4",
+      "question_topic": "Severe Preeclampsia Management",
+      "archetype_id": "A",
+      "archetype_label": "Pass-Strong",
+      "actual": {
+        "safety_score": 5,
+        "diagnostic_score": 5,
+        "management_score": 5,
+        "focus_score": 5,
+        "terminology_score": 5,
+        "communication_score": 5,
+        "recovery_score": 5,
+        "pass_probability": 100,
+        "abog_score": 3,
+        "abog_label": "Pass",
+        "isDangerous": false,
+        "dangerousReason": "",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Correctly identified severe preeclampsia with multi-organ involvement (hypertension, elevated transaminases, proteinuria, oliguria) and recognized delivery as definitive treatment.",
+          "Appropriately prioritized vaginal delivery over cesarean, with detailed plan for cervical assessment and induction using ripening agents followed by Pitocin augmentation.",
+          "Comprehensive antihypertensive regimen with three evidence-based agents (labetalol, nifedipine IR, hydralazine) with correct dosing, frequency, and blood pressure targets.",
+          "Proper magnesium sulfate loading (4-6g IV over 15-20 minutes) and maintenance (2g/hr) for seizure prophylaxis.",
+          "Emphasized judicious fluid management with Foley placement and strict I&Os in the context of oliguria and risk of pulmonary edema."
+        ],
+        "gaps": [],
+        "teaching_points": [
+          {
+            "pearl": "In severe preeclampsia at viable gestational age, delivery is the only definitive treatment; vaginal delivery with induction is preferred over primary cesarean unless obstetric contraindications exist.",
+            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
+          },
+          {
+            "pearl": "Magnesium sulfate is the gold standard for seizure prophylaxis in preeclampsia; labetalol and nifedipine IR are first-line agents for acute hypertension management, with hydralazine reserved for refractory cases.",
+            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
+          },
+          {
+            "pearl": "Oliguria (<30 mL/hr) in preeclampsia mandates careful fluid balance to prevent pulmonary edema; avoid aggressive crystalloid administration and use Foley for strict monitoring.",
+            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 5,
+        "diagnostic_score": 5,
+        "management_score": 5,
+        "focus_score": 5,
+        "terminology_score": 5,
+        "communication_score": 5,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 100,
+        "abog_label": "Pass"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 100,
+          "expected": 100,
+          "delta": 0,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Pass",
+          "expected": "Pass",
+          "pass": true
+        },
+        "all_dims_pass": true,
+        "overall_pass": true
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q4",
+      "question_topic": "Severe Preeclampsia Management",
+      "archetype_id": "B",
+      "archetype_label": "Pass-Adequate",
+      "actual": {
+        "safety_score": 4,
+        "diagnostic_score": 5,
+        "management_score": 4,
+        "focus_score": 5,
+        "terminology_score": 5,
+        "communication_score": 5,
+        "recovery_score": 5,
+        "pass_probability": 89,
+        "abog_score": 3,
+        "abog_label": "Pass",
+        "isDangerous": false,
+        "dangerousReason": "",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Correctly identified severe preeclampsia with end-organ involvement (elevated transaminases, proteinuria, hypertensive urgency, neurologic symptoms)",
+          "Appropriately selected magnesium sulfate for seizure prophylaxis with correct indication",
+          "Correctly chose antihypertensives appropriate for acute severe hypertension in pregnancy (labetalol and nifedipine are both first-line)",
+          "Recognized need for careful fluid management and monitoring of intake/output in setting of oliguria"
+        ],
+        "gaps": [
+          "Did not specify dosing or frequency for magnesium sulfate loading dose and maintenance (4-6g IV load, then 2g/hour)",
+          "Did not specify doses or intervals for antihypertensive agents (labetalol 20 mg IV then 40 mg q10 min; nifedipine IR 10-20 mg PO q20 min)",
+          "Did not mention need for Foley catheter to accurately track urine output given oliguria and need for strict monitoring"
+        ],
+        "teaching_points": [
+          {
+            "pearl": "Severe preeclampsia with end-organ dysfunction (cerebral edema/headache, liver involvement, renal compromise) is an obstetric emergency requiring delivery regardless of gestational age; vaginal delivery with induction is preferred over primary cesarean unless contraindicated.",
+            "acog_reference": "Practice Bulletin 222 — Gestational Hypertension and Preeclampsia"
+          },
+          {
+            "pearl": "Magnesium sulfate is the seizure prophylaxis agent of choice in severe preeclampsia and eclampsia; nifedipine immediate-release and labetalol are preferred acute antihypertensives for hypertensive urgency, avoiding aggressive BP lowering that risks placental hypoperfusion.",
+            "acog_reference": "Practice Bulletin 222 — Gestational Hypertension and Preeclampsia"
+          },
+          {
+            "pearl": "Oliguria (<180 cc/hour) in severe preeclampsia signals renal hypoperfusion and demands careful fluid restriction and strict I&O monitoring via Foley catheter; aggressive hydration risks pulmonary edema and worsens outcomes.",
+            "acog_reference": "Practice Bulletin 222 — Gestational Hypertension and Preeclampsia"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 5,
+        "diagnostic_score": 4,
+        "management_score": 4,
+        "focus_score": 4,
+        "terminology_score": 4,
+        "communication_score": 4,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 88,
+        "abog_label": "Pass"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 4,
+            "expected": 5,
+            "delta": -1,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 4,
+            "expected": 4,
+            "delta": 0,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 89,
+          "expected": 88,
+          "delta": 1,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Pass",
+          "expected": "Pass",
+          "pass": true
+        },
+        "all_dims_pass": true,
+        "overall_pass": true
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q4",
+      "question_topic": "Severe Preeclampsia Management",
+      "archetype_id": "C",
+      "archetype_label": "Borderline-High",
+      "actual": {
+        "safety_score": 2,
+        "diagnostic_score": 5,
+        "management_score": 2,
+        "focus_score": 2,
+        "terminology_score": 4,
+        "communication_score": 2,
+        "recovery_score": 1,
+        "pass_probability": 45,
+        "abog_score": 1,
+        "abog_label": "Fail",
+        "isDangerous": true,
+        "dangerousReason": "Candidate recommends primary cesarean delivery for severe preeclampsia at 34 weeks without attempting vaginal delivery/induction first; this violates standard-of-care management which mandates trial of labor/induction unless contraindicated, exposing patient to unnecessary major abdominal surgery, increased maternal morbidity, and neonatal complications.",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Correctly identified severe preeclampsia with eclampsia risk and appropriately recommended magnesium sulfate for seizure prophylaxis",
+          "Recognized severity of disease and appropriate escalation to MFM consultation",
+          "Acknowledged need for antihypertensive therapy"
+        ],
+        "gaps": [
+          "Failed to recommend cervical ripening or induction as first-line delivery method; cesarean should be reserved for failed induction or obstetric contraindications to vaginal delivery",
+          "Did not specify type, dose, or frequency of IV antihypertensives (nifedipine IR, labetalol, or hydralazine)",
+          "Omitted fluid management strategy, Foley catheter placement, and strict intake/output monitoring—critical in severe preeclampsia with oliguria risk",
+          "Did not address the specific clinical findings (severe hypertension >160/110, brisk DTRs 3-4+, severe refractory headache) that warrant immediate delivery",
+          "Vague on magnesium dosing—did not specify loading dose (4-6g IV) and maintenance (2g/hour)"
+        ],
+        "teaching_points": [
+          {
+            "pearl": "Severe preeclampsia at viable gestational age requires urgent delivery, but vaginal delivery with induction should be first-line unless obstetric contraindications exist; cesarean delivery is reserved for failed induction or fetal/maternal emergency.",
+            "acog_reference": "Practice Bulletin 222 — Gestational Hypertension and Preeclampsia"
+          },
+          {
+            "pearl": "Magnesium sulfate 4–6 g IV loading dose followed by 2 g/hour maintenance is standard seizure prophylaxis; oliguria (UOP <180 cc/hour) in severe preeclampsia requires meticulous fluid balance and Foley monitoring to prevent pulmonary edema and acute kidney injury.",
+            "acog_reference": "Practice Bulletin 222 — Gestational Hypertension and Preeclampsia"
+          },
+          {
+            "pearl": "IV antihypertensive choices (nifedipine IR 10–20 mg q20 min, labetalol 20 mg IV then 40 mg q10 min, hydralazine 5–10 mg IV q15–20 min) should be specific and titrated; goal is gradual BP lowering to avoid placental hypoperfusion.",
+            "acog_reference": "Practice Bulletin 222 — Gestational Hypertension and Preeclampsia"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 4,
+        "diagnostic_score": 3,
+        "management_score": 3,
+        "focus_score": 3,
+        "terminology_score": 3,
+        "communication_score": 3,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 70,
+        "abog_label": "Pass"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 2,
+            "expected": 4,
+            "delta": -2,
+            "pass": false
+          },
+          "diagnostic_score": {
+            "actual": 5,
+            "expected": 3,
+            "delta": 2,
+            "pass": false
+          },
+          "management_score": {
+            "actual": 2,
+            "expected": 3,
+            "delta": -1,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 2,
+            "expected": 3,
+            "delta": -1,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 4,
+            "expected": 3,
+            "delta": 1,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 2,
+            "expected": 3,
+            "delta": -1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 1,
+            "expected": 5,
+            "delta": -4,
+            "pass": false
+          }
+        },
+        "pass_probability": {
+          "actual": 45,
+          "expected": 70,
+          "delta": -25,
+          "pass": false
+        },
+        "isDangerous": {
+          "actual": true,
+          "expected": false,
+          "pass": false
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Fail",
+          "expected": "Pass",
+          "pass": false
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q4",
+      "question_topic": "Severe Preeclampsia Management",
+      "archetype_id": "D",
+      "archetype_label": "Borderline-Low",
+      "actual": {
+        "safety_score": 2,
+        "diagnostic_score": 5,
+        "management_score": 1,
+        "focus_score": 2,
+        "terminology_score": 3,
+        "communication_score": 2,
+        "recovery_score": 1,
+        "pass_probability": 45,
+        "abog_score": 1,
+        "abog_label": "Fail",
+        "isDangerous": true,
+        "dangerousReason": "Candidate delays delivery in a patient with severe preeclampsia with eclamptic symptoms (severe headache unrelieved by analgesia, hyperreflexia 3-4+, BP >160/110, significant proteinuria, and laboratory abnormalities). Expectant management while 'giving medications a chance to work' is contraindicated and risks eclamptic seizure, maternal death, or fetal compromise.",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Correctly identified the need for antihypertensive therapy",
+          "Recognized the need for close laboratory monitoring"
+        ],
+        "gaps": [
+          "Fails to recognize that severe preeclampsia with eclamptic symptoms is an absolute indication for delivery regardless of gestational age; delivery is the definitive treatment, not a contingency after medical management fails",
+          "Does not mention magnesium sulfate for seizure prophylaxis in severe preeclampsia/impending eclampsia",
+          "No mention of cervical ripening or induction of labor as the primary management strategy",
+          "Does not specify which antihypertensive agents, doses, or intervals are appropriate",
+          "No discussion of fluid management, foley catheter, or strict intake and output monitoring",
+          "Misses the clinical urgency conveyed by the severity of symptoms (unrelieved severe headache, brisk DTRs, BP crisis)"
+        ],
+        "teaching_points": [
+          {
+            "pearl": "Severe preeclampsia with eclamptic symptoms (headache, hyperreflexia, visual changes) at viable gestational age is an absolute indication for delivery, not for continued expectant management with antihypertensives alone.",
+            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
+          },
+          {
+            "pearl": "Magnesium sulfate (4–6 g IV loading dose, then 2 g/hour) is the standard seizure prophylaxis in severe preeclampsia and must be given immediately; it is not optional.",
+            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
+          },
+          {
+            "pearl": "Antihypertensive therapy in severe preeclampsia is a temporizing measure for acute BP control during preparation for delivery, not a strategy to avoid delivery or delay it pending medication response.",
+            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 3,
+        "diagnostic_score": 2,
+        "management_score": 2,
+        "focus_score": 3,
+        "terminology_score": 2,
+        "communication_score": 2,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 53,
+        "abog_label": "Fail"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 2,
+            "expected": 3,
+            "delta": -1,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 5,
+            "expected": 2,
+            "delta": 3,
+            "pass": false
+          },
+          "management_score": {
+            "actual": 1,
+            "expected": 2,
+            "delta": -1,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 2,
+            "expected": 3,
+            "delta": -1,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 3,
+            "expected": 2,
+            "delta": 1,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 2,
+            "expected": 2,
+            "delta": 0,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 1,
+            "expected": 5,
+            "delta": -4,
+            "pass": false
+          }
+        },
+        "pass_probability": {
+          "actual": 45,
+          "expected": 53,
+          "delta": -8,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": true,
+          "expected": false,
+          "pass": false
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Fail",
+          "expected": "Fail",
+          "pass": true
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q4",
+      "question_topic": "Severe Preeclampsia Management",
+      "archetype_id": "E",
+      "archetype_label": "Fail-Incomplete",
+      "actual": {
+        "safety_score": 2,
+        "diagnostic_score": 5,
+        "management_score": 1,
+        "focus_score": 2,
+        "terminology_score": 3,
+        "communication_score": 2,
+        "recovery_score": 1,
+        "pass_probability": 45,
+        "abog_score": 1,
+        "abog_label": "Fail",
+        "isDangerous": true,
+        "dangerousReason": "Candidate fails to recommend delivery in severe preeclampsia with eclamptic features (BP >160/110, severe refractory headache, hyperreflexia, elevated transaminases, proteinuria >5g), creating imminent risk of eclamptic seizure, placental abruption, or maternal death.",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Correctly recognizes severity of the clinical situation",
+          "Appropriately calls for assistance and escalation of care"
+        ],
+        "gaps": [
+          "Fails to recommend delivery, which is the definitive management for severe preeclampsia at any gestational age",
+          "No specific antihypertensive agents named (nifedipine, labetalol, or hydralazine)",
+          "No mention of magnesium sulfate for seizure prophylaxis despite eclamptic signs (headache, hyperreflexia)",
+          "No discussion of labor induction versus cesarean delivery decision tree",
+          "No mention of maternal or fetal monitoring strategy",
+          "No reference to fluid management or urinary catheter placement"
+        ],
+        "teaching_points": [
+          {
+            "pearl": "Severe preeclampsia (BP ≥160/110 + symptoms or end-organ dysfunction) is an absolute indication for delivery regardless of gestational age; delay increases risk of eclampsia, abruption, and maternal death.",
+            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
+          },
+          {
+            "pearl": "This patient meets eclampsia criteria (preeclampsia + seizure-risk features: severe headache unrelieved by analgesia + hyperreflexia 3-4+); magnesium sulfate loading and delivery are non-negotiable.",
+            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
+          },
+          {
+            "pearl": "In severe preeclampsia, first-line acute antihypertensives are labetalol IV, nifedipine IR, or hydralazine IV; bed rest alone is inadequate and dangerous.",
+            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 2,
+        "diagnostic_score": 1,
+        "management_score": 1,
+        "focus_score": 2,
+        "terminology_score": 1,
+        "communication_score": 1,
+        "recovery_score": 1,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 27,
+        "abog_label": "Fail"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 2,
+            "expected": 2,
+            "delta": 0,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 5,
+            "expected": 1,
+            "delta": 4,
+            "pass": false
+          },
+          "management_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 2,
+            "expected": 2,
+            "delta": 0,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 3,
+            "expected": 1,
+            "delta": 2,
+            "pass": false
+          },
+          "communication_score": {
+            "actual": 2,
+            "expected": 1,
+            "delta": 1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 45,
+          "expected": 27,
+          "delta": 18,
+          "pass": false
+        },
+        "isDangerous": {
+          "actual": true,
+          "expected": false,
+          "pass": false
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Fail",
+          "expected": "Fail",
+          "pass": true
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q4",
+      "question_topic": "Severe Preeclampsia Management",
+      "archetype_id": "F",
+      "archetype_label": "Fail-Dangerous",
+      "actual": {
+        "safety_score": 1,
+        "diagnostic_score": 5,
+        "management_score": 1,
+        "focus_score": 2,
+        "terminology_score": 4,
+        "communication_score": 3,
+        "recovery_score": 1,
+        "pass_probability": 42,
+        "abog_score": 1,
+        "abog_label": "Fail",
+        "isDangerous": true,
+        "dangerousReason": "Methylergonovine is a potent uterotonic and vasoconstrictor that is contraindicated in preeclampsia/eclampsia and would dangerously elevate blood pressure; expectant management in severe preeclampsia at term is contraindicated — delivery is mandatory.",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Correctly recognized the clinical diagnosis of severe preeclampsia (elevated BP, proteinuria, hyperreflexia, symptoms, abnormal labs)."
+        ],
+        "gaps": [
+          "Endorses methylergonovine as an antihypertensive agent when it is actually a potent vasoconstrictor that worsens hypertension and is absolutely contraindicated in preeclampsia.",
+          "Recommends expectant management and fetal maturation at 34 weeks with severe preeclampsia when delivery is the standard of care and only definitive treatment.",
+          "No mention of magnesium sulfate for seizure prophylaxis, which is foundational in severe preeclampsia management.",
+          "No mention of appropriate first-line antihypertensives (labetalol, nifedipine IR, hydralazine) or delivery planning."
+        ],
+        "teaching_points": [
+          {
+            "pearl": "Methylergonovine and other ergot alkaloids are absolutely contraindicated in hypertensive emergencies including preeclampsia because they cause potent vasoconstriction and further elevate blood pressure; they are reserved for postpartum hemorrhage control after delivery in normotensive patients.",
+            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
+          },
+          {
+            "pearl": "Severe preeclampsia is a maternal indication for delivery regardless of gestational age; expectant management is never appropriate once severe criteria (BP ≥160/110, symptoms, lab abnormalities, or pulmonary edema) are met.",
+            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
+          },
+          {
+            "pearl": "Magnesium sulfate 4–6 g IV loading followed by 2 g/hour is the first-line seizure prophylaxis in severe preeclampsia and must be initiated immediately; antihypertensives (labetalol, nifedipine IR, hydralazine) are second-line for BP control.",
+            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 1,
+        "diagnostic_score": 1,
+        "management_score": 1,
+        "focus_score": 3,
+        "terminology_score": 3,
+        "communication_score": 3,
+        "recovery_score": 1,
+        "isDangerous": true,
+        "isCurveball": false,
+        "pass_probability": 26,
+        "abog_label": "Fail"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 5,
+            "expected": 1,
+            "delta": 4,
+            "pass": false
+          },
+          "management_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 2,
+            "expected": 3,
+            "delta": -1,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 4,
+            "expected": 3,
+            "delta": 1,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 3,
+            "expected": 3,
+            "delta": 0,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 42,
+          "expected": 26,
+          "delta": 16,
+          "pass": false
+        },
+        "isDangerous": {
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Fail",
+          "expected": "Fail",
+          "pass": true
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q4",
+      "question_topic": "Severe Preeclampsia Management",
+      "archetype_id": "G",
+      "archetype_label": "Fail-Curveball",
+      "actual": {
+        "safety_score": 2,
+        "diagnostic_score": 5,
+        "management_score": 2,
+        "focus_score": 5,
+        "terminology_score": 5,
+        "communication_score": 5,
+        "recovery_score": 2,
+        "pass_probability": 45,
+        "abog_score": 1,
+        "abog_label": "Fail",
+        "isDangerous": true,
+        "dangerousReason": "Recommends immediate cesarean delivery without attempting labor induction in a 17-year-old primigravida at 34 weeks with severe preeclampsia; this approach exposes a teenager to unnecessary major surgery when vaginal delivery is feasible and preferred per ACOG guidance for unripe cervix in preeclampsia.",
+        "isCurveball": true,
+        "curveballReason": "The candidate conflates 'need for delivery' with 'need for cesarean delivery,' missing the critical ABOG board concept that an unripe cervix in preeclampsia warrants induction first—cesarean is reserved for induction failure, fetal distress, or obstetric contraindications to vaginal delivery.",
+        "strengths": [
+          "Correctly identified the diagnosis of severe preeclampsia with appropriate hemolytic anemia/elevated liver enzyme (HELLP) features and recognized the absolute indication for delivery at 34+3 weeks.",
+          "Clear, focused communication that directly addresses the core question without tangents.",
+          "Appropriately emphasized the urgency and severity of the clinical scenario."
+        ],
+        "gaps": [
+          "Failed to discuss cervical ripening or induction as the first-line delivery method for a teenager with unripe cervix; jumped directly to cesarean.",
+          "Did not mention magnesium sulfate for seizure prophylaxis or antihypertensive agents (nifedipine, labetalol, hydralazine) needed during induction or delivery.",
+          "Omitted discussion of maternal-fetal monitoring, strict fluid management, foley catheter, and I&O monitoring—all essential components of severe preeclampsia management.",
+          "Did not address the specific risk-benefit consideration for a primigravida at 34 weeks, where vaginal delivery is strongly preferred when feasible."
+        ],
+        "teaching_points": [
+          {
+            "pearl": "In severe preeclampsia with unripe cervix, induction of labor is the preferred delivery method unless there are obstetric contraindications (abruptio, cord prolapse, eclampsia uncontrolled by magnesium); cesarean delivery is reserved for failed induction or fetal indications.",
+            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
+          },
+          {
+            "pearl": "Magnesium sulfate is mandatory for all women with severe preeclampsia (loading dose 4–6 g IV, then 2 g/hour maintenance) for seizure prophylaxis; this must accompany any delivery plan.",
+            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
+          },
+          {
+            "pearl": "Judicious fluid management and strict I&O with foley catheter placement are critical in severe preeclampsia to prevent pulmonary edema and ARDS; antihypertensive therapy (nifedipine IR, labetalol, or hydralazine) is used to prevent maternal complications, not to delay delivery.",
+            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 3,
+        "diagnostic_score": 3,
+        "management_score": 3,
+        "focus_score": 4,
+        "terminology_score": 4,
+        "communication_score": 4,
+        "recovery_score": 1,
+        "isDangerous": false,
+        "isCurveball": true,
+        "pass_probability": 59,
+        "abog_label": "Borderline"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 2,
+            "expected": 3,
+            "delta": -1,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 5,
+            "expected": 3,
+            "delta": 2,
+            "pass": false
+          },
+          "management_score": {
+            "actual": 2,
+            "expected": 3,
+            "delta": -1,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 2,
+            "expected": 1,
+            "delta": 1,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 45,
+          "expected": 59,
+          "delta": -14,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": true,
+          "expected": false,
+          "pass": false
+        },
+        "isCurveball": {
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Fail",
+          "expected": "Borderline",
+          "pass": true
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q5",
+      "question_topic": "Uterotonic Selection — Postpartum Hemorrhage",
+      "archetype_id": "A",
+      "archetype_label": "Pass-Strong",
+      "actual": {
+        "safety_score": 5,
+        "diagnostic_score": 5,
+        "management_score": 5,
+        "focus_score": 5,
+        "terminology_score": 5,
+        "communication_score": 5,
+        "recovery_score": 5,
+        "pass_probability": 100,
+        "abog_score": 3,
+        "abog_label": "Pass",
+        "isDangerous": false,
+        "dangerousReason": "",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Correctly identified oxytocin as first-line uterotonic with appropriate dosing (10 IU IM or 10-40 IU in 1L NS infusion)",
+          "Appropriately detailed contraindications for methylergonovine (hypertension/vasoconstriction) and carboprost (asthma/bronchoconstriction) with clinical reasoning",
+          "Recognized misoprostol's advantage of having no absolute contraindications and utility in limited IV access scenarios",
+          "Provided precise drug names, doses, and routes for all agents mentioned",
+          "Added evidence-based adjunctive therapy with tranexamic acid 1 gram IV for fibrinolysis reduction"
+        ],
+        "gaps": [],
+        "teaching_points": [
+          {
+            "pearl": "Oxytocin is the first-line uterotonic globally for postpartum hemorrhage prevention and treatment; methylergonovine is reserved for normotensive patients due to dose-dependent hypertensive crisis risk, particularly with IV administration.",
+            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+          },
+          {
+            "pearl": "Carboprost and misoprostol are prostaglandin analogues useful for refractory atony; carboprost requires asthma screening while misoprostol has minimal contraindications, making it valuable in resource-limited or hemodynamically unstable settings.",
+            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+          },
+          {
+            "pearl": "Tranexamic acid (TXA) administration within 3 hours of delivery reduces hemorrhage-related mortality by ~30% in severe postpartum hemorrhage; it is now recommended as adjunctive therapy alongside uterotonics.",
+            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 5,
+        "diagnostic_score": 5,
+        "management_score": 5,
+        "focus_score": 5,
+        "terminology_score": 5,
+        "communication_score": 5,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 100,
+        "abog_label": "Pass"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 100,
+          "expected": 100,
+          "delta": 0,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Pass",
+          "expected": "Pass",
+          "pass": true
+        },
+        "all_dims_pass": true,
+        "overall_pass": true
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q5",
+      "question_topic": "Uterotonic Selection — Postpartum Hemorrhage",
+      "archetype_id": "B",
+      "archetype_label": "Pass-Adequate",
+      "actual": {
+        "safety_score": 5,
+        "diagnostic_score": 5,
+        "management_score": 5,
+        "focus_score": 5,
+        "terminology_score": 5,
+        "communication_score": 5,
+        "recovery_score": 5,
+        "pass_probability": 100,
+        "abog_score": 3,
+        "abog_label": "Pass",
+        "isDangerous": false,
+        "dangerousReason": "",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Correctly identified oxytocin as first-line uterotonic with appropriate dose and route awareness.",
+          "Accurately recognized contraindications for methylergonovine (hypertension) and carboprost (asthma) with clear clinical reasoning.",
+          "Demonstrated understanding of the escalation pathway and appropriate sequencing of uterotonics in PPH management."
+        ],
+        "gaps": [],
+        "teaching_points": [
+          {
+            "pearl": "Oxytocin is the first-line uterotonic worldwide due to safety profile and efficacy; methylergonovine and carboprost are reserved for oxytocin failure, each with specific contraindications that must be elicited.",
+            "acog_reference": "Practice Bulletin 210 — Obstetric Care Consensus on Postpartum Hemorrhage"
+          },
+          {
+            "pearl": "In a macrosomic infant delivery with shoulder dystocia, uterine atony is the leading cause of PPH; oxytocin dosing (10 IU IM or 10–40 IU in crystalloid infusion) should be initiated immediately after placental delivery.",
+            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+          },
+          {
+            "pearl": "Always obtain blood pressure and focused obstetric history (asthma, coronary disease) before administering ergot alkaloids or prostaglandins to avoid serious maternal morbidity.",
+            "acog_reference": "Committee Opinion 794 — Obstetric Care Consensus on Prevention and Management of Obstetric Hemorrhage"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 5,
+        "diagnostic_score": 4,
+        "management_score": 4,
+        "focus_score": 4,
+        "terminology_score": 4,
+        "communication_score": 4,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 88,
+        "abog_label": "Pass"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "management_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 5,
+            "expected": 4,
+            "delta": 1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 100,
+          "expected": 88,
+          "delta": 12,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Pass",
+          "expected": "Pass",
+          "pass": true
+        },
+        "all_dims_pass": true,
+        "overall_pass": true
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q5",
+      "question_topic": "Uterotonic Selection — Postpartum Hemorrhage",
+      "archetype_id": "C",
+      "archetype_label": "Borderline-High",
+      "actual": {
+        "safety_score": 4,
+        "diagnostic_score": 5,
+        "management_score": 4,
+        "focus_score": 4,
+        "terminology_score": 5,
+        "communication_score": 4,
+        "recovery_score": 5,
+        "pass_probability": 87,
+        "abog_score": 3,
+        "abog_label": "Pass",
+        "isDangerous": false,
+        "dangerousReason": "",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Correctly identified oxytocin as first-line agent with appropriate escalation strategy",
+          "Recognized multi-agent approach and combination therapy as valid management of refractory postpartum hemorrhage",
+          "Articulated the physiologic goal of uterine contraction and tone maintenance"
+        ],
+        "gaps": [
+          "Did not mention specific doses, routes, or infusion parameters for oxytocin or other agents",
+          "Failed to discuss contraindications (hypertension with Methergine, asthma with Carboprost) that should guide agent selection",
+          "Did not address the critical clinical context of shoulder dystocia with risk of uterine atony or whether this case warrants rapid escalation beyond Pitocin alone"
+        ],
+        "teaching_points": [
+          {
+            "pearl": "Oxytocin (Pitocin) remains first-line; Methergine is second-line if normotensive; Carboprost is third-line for refractory hemorrhage; contraindications must always be considered before selection.",
+            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+          },
+          {
+            "pearl": "In refractory postpartum hemorrhage, combination uterotonic therapy (e.g., Pitocin + Methergine + Carboprost) is evidence-based and superior to monotherapy; simultaneous use of multiple agents is standard of care.",
+            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+          },
+          {
+            "pearl": "Shoulder dystocia with macrosomia increases risk of uterine atony; early consideration of rapid escalation beyond Pitocin alone may be warranted in this high-risk context.",
+            "acog_reference": "Practice Bulletin 178 — Shoulder Dystocia"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 3,
+        "diagnostic_score": 3,
+        "management_score": 3,
+        "focus_score": 3,
+        "terminology_score": 3,
+        "communication_score": 3,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 64,
+        "abog_label": "Borderline"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 4,
+            "expected": 3,
+            "delta": 1,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 5,
+            "expected": 3,
+            "delta": 2,
+            "pass": false
+          },
+          "management_score": {
+            "actual": 4,
+            "expected": 3,
+            "delta": 1,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 4,
+            "expected": 3,
+            "delta": 1,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 5,
+            "expected": 3,
+            "delta": 2,
+            "pass": false
+          },
+          "communication_score": {
+            "actual": 4,
+            "expected": 3,
+            "delta": 1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 87,
+          "expected": 64,
+          "delta": 23,
+          "pass": false
+        },
+        "isDangerous": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Pass",
+          "expected": "Borderline",
+          "pass": true
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q5",
+      "question_topic": "Uterotonic Selection — Postpartum Hemorrhage",
+      "archetype_id": "D",
+      "archetype_label": "Borderline-Low",
+      "actual": {
+        "safety_score": 3,
+        "diagnostic_score": 4,
+        "management_score": 3,
+        "focus_score": 3,
+        "terminology_score": 5,
+        "communication_score": 4,
+        "recovery_score": 5,
+        "pass_probability": 71,
+        "abog_score": 3,
+        "abog_label": "Pass",
+        "isDangerous": false,
+        "dangerousReason": "",
+        "isCurveball": true,
+        "curveballReason": "Candidate recommends sequential Pitocin then Methergine without assessing contraindications to Methergine (hypertension status unknown); ACOG guidance emphasizes choosing based on clinical context and contraindications, not automatic sequential use.",
+        "strengths": [
+          "Correctly identified the clinical scenario as postpartum hemorrhage requiring uterotonic therapy",
+          "Appropriately escalated to OR for surgical management if medical therapy fails",
+          "Correct terminology and drug names (Pitocin, Methergine)"
+        ],
+        "gaps": [
+          "Failed to mention the need to assess maternal blood pressure or other contraindications before selecting Methergine",
+          "Did not discuss alternative agents (carboprost, misoprostol) or when they might be preferred",
+          "Did not specify dosing, route of administration, or infusion parameters for either agent",
+          "Presented as automatic sequence rather than context-dependent choice"
+        ],
+        "teaching_points": [
+          {
+            "pearl": "Uterotonic selection in PPH is not algorithmic—assess maternal hypertension status, asthma, and other contraindications before choosing Methergine or carboprost; Pitocin has no absolute contraindications and is a safe first line.",
+            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+          },
+          {
+            "pearl": "Methergine is contraindicated in hypertension (risk of severe HTN crisis and stroke); always establish BP and risk factors before administration in emergency PPH.",
+            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+          },
+          {
+            "pearl": "Carboprost and misoprostol are valuable alternatives when Pitocin/Methergine fail or are contraindicated; misoprostol has no absolute contraindications and is particularly useful when contraindications to ergot or prostaglandin F2α analogs exist.",
+            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 3,
+        "diagnostic_score": 2,
+        "management_score": 2,
+        "focus_score": 3,
+        "terminology_score": 2,
+        "communication_score": 2,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 53,
+        "abog_label": "Fail"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 3,
+            "expected": 3,
+            "delta": 0,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 4,
+            "expected": 2,
+            "delta": 2,
+            "pass": false
+          },
+          "management_score": {
+            "actual": 3,
+            "expected": 2,
+            "delta": 1,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 3,
+            "expected": 3,
+            "delta": 0,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 5,
+            "expected": 2,
+            "delta": 3,
+            "pass": false
+          },
+          "communication_score": {
+            "actual": 4,
+            "expected": 2,
+            "delta": 2,
+            "pass": false
+          },
+          "recovery_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 71,
+          "expected": 53,
+          "delta": 18,
+          "pass": false
+        },
+        "isDangerous": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": true,
+          "expected": false,
+          "pass": false
+        },
+        "abog_label": {
+          "actual": "Pass",
+          "expected": "Fail",
+          "pass": false
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q5",
+      "question_topic": "Uterotonic Selection — Postpartum Hemorrhage",
+      "archetype_id": "E",
+      "archetype_label": "Fail-Incomplete",
+      "actual": {
+        "safety_score": 3,
+        "diagnostic_score": 5,
+        "management_score": 2,
+        "focus_score": 2,
+        "terminology_score": 4,
+        "communication_score": 2,
+        "recovery_score": 5,
+        "pass_probability": 67,
+        "abog_score": 2,
+        "abog_label": "Borderline",
+        "isDangerous": false,
+        "dangerousReason": "",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Correctly identified the clinical scenario as postpartum hemorrhage requiring uterotonic intervention",
+          "Appropriately called for help, demonstrating awareness of the need for team support in obstetric emergency",
+          "Chose Pitocin, which is a reasonable first-line agent with no absolute contraindications"
+        ],
+        "gaps": [
+          "Failed to discuss rationale for choice of Pitocin or comparative advantages/disadvantages of other uterotonics",
+          "Did not mention contraindications to alternative agents (e.g., hypertension with Methergine, asthma with Carboprost) or how clinical context guides agent selection",
+          "Did not specify dose or route of administration for Pitocin (10 IU IM vs. IV infusion)",
+          "Superficial response that does not demonstrate depth of understanding about uterotonic pharmacology or escalation strategy",
+          "Missing discussion of next steps if Pitocin fails or what additional interventions might be needed"
+        ],
+        "teaching_points": [
+          {
+            "pearl": "In acute postpartum hemorrhage, Pitocin is appropriate first-line, but the choice of second-line uterotonic (Methergine vs. Carboprost vs. Misoprostol) depends on maternal contraindications: avoid Methergine in hypertensive patients and Carboprost in asthmatic patients.",
+            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+          },
+          {
+            "pearl": "After shoulder dystocia and a large infant (4500g), anticipate increased risk of uterine atony; rapid escalation to multiple uterotonics or consideration of intrauterine balloon may be needed if first agent fails.",
+            "acog_reference": "Practice Bulletin 178 — Shoulder Dystocia"
+          },
+          {
+            "pearl": "Pitocin can be given as 10 IU IM (faster onset) or as 10-40 IU in 1L NS infusion; the intramuscular route is preferred in hemorrhage when rapid effect is needed, whereas infusion is used for augmentation of labor.",
+            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 3,
+        "diagnostic_score": 1,
+        "management_score": 1,
+        "focus_score": 2,
+        "terminology_score": 2,
+        "communication_score": 2,
+        "recovery_score": 5,
+        "isDangerous": false,
+        "isCurveball": false,
+        "pass_probability": 43,
+        "abog_label": "Fail"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 3,
+            "expected": 3,
+            "delta": 0,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 5,
+            "expected": 1,
+            "delta": 4,
+            "pass": false
+          },
+          "management_score": {
+            "actual": 2,
+            "expected": 1,
+            "delta": 1,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 2,
+            "expected": 2,
+            "delta": 0,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 4,
+            "expected": 2,
+            "delta": 2,
+            "pass": false
+          },
+          "communication_score": {
+            "actual": 2,
+            "expected": 2,
+            "delta": 0,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 5,
+            "expected": 5,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 67,
+          "expected": 43,
+          "delta": 24,
+          "pass": false
+        },
+        "isDangerous": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": false,
+          "pass": true
+        },
+        "abog_label": {
+          "actual": "Borderline",
+          "expected": "Fail",
+          "pass": true
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q5",
+      "question_topic": "Uterotonic Selection — Postpartum Hemorrhage",
+      "archetype_id": "F",
+      "archetype_label": "Fail-Dangerous",
+      "actual": {
+        "safety_score": 2,
+        "diagnostic_score": 5,
+        "management_score": 2,
+        "focus_score": 3,
+        "terminology_score": 5,
+        "communication_score": 4,
+        "recovery_score": 1,
+        "pass_probability": 45,
+        "abog_score": 1,
+        "abog_label": "Fail",
+        "isDangerous": true,
+        "dangerousReason": "Candidate recommends carboprost without screening for contraindications (asthma, cardiac disease), explicitly stating to administer 'regardless of her medical history' — a dangerous omission that could precipitate bronchospasm or coronary vasospasm in an at-risk patient.",
+        "isCurveball": true,
+        "curveballReason": "The candidate conflates 'potency' with 'first-line escalation' and abandons the standard algorithm (oxytocin → methylergonovine → carboprost/misoprostol) in favor of the most potent agent without risk stratification, which is the classic trap in PPH management.",
+        "strengths": [
+          "Correctly identified postpartum hemorrhage and the need to escalate uterotonics beyond oxytocin.",
+          "Used precise terminology (Hemabate, carboprost) and recognized the agent's relative potency.",
+          "Appropriately prioritized speed of intervention in a hemorrhage scenario."
+        ],
+        "gaps": [
+          "Failed to obtain or consider maternal medical history before selecting a uterotonic with significant contraindications.",
+          "Did not follow the standard escalation algorithm (methylergonovine is preferred second-line in normotensive patients; carboprost is third-line).",
+          "Explicitly stated 'regardless of her medical history,' demonstrating dangerous disregard for contraindication screening in an active hemorrhage context."
+        ],
+        "teaching_points": [
+          {
+            "pearl": "In postpartum hemorrhage, the choice of uterotonic is guided by contraindications and escalation order, not potency alone: oxytocin → methylergonovine (if normotensive) → carboprost or misoprostol; carboprost is contraindicated in asthma and cardiac disease.",
+            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+          },
+          {
+            "pearl": "Rapid maternal history taking (BP, asthma, cardiac history) during PPH is essential and must occur in parallel with initial interventions; it is not a delay to care.",
+            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+          },
+          {
+            "pearl": "Methylergonovine (Methergine) is the recommended second-line agent after oxytocin failure in normotensive patients and is safer than carboprost for most parturients.",
+            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 1,
+        "diagnostic_score": 2,
+        "management_score": 1,
+        "focus_score": 3,
+        "terminology_score": 3,
+        "communication_score": 3,
+        "recovery_score": 1,
+        "isDangerous": true,
+        "isCurveball": false,
+        "pass_probability": 30,
+        "abog_label": "Fail"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 2,
+            "expected": 1,
+            "delta": 1,
+            "pass": true
+          },
+          "diagnostic_score": {
+            "actual": 5,
+            "expected": 2,
+            "delta": 3,
+            "pass": false
+          },
+          "management_score": {
+            "actual": 2,
+            "expected": 1,
+            "delta": 1,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 3,
+            "expected": 3,
+            "delta": 0,
+            "pass": true
+          },
+          "terminology_score": {
+            "actual": 5,
+            "expected": 3,
+            "delta": 2,
+            "pass": false
+          },
+          "communication_score": {
+            "actual": 4,
+            "expected": 3,
+            "delta": 1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 45,
+          "expected": 30,
+          "delta": 15,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": true,
+          "expected": true,
+          "pass": true
+        },
+        "isCurveball": {
+          "actual": true,
+          "expected": false,
+          "pass": false
+        },
+        "abog_label": {
+          "actual": "Fail",
+          "expected": "Fail",
+          "pass": true
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    },
+    {
+      "question_id": "Q5",
+      "question_topic": "Uterotonic Selection — Postpartum Hemorrhage",
+      "archetype_id": "G",
+      "archetype_label": "Fail-Curveball",
+      "actual": {
+        "safety_score": 1,
+        "diagnostic_score": 5,
+        "management_score": 1,
+        "focus_score": 1,
+        "terminology_score": 3,
+        "communication_score": 2,
+        "recovery_score": 1,
+        "pass_probability": 39,
+        "abog_score": 1,
+        "abog_label": "Fail",
+        "isDangerous": true,
+        "dangerousReason": "Erythromycin is not a uterotonic and has no role in treating postpartum hemorrhage; recommending it as primary treatment delays or replaces evidence-based uterotonics (oxytocin, methylergonovine, carboprost, misoprostol) and directly endangers the patient by prolonging life-threatening bleeding.",
+        "isCurveball": false,
+        "curveballReason": "",
+        "strengths": [
+          "Correctly identified that the patient is at risk for infection in the context of prolonged labor and traumatic delivery"
+        ],
+        "gaps": [
+          "Fundamental misunderstanding: erythromycin is a macrolide antibiotic with no primary uterotonic properties and is not indicated for treatment of atonic postpartum hemorrhage",
+          "Failed to identify and recommend any evidence-based uterotonic agent (oxytocin, methylergonovine, carboprost, or misoprostol)",
+          "Did not address the clinical context or contraindications when selecting a uterotonic",
+          "Conflated antibiotic prophylaxis (appropriate in prolonged labor) with uterotonic therapy for active postpartum hemorrhage"
+        ],
+        "teaching_points": [
+          {
+            "pearl": "First-line uterotonics for postpartum hemorrhage are oxytocin, methylergonovine, carboprost, and misoprostol — never use antibiotics as primary uterotonic agents.",
+            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+          },
+          {
+            "pearl": "When selecting a uterotonic, always evaluate contraindications: methylergonovine is contraindicated in hypertension; carboprost in asthma/reactive airway disease; misoprostol has no absolute contraindications.",
+            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+          },
+          {
+            "pearl": "After failed response to oxytocin, second-line agents (methylergonovine, carboprost, misoprostol, or combination therapy) should be administered promptly; prolonged delay in escalating uterotonic therapy increases risk of severe hemorrhage and transfusion.",
+            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+          }
+        ]
+      },
+      "expected": {
+        "safety_score": 3,
+        "diagnostic_score": 1,
+        "management_score": 1,
+        "focus_score": 3,
+        "terminology_score": 3,
+        "communication_score": 3,
+        "recovery_score": 1,
+        "isDangerous": false,
+        "isCurveball": true,
+        "pass_probability": 38,
+        "abog_label": "Fail"
+      },
+      "comparison": {
+        "dimensions": {
+          "safety_score": {
+            "actual": 1,
+            "expected": 3,
+            "delta": -2,
+            "pass": false
+          },
+          "diagnostic_score": {
+            "actual": 5,
+            "expected": 1,
+            "delta": 4,
+            "pass": false
+          },
+          "management_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          },
+          "focus_score": {
+            "actual": 1,
+            "expected": 3,
+            "delta": -2,
+            "pass": false
+          },
+          "terminology_score": {
+            "actual": 3,
+            "expected": 3,
+            "delta": 0,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 2,
+            "expected": 3,
+            "delta": -1,
+            "pass": true
+          },
+          "recovery_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          }
+        },
+        "pass_probability": {
+          "actual": 39,
+          "expected": 38,
+          "delta": 1,
+          "pass": true
+        },
+        "isDangerous": {
+          "actual": true,
+          "expected": false,
+          "pass": false
+        },
+        "isCurveball": {
+          "actual": false,
+          "expected": true,
+          "pass": false
+        },
+        "abog_label": {
+          "actual": "Fail",
+          "expected": "Fail",
+          "pass": true
+        },
+        "all_dims_pass": false,
+        "overall_pass": false
+      },
+      "error": null
+    }
+  ]
+}
