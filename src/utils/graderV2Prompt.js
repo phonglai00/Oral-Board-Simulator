@@ -135,28 +135,45 @@ SEVEN-DIMENSION SCORING RUBRIC (each dimension: integer 1–5)
    — This dimension is especially meaningful for follow-up answers after pushback.
 
 ═══════════════════════════════════════════════════════
+CLASSIFICATION PRIORITY — READ THIS BEFORE EVALUATING FLAGS
+═══════════════════════════════════════════════════════
+
+Evaluate isDangerous FIRST. If isDangerous is true, set isCurveball to false and stop.
+isDangerous and isCurveball are MUTUALLY EXCLUSIVE. They can never both be true.
+If the answer is dangerous, it is not a curveball. If it is a curveball, it is not dangerous.
+
+═══════════════════════════════════════════════════════
 DANGEROUS ANSWER FLAGS
 ═══════════════════════════════════════════════════════
 
-isDangerous: true ONLY when the candidate explicitly recommends a contraindicated or
-  directly harmful intervention — wrong drug, dangerous dose, or a specific named action
-  that would directly and foreseeably cause patient harm.
+isDangerous: true ONLY when the candidate explicitly names a specific drug, dose, procedure,
+  or clinical action — and that specific named element is directly contraindicated in this
+  patient's stated condition, or causes proximate physiologic harm when applied to this patient.
 
-  isDangerous is FALSE when the answer is merely incomplete, suboptimal, under-specified,
-  or missing key steps — even if those omissions could theoretically lead to harm.
-  The candidate must affirmatively endorse the harmful action; omission alone does not qualify.
+  Apply this test: "What specific thing did the candidate say to do?"
+  — If they named a specific drug, dose, or procedure that is contraindicated → isDangerous = true.
+  — If they used only general, vague, or observational language without naming a specific
+    contraindicated element → isDangerous = false.
 
-  Examples that ARE dangerous (isDangerous = true):
-  — Recommending amniocentesis for fetal lung maturity at ≥39 weeks before indicated delivery
-  — Citing subthreshold NST criteria (10 bpm × 10 sec) as sufficient for reactivity, which
-    would produce false reassurance and delay necessary intervention
-  — Ordering methylergonovine in a hypertensive patient (directly contraindicated)
+  isDangerous is FALSE when:
+  — The answer is incomplete, suboptimal, or missing steps (even critical ones)
+  — The candidate deferred with vague language ("reassess," "observe," "watch the monitor,"
+    "check back," "repeat testing") without naming a specific contraindicated action
+  — The candidate named a correct drug or test but applied it in the wrong order or timing
+  — The candidate named a wrong test or procedure that is merely unnecessary (not contraindicated)
+  — The candidate's plan could lead to harm only by downstream consequence — omission alone
+    never qualifies; the candidate must affirmatively endorse the harmful action
 
-  Examples that are NOT dangerous (isDangerous = false):
-  — Failing to specify the 40-minute NST observation window (incomplete, not dangerous)
-  — Recommending BPP before delivery at term with nonreactive NST (suboptimal — use isCurveball)
-  — Omitting vibroacoustic stimulation from the nonreactive NST workup (gap, not danger)
-  — Deferring re-evaluation to morning without explicit endorsement of a harmful drug or action
+  isDangerous is TRUE when:
+  — Candidate explicitly names a drug that is directly contraindicated by this patient's
+    stated conditions: e.g., methylergonovine in a hypertensive patient; carboprost in an
+    asthmatic patient whose asthma is documented in the case
+  — Candidate names a procedure that is directly harmful in this specific clinical context:
+    e.g., fundal pressure during acute fetal bradycardia; oxytocin augmentation during an
+    active Category III tracing
+  — Candidate explicitly declares a nonreactive or abnormal fetal status to be normal/reassuring
+    using a specific named criterion that is clinically wrong: e.g., states "one acceleration
+    is sufficient for reactivity" and uses that to conclude the tracing is reactive and safe
 
   When true, safety_score MUST be 1 or 2.
 
@@ -167,26 +184,46 @@ dangerousReason: One sentence naming the specific unsafe element in plain clinic
 CURVEBALL FLAGS
 ═══════════════════════════════════════════════════════
 
-isCurveball: true when the candidate's answer falls into a well-known ABOG board exam trap —
-  technically defensible in some narrow contexts but clearly wrong or point-costing in THIS
-  clinical scenario.
+ONLY evaluate isCurveball after confirming isDangerous is false.
 
-  CURVEBALL examples (isCurveball = true):
-  — Citing subthreshold NST criteria (10 bpm × 10 sec instead of the required 15 × 15)
-  — Ordering fetal lung maturity testing at ≥39 weeks before an already-indicated delivery
-  — Requiring BPP as a mandatory step before delivery in a term persistently nonreactive NST
-  — Applying preterm management logic (conservative observation, repeat testing) to a term scenario
-  — Choosing a second-line uterotonic when the standard first-line agent is not contraindicated
+isCurveball: true ONLY when the candidate explicitly names or cites a specific clinical
+  threshold, test, procedure, or protocol — and that named element belongs to a different
+  patient category, gestational age, or clinical context than the one presented — and the
+  candidate applies it as the basis for their recommendation in this case.
 
-  NOT a curveball (isCurveball = false):
-  — Answer is clinically correct but lacks quantitative precision (missing a number, omitting a step)
-  — Answer takes the right approach but is incomplete or poorly organized
-  — Answer is suboptimal in prioritization but not a recognized ABOG exam trap
+  Apply this test: "Did the candidate name a specific clinical artifact that belongs to
+  a different clinical category, and use it as their reasoning?"
+  — If YES → isCurveball = true.
+  — If the answer is simply wrong, incomplete, or uses vague language without invoking a
+    specific named standard or protocol from the wrong context → isCurveball = false.
 
-  isCurveball and isDangerous CAN both be true simultaneously when the board trap also involves
-  explicitly recommending a contraindicated intervention (e.g., amniocentesis at term).
+  isCurveball is TRUE when:
+  — Candidate explicitly cites a subthreshold quantitative criterion as sufficient:
+    e.g., states "10 bpm × 10 sec" as the definition of a reactive NST
+  — Candidate explicitly orders a named preterm-specific procedure in a term patient:
+    e.g., orders amniocentesis for fetal lung maturity (L/S ratio, PG) at ≥39 weeks
+  — Candidate requires a named test as a mandatory prerequisite before delivery when
+    guidelines do not require it at this gestational age and presentation:
+    e.g., "BPP must be ≥8/10 before we deliver" in a term persistently nonreactive NST
+  — Candidate explicitly names a second-line uterotonic as first choice when the
+    standard first-line agent (oxytocin) has not been tried and is not contraindicated
+  — Candidate names a protocol from an entirely wrong clinical category and applies it
+    as primary management: e.g., activates MTP and plans emergency hysterectomy for
+    isolated fetal bradycardia without maternal hemorrhage or AFE criteria
 
-curveballReason: One sentence describing the specific trap. Empty string when isCurveball is false.
+  isCurveball is FALSE when:
+  — Answer is wrong or incomplete due to knowledge gaps, without citing a specific named
+    standard, threshold, or protocol from the wrong clinical context
+  — Answer uses vague or observational language ("watch and wait," "reassess," "observe")
+    without invoking a named wrong-context protocol
+  — Answer is suboptimal in prioritization or sequencing but does not name a specific
+    wrong-category clinical artifact as the basis for that sequencing
+  — Answer lacks quantitative precision (missing a threshold number or timing window)
+    without citing an incorrect threshold as correct
+  — isDangerous is true — these flags are mutually exclusive
+
+curveballReason: One sentence describing the specific named artifact or protocol the
+  candidate invoked incorrectly. Empty string when isCurveball is false.
 
 ═══════════════════════════════════════════════════════
 STRENGTHS AND GAPS
