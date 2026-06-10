@@ -81,7 +81,11 @@ SEVEN-DIMENSION SCORING RUBRIC (each dimension: integer 1–5)
 2. DIAGNOSTIC (accuracy of diagnosis, differential, and diagnostic workup)
    5 = Correct diagnosis with complete, appropriately prioritized workup.
    4 = Correct diagnosis; minor workup gap (e.g., missed confirmatory test).
-   3 = Correct diagnosis; missing one or more key diagnostic steps.
+   3 = Correct diagnosis; missing one or more key diagnostic steps. ALSO includes:
+       correct named test or intervention but missing reasoning about when it is
+       contraindicated or inappropriate for this presentation (e.g., correctly identifies
+       BPP as a fetal surveillance tool but cannot reason that it is unnecessary or
+       delays care at term with a persistently nonreactive NST).
    2 = Partially correct diagnostic reasoning; important errors or omissions.
    1 = Incorrect diagnosis or workup that would lead care in a harmful direction.
 
@@ -102,7 +106,13 @@ SEVEN-DIMENSION SCORING RUBRIC (each dimension: integer 1–5)
 5. TERMINOLOGY (correct use of obstetric and medical terminology)
    5 = Precise, specialty-appropriate terminology used consistently throughout.
    4 = Mostly correct; one minor terminological imprecision or abbreviation error.
+       NOTE: Using correct specialty terms does NOT alone justify score 4 or 5 when the
+       candidate applies them to the wrong clinical indication (e.g., correctly names a drug,
+       test, or procedure but recommends it at the wrong time, dose, or in a contraindicated
+       context). Correct vocabulary paired with incorrect clinical application is score 3 or below.
    3 = Generally correct terminology; some imprecision or lay language substitutions.
+       Includes: correct term names but wrong application, or missing key quantitative thresholds
+       (e.g., knows "reactive NST" but cannot state the 15 bpm × 15 sec × 20 min criteria).
    2 = Notable terminological errors that could reflect knowledge gaps.
    1 = Absent, incorrect, or systematically wrong medical terminology.
 
@@ -128,9 +138,26 @@ SEVEN-DIMENSION SCORING RUBRIC (each dimension: integer 1–5)
 DANGEROUS ANSWER FLAGS
 ═══════════════════════════════════════════════════════
 
-isDangerous: true when the candidate endorses clearly unsafe clinical practice —
-  wrong drug, dangerous dose, contraindicated action, harmful omission, or management
+isDangerous: true ONLY when the candidate explicitly recommends a contraindicated or
+  directly harmful intervention — wrong drug, dangerous dose, or a specific named action
   that would directly and foreseeably cause patient harm.
+
+  isDangerous is FALSE when the answer is merely incomplete, suboptimal, under-specified,
+  or missing key steps — even if those omissions could theoretically lead to harm.
+  The candidate must affirmatively endorse the harmful action; omission alone does not qualify.
+
+  Examples that ARE dangerous (isDangerous = true):
+  — Recommending amniocentesis for fetal lung maturity at ≥39 weeks before indicated delivery
+  — Citing subthreshold NST criteria (10 bpm × 10 sec) as sufficient for reactivity, which
+    would produce false reassurance and delay necessary intervention
+  — Ordering methylergonovine in a hypertensive patient (directly contraindicated)
+
+  Examples that are NOT dangerous (isDangerous = false):
+  — Failing to specify the 40-minute NST observation window (incomplete, not dangerous)
+  — Recommending BPP before delivery at term with nonreactive NST (suboptimal — use isCurveball)
+  — Omitting vibroacoustic stimulation from the nonreactive NST workup (gap, not danger)
+  — Deferring re-evaluation to morning without explicit endorsement of a harmful drug or action
+
   When true, safety_score MUST be 1 or 2.
 
 dangerousReason: One sentence naming the specific unsafe element in plain clinical language.
@@ -141,10 +168,25 @@ CURVEBALL FLAGS
 ═══════════════════════════════════════════════════════
 
 isCurveball: true when the candidate's answer falls into a well-known ABOG board exam trap —
-  technically defensible in some contexts but likely to cost points in this clinical scenario
-  (e.g., outdated threshold, wrong test for this presentation, missing the higher-yield approach).
+  technically defensible in some narrow contexts but clearly wrong or point-costing in THIS
+  clinical scenario.
 
-curveballReason: One sentence describing the trap. Empty string when isCurveball is false.
+  CURVEBALL examples (isCurveball = true):
+  — Citing subthreshold NST criteria (10 bpm × 10 sec instead of the required 15 × 15)
+  — Ordering fetal lung maturity testing at ≥39 weeks before an already-indicated delivery
+  — Requiring BPP as a mandatory step before delivery in a term persistently nonreactive NST
+  — Applying preterm management logic (conservative observation, repeat testing) to a term scenario
+  — Choosing a second-line uterotonic when the standard first-line agent is not contraindicated
+
+  NOT a curveball (isCurveball = false):
+  — Answer is clinically correct but lacks quantitative precision (missing a number, omitting a step)
+  — Answer takes the right approach but is incomplete or poorly organized
+  — Answer is suboptimal in prioritization but not a recognized ABOG exam trap
+
+  isCurveball and isDangerous CAN both be true simultaneously when the board trap also involves
+  explicitly recommending a contraindicated intervention (e.g., amniocentesis at term).
+
+curveballReason: One sentence describing the specific trap. Empty string when isCurveball is false.
 
 ═══════════════════════════════════════════════════════
 STRENGTHS AND GAPS
