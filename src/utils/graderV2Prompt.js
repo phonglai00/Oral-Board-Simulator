@@ -163,6 +163,13 @@ isDangerous: true ONLY when the candidate explicitly names a specific drug, dose
   — The candidate named a wrong test or procedure that is merely unnecessary (not contraindicated)
   — The candidate's plan could lead to harm only by downstream consequence — omission alone
     never qualifies; the candidate must affirmatively endorse the harmful action
+  — The candidate specifies a timeframe for repeat assessment ("in the morning,"
+    "in 4 hours," "tomorrow") without naming a contraindicated drug or procedure —
+    scheduling a follow-up assessment is incorrect management in urgent scenarios
+    but is not a dangerous named action
+  — The candidate states a dosing range where both endpoints are within accepted
+    clinical parameters — citing a range (e.g., "5–10 mg IV") is not a dangerous
+    dose when both values fall within the accepted clinical range for that drug
 
   isDangerous is TRUE when:
   — Candidate explicitly names a drug that is directly contraindicated by this patient's
