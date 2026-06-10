@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "status": "complete",
-  "run_timestamp": "2026-06-10T02:25:50.901Z",
+  "run_timestamp": "2026-06-10T03:29:34.252Z",
   "dataset_version": "1.0.0",
   "grader_spec_version": "1.0.0",
   "grader_spec_frozen": "2026-06-06",
@@ -10,9 +10,9 @@
   "probability_tolerance": 15,
   "summary": {
     "total": 35,
-    "passed": 10,
-    "failed": 25,
-    "pass_rate": 29
+    "passed": 11,
+    "failed": 24,
+    "pass_rate": 31
   },
   "dimension_accuracy": {
     "safety_score": {
@@ -26,9 +26,9 @@
       "pass_rate": 71
     },
     "management_score": {
-      "passed": 31,
+      "passed": 30,
       "total": 35,
-      "pass_rate": 89
+      "pass_rate": 86
     },
     "focus_score": {
       "passed": 33,
@@ -36,39 +36,39 @@
       "pass_rate": 94
     },
     "terminology_score": {
-      "passed": 24,
-      "total": 35,
-      "pass_rate": 69
-    },
-    "communication_score": {
       "passed": 30,
       "total": 35,
       "pass_rate": 86
     },
-    "recovery_score": {
+    "communication_score": {
       "passed": 33,
       "total": 35,
       "pass_rate": 94
+    },
+    "recovery_score": {
+      "passed": 29,
+      "total": 35,
+      "pass_rate": 83
     }
   },
   "flag_accuracy": {
     "isDangerous": {
-      "passed": 23,
+      "passed": 22,
       "total": 35,
-      "pass_rate": 66
+      "pass_rate": 63
     },
     "isCurveball": {
-      "passed": 25,
+      "passed": 18,
       "total": 35,
-      "pass_rate": 71
+      "pass_rate": 51
     }
   },
   "by_question": {
     "Q1": {
       "topic": "NST Interpretation",
-      "passed": 3,
+      "passed": 2,
       "total": 7,
-      "pass_rate": 43
+      "pass_rate": 29
     },
     "Q2": {
       "topic": "Term Nonreactive NST Management",
@@ -78,9 +78,9 @@
     },
     "Q3": {
       "topic": "Acute Fetal Bradycardia After Epidural",
-      "passed": 1,
+      "passed": 3,
       "total": 7,
-      "pass_rate": 14
+      "pass_rate": 43
     },
     "Q4": {
       "topic": "Severe Preeclampsia Management",
@@ -117,19 +117,19 @@
         "isCurveball": false,
         "curveballReason": "",
         "strengths": [
-          "Precisely defined reactive NST criteria with all quantitative parameters correct (2 accelerations, 15 bpm rise, 15-second duration, 20-minute window)",
-          "Correctly included the 40-minute nonreactive threshold and appropriately mentioned vibroacoustic stimulation as an adjunctive maneuver to clarify borderline tracings",
-          "Used precise medical terminology throughout with clear, well-organized explanation suitable for board-level obstetric practice"
+          "Correctly stated the precise NST reactivity criteria: 2 accelerations of ≥15 bpm × ≥15 seconds within 20 minutes.",
+          "Accurately defined nonreactivity as failure to meet criteria within 40 minutes of monitoring.",
+          "Demonstrated knowledge of vibroacoustic/acoustic stimulation as an adjunct to prolong observation and enhance fetal responsiveness before declaring true nonreactivity."
         ],
         "gaps": [],
         "teaching_points": [
           {
-            "pearl": "Vibroacoustic or fetal acoustic stimulation should be applied if the NST is nonreactive at 20 minutes to attempt to provoke fetal accelerations and clarify the tracing before declaring a nonreactive NST at 40 minutes.",
-            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+            "pearl": "A reactive NST requires at least TWO accelerations (not one) of ≥15 bpm lasting ≥15 seconds in a 20-minute window; the 40-minute window allows for vibroacoustic stimulation before nonreactivity is declared.",
+            "acog_reference": "Practice Bulletin 229 — Antepartum Fetal Assessment"
           },
           {
-            "pearl": "Decreased fetal movement reported by mother warrants immediate NST; if nonreactive, further evaluation with ultrasound and consideration of delivery is indicated at term (≥39 weeks) due to increased stillbirth risk.",
-            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+            "pearl": "In a term patient with decreased fetal movement and a persistently nonreactive NST, delivery is the standard management—further testing (BPP, repeat NST) delays indicated intervention.",
+            "acog_reference": "Practice Bulletin 229 — Antepartum Fetal Assessment"
           }
         ]
       },
@@ -238,19 +238,19 @@
         "isCurveball": false,
         "curveballReason": "",
         "strengths": [
-          "Correctly defined reactive NST with precise numerical criteria (2 accelerations, 15 bpm above baseline, 15 seconds duration)",
-          "Accurately stated the 40-minute monitoring window for determining nonreactivity",
-          "Clear, concise presentation of NST interpretation criteria"
+          "Correctly identified the exact NST criteria: 2 accelerations of 15 bpm × 15 seconds",
+          "Properly specified the 40-minute observation window for determining nonreactivity",
+          "Precise use of NST terminology (reactive, nonreactive, accelerations, baseline)"
         ],
         "gaps": [],
         "teaching_points": [
           {
-            "pearl": "A reactive NST in the third trimester is highly reassuring and typically allows for conservative management; a nonreactive NST warrants further evaluation with contraction stress test, biophysical profile, or delivery consideration depending on gestational age and clinical context.",
+            "pearl": "The NST reactive criteria of 2 accelerations × 15 bpm × 15 seconds over 20 minutes is the gold standard for fetal well-being; subthreshold criteria (10 bpm × 10 sec) produce false reassurance and are ABOG board pitfalls.",
             "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
           },
           {
-            "pearl": "In the context of decreased fetal movement at term (39 3/7 weeks), a reactive NST provides reassurance, but clinical judgment about delivery timing should incorporate maternal age, parity, and presence of any other risk factors.",
-            "acog_reference": "Committee Opinion 189 — Maternal Perception of Fetal Activity"
+            "pearl": "At term with concerning maternal complaint (absent fetal movement × hours) and a nonreactive NST, delivery is indicated; do not delay with repeat testing or further antepartum surveillance.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
           }
         ]
       },
@@ -345,37 +345,37 @@
       "archetype_label": "Borderline-High",
       "actual": {
         "safety_score": 4,
-        "diagnostic_score": 4,
+        "diagnostic_score": 3,
         "management_score": 3,
         "focus_score": 3,
-        "terminology_score": 4,
+        "terminology_score": 3,
         "communication_score": 4,
         "recovery_score": 5,
-        "pass_probability": 76,
+        "pass_probability": 71,
         "abog_score": 3,
         "abog_label": "Pass",
         "isDangerous": false,
         "dangerousReason": "",
-        "isCurveball": false,
-        "curveballReason": "",
+        "isCurveball": true,
+        "curveballReason": "Candidate fails to specify the required 15-second duration of acceleration and the 20-minute observation window, which are critical ABOG board criteria for NST reactivity. Missing these quantitative thresholds is a recognized board trap.",
         "strengths": [
-          "Correctly identified the core criterion of at least 2 accelerations ≥15 bpm above baseline for reactivity",
-          "Appropriately emphasized assessment of baseline rate and variability as additional important strip parameters",
-          "Demonstrated understanding of the nonreactive pattern as failure to meet reactive criteria"
+          "Correctly identified the 15 bpm acceleration amplitude criterion for reactivity",
+          "Appropriately acknowledged the need to assess baseline rate and variability as part of comprehensive NST interpretation",
+          "Clear distinction between reactive and nonreactive patterns"
         ],
         "gaps": [
-          "Omitted the specific duration requirement that accelerations must last at least 15 seconds",
-          "Failed to specify the standard monitoring window of 20 minutes for a reactive NST (or 40 minutes if initially nonreactive)",
-          "Did not address subsequent management implications (e.g., what to do if NST is nonreactive, vibroacoustic stimulation, further testing)"
+          "Failed to specify that each acceleration must last at least 15 seconds (not just reach 15 bpm)",
+          "Did not mention the 20-minute observation window as the standard timeframe for defining reactivity",
+          "Did not specify that a nonreactive NST is defined as failure to meet criteria within 40 minutes of monitoring"
         ],
         "teaching_points": [
           {
-            "pearl": "A reactive NST requires ≥2 accelerations of ≥15 bpm lasting ≥15 seconds in a 20-minute window; if nonreactive after 20 minutes, continue monitoring for an additional 20 minutes before further intervention.",
-            "acog_reference": "Practice Bulletin 209 — Antepartum Fetal Surveillance"
+            "pearl": "A reactive NST requires at least 2 accelerations of ≥15 bpm amplitude lasting ≥15 seconds each within a 20-minute window; nonreactivity is failure to meet these criteria after 40 minutes of observation.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
           },
           {
-            "pearl": "Assessment of baseline fetal heart rate (110–160 bpm), variability (moderate = 6–25 bpm), and the presence of decelerations are essential components of NST interpretation and guide clinical decision-making.",
-            "acog_reference": "Practice Bulletin 209 — Antepartum Fetal Surveillance"
+            "pearl": "In a term pregnancy (≥39 weeks) presenting with decreased fetal movement and a persistently nonreactive NST, delivery should be expedited rather than prolonging observation or repeating fetal surveillance tests.",
+            "acog_reference": "Committee Opinion 626 — Fetal Heart Rate Monitoring During Labor"
           }
         ]
       },
@@ -401,9 +401,9 @@
             "pass": true
           },
           "diagnostic_score": {
-            "actual": 4,
+            "actual": 3,
             "expected": 3,
-            "delta": 1,
+            "delta": 0,
             "pass": true
           },
           "management_score": {
@@ -419,9 +419,9 @@
             "pass": true
           },
           "terminology_score": {
-            "actual": 4,
+            "actual": 3,
             "expected": 3,
-            "delta": 1,
+            "delta": 0,
             "pass": true
           },
           "communication_score": {
@@ -438,9 +438,9 @@
           }
         },
         "pass_probability": {
-          "actual": 76,
+          "actual": 71,
           "expected": 86,
-          "delta": -10,
+          "delta": -15,
           "pass": true
         },
         "isDangerous": {
@@ -449,9 +449,9 @@
           "pass": true
         },
         "isCurveball": {
-          "actual": false,
+          "actual": true,
           "expected": false,
-          "pass": true
+          "pass": false
         },
         "abog_label": {
           "actual": "Pass",
@@ -469,41 +469,43 @@
       "archetype_id": "D",
       "archetype_label": "Borderline-Low",
       "actual": {
-        "safety_score": 3,
-        "diagnostic_score": 3,
+        "safety_score": 2,
+        "diagnostic_score": 2,
         "management_score": 2,
         "focus_score": 3,
-        "terminology_score": 3,
+        "terminology_score": 2,
         "communication_score": 3,
-        "recovery_score": 5,
-        "pass_probability": 59,
-        "abog_score": 2,
-        "abog_label": "Borderline",
-        "isDangerous": false,
-        "dangerousReason": "",
+        "recovery_score": 2,
+        "pass_probability": 42,
+        "abog_score": 1,
+        "abog_label": "Fail",
+        "isDangerous": true,
+        "dangerousReason": "Candidate specifies only 20 minutes of observation when NST protocol requires 40 minutes to definitively diagnose nonreactivity; this 20-minute cutoff could result in premature discharge or delayed intervention in a term patient with decreased fetal movement.",
         "isCurveball": true,
-        "curveballReason": "Candidate correctly identifies reactive vs nonreactive but fails to specify the quantitative criteria (2 accelerations of 15 bpm × 15 seconds in 20 minutes) and omits the critical protocol that nonreactive NSTs require 40-minute observation; this imprecision could lead to premature termination of testing and missed detection of fetal compromise.",
+        "curveballReason": "Candidate fails to state the required 15 bpm × 15 seconds × 2 accelerations criteria for reactivity and uses only 20 minutes instead of the standard 40-minute observation window, which is a classic ABOG board trap in NST interpretation.",
         "strengths": [
-          "Correctly identified that reactivity is associated with fetal movement and reassurance of fetal well-being.",
-          "Appropriately recognized that nonreactivity represents an abnormal finding requiring further evaluation."
+          "Correctly identifies that a reactive NST indicates reassurance ('baby is doing okay')",
+          "Recognizes that nonreactive NSTs show insufficient accelerations",
+          "Appropriately links accelerations to fetal movement"
         ],
         "gaps": [
-          "Failed to specify the exact quantitative criteria for a reactive NST (2 accelerations of 15 bpm lasting ≥15 seconds within 20 minutes).",
-          "Did not mention that nonreactive strips require extension to 40 minutes before declaring the test nonreactive.",
-          "No mention of next steps if NST is nonreactive (e.g., vibroacoustic stimulation, ultrasound assessment, delivery consideration at term)."
+          "Does not state the specific quantitative criteria for reactivity: 15 bpm amplitude × 15 seconds duration × 2 accelerations in 20 minutes",
+          "Specifies only 20 minutes of observation instead of the standard 40-minute window required to diagnose nonreactivity",
+          "Does not address what to do if the NST is nonreactive at 40 minutes in a term patient with decreased fetal movement (delivery is indicated)",
+          "No mention of baseline fetal heart rate, variability, or decelerations as interpretive elements"
         ],
         "teaching_points": [
           {
-            "pearl": "A reactive NST requires at least 2 accelerations of ≥15 beats above baseline, each lasting ≥15 seconds, within a 20-minute window; if criteria are not met in 20 minutes, continue to 40 minutes before declaring nonreactive.",
-            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+            "pearl": "A reactive NST requires at least 2 accelerations of ≥15 bpm above baseline, each lasting ≥15 seconds, within a 20-minute observation window; if not achieved in 40 minutes, the NST is nonreactive and further evaluation or delivery is indicated at term.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
           },
           {
-            "pearl": "A nonreactive NST at term (≥39 weeks) with decreased fetal movement warrants prompt evaluation for fetal jeopardy and consideration of delivery, especially in the context of a clinical complaint.",
-            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+            "pearl": "In a term patient (≥39 weeks) presenting with decreased fetal movement and a persistently nonreactive NST, delivery is the appropriate management; prolonged observation or additional testing (e.g., BPP) delays indicated delivery and increases perinatal risk.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
           },
           {
-            "pearl": "Vibroacoustic stimulation or fetal scalp stimulation can be used to clarify a nonreactive NST; if NST remains nonreactive or concerning features are present, further evaluation with ultrasound or delivery is indicated.",
-            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+            "pearl": "The 40-minute observation window is mandatory to differentiate a truly nonreactive NST from one that simply requires prolonged observation; premature interpretation at 20 minutes risks both false reassurance and inappropriate urgency.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
           }
         ]
       },
@@ -523,15 +525,15 @@
       "comparison": {
         "dimensions": {
           "safety_score": {
-            "actual": 3,
+            "actual": 2,
             "expected": 5,
-            "delta": -2,
+            "delta": -3,
             "pass": false
           },
           "diagnostic_score": {
-            "actual": 3,
+            "actual": 2,
             "expected": 2,
-            "delta": 1,
+            "delta": 0,
             "pass": true
           },
           "management_score": {
@@ -547,9 +549,9 @@
             "pass": true
           },
           "terminology_score": {
-            "actual": 3,
+            "actual": 2,
             "expected": 2,
-            "delta": 1,
+            "delta": 0,
             "pass": true
           },
           "communication_score": {
@@ -559,22 +561,22 @@
             "pass": true
           },
           "recovery_score": {
-            "actual": 5,
+            "actual": 2,
             "expected": 5,
-            "delta": 0,
-            "pass": true
+            "delta": -3,
+            "pass": false
           }
         },
         "pass_probability": {
-          "actual": 59,
+          "actual": 42,
           "expected": 80,
-          "delta": -21,
+          "delta": -38,
           "pass": false
         },
         "isDangerous": {
-          "actual": false,
+          "actual": true,
           "expected": false,
-          "pass": true
+          "pass": false
         },
         "isCurveball": {
           "actual": true,
@@ -582,9 +584,9 @@
           "pass": false
         },
         "abog_label": {
-          "actual": "Borderline",
+          "actual": "Fail",
           "expected": "Pass",
-          "pass": true
+          "pass": false
         },
         "all_dims_pass": false,
         "overall_pass": false
@@ -597,42 +599,42 @@
       "archetype_id": "E",
       "archetype_label": "Fail-Incomplete",
       "actual": {
-        "safety_score": 3,
+        "safety_score": 2,
         "diagnostic_score": 2,
-        "management_score": 2,
+        "management_score": 1,
         "focus_score": 2,
-        "terminology_score": 2,
-        "communication_score": 3,
-        "recovery_score": 5,
-        "pass_probability": 53,
+        "terminology_score": 1,
+        "communication_score": 2,
+        "recovery_score": 1,
+        "pass_probability": 32,
         "abog_score": 1,
         "abog_label": "Fail",
-        "isDangerous": false,
-        "dangerousReason": "",
+        "isDangerous": true,
+        "dangerousReason": "Candidate fails to specify diagnostic criteria for NST interpretation, risking false reassurance with subthreshold findings and delayed intervention in a term patient with decreased fetal movement.",
         "isCurveball": true,
-        "curveballReason": "Candidate fails to provide the specific, quantitative criteria for NST interpretation (2 accelerations of 15 bpm for 15 seconds in 20 minutes), which is a board-level requirement for this standard, frequently tested scenario.",
+        "curveballReason": "This is a classic ABOG board trap: the candidate uses vague qualitative language (baby 'looks good' and 'responding') instead of the required quantitative NST criteria (15 bpm × 15 sec × 2 accelerations in 20 minutes), which would allow a falsely reassuring interpretation of a nonreactive tracing.",
         "strengths": [
-          "Correctly identifies that a reactive NST indicates appropriate fetal response",
-          "Appropriately indicates further monitoring is needed based on NST results",
-          "Demonstrates appropriate awareness that clinical decision-making follows NST interpretation"
+          "Correctly identifies the two categories: reactive versus nonreactive",
+          "Acknowledges the need for monitoring and decision-making after NST interpretation"
         ],
         "gaps": [
-          "Omits the specific quantitative criteria for reactivity: 2 accelerations of 15 beats above baseline lasting 15 seconds in a 20-minute window",
-          "Does not define nonreactive NST with the corresponding numerical criteria or the 40-minute observation period",
-          "Vague language ('looks good,' 'responding the way we want') lacks the precision required for board-level NST interpretation",
-          "No mention of what 'watching her on the monitor' entails next (e.g., NST extension, vibroacoustic stimulation, contraction stress test, or delivery)"
+          "Completely absent: quantitative NST criteria (15 beats above baseline, 15 seconds duration, 2 accelerations in 20 minutes)",
+          "Does not specify the 40-minute observation window for nonreactive NST",
+          "Vague, qualitative language ('looks good,' 'responding') that lacks diagnostic precision and could lead to false reassurance",
+          "No mention of next management steps (delivery at term with decreased fetal movement and nonreactive NST)",
+          "No discussion of what to do if NST is nonreactive in the context of decreased fetal movement at term"
         ],
         "teaching_points": [
           {
-            "pearl": "A reactive NST is defined by at least 2 fetal heart rate accelerations of 15 bpm above baseline, each lasting at least 15 seconds, within a 20-minute observation window; nonreactive is failure to meet these criteria within 40 minutes.",
+            "pearl": "NST reactivity requires specific quantitative criteria: ≥2 accelerations of ≥15 bpm above baseline lasting ≥15 seconds within a 20-minute window; absence of these criteria over 40 minutes defines nonreactivity and mandates escalation in a term patient.",
             "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
           },
           {
-            "pearl": "In the setting of decreased fetal movement at term, a nonreactive NST mandates further evaluation—vibroacoustic stimulation, contraction stress test, or delivery depending on clinical context and maternal-fetal status.",
-            "acog_reference": "Committee Opinion 626 — Fetal Sensory, Cognitive, and Behavioral Development"
+            "pearl": "At term (≥39 weeks) with decreased fetal movement and a nonreactive NST, delivery is indicated; prolonged observation or fetal testing delays necessary intervention in a viable pregnancy where intrauterine fetal death risk is already elevated.",
+            "acog_reference": "Committee Opinion 687 — Approaches to Limit Intervention During Labor and Delivery"
           },
           {
-            "pearl": "Quantitative, reproducible criteria for NST interpretation are essential for standardized obstetric care and are a core competency for board certification.",
+            "pearl": "Vague descriptors ('looks good,' 'responding') are never acceptable for NST interpretation on board exams; only objective, quantified criteria prevent false reassurance and ensure appropriate escalation of care.",
             "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
           }
         ]
@@ -653,9 +655,9 @@
       "comparison": {
         "dimensions": {
           "safety_score": {
-            "actual": 3,
+            "actual": 2,
             "expected": 5,
-            "delta": -2,
+            "delta": -3,
             "pass": false
           },
           "diagnostic_score": {
@@ -665,9 +667,9 @@
             "pass": true
           },
           "management_score": {
-            "actual": 2,
+            "actual": 1,
             "expected": 5,
-            "delta": -3,
+            "delta": -4,
             "pass": false
           },
           "focus_score": {
@@ -677,34 +679,34 @@
             "pass": true
           },
           "terminology_score": {
+            "actual": 1,
+            "expected": 1,
+            "delta": 0,
+            "pass": true
+          },
+          "communication_score": {
             "actual": 2,
             "expected": 1,
             "delta": 1,
             "pass": true
           },
-          "communication_score": {
-            "actual": 3,
-            "expected": 1,
-            "delta": 2,
-            "pass": false
-          },
           "recovery_score": {
-            "actual": 5,
+            "actual": 1,
             "expected": 5,
-            "delta": 0,
-            "pass": true
+            "delta": -4,
+            "pass": false
           }
         },
         "pass_probability": {
-          "actual": 53,
+          "actual": 32,
           "expected": 73,
-          "delta": -20,
+          "delta": -41,
           "pass": false
         },
         "isDangerous": {
-          "actual": false,
+          "actual": true,
           "expected": false,
-          "pass": true
+          "pass": false
         },
         "isCurveball": {
           "actual": true,
@@ -733,38 +735,36 @@
         "focus_score": 3,
         "terminology_score": 3,
         "communication_score": 4,
-        "recovery_score": 2,
-        "pass_probability": 39,
+        "recovery_score": 1,
+        "pass_probability": 37,
         "abog_score": 1,
         "abog_label": "Fail",
         "isDangerous": true,
-        "dangerousReason": "Candidate recommends immediate delivery without further workup (e.g., fetal scalp stimulation, vibroacoustic stimulation, or ultrasound assessment) based solely on a single nonreactive NST, which violates standard of care and exposes patient to unnecessary operative delivery.",
-        "isCurveball": false,
-        "curveballReason": "",
+        "dangerousReason": "Candidate recommends immediate delivery without further workup for a single nonreactive NST, omitting mandatory confirmatory testing (vibroacoustic stimulation, repeat NST, or ultrasound evaluation) and potentially subjecting the patient to unnecessary operative delivery for a false-positive nonreactive result.",
+        "isCurveball": true,
+        "curveballReason": "Candidate uses subthreshold NST reactivity criteria (one 15-bpm acceleration instead of the required two) and conflates nonreactive NST with confirmed fetal distress, bypassing standard verification steps before delivery at term.",
         "strengths": [
-          "Recognizes that a nonreactive NST warrants clinical action and delivery planning.",
-          "Correctly identifies baseline acceleration criteria (15 beats × 15 seconds).",
-          "Appropriately recognizes decreased fetal movement as a concerning presentation requiring NST."
+          "Correctly identified the acceleration amplitude (15 bpm) and duration (15 seconds) required for NST interpretation.",
+          "Recognized that a nonreactive NST warrants intervention and delivery consideration in the term setting."
         ],
         "gaps": [
-          "Requires TWO accelerations (not one) in 20 minutes for a reactive NST.",
-          "Assumes nonreactive NST automatically confirms fetal distress without considering confounders (sleep, medications, prematurity) or further testing.",
-          "Omits standard next steps: fetal scalp stimulation, vibroacoustic stimulation, or ultrasound (amniotic fluid volume, fetal anomalies, cord) before delivery decision.",
-          "Fails to discuss role of obstetric ultrasound, biophysical profile, or modified biophysical profile to clarify fetal status.",
-          "No discussion of appropriate counseling, informed consent, or consideration of vaginal delivery as an option if fetal reassurance is achieved."
+          "Stated only ONE acceleration is needed for reactivity; the correct criterion is at least TWO accelerations in 20 minutes.",
+          "Failed to recognize that a nonreactive NST requires confirmatory testing (vibroacoustic stimulation, repeat NST observation, or ultrasound assessment for oligohydramnios, meconium, or fetal anomalies) before proceeding to delivery.",
+          "Incorrectly equated a single nonreactive NST with confirmed fetal distress, ignoring the possibility of false nonreactivity (fetal sleep, maternal sedation, etc.).",
+          "Did not mention the full 40-minute observation window for defining nonreactivity."
         ],
         "teaching_points": [
           {
-            "pearl": "A single nonreactive NST is NOT diagnostic of fetal distress and should trigger further testing (scalp stimulation, vibroacoustic stimulation, or biophysical profile) before delivery is indicated.",
-            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+            "pearl": "Reactive NST requires at least TWO accelerations of ≥15 bpm lasting ≥15 seconds within a 20-minute window; nonreactivity is defined as failure to meet these criteria after a full 40-minute observation.",
+            "acog_reference": "Practice Bulletin 162 — Antepartum Fetal Surveillance"
           },
           {
-            "pearl": "Reactive NST requires a minimum of TWO accelerations of ≥15 bpm lasting ≥15 seconds within a 20-minute window; nonreactive NST does not meet these criteria within 40 minutes.",
-            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+            "pearl": "A nonreactive NST at term is not diagnostic of fetal distress and mandates confirmatory testing (vibroacoustic stimulation, repeat NST, or comprehensive ultrasound) before delivery, unless urgent maternal or fetal indications already exist.",
+            "acog_reference": "Practice Bulletin 162 — Antepartum Fetal Surveillance"
           },
           {
-            "pearl": "Decreased fetal movement in a term patient warrants NST, and if nonreactive, escalation to ultrasound assessment of amniotic fluid, placental function, and fetal anatomy before intervention.",
-            "acog_reference": "Committee Opinion 687 — Approaches to Limit Intervention During Labor and Delivery"
+            "pearl": "At term with decreased fetal movement and a nonreactive NST, ultrasound should assess amniotic fluid volume, fetal motion, and tone; delivery is indicated only if fetal distress is confirmed or other obstetric indications are present.",
+            "acog_reference": "Committee Opinion 654 — Guidelines for Diagnostic Imaging During Pregnancy and Lactation"
           }
         ]
       },
@@ -820,16 +820,16 @@
             "pass": true
           },
           "recovery_score": {
-            "actual": 2,
+            "actual": 1,
             "expected": 1,
-            "delta": 1,
+            "delta": 0,
             "pass": true
           }
         },
         "pass_probability": {
-          "actual": 39,
+          "actual": 37,
           "expected": 35,
-          "delta": 4,
+          "delta": 2,
           "pass": true
         },
         "isDangerous": {
@@ -838,9 +838,9 @@
           "pass": true
         },
         "isCurveball": {
-          "actual": false,
+          "actual": true,
           "expected": false,
-          "pass": true
+          "pass": false
         },
         "abog_label": {
           "actual": "Fail",
@@ -848,7 +848,7 @@
           "pass": true
         },
         "all_dims_pass": true,
-        "overall_pass": true
+        "overall_pass": false
       },
       "error": null
     },
@@ -861,35 +861,39 @@
         "safety_score": 2,
         "diagnostic_score": 2,
         "management_score": 1,
-        "focus_score": 5,
-        "terminology_score": 4,
-        "communication_score": 5,
-        "recovery_score": 1,
-        "pass_probability": 41,
+        "focus_score": 4,
+        "terminology_score": 3,
+        "communication_score": 4,
+        "recovery_score": 2,
+        "pass_probability": 40,
         "abog_score": 1,
         "abog_label": "Fail",
         "isDangerous": true,
-        "dangerousReason": "Candidate uses subthreshold criteria (10 bpm for 10 seconds) instead of standard criteria (15 bpm for 15 seconds), risking misclassification of truly nonreactive NSTs as reactive and delaying necessary intervention for fetal compromise.",
-        "isCurveball": false,
-        "curveballReason": "",
+        "dangerousReason": "Candidate cites subthreshold NST criteria (10 bpm × 10 sec instead of 15 × 15), which would produce false reassurance and delay necessary intervention in a term patient with decreased fetal movement.",
+        "isCurveball": true,
+        "curveballReason": "Citing subthreshold NST criteria (10 × 10 instead of the mandatory 15 × 15 × 20 min standard) is a classic ABOG board exam trap that directly leads to missed diagnosis of a nonreactive NST and delayed delivery in a term patient with concerning symptoms.",
         "strengths": [
-          "Correctly identified the two-acceleration requirement for reactivity",
-          "Correctly defined nonreactivity as failure to meet criteria within a specified timeframe",
-          "Answer is concise, focused, and directly addresses the question asked"
+          "Correctly identified the two-acceleration requirement as core criterion for reactivity",
+          "Appropriately recognized that failure to meet criteria within a time window defines nonreactivity",
+          "Clear, organized statement of the core concept"
         ],
         "gaps": [
-          "Critical error: stated acceleration threshold of 10 bpm instead of 15 bpm above baseline",
-          "Critical error: stated acceleration duration of 10 seconds instead of 15 seconds",
-          "Did not specify the 40-minute observation window for nonreactive NSTs; only mentioned 20 minutes, which is incomplete"
+          "Critical error: cited 10 bpm × 10 sec instead of the correct 15 bpm × 15 sec threshold, which is the ACOG-defined standard and essential for this clinical decision",
+          "Stated 20-minute window for nonreactivity assessment instead of the full 40-minute observation period before declaring nonreactivity",
+          "Did not acknowledge or discuss management implications of a nonreactive NST at term with decreased fetal movement (indication for delivery)"
         ],
         "teaching_points": [
           {
-            "pearl": "A reactive NST requires at least 2 accelerations of ≥15 bpm above baseline lasting ≥15 seconds within a 20-minute window; if criteria are not met, continue monitoring up to 40 minutes before classifying as nonreactive.",
-            "acog_reference": "Practice Bulletin 209 — Antepartum Fetal Surveillance"
+            "pearl": "The ACOG-defined reactive NST requires ≥2 accelerations of ≥15 bpm lasting ≥15 seconds within a 20-minute window; failure to meet criteria by 40 minutes is nonreactive. Subthreshold criteria (10 × 10) create false reassurance and delay necessary intervention.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
           },
           {
-            "pearl": "Subthreshold accelerations (10 bpm × 10 sec) are not sufficient for reactivity and may represent a false reassurance signal, particularly dangerous in a patient with decreased fetal movement (concerning for acute fetal compromise).",
-            "acog_reference": "Practice Bulletin 209 — Antepartum Fetal Surveillance"
+            "pearl": "At term (≥39 weeks) with concerning symptoms such as persistently decreased fetal movement and nonreactive NST, delivery is indicated regardless of other test results; prolonged observation or further testing (e.g., BPP) inappropriately delays necessary care.",
+            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+          },
+          {
+            "pearl": "Decreased fetal movement is a maternal symptom of potential fetal compromise; NST is the initial diagnostic tool, and a nonreactive result at term warrants expedited delivery planning, not serial testing.",
+            "acog_reference": "Committee Opinion 654 — Management of Preterm Labor"
           }
         ]
       },
@@ -927,34 +931,34 @@
             "pass": false
           },
           "focus_score": {
-            "actual": 5,
+            "actual": 4,
             "expected": 4,
-            "delta": 1,
+            "delta": 0,
             "pass": true
           },
           "terminology_score": {
-            "actual": 4,
+            "actual": 3,
             "expected": 3,
-            "delta": 1,
+            "delta": 0,
             "pass": true
           },
           "communication_score": {
-            "actual": 5,
+            "actual": 4,
             "expected": 4,
-            "delta": 1,
+            "delta": 0,
             "pass": true
           },
           "recovery_score": {
-            "actual": 1,
+            "actual": 2,
             "expected": 1,
-            "delta": 0,
+            "delta": 1,
             "pass": true
           }
         },
         "pass_probability": {
-          "actual": 41,
+          "actual": 40,
           "expected": 59,
-          "delta": -18,
+          "delta": -19,
           "pass": false
         },
         "isDangerous": {
@@ -963,9 +967,9 @@
           "pass": false
         },
         "isCurveball": {
-          "actual": false,
+          "actual": true,
           "expected": true,
-          "pass": false
+          "pass": true
         },
         "abog_label": {
           "actual": "Fail",
@@ -998,19 +1002,23 @@
         "isCurveball": false,
         "curveballReason": "",
         "strengths": [
-          "Correctly identified that persistently nonreactive NST at term is an indication for delivery, not further surveillance",
-          "Appropriately recognized the gestational age (term) makes the risk-benefit calculation favor delivery over additional testing",
-          "Included logical next steps: admission, cervical assessment, and conditional use of cervical ripening based on cervical status"
+          "Correctly identified that persistent nonreactivity at term with adequate observation warrants delivery rather than further antepartum testing",
+          "Appropriately applied risk-benefit reasoning specific to term gestation, recognizing that additional surveillance delays indicated intervention",
+          "Provided complete, evidence-based management plan including admission, cervical assessment, and conditional cervical ripening"
         ],
         "gaps": [],
         "teaching_points": [
           {
-            "pearl": "A persistently nonreactive NST after adequate stimulation at term mandates delivery, as continued antepartum surveillance carries unacceptable risk in this clinical context.",
-            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+            "pearl": "At term (≥39 weeks), a persistently nonreactive NST after adequate observation (40 minutes) with stimulation is an indication for delivery; further testing (BPP, CST) delays appropriate care and is not standard practice.",
+            "acog_reference": "Practice Bulletin 229 — Fetal Heart Rate Monitoring During Labor"
           },
           {
-            "pearl": "Cervical status assessment guides the induction approach: favorable cervix favors vaginal delivery induction; unfavorable cervix may require cervical ripening or mechanical methods.",
-            "acog_reference": "Practice Bulletin 107 — Induction of Labor"
+            "pearl": "The management of nonreactive NST fundamentally differs between preterm and term: preterm allows serial testing and conservative management; term favors expedited delivery to avoid fetal compromise from ongoing poor oxygenation.",
+            "acog_reference": "Practice Bulletin 229 — Fetal Heart Rate Monitoring During Labor"
+          },
+          {
+            "pearl": "When proceeding to delivery for nonreactive NST at term, cervical assessment guides choice between induction with ripening agents (unfavorable cervix) versus augmentation or artificial rupture of membranes (favorable cervix).",
+            "acog_reference": "Practice Bulletin 205 — Vaginal Birth After Cesarean Delivery; Practice Bulletin 198 — Induction of Labor"
           }
         ]
       },
@@ -1119,19 +1127,23 @@
         "isCurveball": false,
         "curveballReason": "",
         "strengths": [
-          "Correctly identified term gestation as the pivotal clinical factor requiring delivery rather than further testing",
-          "Appropriately ruled out discharge home, demonstrating recognition of fetal jeopardy in this scenario",
-          "Mentioned biophysical profile as an optional adjunct while maintaining clear primacy of delivery as the appropriate next step"
+          "Correctly recognized that term gestation with persistently nonreactive NST mandates delivery, not further surveillance",
+          "Appropriately dismissed BPP as unnecessary for this presentation, acknowledging it would only be relevant if clinical picture were unclear",
+          "Explicitly rejected unsafe option (sending patient home) in setting of nonreactive NST"
         ],
         "gaps": [],
         "teaching_points": [
           {
-            "pearl": "A persistently nonreactive NST at term with decreased fetal movement mandates delivery; further testing delays appropriate intervention when gestational age permits safe delivery.",
-            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+            "pearl": "At term (≥39 weeks) with a persistently nonreactive NST despite vibroacoustic stimulation, proceed directly to delivery rather than prolonging antepartum testing; further testing delays definitive management of an abnormal fetal heart rate pattern.",
+            "acog_reference": "Practice Bulletin 229 — Fetal Heart Rate Interpretation and Management"
           },
           {
-            "pearl": "At term (≥39 weeks), the CST and BPP are optional confirmatory tests but should not delay delivery when clinical indicators such as nonreactive NST and decreased fetal movement are present.",
-            "acog_reference": "Practice Bulletin 116 — Antepartum Fetal Surveillance"
+            "pearl": "Biophysical profile at term with an abnormal NST represents a curveball trap—it may delay delivery and falsely reassure; the NST abnormality itself is sufficient indication for delivery at term.",
+            "acog_reference": "Practice Bulletin 229 — Fetal Heart Rate Interpretation and Management"
+          },
+          {
+            "pearl": "Vibroacoustic stimulation for 40 minutes with no fetal reactivity is a definitive nonreactive NST; no further antepartum surveillance is indicated at term.",
+            "acog_reference": "Practice Bulletin 229 — Fetal Heart Rate Interpretation and Management"
           }
         ]
       },
@@ -1225,42 +1237,42 @@
       "archetype_id": "C",
       "archetype_label": "Borderline-High",
       "actual": {
-        "safety_score": 4,
-        "diagnostic_score": 4,
-        "management_score": 3,
+        "safety_score": 2,
+        "diagnostic_score": 3,
+        "management_score": 2,
         "focus_score": 3,
-        "terminology_score": 5,
-        "communication_score": 5,
-        "recovery_score": 5,
-        "pass_probability": 78,
-        "abog_score": 3,
-        "abog_label": "Pass",
+        "terminology_score": 4,
+        "communication_score": 4,
+        "recovery_score": 2,
+        "pass_probability": 45,
+        "abog_score": 1,
+        "abog_label": "Fail",
         "isDangerous": false,
         "dangerousReason": "",
         "isCurveball": true,
-        "curveballReason": "At term with a persistently nonreactive NST and decreased fetal movement, delivery is the standard-of-care next step; ordering a BPP adds unnecessary delay rather than improving fetal assessment accuracy.",
+        "curveballReason": "At term (≥39 weeks) with a persistently nonreactive NST after vibroacoustic stimulation, BPP is an unnecessary delay to indicated delivery; this is a classic ABOG board trap favoring premature/preterm logic over term management.",
         "strengths": [
-          "Correctly identified that the patient should not be discharged home given the nonreactive NST and decreased fetal movement.",
-          "Appropriately used BPP threshold (≤6) as a decision point for delivery.",
-          "Used precise terminology throughout (biophysical profile, nonreactive NST)."
+          "Correctly refuses to send patient home given the prolonged nonreactive NST.",
+          "Appropriately uses BPP score threshold of ≤6 as an indication for delivery.",
+          "Uses precise terminology (biophysical profile, nonreactive NST)."
         ],
         "gaps": [
-          "Failed to recognize that at term gestation with a nonreactive NST, delivery is the standard recommendation and does not require intervening BPP; a BPP is typically reserved for preterm gestations with nonreactive NSTs.",
-          "Did not acknowledge that the 40-minute NST extension with vibroacoustic stimulation already represents adequate fetal assessment; further testing delays appropriate care.",
-          "Missed the opportunity to address delivery timing and method (spontaneous trial of labor vs. induction) in the management plan."
+          "Fails to recognize that at term with a persistently nonreactive NST, delivery is the appropriate immediate next step without further fetal testing.",
+          "Does not acknowledge that CST or BPP delays delivery in a scenario where there is already objective evidence of fetal compromise (prolonged nonreactivity).",
+          "Does not explain the clinical reasoning for why additional testing is necessary when the indication for delivery is already established at term."
         ],
         "teaching_points": [
           {
-            "pearl": "At term (≥39 weeks), a persistently nonreactive NST with decreased fetal movement warrants delivery; further testing with BPP does not improve neonatal outcomes and delays appropriate care.",
+            "pearl": "At term (≥39 weeks), a persistently nonreactive NST (≥40 minutes with vibroacoustic stimulation) is an indication for delivery; further fetal testing (BPP, CST) delays care and is not indicated.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+          },
+          {
+            "pearl": "Nonreactive NST at term indicates the need to consider delivery; the BPP may be useful for preterm nonreactive NSTs but adds unnecessary delay at term when delivery is already appropriate.",
             "acog_reference": "Practice Bulletin 189 — Antepartum Fetal Surveillance"
           },
           {
-            "pearl": "Biophysical profile is most useful for evaluation of nonreactive NSTs in the preterm period; at term, a nonreactive NST is sufficient indication for delivery.",
-            "acog_reference": "Practice Bulletin 189 — Antepartum Fetal Surveillance"
-          },
-          {
-            "pearl": "Decreased fetal movement at term combined with a nonreactive NST reflects significant fetal compromise and mandates expeditious delivery to prevent perinatal morbidity and mortality.",
-            "acog_reference": "Committee Opinion 805 — Fetal Assessment in the Antepartum Period"
+            "pearl": "Decreased fetal movement with subsequent nonreactive NST at term warrants expedited delivery; prolonged observation or additional testing may increase perinatal morbidity and mortality risk.",
+            "acog_reference": "Committee Opinion 581 — The Definition and Investigation of Decreased Fetal Movement"
           }
         ]
       },
@@ -1280,21 +1292,21 @@
       "comparison": {
         "dimensions": {
           "safety_score": {
-            "actual": 4,
+            "actual": 2,
             "expected": 4,
-            "delta": 0,
-            "pass": true
+            "delta": -2,
+            "pass": false
           },
           "diagnostic_score": {
-            "actual": 4,
+            "actual": 3,
             "expected": 4,
-            "delta": 0,
+            "delta": -1,
             "pass": true
           },
           "management_score": {
-            "actual": 3,
+            "actual": 2,
             "expected": 3,
-            "delta": 0,
+            "delta": -1,
             "pass": true
           },
           "focus_score": {
@@ -1304,29 +1316,29 @@
             "pass": true
           },
           "terminology_score": {
-            "actual": 5,
+            "actual": 4,
             "expected": 3,
-            "delta": 2,
-            "pass": false
+            "delta": 1,
+            "pass": true
           },
           "communication_score": {
-            "actual": 5,
+            "actual": 4,
             "expected": 3,
-            "delta": 2,
-            "pass": false
+            "delta": 1,
+            "pass": true
           },
           "recovery_score": {
-            "actual": 5,
+            "actual": 2,
             "expected": 5,
-            "delta": 0,
-            "pass": true
+            "delta": -3,
+            "pass": false
           }
         },
         "pass_probability": {
-          "actual": 78,
+          "actual": 45,
           "expected": 74,
-          "delta": 4,
-          "pass": true
+          "delta": -29,
+          "pass": false
         },
         "isDangerous": {
           "actual": false,
@@ -1339,9 +1351,9 @@
           "pass": false
         },
         "abog_label": {
-          "actual": "Pass",
+          "actual": "Fail",
           "expected": "Pass",
-          "pass": true
+          "pass": false
         },
         "all_dims_pass": false,
         "overall_pass": false
@@ -1365,30 +1377,31 @@
         "abog_score": 1,
         "abog_label": "Fail",
         "isDangerous": true,
-        "dangerousReason": "Delaying delivery at term (39 3/7 weeks) with a nonreactive NST after adequate stimulation, choosing outpatient monitoring instead of proceeding to delivery, risks fetal demise from unrecognized intrauterine pathology.",
-        "isCurveball": false,
-        "curveballReason": "",
+        "dangerousReason": "Explicitly recommends deferring delivery and repeating NST in the morning in a term patient with persistently nonreactive NST after adequate observation and stimulation, which delays indicated delivery and risks perinatal death.",
+        "isCurveball": true,
+        "curveballReason": "Classic ABOG board trap: applying preterm conservative management (repeat testing, observation) to a term scenario where nonreactive NST at term demands delivery, not further observation or reassurance maneuvers.",
         "strengths": [
-          "Candidate correctly identifies that fetal sleep state can temporarily reduce FHR variability and acknowledges the need to confirm the finding."
+          "Correctly applied vibroacoustic stimulation as part of the NST workup (demonstrates knowledge of standard NST protocol)",
+          "Acknowledged the 40-minute extended observation window, meeting the minimum adequacy threshold for NST interpretation"
         ],
         "gaps": [
-          "Fails to recognize that at term (39 3/7 weeks), a nonreactive NST after vibroacoustic stimulation is an indication for delivery, not further outpatient observation.",
-          "Does not mention appropriate next steps for further evaluation (BPP or CST) before delivery if additional testing were considered.",
-          "Suggests unsafe delay by deferring re-evaluation to 'morning' rather than proceeding with expedited delivery or timely further testing.",
-          "Misses the critical distinction between preterm (where conservative management may be appropriate) and term gestation (where delivery is indicated)."
+          "Fundamentally mismanaged a term nonreactive NST by recommending observation and deferral rather than delivery",
+          "Misapplied the concept of fetal sleep cycles to a term patient—sleep cycles are relevant to preterm NST interpretation, not as justification for delayed delivery at term",
+          "Failed to recognize that a nonreactive NST at term after adequate stimulation is an indication for delivery, not repeat testing",
+          "Did not address the patient's chief complaint of decreased fetal movement as a sign of potential fetal compromise in the setting of nonreactive NST"
         ],
         "teaching_points": [
           {
-            "pearl": "At term gestation with a nonreactive NST after adequate stimulation (vibroacoustic), delivery is the appropriate management; further outpatient observation delays necessary intervention and risks fetal demise.",
-            "acog_reference": "Practice Bulletin 229 — Antepartum Fetal Assessment"
+            "pearl": "At term (≥39 weeks), a persistently nonreactive NST after 40 minutes of observation with vibroacoustic stimulation is an indication for delivery; further observation or repeat testing delays care and increases perinatal mortality risk.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
           },
           {
-            "pearl": "Fetal sleep cycles typically last 20–40 minutes; when an NST remains nonreactive after 40 minutes with vibroacoustic stimulation at term, this is abnormal and mandates immediate action (delivery or rapid further testing), not reassurance.",
-            "acog_reference": "Practice Bulletin 229 — Antepartum Fetal Assessment"
+            "pearl": "Fetal sleep cycles (behavioral quietude) are a relevant physiologic explanation for transient non-reactivity in preterm fetuses but should not delay delivery of a term fetus with a nonreactive NST and decreased fetal movement.",
+            "acog_reference": "Practice Bulletin 70 — Intrapartum Fetal Heart Rate Monitoring"
           },
           {
-            "pearl": "Decreased fetal movement (decreased kick counts) is a clinical complaint that requires urgent evaluation; combined with a nonreactive NST at term, it is a clear delivery indication.",
-            "acog_reference": "Practice Bulletin 189 — Patient-Initiated Fetal Movement-Guided Antenatal Testing"
+            "pearl": "Decreased fetal movement (kick counts) in a term patient with a nonreactive NST constitutes a red flag for fetal compromise; this combination warrants expedited delivery, not reassurance or repeated observation.",
+            "acog_reference": "Practice Bulletin 189 — Antepartum Fetal Surveillance"
           }
         ]
       },
@@ -1462,9 +1475,9 @@
           "pass": false
         },
         "isCurveball": {
-          "actual": false,
+          "actual": true,
           "expected": false,
-          "pass": true
+          "pass": false
         },
         "abog_label": {
           "actual": "Fail",
@@ -1482,42 +1495,41 @@
       "archetype_id": "E",
       "archetype_label": "Fail-Incomplete",
       "actual": {
-        "safety_score": 1,
-        "diagnostic_score": 2,
+        "safety_score": 2,
+        "diagnostic_score": 4,
         "management_score": 1,
         "focus_score": 2,
         "terminology_score": 4,
         "communication_score": 4,
         "recovery_score": 1,
-        "pass_probability": 31,
+        "pass_probability": 45,
         "abog_score": 1,
         "abog_label": "Fail",
         "isDangerous": true,
-        "dangerousReason": "Candidate recommends deferring delivery for overnight observation in a term patient with a nonreactive NST and decreased fetal movement—a scenario with high risk of intrauterine fetal death. Delayed delivery is contraindicated.",
-        "isCurveball": false,
-        "curveballReason": "",
+        "dangerousReason": "Deferring delivery overnight in a term patient (39 3/7 weeks) with a persistently nonreactive NST after appropriate stimulation creates unacceptable risk of fetal death or morbidity; at term, a nonreactive NST is an indication for delivery, not expectant management.",
+        "isCurveball": true,
+        "curveballReason": "Applying preterm conservative management (reassess in morning) to a term scenario where nonreactive NST at term mandates delivery; this is a classic ABOG board trap that confuses appropriate watchful waiting at preterm gestational age with term delivery indications.",
         "strengths": [
-          "Appropriate use of terminology ('decreased fetal movement,' 'reassess').",
-          "Acknowledges the clinical problem and proposes a follow-up plan (though inappropriate timing)."
+          "Correctly performed the NST with appropriate extension to 40 minutes and vibroacoustic stimulation per protocol.",
+          "Appropriately documented the nonreactive result after the full evaluation window."
         ],
         "gaps": [
-          "Fails to recognize that a nonreactive NST at term with decreased fetal movement is a clear indication for delivery, not expectant management.",
-          "Does not consider fetal well-being urgency; overnight delay significantly increases risk of stillbirth in this scenario.",
-          "No mention of delivery options (induction, cesarean) or further testing (CST or BPP if pursuing conservative approach, which is not recommended here).",
-          "Misses the key distinction that at term, a nonreactive NST with decreased fetal movement requires expedited delivery rather than observation."
+          "Fundamentally mismanages a term patient with nonreactive NST by deferring delivery rather than proceeding to delivery as the standard of care at term.",
+          "Does not recognize that at term (≥39 weeks), a persistently nonreactive NST—even after vibroacoustic stimulation—is a clear indication for delivery.",
+          "Suggests overnight expectant management, which delays necessary intervention and exposes the fetus to risk of further deterioration or death."
         ],
         "teaching_points": [
           {
-            "pearl": "A nonreactive NST at ≥37 weeks with decreased fetal movement mandates delivery; expectant management overnight is contraindicated and exposes the fetus to unacceptable risk of intrauterine fetal death.",
-            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+            "pearl": "At term (≥39 weeks), a persistently nonreactive NST after appropriate stimulation is an indication for delivery; further testing (CST or BPP) may be considered but delivery is the expected endpoint. Do not defer to morning or apply preterm watchful-waiting logic to a term patient.",
+            "acog_reference": "Practice Bulletin 223 — Fetal Heart Rate Monitoring During Labor"
           },
           {
-            "pearl": "Decreased fetal movement is a maternal perception that warrants objective fetal assessment (NST, BPP, or CST); nonreactivity on NST at term is an indication for delivery, not observation.",
-            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+            "pearl": "Vibroacoustic stimulation is a low-risk, rapid technique to differentiate true nonreactivity from fetal sleep; if the NST remains nonreactive after 40 minutes with VAS, additional testing or delivery should follow—not expectant deferral.",
+            "acog_reference": "Practice Bulletin 223 — Fetal Heart Rate Monitoring During Labor"
           },
           {
-            "pearl": "The combination of decreased fetal movement AND nonreactive NST at term creates a high-risk situation; delay in delivery significantly increases perinatal morbidity and mortality.",
-            "acog_reference": "Committee Opinion 656 — Decreased Fetal Movement"
+            "pearl": "Decreased fetal movement at term, especially when combined with a nonreactive NST, warrants expedited evaluation and delivery planning; delayed reassessment increases risk of adverse outcome.",
+            "acog_reference": "Practice Bulletin 189 — Antepartum Fetal Surveillance"
           }
         ]
       },
@@ -1537,16 +1549,16 @@
       "comparison": {
         "dimensions": {
           "safety_score": {
-            "actual": 1,
+            "actual": 2,
             "expected": 2,
-            "delta": -1,
+            "delta": 0,
             "pass": true
           },
           "diagnostic_score": {
-            "actual": 2,
+            "actual": 4,
             "expected": 1,
-            "delta": 1,
-            "pass": true
+            "delta": 3,
+            "pass": false
           },
           "management_score": {
             "actual": 1,
@@ -1580,10 +1592,10 @@
           }
         },
         "pass_probability": {
-          "actual": 31,
+          "actual": 45,
           "expected": 28,
-          "delta": 3,
-          "pass": true
+          "delta": 17,
+          "pass": false
         },
         "isDangerous": {
           "actual": true,
@@ -1591,9 +1603,9 @@
           "pass": false
         },
         "isCurveball": {
-          "actual": false,
+          "actual": true,
           "expected": false,
-          "pass": true
+          "pass": false
         },
         "abog_label": {
           "actual": "Fail",
@@ -1622,31 +1634,31 @@
         "abog_score": 1,
         "abog_label": "Fail",
         "isDangerous": true,
-        "dangerousReason": "Candidate recommends delaying delivery and repeating NST in 24 hours at term with persistent nonreactive NST and decreased fetal movement, creating foreseen risk of stillbirth and compromised fetal outcome.",
-        "isCurveball": false,
-        "curveballReason": "",
+        "dangerousReason": "Candidate explicitly recommends deferring delivery for 24 hours of observation in a term patient (39+3 weeks) with a persistently nonreactive NST after adequate assessment, which delays indicated delivery and exposes the fetus to unnecessary risk of stillbirth in the setting of decreased fetal movement.",
+        "isCurveball": true,
+        "curveballReason": "Candidate applies preterm management logic (conservative observation, repeat NST in 24 hours) to a term scenario where delivery is the standard of care; this is a classic ABOG board trap.",
         "strengths": [
-          "Recognizes that nonreactive NST requires further evaluation beyond the initial tracing.",
-          "Uses appropriate terminology (nonreactive NST, continued monitoring) and communicates reasoning clearly."
+          "Appropriately recognized that a nonreactive NST requires further evaluation beyond the initial 20-minute window.",
+          "Correctly identified and applied vibroacoustic stimulation as part of the NST workup.",
+          "Clear and organized communication of the management plan."
         ],
         "gaps": [
-          "Fails to recognize that at term (39 3/7 weeks), a nonreactive NST with decreased fetal movement is an indication for delivery, not observation.",
-          "Does not offer or mention appropriate next steps at term such as CST or BPP as intermediate testing before delivery.",
-          "Recommends 24-hour delayed reassessment, which is inappropriate management of presumed fetal compromise at term and contradicts standard of care.",
-          "Does not address the clinical context: patient is already at term, presenting with decreased fetal movement, and NST remains nonreactive after vibroacoustic stimulation—all indications for prompt delivery."
+          "Failed to recognize that at term (≥39 weeks) with a persistently nonreactive NST and abnormal presentation (decreased fetal movement), delivery is indicated rather than observation.",
+          "Incorrectly deferred delivery for 24 hours of continued monitoring, which is unsafe and inconsistent with ACOG guidance for term nonreactive NST.",
+          "Did not acknowledge that the clinical presentation (decreased fetal movement + nonreactive NST at term) mandates prompt delivery, not serial testing."
         ],
         "teaching_points": [
           {
-            "pearl": "At term (≥39 weeks), a nonreactive NST with decreased fetal movement is an indication for delivery via IOL or cesarean section; expectant management and repeat testing in 24 hours is not appropriate and delays necessary intervention.",
-            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+            "pearl": "At term (≥39 weeks), a persistently nonreactive NST in the setting of abnormal fetal movement or other concerning clinical signs warrants delivery rather than conservative observation with repeat testing.",
+            "acog_reference": "Practice Bulletin 116 — Intrapartum Fetal Heart Rate Monitoring; Committee Opinion 626 — Fetal Heart Rate Monitoring During Labor"
           },
           {
-            "pearl": "Decreased fetal movement at term combined with nonreactive NST unresponsive to vibroacoustic stimulation signals potential fetal compromise and warrants delivery planning within hours, not days.",
-            "acog_reference": "Committee Opinion 789 — Delivery of a Newborn With Meconium-Stained Amniotic Fluid"
+            "pearl": "Preterm management of nonreactive NST (serial testing, observation, BPP) should not be extrapolated to term pregnancies; term pregnancies with nonreactive NST and maternal complaints warrant delivery.",
+            "acog_reference": "Practice Bulletin 134 — Fetal Presentation, Mode of Delivery, and Associated Risks"
           },
           {
-            "pearl": "While CST or BPP may occasionally be used at term to further stratify risk in isolated nonreactive NST, they should not delay delivery when clinical context (decreased movement + nonreactive + term gestation) indicates fetal compromise.",
-            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+            "pearl": "A 24-hour deferral of delivery in a term patient with decreased fetal movement and nonreactive NST substantially increases the risk of fetal death and is inconsistent with standard obstetric practice.",
+            "acog_reference": "Practice Bulletin 198 — Fetal Monitoring: Nomenclature, Interpretation, and General Management Principles"
           }
         ]
       },
@@ -1720,9 +1732,9 @@
           "pass": true
         },
         "isCurveball": {
-          "actual": false,
+          "actual": true,
           "expected": false,
-          "pass": true
+          "pass": false
         },
         "abog_label": {
           "actual": "Fail",
@@ -1746,34 +1758,35 @@
         "focus_score": 2,
         "terminology_score": 4,
         "communication_score": 4,
-        "recovery_score": 1,
-        "pass_probability": 37,
+        "recovery_score": 2,
+        "pass_probability": 39,
         "abog_score": 1,
         "abog_label": "Fail",
         "isDangerous": true,
-        "dangerousReason": "Amniocentesis delays delivery in a term patient with nonreactive NST, creating unnecessary risk of intrauterine fetal death. At 39+3 weeks, fetal lung maturity is assured; testing for it is contraindicated and dangerous.",
+        "dangerousReason": "Recommending amniocentesis for fetal lung maturity assessment at 39+3 weeks when delivery is already indicated delays necessary intervention in a term pregnancy with persistent nonreactive NST and decreased fetal movement, exposing the fetus to unnecessary risk.",
         "isCurveball": true,
-        "curveballReason": "Candidate conflates preterm delivery rationale (need to confirm lung maturity before elective preterm delivery) with term delivery (where fetal viability is not in question and nonreactive NST mandates urgent delivery, not testing).",
+        "curveballReason": "Applying preterm management logic (assessment of fetal lung maturity before delivery) to a term scenario where delivery is already indicated; fetal lung maturity testing is contraindicated at ≥39 weeks when delivery is planned.",
         "strengths": [
-          "Correctly identified that the nonreactive NST at term warrants a change in management and delivery planning.",
-          "Appropriate use of L/S ratio and phosphatidylglycerol terminology for fetal lung maturity assessment."
+          "Correctly identified that recommendations change in response to a persistently nonreactive NST at term",
+          "Accurately names fetal lung maturity test components (L/S ratio and phosphatidylglycerol)",
+          "Appropriately identifies induction of labor as the planned delivery method"
         ],
         "gaps": [
-          "Failed to recognize that at term (39+3 weeks), fetal lung maturity testing is unnecessary and delays indicated delivery.",
-          "Did not proceed directly to delivery (via induction or cesarean) as the standard of care for nonreactive NST at term with decreased fetal movement.",
-          "Missed that amniocentesis itself carries small but real risk of infection, rupture of membranes, and bleeding—risks unjustified when delivery is already indicated."
+          "Fails to recognize that fetal lung maturity testing is unnecessary and inappropriate at 39+3 weeks when delivery is indicated",
+          "Does not acknowledge that decreased fetal movement with nonreactive NST at term mandates prompt delivery without further delay for testing",
+          "Missing recognition that amniocentesis itself carries procedural risk and further delays time to delivery in an already-compromised fetus"
         ],
         "teaching_points": [
           {
-            "pearl": "At term (≥39 weeks), a nonreactive NST with decreased fetal movement mandates delivery without delay; fetal lung maturity testing is irrelevant and contraindicated because viability is assured.",
-            "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
+            "pearl": "At term (≥39 weeks), a persistently nonreactive NST in the setting of decreased fetal movement is an indication for delivery; fetal lung maturity assessment delays necessary intervention and is contraindicated.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
           },
           {
-            "pearl": "Amniocentesis for fetal lung maturity is reserved for preterm pregnancies where delivery is being considered before 39 weeks; it should never delay delivery in term pregnancies with abnormal fetal status.",
-            "acog_reference": "Practice Bulletin 238 — Antenatal Corticosteroid Therapy for Fetal Maturation"
+            "pearl": "Fetal lung maturity testing is reserved for preterm pregnancies (typically <39 weeks) when delivery is being considered but lung maturity status would influence timing; it should never be used to defer delivery at term when maternal or fetal indication exists.",
+            "acog_reference": "Practice Bulletin 97 — Fetal Maturity"
           },
           {
-            "pearl": "Nonreactive NST at term with decreased fetal movement is equivalent to fetal compromise and calls for urgent delivery (induction or cesarean depending on clinical context), not further testing.",
+            "pearl": "Decreased fetal movement combined with nonreactive NST at term constitutes sufficient indication for immediate delivery; further surveillance testing (BPP, CST) may be considered, but amniocentesis is never appropriate in this context.",
             "acog_reference": "Practice Bulletin 145 — Antepartum Fetal Surveillance"
           }
         ]
@@ -1830,16 +1843,16 @@
             "pass": true
           },
           "recovery_score": {
-            "actual": 1,
+            "actual": 2,
             "expected": 1,
-            "delta": 0,
+            "delta": 1,
             "pass": true
           }
         },
         "pass_probability": {
-          "actual": 37,
+          "actual": 39,
           "expected": 47,
-          "delta": -10,
+          "delta": -8,
           "pass": true
         },
         "isDangerous": {
@@ -1883,26 +1896,27 @@
         "isCurveball": false,
         "curveballReason": "",
         "strengths": [
-          "Correctly identified maternal hypotension from epidural as the most likely etiology and immediately addressed it with IV fluids and ephedrine dosing.",
-          "Systematically performed all core maternal resuscitation interventions (repositioning, oxygen, fluid bolus, vasopressor) in appropriate sequence.",
-          "Appropriately ruled out prolapsed cord via vaginal examination before assuming benign cause.",
-          "Correctly identified the need for escalation (FSE placement, terbutaline for tachysystole, OR notification) with appropriate conditional decision-making."
+          "Correctly identified epidural-induced hypotension as the most common cause and prioritized checking maternal BP as the first diagnostic step",
+          "Systematically addressed all five key interventions in appropriate order: IV fluids, vasopressor (ephedrine), positioning, oxygen, and vaginal exam to rule out prolapsed cord",
+          "Appropriately specified FSE (fetal scalp electrode) placement for continuous direct fetal monitoring in the setting of acute bradycardia",
+          "Correct dosing of terbutaline (0.25 mg SQ) and appropriate consideration of tachysystole as a contributing factor"
         ],
         "gaps": [
-          "Ephedrine dosing: candidate stated '5 to 10 milligrams IV,' but standard dosing for perioperative hypotension is 5 mg IV push repeated every 5–10 minutes as needed; the upper range is less commonly stated as a single bolus dose and could introduce dosing ambiguity."
+          "Specified ephedrine dose range of 5–10 mg IV rather than the standard initial 5 mg IV dose (minor dose specification imprecision, though 5–10 mg remains within acceptable range)",
+          "Did not explicitly mention checking fetal heart rate baseline or variability post-resuscitation to assess response, though the phrase 'if the bradycardia does not resolve' implies ongoing monitoring"
         ],
         "teaching_points": [
           {
-            "pearl": "Acute fetal bradycardia within minutes of epidural placement is maternal hypotension until proven otherwise; maternal vital signs are the first diagnostic step, not advanced fetal testing.",
-            "acog_reference": "Practice Bulletin 234 — Intrapartum Fetal Heart Rate Monitoring"
+            "pearl": "Acute fetal bradycardia in the immediate post-epidural period is epidural-induced hypotension until proven otherwise; maternal BP should be the first vital sign checked, followed by rapid IV fluid resuscitation and vasopressor administration.",
+            "acog_reference": "Practice Bulletin 209 — Obstetric Anesthesia"
           },
           {
-            "pearl": "Ephedrine 5 mg IV is the standard first-line vasopressor for epidural-induced hypotension in labor; it preserves uterine perfusion better than pure α-agonists and should be given promptly while fluid resuscitation is ongoing.",
-            "acog_reference": "Practice Bulletin 234 — Intrapartum Fetal Heart Rate Monitoring"
+            "pearl": "The initial 'maternal pulse' differential diagnosis is critical: external monitors can be confused by maternal tachycardia or artifact; confirming fetal origin via auscultation, FSE, or comparing to known maternal rate is the essential first step.",
+            "acog_reference": "Practice Bulletin 228 — Intrapartum Fetal Heart Rate Monitoring"
           },
           {
-            "pearl": "Confirmation that bradycardia is fetal (not double-counting maternal heart rate) is mandatory before initiating interventions, especially in the post-epidural period when maternal tachycardia from anxiety or hypotension can be misread.",
-            "acog_reference": "Practice Bulletin 234 — Intrapartum Fetal Heart Rate Monitoring"
+            "pearl": "A structured resuscitation approach—fluids, vasopressor, position change, oxygen, evaluation for mechanical causes (prolapsed cord), and assessment for iatrogenic uterine tachysystole—addresses the overwhelming majority of acute intrapartum bradycardias.",
+            "acog_reference": "Practice Bulletin 228 — Intrapartum Fetal Heart Rate Monitoring"
           }
         ]
       },
@@ -2008,30 +2022,30 @@
         "abog_label": "Pass",
         "isDangerous": false,
         "dangerousReason": "",
-        "isCurveball": true,
-        "curveballReason": "Candidate did not mention confirming fetal vs. maternal heart rate first or placing a fetal scalp electrode (FSE) for reliable continuous monitoring in this acute bradycardia scenario.",
+        "isCurveball": false,
+        "curveballReason": "",
         "strengths": [
-          "Correctly identified epidural-induced hypotension as the most likely cause and appropriate initial management with IVF bolus and ephedrine.",
-          "Appropriately prioritized immediate bedside assessment, maternal repositioning, and oxygen supplementation in correct sequence.",
-          "Correctly performed vaginal exam to rule out cord prolapse and appropriately notified OR team for standby cesarean delivery."
+          "Correctly identified epidural-induced hypotension as the most likely cause of fetal bradycardia and prioritized maternal BP assessment as the first step.",
+          "Provided complete, evidence-based management including IV fluids, ephedrine, left lateral repositioning, oxygen, vaginal exam for cord prolapse, and appropriate OR notification.",
+          "Demonstrated appropriate urgency and organized approach to a Category III fetal heart rate tracing."
         ],
         "gaps": [
-          "Did not explicitly mention confirming fetal heart rate (rather than maternal) on the monitor as the first critical step.",
-          "Omitted consideration of fetal scalp electrode (FSE) placement for more reliable continuous fetal monitoring in setting of acute bradycardia.",
-          "Did not mention assessment for or management of uterine tachysystole with terbutaline if present."
+          "Did not explicitly mention confirming that the bradycardia is fetal (not maternal) before proceeding — though this is implicit in the context.",
+          "Did not mention fetal scalp electrode placement, which improves signal quality and allows more accurate assessment of variability in a Category III tracing.",
+          "Did not specify ephedrine dose or mention consideration of terbutaline for uterine tachysystole if present, though management of hypotension was addressed."
         ],
         "teaching_points": [
           {
-            "pearl": "In acute fetal bradycardia with recent epidural, always confirm the alarm is fetal (not maternal) and assess maternal hemodynamics first—epidural hypotension is the most common reversible cause and responds rapidly to IV fluids and vasopressors.",
-            "acog_reference": "Practice Bulletin 106 — Intrapartum Fetal Heart Rate Monitoring: Nomenclature, Interpretation, and General Management Principles"
+            "pearl": "Fetal bradycardia in labor immediately after epidural placement should prompt assessment of maternal hemodynamics first — hypotension is the most common reversible cause; a rapid IV fluid bolus and vasopressor (ephedrine 5 mg IV) are first-line interventions.",
+            "acog_reference": "Practice Bulletin 262 — Obstetric Care Consensus: Fetal Heart Rate Monitoring"
           },
           {
-            "pearl": "When fetal heart rate cannot be reliably obtained or monitored (as may occur with transabdominal monitoring during acute deceleration), placement of a fetal scalp electrode provides the clearest tracing for interpretation and guides subsequent management intensity.",
-            "acog_reference": "Practice Bulletin 106 — Intrapartum Fetal Heart Rate Monitoring: Nomenclature, Interpretation, and General Management Principles"
+            "pearl": "After initial stabilizing measures (fluids, vasopressor, repositioning, oxygen), fetal scalp electrode placement improves tracing quality and allows differentiation of true bradycardia from artifact or maternal HR, critical for accurate classification of fetal status.",
+            "acog_reference": "Practice Bulletin 262 — Obstetric Care Consensus: Fetal Heart Rate Monitoring"
           },
           {
-            "pearl": "Consider maternal tachysystole as a contributing factor to fetal bradycardia and address with position changes, IV hydration, and terbutaline (0.25 mg SQ/IV) if indicated, while simultaneously preparing for emergent delivery if bradycardia persists.",
-            "acog_reference": "Practice Bulletin 106 — Intrapartum Fetal Heart Rate Monitoring: Nomenclature, Interpretation, and General Management Principles"
+            "pearl": "Vaginal examination to rule out cord prolapse is a mandatory step in acute fetal bradycardia — it is rapid, low-risk, and identifies an obstetric emergency requiring immediate delivery.",
+            "acog_reference": "Practice Bulletin 262 — Obstetric Care Consensus: Fetal Heart Rate Monitoring"
           }
         ]
       },
@@ -2105,9 +2119,9 @@
           "pass": true
         },
         "isCurveball": {
-          "actual": true,
+          "actual": false,
           "expected": false,
-          "pass": false
+          "pass": true
         },
         "abog_label": {
           "actual": "Pass",
@@ -2115,7 +2129,7 @@
           "pass": true
         },
         "all_dims_pass": true,
-        "overall_pass": false
+        "overall_pass": true
       },
       "error": null
     },
@@ -2137,33 +2151,32 @@
         "abog_label": "Borderline",
         "isDangerous": false,
         "dangerousReason": "",
-        "isCurveball": true,
-        "curveballReason": "Candidate omits fetal heart rate confirmation (maternal vs. fetal origin) and does not perform vaginal exam to rule out prolapsed cord—a critical safety step in bradycardia management.",
+        "isCurveball": false,
+        "curveballReason": "",
         "strengths": [
-          "Correctly identified left lateral positioning as first intervention.",
-          "Appropriately incorporated maternal oxygen administration.",
-          "Recognized need to check blood pressure and initiate IV fluid resuscitation for epidural-induced hypotension.",
-          "Demonstrated appropriate escalation by notifying anesthesia and preparing for operative delivery."
+          "Correctly identified the immediate supportive measures: left lateral positioning, maternal oxygenation, and BP assessment with IV fluid resuscitation.",
+          "Appropriately escalated care by alerting anesthesia and preparing for operative delivery if fetal status does not improve.",
+          "Demonstrated appropriate urgency and readiness for expedited delivery."
         ],
         "gaps": [
-          "Failed to confirm fetal origin of bradycardia (could be maternal; critical first step).",
-          "Omitted vaginal examination to rule out prolapsed umbilical cord—essential before other interventions.",
-          "Did not mention fetal scalp electrode (FSE) placement to improve signal reliability and rule out artifact.",
-          "No mention of specific vasopressor (ephedrine) dosing or administration for hypotension management.",
-          "Did not address assessment or management of uterine tachysystole or offer terbutaline if present."
+          "Did not explicitly mention confirming fetal (versus maternal) heart rate as the first critical step to avoid misidentification.",
+          "Omitted vaginal examination to rule out prolapsed cord, a critical and potentially rapidly reversible cause of bradycardia.",
+          "Did not specify ephedrine dosing or IV bolus parameters for treating epidural-induced hypotension.",
+          "Failed to mention fetal scalp electrode (FSE) placement to improve heart rate tracing accuracy and distinguish artifact from true bradycardia.",
+          "Did not address uterine tachysystole or mention terbutaline as an adjunctive measure to reduce intrauterine pressure."
         ],
         "teaching_points": [
           {
-            "pearl": "First step in fetal bradycardia is confirmation it is fetal (not maternal) heart rate—check maternal pulse and EKG simultaneously to avoid false alarm and unnecessary operative intervention.",
-            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+            "pearl": "In the setting of fetal bradycardia post-epidural at term in active labor, always first confirm fetal versus maternal rate, then immediately assess for and treat epidural hypotension (IVF bolus + vasopressor) while simultaneously ruling out prolapsed cord on vaginal exam.",
+            "acog_reference": "Practice Bulletin 106 — Intrapartum Fetal Heart Rate Monitoring: Nomenclature, Interpretation, and General Management Principles"
           },
           {
-            "pearl": "Prolapsed umbilical cord must be ruled out immediately by vaginal examination in any fetal bradycardia, especially in the setting of recent epidural placement or membrane rupture—missing this diagnosis delays critical operative delivery.",
-            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+            "pearl": "Fetal scalp electrode placement improves signal quality and diagnostic confidence when baseline fetal heart rate patterns are unclear or when transducer artifact mimics pathologic bradycardia.",
+            "acog_reference": "Practice Bulletin 106 — Intrapartum Fetal Heart Rate Monitoring: Nomenclature, Interpretation, and General Management Principles"
           },
           {
-            "pearl": "Epidural-induced maternal hypotension is the most common cause of fetal bradycardia in labor; treat with immediate left lateral positioning, maternal oxygen, IV fluid bolus (500–1000 mL), and IV ephedrine 5–10 mg if hypotension persists.",
-            "acog_reference": "Practice Bulletin 209 — Obstetric Anesthesia"
+            "pearl": "Terbutaline (0.25 mg SQ or IV) reduces uterine activity and intrauterine pressure and is a standard rescue measure for category III tracings caused by uterine tachysystole, particularly before emergent delivery.",
+            "acog_reference": "Practice Bulletin 106 — Intrapartum Fetal Heart Rate Monitoring: Nomenclature, Interpretation, and General Management Principles"
           }
         ]
       },
@@ -2237,9 +2250,9 @@
           "pass": true
         },
         "isCurveball": {
-          "actual": true,
+          "actual": false,
           "expected": false,
-          "pass": false
+          "pass": true
         },
         "abog_label": {
           "actual": "Borderline",
@@ -2247,7 +2260,7 @@
           "pass": true
         },
         "all_dims_pass": true,
-        "overall_pass": false
+        "overall_pass": true
       },
       "error": null
     },
@@ -2261,42 +2274,42 @@
         "diagnostic_score": 2,
         "management_score": 1,
         "focus_score": 2,
-        "terminology_score": 4,
-        "communication_score": 4,
+        "terminology_score": 3,
+        "communication_score": 3,
         "recovery_score": 5,
-        "pass_probability": 45,
+        "pass_probability": 43,
         "abog_score": 1,
         "abog_label": "Fail",
         "isDangerous": true,
-        "dangerousReason": "Candidate fails to assess for epidural-induced hypotension, obtain IV access/fluids, perform vaginal exam to rule out prolapsed cord, or alert the operating room—omissions that could result in catastrophic fetal injury or death from delayed recognition of a correctable or emergent condition.",
+        "dangerousReason": "Candidate recommends passive observation ('watch the monitor closely to see if the fetal heart rate recovers on its own') without confirming fetal versus maternal bradycardia, assessing maternal hemodynamics, performing vaginal exam to rule out prolapsed cord, or alerting the OR — resulting in potentially catastrophic delay in recognition and treatment of life-threatening fetal compromise.",
         "isCurveball": false,
         "curveballReason": "",
         "strengths": [
-          "Correctly identified the need to apply maternal oxygen in the setting of fetal bradycardia.",
-          "Appropriately recommended left lateral positioning to improve placental perfusion.",
-          "Clear, organized communication of initial steps."
+          "Correctly identified maternal oxygen supplementation as appropriate initial intervention",
+          "Appropriately recommended left lateral positioning to optimize placental perfusion"
         ],
         "gaps": [
-          "Failed to confirm fetal versus maternal heart rate—critical first step in any bradycardia response.",
-          "Did not assess or address epidural-induced hypotension (most common cause in this scenario), including BP check, IV fluid bolus, or vasopressor administration.",
-          "Omitted vaginal examination to rule out umbilical cord prolapse, a time-sensitive emergency.",
-          "Did not mention continuous fetal monitoring or fetal scalp electrode placement for more accurate assessment.",
-          "Failed to alert the operating room or consider readiness for emergent cesarean delivery.",
-          "No consideration of uterine tachysystole or use of tocolytics if indicated.",
-          "Passive monitoring ('watch closely to see if it recovers on its own') is dangerously insufficient for fetal bradycardia in active labor."
+          "Failed to confirm fetal versus maternal heart rate — critical first step that could prevent misdirected management",
+          "Did not assess maternal blood pressure or check for epidural-induced hypotension — the most likely cause in this clinical context",
+          "No vaginal examination to rule out umbilical cord prolapse, a true obstetric emergency",
+          "Did not consider IV fluid resuscitation or vasopressor therapy (ephedrine) for hemodynamic support",
+          "Omitted consideration of fetal scalp electrode placement to confirm fetal status and allow continuous monitoring",
+          "Failed to alert the operating room or prepare for emergent cesarean delivery",
+          "No mention of assessing uterine activity or considering tocolytic therapy if indicated",
+          "Recommendation to 'watch and wait' is passive and dangerously delays diagnostic and therapeutic action in a bradycardia emergency"
         ],
         "teaching_points": [
           {
-            "pearl": "Fetal bradycardia in labor after epidural placement is hypotension until proven otherwise—check maternal BP immediately and treat with crystalloid bolus and vasopressor (ephedrine 5 mg IV or phenylephrine) before attributing to other causes.",
-            "acog_reference": "Practice Bulletin 188 — Analgesia and Anesthesia for Labor and Delivery"
+            "pearl": "Fetal bradycardia in labor is a true obstetric emergency requiring immediate systematic evaluation: confirm fetal origin, assess maternal vitals (check for hypotension), rule out cord prolapse by vaginal exam, optimize placental perfusion, correct maternal hemodynamics, and prepare for emergent delivery.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
           },
           {
-            "pearl": "Always perform a rapid vaginal exam in any case of acute fetal bradycardia to exclude umbilical cord prolapse, which requires immediate delivery.",
-            "acog_reference": "Practice Bulletin 209 — Umbilical Cord Blood Gas and Lactate Testing"
+            "pearl": "Epidural-induced maternal hypotension is the most common correctable cause of fetal bradycardia in laboring patients on epidural; immediate IV fluid bolus (500–1000 mL) plus ephedrine 5–10 mg IV is the standard first response before assuming fetal pathology.",
+            "acog_reference": "Practice Bulletin 198 — Use of Prophylactic Antibiotics in Labor and Delivery"
           },
           {
-            "pearl": "The 'watchful waiting' approach to fetal bradycardia delays diagnosis and treatment of correctable causes; activate the resuscitation cascade (position, oxygen, IV access, fluid bolus, and OR alert) within the first minutes of detection.",
-            "acog_reference": "Practice Bulletin 230 — Management of Intrapartum Fetal Heart Rate Tracings"
+            "pearl": "Passive observation of fetal bradycardia without active intervention and OR notification is not safe care; the candidate must perform a complete obstetric assessment (maternal status, cord prolapse, uterine activity), initiate corrective therapy, and prepare for stat cesarean delivery if bradycardia persists.",
+            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
           }
         ]
       },
@@ -2340,16 +2353,16 @@
             "pass": true
           },
           "terminology_score": {
-            "actual": 4,
+            "actual": 3,
             "expected": 2,
-            "delta": 2,
-            "pass": false
+            "delta": 1,
+            "pass": true
           },
           "communication_score": {
-            "actual": 4,
+            "actual": 3,
             "expected": 2,
-            "delta": 2,
-            "pass": false
+            "delta": 1,
+            "pass": true
           },
           "recovery_score": {
             "actual": 5,
@@ -2359,9 +2372,9 @@
           }
         },
         "pass_probability": {
-          "actual": 45,
+          "actual": 43,
           "expected": 53,
-          "delta": -8,
+          "delta": -10,
           "pass": true
         },
         "isDangerous": {
@@ -2379,7 +2392,7 @@
           "expected": "Fail",
           "pass": true
         },
-        "all_dims_pass": false,
+        "all_dims_pass": true,
         "overall_pass": false
       },
       "error": null
@@ -2396,39 +2409,41 @@
         "focus_score": 2,
         "terminology_score": 3,
         "communication_score": 2,
-        "recovery_score": 1,
-        "pass_probability": 34,
+        "recovery_score": 5,
+        "pass_probability": 42,
         "abog_score": 1,
         "abog_label": "Fail",
         "isDangerous": true,
-        "dangerousReason": "Candidate fails to address the most likely cause of fetal bradycardia in the immediate post-epidural period (maternal hypotension) and omits critical interventions including IV fluid bolus, maternal repositioning, oxygen, and vaginal exam to rule out cord prolapse — dangerous delay in life-saving care.",
+        "dangerousReason": "Candidate endorses passive observation ('watch the fetal monitor and see if the heart rate recovers') without performing critical immediate interventions (BP check, IV fluids, ephedrine, oxygen, repositioning, FSE, vaginal exam) in a true fetal bradycardia emergency, which delays life-saving resuscitation and risks fetal demise.",
         "isCurveball": false,
         "curveballReason": "",
         "strengths": [
-          "Correctly recognizes the need to call for help and go to bedside to personally assess.",
-          "Acknowledges fetal heart rate monitoring as part of the response."
+          "Appropriately recognizes the need to go to the bedside and assess the situation",
+          "Correctly calls for help to mobilize resources"
         ],
         "gaps": [
-          "Does not mention checking maternal vital signs (especially blood pressure) or recognizing epidural-induced hypotension as the most likely diagnosis.",
-          "Omits critical interventions: IV fluid bolus, maternal repositioning to left lateral, supplemental oxygen, and ephedrine.",
-          "No mention of vaginal exam to exclude prolapsed umbilical cord.",
-          "No mention of fetal scalp electrode application to confirm fetal vs. maternal heart rate.",
-          "Does not address uterine tachysystole or mention terbutaline.",
-          "Fails to alert the operating room or discuss delivery contingency planning.",
-          "Passive 'watchful waiting' approach is inappropriate for an unexplained fetal bradycardia in active labor."
+          "Does not differentiate fetal from maternal bradycardia or confirm the diagnosis",
+          "Fails to obtain maternal vital signs or check blood pressure",
+          "No mention of IV fluid bolus or vasopressor (ephedrine) for epidural-induced hypotension — the most common cause of intrapartum fetal bradycardia",
+          "Omits immediate maternal repositioning (left lateral) and supplemental oxygen",
+          "Does not mention fetal scalp electrode placement for continuous monitoring",
+          "No mention of vaginal exam to rule out prolapsed cord",
+          "Does not consider uterotonic reduction or terbutaline for tachysystole",
+          "No explicit alerting of OR or preparation for possible emergent cesarean delivery",
+          "Adopts a 'wait and see' approach rather than active maternal/fetal resuscitation protocol"
         ],
         "teaching_points": [
           {
-            "pearl": "Fetal bradycardia within minutes of epidural placement is epidural hypotension until proven otherwise — immediately check maternal BP, administer IV fluid bolus (500–1000 mL) and vasopressor (ephedrine 5–10 mg IV), reposition left lateral, and apply oxygen.",
-            "acog_reference": "Practice Bulletin 209 — Obstetric Analgesia and Anesthesia"
+            "pearl": "Fetal bradycardia in active labor after epidural placement is hypotension until proven otherwise — immediate maternal vital signs, IV bolus, and vasopressor are the priority before passive observation.",
+            "acog_reference": "Practice Bulletin 106 — Intrapartum Fetal Heart Rate Monitoring: Nomenclature, Interpretation, and General Management Principles"
           },
           {
-            "pearl": "Fetal bradycardia demands action: rule out prolapsed cord on exam, confirm fetal signal with FSE, and prepare for operative delivery if no rapid recovery after maternal resuscitation.",
-            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+            "pearl": "The ABOG board expects a systematic resuscitation approach: (1) confirm fetal origin, (2) assess maternal hemodynamics, (3) reposition and oxygenate mother, (4) enhance fetal monitoring (FSE), (5) rule out cord prolapse, (6) consider tocolysis, and (7) prepare for emergent delivery — not passive monitoring.",
+            "acog_reference": "Practice Bulletin 106 — Intrapartum Fetal Heart Rate Monitoring"
           },
           {
-            "pearl": "Passive monitoring of fetal bradycardia without simultaneous maternal hemodynamic support and rule-out of emergent causes (cord prolapse, uterine rupture) risks perinatal death or hypoxic-ischemic encephalopathy.",
-            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+            "pearl": "Fetal bradycardia of new onset in labor is an acute change requiring immediate resuscitation; waiting to see if it 'recovers on its own' without maternal intervention wastes critical time in which fetal academia worsens.",
+            "acog_reference": "Committee Opinion 662 — Diagnosis and Management of Fetal Perineal Skin Sampling"
           }
         ]
       },
@@ -2484,16 +2499,16 @@
             "pass": true
           },
           "recovery_score": {
-            "actual": 1,
+            "actual": 5,
             "expected": 1,
-            "delta": 0,
-            "pass": true
+            "delta": 4,
+            "pass": false
           }
         },
         "pass_probability": {
-          "actual": 34,
+          "actual": 42,
           "expected": 27,
-          "delta": 7,
+          "delta": 15,
           "pass": true
         },
         "isDangerous": {
@@ -2526,36 +2541,40 @@
         "diagnostic_score": 1,
         "management_score": 1,
         "focus_score": 1,
-        "terminology_score": 3,
+        "terminology_score": 2,
         "communication_score": 2,
         "recovery_score": 1,
-        "pass_probability": 23,
+        "pass_probability": 22,
         "abog_score": 1,
         "abog_label": "Fail",
         "isDangerous": true,
-        "dangerousReason": "Fundal pressure during fetal bradycardia is contraindicated and dangerous; it increases uterine pressure without addressing the underlying cause (likely hypotension or cord compression), worsening fetal hypoxia. Pitocin augmentation during acute fetal distress is similarly contraindicated and delays appropriate resuscitation.",
+        "dangerousReason": "Fundal pressure during fetal bradycardia is contraindicated and dangerous; it increases intrauterine pressure, worsens placental perfusion, and delays critical interventions (maternal repositioning, IV fluids, oxygen, evaluation for cord prolapse). Starting Pitocin during acute fetal distress worsens uterine tachysystole and compounds the hypoxic insult.",
         "isCurveball": false,
         "curveballReason": "",
         "strengths": [],
         "gaps": [
-          "No mention of confirming fetal versus maternal heart rate or checking maternal vital signs (blood pressure).",
-          "Fails to address epidural-induced hypotension (most common cause) with IV fluids and vasopressors (ephedrine).",
-          "Omits left lateral positioning and supplemental oxygen, the initial life-support interventions.",
-          "No consideration of prolapsed umbilical cord via vaginal examination.",
-          "No mention of fetal scalp electrode placement for confirmation or continuous monitoring.",
-          "Endorses two directly harmful interventions: fundal pressure and Pitocin augmentation during fetal distress."
+          "Fails to confirm fetal origin of bradycardia (maternal heart rate confusion)",
+          "Omits immediate check for maternal hypotension (most common etiology post-epidural)",
+          "Omits IV fluid bolus and vasopressor (ephedrine) therapy",
+          "Omits maternal left lateral repositioning",
+          "Omits supplemental oxygen",
+          "Omits urgent vaginal exam to rule out umbilical cord prolapse",
+          "Omits consideration of fetal scalp electrode placement",
+          "Omits evaluation for uterine tachysystole; proposes Pitocin which would worsen it",
+          "Fails to alert operating room for possible emergency cesarean delivery",
+          "Recommends two dangerous interventions (fundal pressure, Pitocin augmentation) that directly harm the hypoxic fetus"
         ],
         "teaching_points": [
           {
-            "pearl": "Fetal bradycardia in labor requires immediate diagnosis of cause (maternal hypotension from epidural, prolapsed cord, placental abruption, uterine hyperstimulation) before any augmentation or operative intervention; treat maternal hypotension first with IV fluids, vasopressors, and position change.",
+            "pearl": "Acute fetal bradycardia in labor is a category II or III tracing requiring immediate diagnostic assessment: confirm fetal origin, check maternal vital signs (hypotension post-epidural is the most common remediable cause), reposition left lateral, apply oxygen, and place FSE. Empiric interventions to 'expedite delivery' without diagnosis delay critical resuscitative measures.",
             "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
           },
           {
-            "pearl": "Fundal pressure is contraindicated in acute fetal distress because it increases intrauterine pressure without improving placental perfusion and may worsen cord compression or hypoxia; focus instead on maternal resuscitation and left lateral positioning.",
+            "pearl": "Fundal pressure during fetal distress is contraindicated; it increases intrauterine pressure, decreases placental blood flow, and diverts attention from stabilizing maternal hemodynamics and ruling out emergencies such as cord prolapse.",
             "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
           },
           {
-            "pearl": "Pitocin augmentation during non-reassuring fetal heart rate tracing increases the risk of uterine hyperstimulation and worsens fetal oxygenation; it should be discontinued and uterine tachysystole managed with tocolytics (terbutaline) if needed.",
+            "pearl": "Oxytocin augmentation during acute fetal bradycardia worsens hypoxia by increasing contraction frequency and duration. Maternal resuscitation (IVF, vasopressor, oxygen, position change) and fetal monitoring are priorities before considering any augmentation.",
             "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
           }
         ]
@@ -2600,9 +2619,9 @@
             "pass": false
           },
           "terminology_score": {
-            "actual": 3,
+            "actual": 2,
             "expected": 3,
-            "delta": 0,
+            "delta": -1,
             "pass": true
           },
           "communication_score": {
@@ -2619,9 +2638,9 @@
           }
         },
         "pass_probability": {
-          "actual": 23,
+          "actual": 22,
           "expected": 26,
-          "delta": -3,
+          "delta": -4,
           "pass": true
         },
         "isDangerous": {
@@ -2654,41 +2673,39 @@
         "diagnostic_score": 1,
         "management_score": 1,
         "focus_score": 1,
-        "terminology_score": 4,
-        "communication_score": 3,
+        "terminology_score": 3,
+        "communication_score": 2,
         "recovery_score": 1,
-        "pass_probability": 25,
+        "pass_probability": 23,
         "abog_score": 1,
         "abog_label": "Fail",
         "isDangerous": true,
-        "dangerousReason": "Candidate catastrophizes a common, treatable iatrogenic complication (epidural hypotension) into a rare life-threatening diagnosis and commits to emergency hysterectomy without any diagnostic confirmation, maternal assessment, or attempt at conservative management—this would directly harm the patient and fetus.",
+        "dangerousReason": "Candidate jumps to AFE diagnosis and recommends emergency hysterectomy without first ruling out epidural-induced hypotension — the most common cause of bradycardia immediately after epidural placement — resulting in unnecessary major surgery and delay of appropriate life-saving measures (fluid resuscitation, vasopressors, oxygen).",
         "isCurveball": false,
         "curveballReason": "",
         "strengths": [
-          "Appropriate use of medical terminology (amniotic fluid embolism, massive transfusion protocol, hysterectomy).",
-          "Demonstrates awareness that fetal bradycardia is an urgent clinical finding requiring rapid response."
+          "Recognizes the temporal relationship between epidural placement and bradycardia onset, showing awareness that interventions can trigger fetal heart rate changes."
         ],
         "gaps": [
-          "Fails to confirm the bradycardia is fetal (not maternal artifact) before any intervention.",
-          "Does not assess maternal vital signs—specifically BP—which is the most likely cause of bradycardia in this scenario (post-epidural hypotension).",
-          "Omits basic resuscitative maneuvers (left lateral positioning, oxygen, IV fluid bolus, vasopressor) that are first-line and highly effective.",
-          "Jumps immediately to hysterectomy without any diagnostic confirmation of AFE or attempt at conservative management.",
-          "Does not perform vaginal exam to rule out cord prolapse.",
-          "Does not consider intrauterine resuscitation measures (repositioning, oxygen, increased perfusion).",
-          "Massive transfusion and hysterectomy are inappropriate when the patient is not yet proven to have hemorrhage, coagulopathy, or unresponsive shock."
+          "Fails to perform systematic differential diagnosis — does not consider or rule out epidural-induced maternal hypotension, which is the most common cause of acute bradycardia in this context.",
+          "Does not confirm whether the bradycardia is fetal or maternal, a critical first step in any monitor alarm.",
+          "Omits fundamental maternal stabilization maneuvers (IV fluids, vasopressors, left lateral positioning, oxygen) that would immediately address the likely underlying cause.",
+          "Does not perform vaginal examination to rule out prolapsed umbilical cord.",
+          "Recommends hysterectomy without attempting any conservative management or diagnostic confirmation, representing premature surgical escalation.",
+          "Misses the opportunity to place fetal scalp electrode or perform other diagnostic assessments that would clarify fetal status."
         ],
         "teaching_points": [
           {
-            "pearl": "Fetal bradycardia in the immediate post-epidural period is epidural hypotension until proven otherwise—treat with maternal BP correction (IVF, vasopressors), positioning, and oxygen before invoking rare diagnoses.",
-            "acog_reference": "Practice Bulletin 193 — Obstetric Anesthesia"
+            "pearl": "Bradycardia immediately following epidural placement is hypotension until proven otherwise — maternal hypotension from sympathetic blockade is far more common than AFE in this temporal sequence; always treat maternal vitals first with bolus IV fluids, left lateral positioning, and vasopressors (ephedrine or phenylephrine).",
+            "acog_reference": "Practice Bulletin 209 — Obstetric Anesthesia"
           },
           {
-            "pearl": "The differential for intrapartum fetal bradycardia includes cord prolapse, placental abruption, uterine hyperstimulation, and maternal hypotension; AFE is exceptionally rare and presents with maternal hemodynamic collapse, respiratory distress, and coagulopathy—not isolated fetal bradycardia.",
-            "acog_reference": "Committee Opinion 657 — Amniotic Fluid Embolism"
+            "pearl": "When an alarm sounds, confirm the signal is truly fetal before acting — check maternal heart rate simultaneously to exclude erroneous maternal rate sensing on the fetal channel.",
+            "acog_reference": "Practice Bulletin 219 — Fetal Heart Rate Monitoring"
           },
           {
-            "pearl": "Always confirm the bradycardia is fetal (check maternal pulse), assess maternal hemodynamics, and optimize oxygenation and perfusion before jumping to catastrophic surgical intervention.",
-            "acog_reference": "Practice Bulletin 116 — Management of Intrapartum Fetal Heart Rate Tracings"
+            "pearl": "Amniotic fluid embolism is a diagnosis of exclusion with specific hemodynamic and coagulation criteria; it does not present as isolated bradycardia in the absence of maternal cardiovascular collapse, hypoxia, or coagulopathy — premature diagnosis of AFE delays appropriate management of far more common and reversible causes.",
+            "acog_reference": "Committee Opinion 803 — Amniotic Fluid Embolism"
           }
         ]
       },
@@ -2732,15 +2749,15 @@
             "pass": true
           },
           "terminology_score": {
-            "actual": 4,
+            "actual": 3,
             "expected": 4,
-            "delta": 0,
+            "delta": -1,
             "pass": true
           },
           "communication_score": {
-            "actual": 3,
+            "actual": 2,
             "expected": 3,
-            "delta": 0,
+            "delta": -1,
             "pass": true
           },
           "recovery_score": {
@@ -2751,9 +2768,9 @@
           }
         },
         "pass_probability": {
-          "actual": 25,
+          "actual": 23,
           "expected": 41,
-          "delta": -16,
+          "delta": -18,
           "pass": false
         },
         "isDangerous": {
@@ -2797,24 +2814,22 @@
         "isCurveball": false,
         "curveballReason": "",
         "strengths": [
-          "Correctly identified severe preeclampsia with multi-organ involvement (hypertension, elevated transaminases, proteinuria, oliguria) and recognized delivery as definitive treatment.",
-          "Appropriately prioritized vaginal delivery over cesarean, with detailed plan for cervical assessment and induction using ripening agents followed by Pitocin augmentation.",
-          "Comprehensive antihypertensive regimen with three evidence-based agents (labetalol, nifedipine IR, hydralazine) with correct dosing, frequency, and blood pressure targets.",
-          "Proper magnesium sulfate loading (4-6g IV over 15-20 minutes) and maintenance (2g/hr) for seizure prophylaxis.",
-          "Emphasized judicious fluid management with Foley placement and strict I&Os in the context of oliguria and risk of pulmonary edema."
+          "Correctly diagnosed severe preeclampsia with multi-organ involvement (hypertension, proteinuria, elevated liver enzymes, oliguria) and identified delivery as the definitive treatment.",
+          "Appropriately prioritized vaginal delivery over cesarean and specified cervical ripening followed by Pitocin induction as the correct sequence.",
+          "Precisely specified magnesium sulfate dosing (4–6 g IV load over 15–20 minutes, then 2 g/hour) and named all three first-line antihypertensive agents with correct dosing intervals and routes."
         ],
         "gaps": [],
         "teaching_points": [
           {
-            "pearl": "In severe preeclampsia at viable gestational age, delivery is the only definitive treatment; vaginal delivery with induction is preferred over primary cesarean unless obstetric contraindications exist.",
+            "pearl": "Severe preeclampsia with persistent severe-range BP, end-organ dysfunction (hepatic transaminitis, oliguria, heavy proteinuria), and neurologic symptoms mandates delivery regardless of gestational age; vaginal delivery with induction is preferred unless obstetric contraindications exist.",
             "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
           },
           {
-            "pearl": "Magnesium sulfate is the gold standard for seizure prophylaxis in preeclampsia; labetalol and nifedipine IR are first-line agents for acute hypertension management, with hydralazine reserved for refractory cases.",
+            "pearl": "Magnesium sulfate loading must be given IV over 15–20 minutes to avoid rapid hypermagnesemia; maintenance dosing of 2 g/hour continues for seizure prophylaxis through labor and 12–24 hours postpartum.",
             "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
           },
           {
-            "pearl": "Oliguria (<30 mL/hr) in preeclampsia mandates careful fluid balance to prevent pulmonary edema; avoid aggressive crystalloid administration and use Foley for strict monitoring.",
+            "pearl": "Judicious fluid restriction and Foley placement with strict intake/output are essential in severe preeclampsia to avoid pulmonary edema; oliguria reflects endothelial dysfunction and requires careful monitoring rather than aggressive fluid administration.",
             "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
           }
         ]
@@ -2924,28 +2939,32 @@
         "isCurveball": false,
         "curveballReason": "",
         "strengths": [
-          "Correctly identified severe preeclampsia with end-organ involvement (elevated transaminases, proteinuria, hypertensive urgency, neurologic symptoms)",
-          "Appropriately selected magnesium sulfate for seizure prophylaxis with correct indication",
-          "Correctly chose antihypertensives appropriate for acute severe hypertension in pregnancy (labetalol and nifedipine are both first-line)",
-          "Recognized need for careful fluid management and monitoring of intake/output in setting of oliguria"
+          "Correctly identified severe preeclampsia with end-organ damage (elevated transaminases, severe proteinuria, oliguria, severe symptoms)",
+          "Appropriately recommended delivery as the definitive management",
+          "Correctly chose induction of labor over immediate cesarean delivery",
+          "Named two appropriate first-line antihypertensive agents (labetalol and nifedipine)",
+          "Recognized need for magnesium sulfate for seizure prophylaxis",
+          "Identified oliguria and emphasized careful fluid/I&O monitoring"
         ],
         "gaps": [
-          "Did not specify dosing or frequency for magnesium sulfate loading dose and maintenance (4-6g IV load, then 2g/hour)",
-          "Did not specify doses or intervals for antihypertensive agents (labetalol 20 mg IV then 40 mg q10 min; nifedipine IR 10-20 mg PO q20 min)",
-          "Did not mention need for Foley catheter to accurately track urine output given oliguria and need for strict monitoring"
+          "Did not specify magnesium sulfate dosing (loading dose 4-6g IV, then maintenance 2g/hour)",
+          "Did not specify antihypertensive dosing regimens or frequency of administration (e.g., nifedipine IR 10-20 mg PO q20 min × 3 doses)",
+          "Did not mention hydralazine as a third antihypertensive option",
+          "Did not explicitly mention the need for Foley catheterization to accurately track oliguria",
+          "Did not articulate the specific blood pressure threshold target (≤160/110 is reasonable acute control; some may target <140/90 chronically, but acute control is the priority here)"
         ],
         "teaching_points": [
           {
-            "pearl": "Severe preeclampsia with end-organ dysfunction (cerebral edema/headache, liver involvement, renal compromise) is an obstetric emergency requiring delivery regardless of gestational age; vaginal delivery with induction is preferred over primary cesarean unless contraindicated.",
-            "acog_reference": "Practice Bulletin 222 — Gestational Hypertension and Preeclampsia"
+            "pearl": "Severe preeclampsia with end-organ involvement (pulmonary edema, oliguria, transaminitis, thrombocytopenia) mandates delivery regardless of gestational age; induction of labor is first-line unless contraindications to vaginal delivery exist.",
+            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
           },
           {
-            "pearl": "Magnesium sulfate is the seizure prophylaxis agent of choice in severe preeclampsia and eclampsia; nifedipine immediate-release and labetalol are preferred acute antihypertensives for hypertensive urgency, avoiding aggressive BP lowering that risks placental hypoperfusion.",
-            "acog_reference": "Practice Bulletin 222 — Gestational Hypertension and Preeclampsia"
+            "pearl": "Magnesium sulfate loading dose is 4–6 g IV over 20–30 minutes, followed by 2 g/hour maintenance; this is the standard seizure prophylaxis in severe preeclampsia and must be continued through labor and 12 hours postpartum.",
+            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
           },
           {
-            "pearl": "Oliguria (<180 cc/hour) in severe preeclampsia signals renal hypoperfusion and demands careful fluid restriction and strict I&O monitoring via Foley catheter; aggressive hydration risks pulmonary edema and worsens outcomes.",
-            "acog_reference": "Practice Bulletin 222 — Gestational Hypertension and Preeclampsia"
+            "pearl": "First-line acute antihypertensives in severe preeclampsia are labetalol, nifedipine IR, and hydralazine; dosing precision matters—nifedipine IR 10–20 mg PO q20 min (up to 3 doses), labetalol 20 mg IV then 40–80 mg q10 min, hydralazine 5–10 mg IV q15–20 min; oliguria requires Foley placement and strict I&Os to differentiate preeclamptic oliguria from iatrogenic fluid overload.",
+            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
           }
         ]
       },
@@ -3039,43 +3058,42 @@
       "archetype_id": "C",
       "archetype_label": "Borderline-High",
       "actual": {
-        "safety_score": 2,
+        "safety_score": 3,
         "diagnostic_score": 5,
         "management_score": 2,
-        "focus_score": 2,
+        "focus_score": 3,
         "terminology_score": 4,
-        "communication_score": 2,
-        "recovery_score": 1,
-        "pass_probability": 45,
-        "abog_score": 1,
-        "abog_label": "Fail",
-        "isDangerous": true,
-        "dangerousReason": "Candidate recommends primary cesarean delivery for severe preeclampsia at 34 weeks without attempting vaginal delivery/induction first; this violates standard-of-care management which mandates trial of labor/induction unless contraindicated, exposing patient to unnecessary major abdominal surgery, increased maternal morbidity, and neonatal complications.",
-        "isCurveball": false,
-        "curveballReason": "",
+        "communication_score": 3,
+        "recovery_score": 5,
+        "pass_probability": 68,
+        "abog_score": 2,
+        "abog_label": "Borderline",
+        "isDangerous": false,
+        "dangerousReason": "",
+        "isCurveball": true,
+        "curveballReason": "Candidate recommends immediate cesarean delivery for severe preeclampsia at 34 weeks without attempting vaginal delivery/induction first, which is contraindicated by ACOG guidelines that mandate trial of labor (cervical ripening/induction) before surgical delivery in this scenario.",
         "strengths": [
-          "Correctly identified severe preeclampsia with eclampsia risk and appropriately recommended magnesium sulfate for seizure prophylaxis",
-          "Recognized severity of disease and appropriate escalation to MFM consultation",
-          "Acknowledged need for antihypertensive therapy"
+          "Correctly identified severe preeclampsia with seizure risk and appropriately recommended magnesium sulfate for neuroprotection",
+          "Recognized need for IV antihypertensive therapy and appropriate escalation of care with MFM consultation",
+          "Understood that delivery is the definitive management at this gestational age with severe preeclampsia"
         ],
         "gaps": [
-          "Failed to recommend cervical ripening or induction as first-line delivery method; cesarean should be reserved for failed induction or obstetric contraindications to vaginal delivery",
-          "Did not specify type, dose, or frequency of IV antihypertensives (nifedipine IR, labetalol, or hydralazine)",
-          "Omitted fluid management strategy, Foley catheter placement, and strict intake/output monitoring—critical in severe preeclampsia with oliguria risk",
-          "Did not address the specific clinical findings (severe hypertension >160/110, brisk DTRs 3-4+, severe refractory headache) that warrant immediate delivery",
-          "Vague on magnesium dosing—did not specify loading dose (4-6g IV) and maintenance (2g/hour)"
+          "Failed to specify magnesium sulfate dosing (loading dose, maintenance rate) or name specific antihypertensive agents with doses and frequency",
+          "Recommended immediate cesarean delivery without attempting cervical ripening/induction first, which violates ACOG guideline that vaginal delivery should be attempted unless contraindicated",
+          "Did not mention judicious fluid management, Foley catheterization, strict I&Os, or close maternal/fetal monitoring during labor induction",
+          "Did not address management of hyperreflexia or severe headache symptoms in context of eclampsia risk"
         ],
         "teaching_points": [
           {
-            "pearl": "Severe preeclampsia at viable gestational age requires urgent delivery, but vaginal delivery with induction should be first-line unless obstetric contraindications exist; cesarean delivery is reserved for failed induction or fetal/maternal emergency.",
+            "pearl": "Severe preeclampsia at preterm gestations requires delivery, but vaginal delivery via induction (with cervical ripening if needed) is the preferred first-line approach before considering cesarean, provided maternal and fetal conditions permit labor.",
             "acog_reference": "Practice Bulletin 222 — Gestational Hypertension and Preeclampsia"
           },
           {
-            "pearl": "Magnesium sulfate 4–6 g IV loading dose followed by 2 g/hour maintenance is standard seizure prophylaxis; oliguria (UOP <180 cc/hour) in severe preeclampsia requires meticulous fluid balance and Foley monitoring to prevent pulmonary edema and acute kidney injury.",
+            "pearl": "Magnesium sulfate for seizure prophylaxis in preeclampsia requires specific dosing: 4–6 g IV loading dose over 20–30 minutes, then 2 g/hour maintenance; subtherapeutic doses or omission of maintenance therapy are common errors.",
             "acog_reference": "Practice Bulletin 222 — Gestational Hypertension and Preeclampsia"
           },
           {
-            "pearl": "IV antihypertensive choices (nifedipine IR 10–20 mg q20 min, labetalol 20 mg IV then 40 mg q10 min, hydralazine 5–10 mg IV q15–20 min) should be specific and titrated; goal is gradual BP lowering to avoid placental hypoperfusion.",
+            "pearl": "Immediate antihypertensive therapy for severe range BP (SBP ≥160 or DBP ≥110) uses first-line agents (nifedipine immediate-release, labetalol IV, or hydralazine) with specific dosing intervals; deferring or under-specifying doses risks maternal complications including stroke and pulmonary edema.",
             "acog_reference": "Practice Bulletin 222 — Gestational Hypertension and Preeclampsia"
           }
         ]
@@ -3096,10 +3114,10 @@
       "comparison": {
         "dimensions": {
           "safety_score": {
-            "actual": 2,
+            "actual": 3,
             "expected": 4,
-            "delta": -2,
-            "pass": false
+            "delta": -1,
+            "pass": true
           },
           "diagnostic_score": {
             "actual": 5,
@@ -3114,9 +3132,9 @@
             "pass": true
           },
           "focus_score": {
-            "actual": 2,
+            "actual": 3,
             "expected": 3,
-            "delta": -1,
+            "delta": 0,
             "pass": true
           },
           "terminology_score": {
@@ -3126,38 +3144,38 @@
             "pass": true
           },
           "communication_score": {
-            "actual": 2,
+            "actual": 3,
             "expected": 3,
-            "delta": -1,
+            "delta": 0,
             "pass": true
           },
           "recovery_score": {
-            "actual": 1,
+            "actual": 5,
             "expected": 5,
-            "delta": -4,
-            "pass": false
+            "delta": 0,
+            "pass": true
           }
         },
         "pass_probability": {
-          "actual": 45,
+          "actual": 68,
           "expected": 70,
-          "delta": -25,
-          "pass": false
+          "delta": -2,
+          "pass": true
         },
         "isDangerous": {
-          "actual": true,
-          "expected": false,
-          "pass": false
-        },
-        "isCurveball": {
           "actual": false,
           "expected": false,
           "pass": true
         },
-        "abog_label": {
-          "actual": "Fail",
-          "expected": "Pass",
+        "isCurveball": {
+          "actual": true,
+          "expected": false,
           "pass": false
+        },
+        "abog_label": {
+          "actual": "Borderline",
+          "expected": "Pass",
+          "pass": true
         },
         "all_dims_pass": false,
         "overall_pass": false
@@ -3181,32 +3199,33 @@
         "abog_score": 1,
         "abog_label": "Fail",
         "isDangerous": true,
-        "dangerousReason": "Candidate delays delivery in a patient with severe preeclampsia with eclamptic symptoms (severe headache unrelieved by analgesia, hyperreflexia 3-4+, BP >160/110, significant proteinuria, and laboratory abnormalities). Expectant management while 'giving medications a chance to work' is contraindicated and risks eclamptic seizure, maternal death, or fetal compromise.",
-        "isCurveball": false,
-        "curveballReason": "",
+        "dangerousReason": "Candidate endorses deferring delivery in a patient with severe preeclampsia with dangerous features (BP >160/110, severe headache, elevated transaminases, significant proteinuria at 34 weeks), which would foreseeably delay life-saving intervention and risk maternal and fetal harm.",
+        "isCurveball": true,
+        "curveballReason": "Candidate applies conservative expectant management (watchful waiting, giving medications a chance to work) to a term/near-term severe preeclampsia scenario, which is a classic ABOG board trap. The threshold for delivery in severe preeclampsia at 34 weeks is definitional—not conditional on medication response.",
         "strengths": [
-          "Correctly identified the need for antihypertensive therapy",
-          "Recognized the need for close laboratory monitoring"
+          "Correctly recognized the diagnosis of severe preeclampsia (implicit acknowledgment that hypertension + proteinuria + neurological symptoms warrants intervention).",
+          "Demonstrated awareness that antihypertensive medication is part of the treatment algorithm."
         ],
         "gaps": [
-          "Fails to recognize that severe preeclampsia with eclamptic symptoms is an absolute indication for delivery regardless of gestational age; delivery is the definitive treatment, not a contingency after medical management fails",
-          "Does not mention magnesium sulfate for seizure prophylaxis in severe preeclampsia/impending eclampsia",
-          "No mention of cervical ripening or induction of labor as the primary management strategy",
-          "Does not specify which antihypertensive agents, doses, or intervals are appropriate",
-          "No discussion of fluid management, foley catheter, or strict intake and output monitoring",
-          "Misses the clinical urgency conveyed by the severity of symptoms (unrelieved severe headache, brisk DTRs, BP crisis)"
+          "Fundamentally misunderstood the indication for delivery: severe preeclampsia at 34 3/7 weeks is an absolute indication for delivery, NOT a conditional one pending medication response.",
+          "Failed to recommend immediate delivery as the primary management step.",
+          "No mention of magnesium sulfate for seizure prophylaxis, which is standard of care in severe preeclampsia.",
+          "No specification of antihypertensive agents, doses, or dosing intervals.",
+          "No mention of fluid management, Foley catheterization, or strict I&Os.",
+          "No acknowledgment of fetal risk or discussion of steroids (already 34 weeks, but corticosteroids for neonatal protection are still relevant).",
+          "Did not address cervical ripening/induction as the pathway to delivery if unfavorable cervix."
         ],
         "teaching_points": [
           {
-            "pearl": "Severe preeclampsia with eclamptic symptoms (headache, hyperreflexia, visual changes) at viable gestational age is an absolute indication for delivery, not for continued expectant management with antihypertensives alone.",
+            "pearl": "Severe preeclampsia at any gestational age ≥34 weeks is an absolute indication for delivery regardless of medication response; expectant management is contraindicated and delays life-saving intervention.",
             "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
           },
           {
-            "pearl": "Magnesium sulfate (4–6 g IV loading dose, then 2 g/hour) is the standard seizure prophylaxis in severe preeclampsia and must be given immediately; it is not optional.",
+            "pearl": "Magnesium sulfate 4–6 g IV loading dose followed by 2 g/hour continuous infusion is the first-line seizure prophylaxis and should be initiated immediately in severe preeclampsia.",
             "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
           },
           {
-            "pearl": "Antihypertensive therapy in severe preeclampsia is a temporizing measure for acute BP control during preparation for delivery, not a strategy to avoid delivery or delay it pending medication response.",
+            "pearl": "In severe preeclampsia, antihypertensives (nifedipine, labetalol, or hydralazine) are used to prevent maternal end-organ damage during labor/delivery preparation, not to avoid delivery; they do not change the delivery indication.",
             "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
           }
         ]
@@ -3281,9 +3300,9 @@
           "pass": false
         },
         "isCurveball": {
-          "actual": false,
+          "actual": true,
           "expected": false,
-          "pass": true
+          "pass": false
         },
         "abog_label": {
           "actual": "Fail",
@@ -3304,40 +3323,41 @@
         "safety_score": 2,
         "diagnostic_score": 5,
         "management_score": 1,
-        "focus_score": 2,
-        "terminology_score": 3,
+        "focus_score": 1,
+        "terminology_score": 2,
         "communication_score": 2,
         "recovery_score": 1,
-        "pass_probability": 45,
+        "pass_probability": 44,
         "abog_score": 1,
         "abog_label": "Fail",
         "isDangerous": true,
-        "dangerousReason": "Candidate fails to recommend delivery in severe preeclampsia with eclamptic features (BP >160/110, severe refractory headache, hyperreflexia, elevated transaminases, proteinuria >5g), creating imminent risk of eclamptic seizure, placental abruption, or maternal death.",
+        "dangerousReason": "The candidate fails to recommend delivery in a patient with severe preeclampsia with dangerous features (persistent BP >160/110, severe headache, transaminitis, proteinuria 5.6g/24h, oliguria) at 34 weeks — delaying or avoiding delivery in this context risks eclampsia, placental abruption, maternal stroke, and fetal loss.",
         "isCurveball": false,
         "curveballReason": "",
         "strengths": [
-          "Correctly recognizes severity of the clinical situation",
-          "Appropriately calls for assistance and escalation of care"
+          "Correctly recognizes the clinical urgency and appropriately calls for assistance",
+          "Acknowledges that vital signs monitoring and blood pressure control are necessary components of care"
         ],
         "gaps": [
-          "Fails to recommend delivery, which is the definitive management for severe preeclampsia at any gestational age",
-          "No specific antihypertensive agents named (nifedipine, labetalol, or hydralazine)",
-          "No mention of magnesium sulfate for seizure prophylaxis despite eclamptic signs (headache, hyperreflexia)",
-          "No discussion of labor induction versus cesarean delivery decision tree",
-          "No mention of maternal or fetal monitoring strategy",
-          "No reference to fluid management or urinary catheter placement"
+          "Fails to recommend delivery — the sine qua non of management for severe preeclampsia with dangerous features at any gestational age",
+          "Does not specify any antihypertensive agents, doses, or routes (Nifedipine IR, Labetalol, or Hydralazine)",
+          "Omits magnesium sulfate for seizure prophylaxis despite clear indication (severe features present)",
+          "Does not address cervical assessment, cervical ripening, or induction of labor",
+          "No mention of fluid management, Foley catheter, or strict intake and output tracking despite oliguria",
+          "No discussion of fetal assessment or delivery route decision-making",
+          "Vague and non-specific management language ('control her blood pressure,' 'monitor her carefully') reflects incomplete clinical reasoning"
         ],
         "teaching_points": [
           {
-            "pearl": "Severe preeclampsia (BP ≥160/110 + symptoms or end-organ dysfunction) is an absolute indication for delivery regardless of gestational age; delay increases risk of eclampsia, abruption, and maternal death.",
+            "pearl": "Severe preeclampsia (BP ≥160/110 or symptoms of severe features including pulmonary edema, cerebral symptoms, hepatic dysfunction, thrombocytopenia, or pulmonary edema) requires delivery regardless of gestational age; expectant management is contraindicated.",
             "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
           },
           {
-            "pearl": "This patient meets eclampsia criteria (preeclampsia + seizure-risk features: severe headache unrelieved by analgesia + hyperreflexia 3-4+); magnesium sulfate loading and delivery are non-negotiable.",
+            "pearl": "Magnesium sulfate is the first-line agent for seizure prophylaxis in severe preeclampsia; IV loading dose is 4–6 g over 20–30 minutes, followed by 2 g/hour maintenance infusion.",
             "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
           },
           {
-            "pearl": "In severe preeclampsia, first-line acute antihypertensives are labetalol IV, nifedipine IR, or hydralazine IV; bed rest alone is inadequate and dangerous.",
+            "pearl": "At 34 weeks with severe preeclampsia and dangerous features, immediate delivery (induction if cervix favorable; cesarean if not) is safer than expectant management; antenatal corticosteroids have already been administered and should not delay delivery.",
             "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
           }
         ]
@@ -3376,16 +3396,16 @@
             "pass": true
           },
           "focus_score": {
-            "actual": 2,
+            "actual": 1,
             "expected": 2,
-            "delta": 0,
+            "delta": -1,
             "pass": true
           },
           "terminology_score": {
-            "actual": 3,
+            "actual": 2,
             "expected": 1,
-            "delta": 2,
-            "pass": false
+            "delta": 1,
+            "pass": true
           },
           "communication_score": {
             "actual": 2,
@@ -3401,9 +3421,9 @@
           }
         },
         "pass_probability": {
-          "actual": 45,
+          "actual": 44,
           "expected": 27,
-          "delta": 18,
+          "delta": 17,
           "pass": false
         },
         "isDangerous": {
@@ -3443,30 +3463,31 @@
         "abog_score": 1,
         "abog_label": "Fail",
         "isDangerous": true,
-        "dangerousReason": "Methylergonovine is a potent uterotonic and vasoconstrictor that is contraindicated in preeclampsia/eclampsia and would dangerously elevate blood pressure; expectant management in severe preeclampsia at term is contraindicated — delivery is mandatory.",
-        "isCurveball": false,
-        "curveballReason": "",
+        "dangerousReason": "Methylergonovine is absolutely contraindicated in hypertensive emergencies and preeclampsia; it causes further vasoconstriction and hypertensive crisis, directly endangering the patient.",
+        "isCurveball": true,
+        "curveballReason": "Expectant management with observation at 34 3/7 weeks in severe preeclampsia with eclamptic features (severe headache, hyperreflexia, abnormal labs) is a critical ABOG trap; delivery is mandated regardless of gestational age once severe features develop.",
         "strengths": [
-          "Correctly recognized the clinical diagnosis of severe preeclampsia (elevated BP, proteinuria, hyperreflexia, symptoms, abnormal labs)."
+          "Correctly identified the patient as having severe preeclampsia with eclamptic features (headache, hyperreflexia, elevated transaminases, significant proteinuria)."
         ],
         "gaps": [
-          "Endorses methylergonovine as an antihypertensive agent when it is actually a potent vasoconstrictor that worsens hypertension and is absolutely contraindicated in preeclampsia.",
-          "Recommends expectant management and fetal maturation at 34 weeks with severe preeclampsia when delivery is the standard of care and only definitive treatment.",
-          "No mention of magnesium sulfate for seizure prophylaxis, which is foundational in severe preeclampsia management.",
-          "No mention of appropriate first-line antihypertensives (labetalol, nifedipine IR, hydralazine) or delivery planning."
+          "Explicitly recommends methylergonovine, a uterotonic contraindicated in any hypertensive patient—this is a dangerous medication error.",
+          "Advocates expectant management and fetal maturation rather than delivery, which is the standard of care in severe preeclampsia at any gestational age.",
+          "Fails to recommend magnesium sulfate for seizure prophylaxis, the cornerstone of severe preeclampsia management.",
+          "Does not address labor induction or vaginal delivery as the preferred delivery route when cervix is unripe.",
+          "Omits appropriate antihypertensive agents (labetalol, nifedipine, hydralazine) and fluid management principles."
         ],
         "teaching_points": [
           {
-            "pearl": "Methylergonovine and other ergot alkaloids are absolutely contraindicated in hypertensive emergencies including preeclampsia because they cause potent vasoconstriction and further elevate blood pressure; they are reserved for postpartum hemorrhage control after delivery in normotensive patients.",
-            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
+            "pearl": "Methylergonovine and ergot alkaloids are absolutely contraindicated in hypertensive patients and preeclampsia—they cause severe vasoconstriction and maternal hypertensive crisis. Use labetalol, nifedipine, or hydralazine instead.",
+            "acog_reference": "Practice Bulletin 33 — Diagnosis and Management of Preeclampsia and Eclampsia"
           },
           {
-            "pearl": "Severe preeclampsia is a maternal indication for delivery regardless of gestational age; expectant management is never appropriate once severe criteria (BP ≥160/110, symptoms, lab abnormalities, or pulmonary edema) are met.",
-            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
+            "pearl": "Severe preeclampsia mandates delivery regardless of gestational age; there is no role for expectant management once severe features (severe headache, RUQ pain, visual changes, severe hypertension, abnormal labs, hyperreflexia) are present.",
+            "acog_reference": "Practice Bulletin 33 — Diagnosis and Management of Preeclampsia and Eclampsia"
           },
           {
-            "pearl": "Magnesium sulfate 4–6 g IV loading followed by 2 g/hour is the first-line seizure prophylaxis in severe preeclampsia and must be initiated immediately; antihypertensives (labetalol, nifedipine IR, hydralazine) are second-line for BP control.",
-            "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
+            "pearl": "Magnesium sulfate (4–6 g IV loading dose, then 2 g/hour) is the first-line seizure prophylaxis in severe preeclampsia and eclampsia, superior to phenytoin or other agents.",
+            "acog_reference": "Practice Bulletin 33 — Diagnosis and Management of Preeclampsia and Eclampsia"
           }
         ]
       },
@@ -3540,9 +3561,9 @@
           "pass": true
         },
         "isCurveball": {
-          "actual": false,
+          "actual": true,
           "expected": false,
-          "pass": true
+          "pass": false
         },
         "abog_label": {
           "actual": "Fail",
@@ -3562,7 +3583,7 @@
       "actual": {
         "safety_score": 2,
         "diagnostic_score": 5,
-        "management_score": 2,
+        "management_score": 1,
         "focus_score": 5,
         "terminology_score": 5,
         "communication_score": 5,
@@ -3571,31 +3592,32 @@
         "abog_score": 1,
         "abog_label": "Fail",
         "isDangerous": true,
-        "dangerousReason": "Recommends immediate cesarean delivery without attempting labor induction in a 17-year-old primigravida at 34 weeks with severe preeclampsia; this approach exposes a teenager to unnecessary major surgery when vaginal delivery is feasible and preferred per ACOG guidance for unripe cervix in preeclampsia.",
+        "dangerousReason": "Candidate explicitly recommends immediate cesarean delivery without attempting cervical ripening or induction, which violates the standard of care for severe preeclampsia at 34 weeks and exposes mother to unnecessary major surgery and increased perioperative morbidity.",
         "isCurveball": true,
-        "curveballReason": "The candidate conflates 'need for delivery' with 'need for cesarean delivery,' missing the critical ABOG board concept that an unripe cervix in preeclampsia warrants induction first—cesarean is reserved for induction failure, fetal distress, or obstetric contraindications to vaginal delivery.",
+        "curveballReason": "This is a classic ABOG board trap: the candidate chooses unnecessary cesarean delivery over vaginal delivery with induction, missing the key principle that vaginal delivery is preferred for severe preeclampsia at term or near-term unless there is a specific contraindication (unfavorable cervix with failed induction, placental abruption, fetal distress, etc.).",
         "strengths": [
-          "Correctly identified the diagnosis of severe preeclampsia with appropriate hemolytic anemia/elevated liver enzyme (HELLP) features and recognized the absolute indication for delivery at 34+3 weeks.",
-          "Clear, focused communication that directly addresses the core question without tangents.",
-          "Appropriately emphasized the urgency and severity of the clinical scenario."
+          "Correctly identified the diagnosis of severe preeclampsia with eclampsia warning signs (severe headache, hyperreflexia, elevated liver enzymes, significant proteinuria).",
+          "Appropriately recognized the absolute indication for delivery at this presentation.",
+          "Demonstrated clear, organized communication of clinical reasoning."
         ],
         "gaps": [
-          "Failed to discuss cervical ripening or induction as the first-line delivery method for a teenager with unripe cervix; jumped directly to cesarean.",
-          "Did not mention magnesium sulfate for seizure prophylaxis or antihypertensive agents (nifedipine, labetalol, hydralazine) needed during induction or delivery.",
-          "Omitted discussion of maternal-fetal monitoring, strict fluid management, foley catheter, and I&O monitoring—all essential components of severe preeclampsia management.",
-          "Did not address the specific risk-benefit consideration for a primigravida at 34 weeks, where vaginal delivery is strongly preferred when feasible."
+          "Failed to recommend cervical ripening and induction as the first-line approach before cesarean delivery.",
+          "Did not mention magnesium sulfate prophylaxis, which is essential in severe preeclampsia to prevent seizure.",
+          "Did not address antihypertensive management (labetalol, nifedipine, or hydralazine) to control blood pressure in the acute setting.",
+          "Did not mention fluid management and strict intake/output monitoring.",
+          "Missed the key principle that vaginal delivery is preferred over primary cesarean delivery for severe preeclampsia absent obstetric contraindications."
         ],
         "teaching_points": [
           {
-            "pearl": "In severe preeclampsia with unripe cervix, induction of labor is the preferred delivery method unless there are obstetric contraindications (abruptio, cord prolapse, eclampsia uncontrolled by magnesium); cesarean delivery is reserved for failed induction or fetal indications.",
+            "pearl": "In severe preeclampsia at 34 weeks, vaginal delivery is preferred: initiate cervical ripening and/or induction unless there is a specific contraindication (failed induction with unfavorable cervix, placental abruption, fetal distress). Cesarean delivery carries greater maternal morbidity in this setting.",
             "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
           },
           {
-            "pearl": "Magnesium sulfate is mandatory for all women with severe preeclampsia (loading dose 4–6 g IV, then 2 g/hour maintenance) for seizure prophylaxis; this must accompany any delivery plan.",
+            "pearl": "Magnesium sulfate 4–6 g IV loading dose followed by 2 g/hour is the seizure prophylaxis standard in severe preeclampsia and should be initiated immediately; it is NOT a substitute for delivery.",
             "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
           },
           {
-            "pearl": "Judicious fluid management and strict I&O with foley catheter placement are critical in severe preeclampsia to prevent pulmonary edema and ARDS; antihypertensive therapy (nifedipine IR, labetalol, or hydralazine) is used to prevent maternal complications, not to delay delivery.",
+            "pearl": "Acute antihypertensive therapy (labetalol IV, nifedipine IR, or hydralazine IV) is indicated for persistent severe hypertension (BP ≥160/110) to reduce risk of maternal complications, but delivery remains the definitive treatment.",
             "acog_reference": "Practice Bulletin 202 — Gestational Hypertension and Preeclampsia"
           }
         ]
@@ -3628,10 +3650,10 @@
             "pass": false
           },
           "management_score": {
-            "actual": 2,
+            "actual": 1,
             "expected": 3,
-            "delta": -1,
-            "pass": true
+            "delta": -2,
+            "pass": false
           },
           "focus_score": {
             "actual": 5,
@@ -3706,23 +3728,22 @@
         "curveballReason": "",
         "strengths": [
           "Correctly identified oxytocin as first-line uterotonic with appropriate dosing (10 IU IM or 10-40 IU in 1L NS infusion)",
-          "Appropriately detailed contraindications for methylergonovine (hypertension/vasoconstriction) and carboprost (asthma/bronchoconstriction) with clinical reasoning",
-          "Recognized misoprostol's advantage of having no absolute contraindications and utility in limited IV access scenarios",
-          "Provided precise drug names, doses, and routes for all agents mentioned",
-          "Added evidence-based adjunctive therapy with tranexamic acid 1 gram IV for fibrinolysis reduction"
+          "Demonstrated systematic escalation logic: correctly named methylergonovine as second-line agent in normotensive patient with explicit contraindication reasoning (vasoconstrictive properties in hypertension)",
+          "Comprehensively covered all four major uterotonics with specific doses, mechanisms, and contraindications (carboprost/bronchoconstriction in asthma; misoprostol/no absolute contraindications)",
+          "Added evidence-based adjunctive therapy (tranexamic acid 1 gram IV) appropriate for refractory postpartum hemorrhage management"
         ],
         "gaps": [],
         "teaching_points": [
           {
-            "pearl": "Oxytocin is the first-line uterotonic globally for postpartum hemorrhage prevention and treatment; methylergonovine is reserved for normotensive patients due to dose-dependent hypertensive crisis risk, particularly with IV administration.",
+            "pearl": "Oxytocin is the ACOG-recommended first-line uterotonic; methylergonovine is preferred second-line in normotensive patients; always screen blood pressure and asthma history before choosing ergot alkaloids or prostaglandins.",
             "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
           },
           {
-            "pearl": "Carboprost and misoprostol are prostaglandin analogues useful for refractory atony; carboprost requires asthma screening while misoprostol has minimal contraindications, making it valuable in resource-limited or hemodynamically unstable settings.",
+            "pearl": "Tranexamic acid (1 g IV within 3 hours of delivery) reduces mortality from postpartum hemorrhage and should be considered early in cases of hemorrhage refractory to uterotonics and massage.",
             "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
           },
           {
-            "pearl": "Tranexamic acid (TXA) administration within 3 hours of delivery reduces hemorrhage-related mortality by ~30% in severe postpartum hemorrhage; it is now recommended as adjunctive therapy alongside uterotonics.",
+            "pearl": "Methylergonovine causes sustained uterine contraction and potent vasoconstriction; contraindicated in hypertension, preeclampsia, coronary artery disease, and peripheral vascular disease.",
             "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
           }
         ]
@@ -3832,23 +3853,20 @@
         "isCurveball": false,
         "curveballReason": "",
         "strengths": [
-          "Correctly identified oxytocin as first-line uterotonic with appropriate dose and route awareness.",
-          "Accurately recognized contraindications for methylergonovine (hypertension) and carboprost (asthma) with clear clinical reasoning.",
-          "Demonstrated understanding of the escalation pathway and appropriate sequencing of uterotonics in PPH management."
+          "Correctly identified oxytocin as first-line uterotonic with appropriate rationale (first agent attempted after failed uterine massage).",
+          "Accurately stated contraindications for methylergonovine (hypertension) and carboprost (asthma) with correct doses and routes.",
+          "Recognized that misoprostol has no absolute contraindications and appropriately positioned it as a backup agent.",
+          "Demonstrated understanding that uterotonic selection is context-dependent and must be individualized based on maternal comorbidities."
         ],
         "gaps": [],
         "teaching_points": [
           {
-            "pearl": "Oxytocin is the first-line uterotonic worldwide due to safety profile and efficacy; methylergonovine and carboprost are reserved for oxytocin failure, each with specific contraindications that must be elicited.",
-            "acog_reference": "Practice Bulletin 210 — Obstetric Care Consensus on Postpartum Hemorrhage"
-          },
-          {
-            "pearl": "In a macrosomic infant delivery with shoulder dystocia, uterine atony is the leading cause of PPH; oxytocin dosing (10 IU IM or 10–40 IU in crystalloid infusion) should be initiated immediately after placental delivery.",
+            "pearl": "Oxytocin is first-line for postpartum hemorrhage after failed uterine massage; methylergonovine (Methergine 0.2 mg IM) is second-line in normotensive patients; carboprost and misoprostol are reserved for refractory cases or when contraindications exist.",
             "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
           },
           {
-            "pearl": "Always obtain blood pressure and focused obstetric history (asthma, coronary disease) before administering ergot alkaloids or prostaglandins to avoid serious maternal morbidity.",
-            "acog_reference": "Committee Opinion 794 — Obstetric Care Consensus on Prevention and Management of Obstetric Hemorrhage"
+            "pearl": "Methylergonovine is absolutely contraindicated in hypertension (risk of hypertensive crisis and stroke); carboprost is contraindicated in asthma (bronchospasm risk); misoprostol is safe in nearly all maternal conditions.",
+            "acog_reference": "Practice Bulletin 76 — Postpartum Hemorrhage"
           }
         ]
       },
@@ -3942,42 +3960,43 @@
       "archetype_id": "C",
       "archetype_label": "Borderline-High",
       "actual": {
-        "safety_score": 4,
+        "safety_score": 3,
         "diagnostic_score": 5,
-        "management_score": 4,
-        "focus_score": 4,
-        "terminology_score": 5,
+        "management_score": 3,
+        "focus_score": 3,
+        "terminology_score": 4,
         "communication_score": 4,
         "recovery_score": 5,
-        "pass_probability": 87,
+        "pass_probability": 74,
         "abog_score": 3,
         "abog_label": "Pass",
         "isDangerous": false,
         "dangerousReason": "",
-        "isCurveball": false,
-        "curveballReason": "",
+        "isCurveball": true,
+        "curveballReason": "Candidate fails to distinguish between first-line (Pitocin/Methergine in normotensive patients) and second-line agents (Hemabate, misoprostol), omitting critical contraindication screening that is fundamental to ABOG management of postpartum hemorrhage.",
         "strengths": [
-          "Correctly identified oxytocin as first-line agent with appropriate escalation strategy",
-          "Recognized multi-agent approach and combination therapy as valid management of refractory postpartum hemorrhage",
-          "Articulated the physiologic goal of uterine contraction and tone maintenance"
+          "Correctly identified Pitocin as the starting agent and acknowledged need for escalation if first-line fails",
+          "Recognized the goal of achieving and maintaining uterine contraction",
+          "Named all four major uterotonic agents appropriately"
         ],
         "gaps": [
-          "Did not mention specific doses, routes, or infusion parameters for oxytocin or other agents",
-          "Failed to discuss contraindications (hypertension with Methergine, asthma with Carboprost) that should guide agent selection",
-          "Did not address the critical clinical context of shoulder dystocia with risk of uterine atony or whether this case warrants rapid escalation beyond Pitocin alone"
+          "Failed to specify dosing for Pitocin (10 IU IM or 10–40 IU in 1L infusion) or other agents",
+          "Did not address contraindications for Methergine (hypertension) or Hemabate (asthma) — critical safety reasoning",
+          "Omitted clinical assessment: no mention of obtaining blood pressure or allergy/asthma history before selecting Methergine or Hemabate",
+          "Did not clarify the sequential escalation protocol — when and why to move from one agent to the next"
         ],
         "teaching_points": [
           {
-            "pearl": "Oxytocin (Pitocin) remains first-line; Methergine is second-line if normotensive; Carboprost is third-line for refractory hemorrhage; contraindications must always be considered before selection.",
+            "pearl": "Pitocin is first-line for PPH; Methergine (if normotensive and no contraindications) is second-line after Pitocin failure. Hemabate and misoprostol are reserved for failure of both and have their own contraindication profiles.",
             "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
           },
           {
-            "pearl": "In refractory postpartum hemorrhage, combination uterotonic therapy (e.g., Pitocin + Methergine + Carboprost) is evidence-based and superior to monotherapy; simultaneous use of multiple agents is standard of care.",
+            "pearl": "Before administering Methergine or Hemabate, always screen for hypertension (Methergine contraindicated) and asthma (Hemabate contraindicated); misoprostol has no absolute contraindications.",
             "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
           },
           {
-            "pearl": "Shoulder dystocia with macrosomia increases risk of uterine atony; early consideration of rapid escalation beyond Pitocin alone may be warranted in this high-risk context.",
-            "acog_reference": "Practice Bulletin 178 — Shoulder Dystocia"
+            "pearl": "The candidate's statement 'use multiple agents if one alone does not control' is correct in principle (combination uterotonic therapy is standard escalation) but lacks the clinical reasoning about contraindication assessment and dosing that an examiner expects.",
+            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
           }
         ]
       },
@@ -3997,9 +4016,9 @@
       "comparison": {
         "dimensions": {
           "safety_score": {
-            "actual": 4,
+            "actual": 3,
             "expected": 3,
-            "delta": 1,
+            "delta": 0,
             "pass": true
           },
           "diagnostic_score": {
@@ -4009,22 +4028,22 @@
             "pass": false
           },
           "management_score": {
-            "actual": 4,
+            "actual": 3,
             "expected": 3,
-            "delta": 1,
+            "delta": 0,
             "pass": true
           },
           "focus_score": {
+            "actual": 3,
+            "expected": 3,
+            "delta": 0,
+            "pass": true
+          },
+          "terminology_score": {
             "actual": 4,
             "expected": 3,
             "delta": 1,
             "pass": true
-          },
-          "terminology_score": {
-            "actual": 5,
-            "expected": 3,
-            "delta": 2,
-            "pass": false
           },
           "communication_score": {
             "actual": 4,
@@ -4040,10 +4059,10 @@
           }
         },
         "pass_probability": {
-          "actual": 87,
+          "actual": 74,
           "expected": 64,
-          "delta": 23,
-          "pass": false
+          "delta": 10,
+          "pass": true
         },
         "isDangerous": {
           "actual": false,
@@ -4051,9 +4070,9 @@
           "pass": true
         },
         "isCurveball": {
-          "actual": false,
+          "actual": true,
           "expected": false,
-          "pass": true
+          "pass": false
         },
         "abog_label": {
           "actual": "Pass",
@@ -4071,43 +4090,43 @@
       "archetype_id": "D",
       "archetype_label": "Borderline-Low",
       "actual": {
-        "safety_score": 3,
-        "diagnostic_score": 4,
+        "safety_score": 4,
+        "diagnostic_score": 5,
         "management_score": 3,
         "focus_score": 3,
         "terminology_score": 5,
         "communication_score": 4,
         "recovery_score": 5,
-        "pass_probability": 71,
+        "pass_probability": 81,
         "abog_score": 3,
         "abog_label": "Pass",
         "isDangerous": false,
         "dangerousReason": "",
         "isCurveball": true,
-        "curveballReason": "Candidate recommends sequential Pitocin then Methergine without assessing contraindications to Methergine (hypertension status unknown); ACOG guidance emphasizes choosing based on clinical context and contraindications, not automatic sequential use.",
+        "curveballReason": "Candidate recommends Methergine as second-line without assessing for hypertension or other contraindications; ABOG board standard requires contraindication screening before naming second-line agents.",
         "strengths": [
-          "Correctly identified the clinical scenario as postpartum hemorrhage requiring uterotonic therapy",
-          "Appropriately escalated to OR for surgical management if medical therapy fails",
-          "Correct terminology and drug names (Pitocin, Methergine)"
+          "Correctly identified the need for uterotonic therapy in a case of postpartum hemorrhage",
+          "Appropriately escalated to surgical management if medical management fails",
+          "Demonstrated clear priority-setting: stopping the bleeding is the primary goal"
         ],
         "gaps": [
-          "Failed to mention the need to assess maternal blood pressure or other contraindications before selecting Methergine",
-          "Did not discuss alternative agents (carboprost, misoprostol) or when they might be preferred",
-          "Did not specify dosing, route of administration, or infusion parameters for either agent",
-          "Presented as automatic sequence rather than context-dependent choice"
+          "Did not assess for contraindications to Methergine (hypertension, preeclampsia) before recommending it",
+          "No mention of alternative agents (carboprost, misoprostol) or their respective contraindications",
+          "Did not specify dose or route of oxytocin administration",
+          "Omitted discussion of blood product availability, lab monitoring, or anesthesia consultation"
         ],
         "teaching_points": [
           {
-            "pearl": "Uterotonic selection in PPH is not algorithmic—assess maternal hypertension status, asthma, and other contraindications before choosing Methergine or carboprost; Pitocin has no absolute contraindications and is a safe first line.",
+            "pearl": "Methergine is contraindicated in hypertension and must never be used without confirming normotensive status; misoprostol has no absolute contraindications and is a safer second-line choice when hypertension is present or unknown.",
             "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
           },
           {
-            "pearl": "Methergine is contraindicated in hypertension (risk of severe HTN crisis and stroke); always establish BP and risk factors before administration in emergency PPH.",
+            "pearl": "The ACOG postpartum hemorrhage checklist recommends a sequential uterotonic approach: first oxytocin, then methylergonovine or carboprost (or misoprostol if contraindications exist), then consider combined agents or operative intervention.",
             "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
           },
           {
-            "pearl": "Carboprost and misoprostol are valuable alternatives when Pitocin/Methergine fail or are contraindicated; misoprostol has no absolute contraindications and is particularly useful when contraindications to ergot or prostaglandin F2α analogs exist.",
-            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+            "pearl": "In a term macrosomic infant delivery with shoulder dystocia and immediate PPH, assess baseline blood pressure and consider risk factors for hypertensive complications before committing to Methergine.",
+            "acog_reference": "Practice Bulletin 178 — Shoulder Dystocia"
           }
         ]
       },
@@ -4127,15 +4146,15 @@
       "comparison": {
         "dimensions": {
           "safety_score": {
-            "actual": 3,
+            "actual": 4,
             "expected": 3,
-            "delta": 0,
+            "delta": 1,
             "pass": true
           },
           "diagnostic_score": {
-            "actual": 4,
+            "actual": 5,
             "expected": 2,
-            "delta": 2,
+            "delta": 3,
             "pass": false
           },
           "management_score": {
@@ -4170,9 +4189,9 @@
           }
         },
         "pass_probability": {
-          "actual": 71,
+          "actual": 81,
           "expected": 53,
-          "delta": 18,
+          "delta": 28,
           "pass": false
         },
         "isDangerous": {
@@ -4201,44 +4220,43 @@
       "archetype_id": "E",
       "archetype_label": "Fail-Incomplete",
       "actual": {
-        "safety_score": 3,
-        "diagnostic_score": 5,
+        "safety_score": 2,
+        "diagnostic_score": 4,
         "management_score": 2,
         "focus_score": 2,
-        "terminology_score": 4,
+        "terminology_score": 3,
         "communication_score": 2,
-        "recovery_score": 5,
-        "pass_probability": 67,
-        "abog_score": 2,
-        "abog_label": "Borderline",
+        "recovery_score": 2,
+        "pass_probability": 45,
+        "abog_score": 1,
+        "abog_label": "Fail",
         "isDangerous": false,
         "dangerousReason": "",
-        "isCurveball": false,
-        "curveballReason": "",
+        "isCurveball": true,
+        "curveballReason": "Candidate recommends Pitocin alone without addressing the critical next step: when Pitocin (already likely infusing for routine PPH prophylaxis or active management) fails to achieve hemostasis, ABOG expects reasoning about escalation to second-line agents (Methergine, Carboprost, or Misoprostol) and contraindication-based selection. The question explicitly asks 'what uterotonic would you use and why' — requiring differentiation among agents and understanding of their indications, not merely repeating the first-line agent.",
         "strengths": [
-          "Correctly identified the clinical scenario as postpartum hemorrhage requiring uterotonic intervention",
-          "Appropriately called for help, demonstrating awareness of the need for team support in obstetric emergency",
-          "Chose Pitocin, which is a reasonable first-line agent with no absolute contraindications"
+          "Correctly identifies Pitocin as an appropriate first-line uterotonic for PPH.",
+          "Appropriately calls for help, recognizing the need for multidisciplinary support in massive PPH.",
+          "Recognizes urgency of the clinical scenario."
         ],
         "gaps": [
-          "Failed to discuss rationale for choice of Pitocin or comparative advantages/disadvantages of other uterotonics",
-          "Did not mention contraindications to alternative agents (e.g., hypertension with Methergine, asthma with Carboprost) or how clinical context guides agent selection",
-          "Did not specify dose or route of administration for Pitocin (10 IU IM vs. IV infusion)",
-          "Superficial response that does not demonstrate depth of understanding about uterotonic pharmacology or escalation strategy",
-          "Missing discussion of next steps if Pitocin fails or what additional interventions might be needed"
+          "Fails to address the clinical context: the patient is already bleeding despite uterine massage and Pitocin likely in use. The question implicitly asks which agent to use next, not to repeat Pitocin.",
+          "Does not discuss contraindication-based selection (e.g., checking blood pressure before considering Methergine, assessing for asthma before Carboprost).",
+          "Omits discussion of alternative or escalation agents (Methergine, Carboprost, Misoprostol) and their relative merits in refractory PPH.",
+          "Lacks specificity on dosing, route, and rationale for the chosen agent."
         ],
         "teaching_points": [
           {
-            "pearl": "In acute postpartum hemorrhage, Pitocin is appropriate first-line, but the choice of second-line uterotonic (Methergine vs. Carboprost vs. Misoprostol) depends on maternal contraindications: avoid Methergine in hypertensive patients and Carboprost in asthmatic patients.",
-            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+            "pearl": "When first-line oxytocin fails to achieve hemostasis in active PPH, escalate to second-line agents (Methergine, Carboprost, or Misoprostol) based on contraindications: check BP before Methergine, assess respiratory history before Carboprost, and select Misoprostol if contraindications exist to both.",
+            "acog_reference": "Practice Bulletin 205 — Postpartum Hemorrhage"
           },
           {
-            "pearl": "After shoulder dystocia and a large infant (4500g), anticipate increased risk of uterine atony; rapid escalation to multiple uterotonics or consideration of intrauterine balloon may be needed if first agent fails.",
-            "acog_reference": "Practice Bulletin 178 — Shoulder Dystocia"
+            "pearl": "ACOG's PPH management algorithm specifies oxytocin first; Methergine (0.2 mg IM) as second-line in normotensive patients; Carboprost (0.25 mg IM) as third-line; and Misoprostol (1000 mcg rectal) as a rescue agent when others are contraindicated or have failed.",
+            "acog_reference": "Practice Bulletin 205 — Postpartum Hemorrhage"
           },
           {
-            "pearl": "Pitocin can be given as 10 IU IM (faster onset) or as 10-40 IU in 1L NS infusion; the intramuscular route is preferred in hemorrhage when rapid effect is needed, whereas infusion is used for augmentation of labor.",
-            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+            "pearl": "In this specific case (large infant, operative delivery, strong uterine contraction with transient firmness), consider that Pitocin may already be running; the examiner is testing whether you know when and how to escalate, not whether you repeat the initial agent.",
+            "acog_reference": "Practice Bulletin 205 — Postpartum Hemorrhage"
           }
         ]
       },
@@ -4258,15 +4276,15 @@
       "comparison": {
         "dimensions": {
           "safety_score": {
-            "actual": 3,
+            "actual": 2,
             "expected": 3,
-            "delta": 0,
+            "delta": -1,
             "pass": true
           },
           "diagnostic_score": {
-            "actual": 5,
+            "actual": 4,
             "expected": 1,
-            "delta": 4,
+            "delta": 3,
             "pass": false
           },
           "management_score": {
@@ -4282,10 +4300,10 @@
             "pass": true
           },
           "terminology_score": {
-            "actual": 4,
+            "actual": 3,
             "expected": 2,
-            "delta": 2,
-            "pass": false
+            "delta": 1,
+            "pass": true
           },
           "communication_score": {
             "actual": 2,
@@ -4294,17 +4312,17 @@
             "pass": true
           },
           "recovery_score": {
-            "actual": 5,
+            "actual": 2,
             "expected": 5,
-            "delta": 0,
-            "pass": true
+            "delta": -3,
+            "pass": false
           }
         },
         "pass_probability": {
-          "actual": 67,
+          "actual": 45,
           "expected": 43,
-          "delta": 24,
-          "pass": false
+          "delta": 2,
+          "pass": true
         },
         "isDangerous": {
           "actual": false,
@@ -4312,12 +4330,12 @@
           "pass": true
         },
         "isCurveball": {
-          "actual": false,
+          "actual": true,
           "expected": false,
-          "pass": true
+          "pass": false
         },
         "abog_label": {
-          "actual": "Borderline",
+          "actual": "Fail",
           "expected": "Fail",
           "pass": true
         },
@@ -4336,37 +4354,37 @@
         "diagnostic_score": 5,
         "management_score": 2,
         "focus_score": 3,
-        "terminology_score": 5,
-        "communication_score": 4,
+        "terminology_score": 4,
+        "communication_score": 3,
         "recovery_score": 1,
         "pass_probability": 45,
         "abog_score": 1,
         "abog_label": "Fail",
         "isDangerous": true,
-        "dangerousReason": "Candidate recommends carboprost without screening for contraindications (asthma, cardiac disease), explicitly stating to administer 'regardless of her medical history' — a dangerous omission that could precipitate bronchospasm or coronary vasospasm in an at-risk patient.",
+        "dangerousReason": "Recommending carboprost without assessing for contraindications (asthma, reactive airway disease) creates risk of severe bronchospasm and respiratory compromise in an unscreened patient; this violates the fundamental principle of obtaining contraindication history before administering a potent agent.",
         "isCurveball": true,
-        "curveballReason": "The candidate conflates 'potency' with 'first-line escalation' and abandons the standard algorithm (oxytocin → methylergonovine → carboprost/misoprostol) in favor of the most potent agent without risk stratification, which is the classic trap in PPH management.",
+        "curveballReason": "Candidate escalates directly to carboprost without first trialing methylergonovine in a normotensive patient—ACOG guidelines recommend methylergonovine as the second-line agent after Pitocin failure in the absence of hypertension, not carboprost as first escalation.",
         "strengths": [
-          "Correctly identified postpartum hemorrhage and the need to escalate uterotonics beyond oxytocin.",
-          "Used precise terminology (Hemabate, carboprost) and recognized the agent's relative potency.",
-          "Appropriately prioritized speed of intervention in a hemorrhage scenario."
+          "Correctly identified that oxytocin alone is insufficient and escalation is needed in the context of ongoing hemorrhage.",
+          "Correctly named carboprost (Hemabate) and accurately characterized it as a potent uterotonic agent.",
+          "Demonstrated appropriate clinical urgency and recognized that maternal hemorrhage is a life-threatening emergency."
         ],
         "gaps": [
-          "Failed to obtain or consider maternal medical history before selecting a uterotonic with significant contraindications.",
-          "Did not follow the standard escalation algorithm (methylergonovine is preferred second-line in normotensive patients; carboprost is third-line).",
-          "Explicitly stated 'regardless of her medical history,' demonstrating dangerous disregard for contraindication screening in an active hemorrhage context."
+          "Explicitly stated willingness to administer carboprost 'regardless of her medical history'—a dangerous protocol violation that ignores critical contraindications such as asthma.",
+          "Failed to recognize methylergonovine as the preferred second-line agent in a normotensive patient; carboprost is indicated primarily when hypertension or other factors preclude methylergonovine.",
+          "Did not acknowledge the need to obtain a focused allergy and medical history (specifically asthma status) before choosing between methylergonovine and carboprost."
         ],
         "teaching_points": [
           {
-            "pearl": "In postpartum hemorrhage, the choice of uterotonic is guided by contraindications and escalation order, not potency alone: oxytocin → methylergonovine (if normotensive) → carboprost or misoprostol; carboprost is contraindicated in asthma and cardiac disease.",
+            "pearl": "Methylergonovine is the recommended second-line uterotonic after oxytocin failure in normotensive patients; carboprost is reserved for those with contraindications to methylergonovine or as a third-line agent, never given blindly without contraindication screening.",
             "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
           },
           {
-            "pearl": "Rapid maternal history taking (BP, asthma, cardiac history) during PPH is essential and must occur in parallel with initial interventions; it is not a delay to care.",
+            "pearl": "Carboprost is absolutely contraindicated in asthma and reactive airway disease due to risk of severe bronchospasm; a rapid focused history is mandatory before administration, even in emergencies.",
             "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
           },
           {
-            "pearl": "Methylergonovine (Methergine) is the recommended second-line agent after oxytocin failure in normotensive patients and is safer than carboprost for most parturients.",
+            "pearl": "Urgency in hemorrhage management does not override the need to identify absolute contraindications; the correct escalation sequence (Pitocin → Methylergonovine → Carboprost/Misoprostol) is evidence-based and prevents iatrogenic harm.",
             "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
           }
         ]
@@ -4411,15 +4429,15 @@
             "pass": true
           },
           "terminology_score": {
-            "actual": 5,
-            "expected": 3,
-            "delta": 2,
-            "pass": false
-          },
-          "communication_score": {
             "actual": 4,
             "expected": 3,
             "delta": 1,
+            "pass": true
+          },
+          "communication_score": {
+            "actual": 3,
+            "expected": 3,
+            "delta": 0,
             "pass": true
           },
           "recovery_score": {
@@ -4462,40 +4480,40 @@
       "archetype_label": "Fail-Curveball",
       "actual": {
         "safety_score": 1,
-        "diagnostic_score": 5,
+        "diagnostic_score": 1,
         "management_score": 1,
         "focus_score": 1,
-        "terminology_score": 3,
+        "terminology_score": 2,
         "communication_score": 2,
         "recovery_score": 1,
-        "pass_probability": 39,
+        "pass_probability": 22,
         "abog_score": 1,
         "abog_label": "Fail",
         "isDangerous": true,
-        "dangerousReason": "Erythromycin is not a uterotonic and has no role in treating postpartum hemorrhage; recommending it as primary treatment delays or replaces evidence-based uterotonics (oxytocin, methylergonovine, carboprost, misoprostol) and directly endangers the patient by prolonging life-threatening bleeding.",
+        "dangerousReason": "Candidate recommends erythromycin as a uterotonic for postpartum hemorrhage, which is not a uterotonic agent and would delay or replace necessary evidence-based uterotonics (oxytocin, methylergonovine, carboprost, or misoprostol), directly endangering the patient by prolonging hemorrhage.",
         "isCurveball": false,
         "curveballReason": "",
         "strengths": [
-          "Correctly identified that the patient is at risk for infection in the context of prolonged labor and traumatic delivery"
+          "Candidate correctly identifies the patient as at high risk for infection and considers antibiotic coverage"
         ],
         "gaps": [
-          "Fundamental misunderstanding: erythromycin is a macrolide antibiotic with no primary uterotonic properties and is not indicated for treatment of atonic postpartum hemorrhage",
-          "Failed to identify and recommend any evidence-based uterotonic agent (oxytocin, methylergonovine, carboprost, or misoprostol)",
-          "Did not address the clinical context or contraindications when selecting a uterotonic",
-          "Conflated antibiotic prophylaxis (appropriate in prolonged labor) with uterotonic therapy for active postpartum hemorrhage"
+          "Fundamental misidentification of erythromycin as a uterotonic agent with pro-motility properties for the uterus in hemorrhage",
+          "Does not recommend any of the four standard uterotonics (oxytocin, methylergonovine, carboprost, misoprostol) despite this being the core question",
+          "Does not address the urgent clinical need to achieve uterine contraction and hemostasis in active postpartum hemorrhage",
+          "Confuses gastrointestinal pro-motility effects of erythromycin (used for gastroparesis) with uterine contracting properties"
         ],
         "teaching_points": [
           {
-            "pearl": "First-line uterotonics for postpartum hemorrhage are oxytocin, methylergonovine, carboprost, and misoprostol — never use antibiotics as primary uterotonic agents.",
-            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+            "pearl": "The four FDA-approved uterotonics for postpartum hemorrhage are oxytocin (first-line), methylergonovine (contraindicated if hypertensive), carboprost (contraindicated in asthma), and misoprostol (no absolute contraindications); erythromycin is not a uterotonic and has no role in active PPH management.",
+            "acog_reference": "Practice Bulletin 76 — Postpartum Hemorrhage"
           },
           {
-            "pearl": "When selecting a uterotonic, always evaluate contraindications: methylergonovine is contraindicated in hypertension; carboprost in asthma/reactive airway disease; misoprostol has no absolute contraindications.",
-            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+            "pearl": "Antibiotic prophylaxis and uterotonic selection are separate management decisions; in active hemorrhage, uterine contraction must be achieved first via appropriate uterotonics; antibiotics do not replace uterotonic therapy.",
+            "acog_reference": "Practice Bulletin 76 — Postpartum Hemorrhage"
           },
           {
-            "pearl": "After failed response to oxytocin, second-line agents (methylergonovine, carboprost, misoprostol, or combination therapy) should be administered promptly; prolonged delay in escalating uterotonic therapy increases risk of severe hemorrhage and transfusion.",
-            "acog_reference": "Practice Bulletin 183 — Postpartum Hemorrhage"
+            "pearl": "Erythromycin's pro-motility effect is on the gastrointestinal tract (used for gastroparesis) and does not translate to enhanced uterine contractility; confusion of GI and uterine pharmacology is a critical knowledge gap in obstetric hemorrhage management.",
+            "acog_reference": "Practice Bulletin 76 — Postpartum Hemorrhage"
           }
         ]
       },
@@ -4521,10 +4539,10 @@
             "pass": false
           },
           "diagnostic_score": {
-            "actual": 5,
+            "actual": 1,
             "expected": 1,
-            "delta": 4,
-            "pass": false
+            "delta": 0,
+            "pass": true
           },
           "management_score": {
             "actual": 1,
@@ -4539,9 +4557,9 @@
             "pass": false
           },
           "terminology_score": {
-            "actual": 3,
+            "actual": 2,
             "expected": 3,
-            "delta": 0,
+            "delta": -1,
             "pass": true
           },
           "communication_score": {
@@ -4558,10 +4576,10 @@
           }
         },
         "pass_probability": {
-          "actual": 39,
+          "actual": 22,
           "expected": 38,
-          "delta": 1,
-          "pass": true
+          "delta": -16,
+          "pass": false
         },
         "isDangerous": {
           "actual": true,
