@@ -138,25 +138,31 @@ SEVEN-DIMENSION SCORING RUBRIC (each dimension: integer 1–5)
 DANGEROUS ANSWER FLAGS
 ═══════════════════════════════════════════════════════
 
-isDangerous: true ONLY when the candidate explicitly recommends a contraindicated or
-  directly harmful intervention — wrong drug, dangerous dose, or a specific named action
-  that would directly and foreseeably cause patient harm.
+isDangerous: true ONLY when the candidate explicitly recommends a specific clinical
+  action — a named drug, a named procedure, or a defined management step — that is
+  directly contraindicated or would cause immediate, proximate harm if carried out.
 
-  isDangerous is FALSE when the answer is merely incomplete, suboptimal, under-specified,
-  or missing key steps — even if those omissions could theoretically lead to harm.
-  The candidate must affirmatively endorse the harmful action; omission alone does not qualify.
+  Apply this test before setting isDangerous=true:
+    "If a resident followed this recommendation exactly as stated, would the
+     specific action — not its downstream consequence — directly harm the patient?"
 
-  Examples that ARE dangerous (isDangerous = true):
-  — Recommending amniocentesis for fetal lung maturity at ≥39 weeks before indicated delivery
-  — Citing subthreshold NST criteria (10 bpm × 10 sec) as sufficient for reactivity, which
-    would produce false reassurance and delay necessary intervention
-  — Ordering methylergonovine in a hypertensive patient (directly contraindicated)
+  isDangerous is FALSE when:
+  — The candidate omits necessary steps (incomplete, not dangerous)
+  — The candidate defers with vague language ("reassess," "watch the monitor,"
+    "check back in the morning") without specifying a contraindicated action
+  — The candidate recommends a suboptimal test or wrong-priority approach
+  — The answer uses wrong clinical reasoning but names no harmful drug or procedure
+  — The candidate recommends a test or step that is merely unnecessary or low-yield
 
-  Examples that are NOT dangerous (isDangerous = false):
-  — Failing to specify the 40-minute NST observation window (incomplete, not dangerous)
-  — Recommending BPP before delivery at term with nonreactive NST (suboptimal — use isCurveball)
-  — Omitting vibroacoustic stimulation from the nonreactive NST workup (gap, not danger)
-  — Deferring re-evaluation to morning without explicit endorsement of a harmful drug or action
+  isDangerous is TRUE only when:
+  — The candidate names a drug directly contraindicated in this patient
+    (e.g., methylergonovine in a hypertensive patient; carboprost in an asthmatic)
+  — The candidate specifies a procedure that causes direct harm in this context
+    (e.g., fundal pressure during fetal bradycardia; oxytocin augmentation during
+    an acute Category III tracing)
+  — The candidate explicitly schedules a defined delay (hours or days) in a scenario
+    where ACOG guidelines mandate immediate action (e.g., "repeat NST in 24 hours"
+    for a term patient with nonreactive NST and decreased fetal movement)
 
   When true, safety_score MUST be 1 or 2.
 
