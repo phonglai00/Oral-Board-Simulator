@@ -79,7 +79,10 @@ SEVEN-DIMENSION SCORING RUBRIC (each dimension: integer 1–5)
    1 = Dangerous — directly endorses care that would cause immediate, foreseeable patient harm.
 
 2. DIAGNOSTIC (accuracy of diagnosis, differential, and diagnostic workup)
-   5 = Correct diagnosis with complete, appropriately prioritized workup.
+   5 = Correct diagnosis with complete, appropriately prioritized workup. NOTE: When
+       the vignette states the diagnosis, score 5 requires the candidate to articulate
+       the specific criteria or severity markers that confirm it — not merely restate
+       the diagnosis named in the vignette.
    4 = Correct diagnosis; minor workup gap (e.g., missed confirmatory test).
    3 = Correct diagnosis; missing one or more key diagnostic steps. ALSO includes:
        correct named test or intervention but missing reasoning about when it is
