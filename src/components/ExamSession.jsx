@@ -4,7 +4,7 @@ import { QuestionCard } from './QuestionCard'
 import { VoiceInput } from './VoiceInput'
 import { FollowUp } from './FollowUp'
 import { ExaminerResponse } from './ExaminerResponse'
-import { scoreAnswer } from '../services/anthropic'
+import { scoreAnswer, scoreAnswerFast, scoreAnswerEnrich } from '../services/anthropic'
 import { useElevenLabs } from '../hooks/useElevenLabs'
 import { isStrongAnswer, shouldShowProbe } from '../utils/scoringPrompt'
 // ── Grader v2 — developer testing infrastructure (zero production impact) ─────
@@ -176,7 +176,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
     questionsRef.current = [...questionsRef.current, question.question]
 
     try {
-      const result = await scoreAnswer({
+      const result = await scoreAnswerFast({
         question:       question.question,
         idealAnswer:    question.idealAnswer,
         candidateAnswer,
@@ -197,6 +197,22 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
 
       resultsRef.current = [...resultsRef.current, fullResult]
       setCurrentResult(fullResult)
+
+      // ── Enrichment: fire non-blocking; merges scorecard fields when resolved ──
+      const enrichQid = question.id
+      scoreAnswerEnrich({
+        question:       question.question,
+        candidateAnswer,
+        caseContext,
+        caseId:         `Case ${caseData.id}`,
+        difficulty,
+        fastResult:     result,
+      }).then(enrichment => {
+        resultsRef.current = resultsRef.current.map(r =>
+          r.questionId === enrichQid ? { ...r, ...enrichment } : r
+        )
+        setCurrentResult(r => r && r.questionId === enrichQid ? { ...r, ...enrichment } : r)
+      }).catch(() => {})
 
       // ── Grader v2: fire async alongside production routing — non-blocking ──
       // isDevMode is false for all production users; this block never executes in prod.
@@ -284,7 +300,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
     }
 
     try {
-      const followUpResult = await scoreAnswer({
+      const followUpResult = await scoreAnswerFast({
         question:        question.question,
         idealAnswer:     question.idealAnswer,
         candidateAnswer: followUpText,
@@ -329,6 +345,22 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
         updated,
       ]
       setCurrentResult(updated)
+
+      // ── Enrichment: fire non-blocking for follow-up result ────────────────
+      const enrichQid2 = question.id
+      scoreAnswerEnrich({
+        question:       question.question,
+        candidateAnswer: followUpText,
+        caseContext,
+        caseId:         `Case ${caseData.id}`,
+        difficulty,
+        fastResult:     followUpResult,
+      }).then(enrichment => {
+        resultsRef.current = resultsRef.current.map(r =>
+          r.questionId === enrichQid2 ? { ...r, ...enrichment } : r
+        )
+        setCurrentResult(r => r && r.questionId === enrichQid2 ? { ...r, ...enrichment } : r)
+      }).catch(() => {})
 
       const phrase = pick(NEUTRAL[difficulty] || NEUTRAL.standard, question.id)
       speak(phrase)

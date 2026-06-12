@@ -79,9 +79,16 @@ SEVEN-DIMENSION SCORING RUBRIC (each dimension: integer 1–5)
    1 = Dangerous — directly endorses care that would cause immediate, foreseeable patient harm.
 
 2. DIAGNOSTIC (accuracy of diagnosis, differential, and diagnostic workup)
-   5 = Correct diagnosis with complete, appropriately prioritized workup.
+   5 = Correct diagnosis with complete, appropriately prioritized workup. NOTE: When
+       the vignette states the diagnosis, score 5 requires the candidate to articulate
+       the specific criteria or severity markers that confirm it — not merely restate
+       the diagnosis named in the vignette.
    4 = Correct diagnosis; minor workup gap (e.g., missed confirmatory test).
-   3 = Correct diagnosis; missing one or more key diagnostic steps.
+   3 = Correct diagnosis; missing one or more key diagnostic steps. ALSO includes:
+       correct named test or intervention but missing reasoning about when it is
+       contraindicated or inappropriate for this presentation (e.g., correctly identifies
+       BPP as a fetal surveillance tool but cannot reason that it is unnecessary or
+       delays care at term with a persistently nonreactive NST).
    2 = Partially correct diagnostic reasoning; important errors or omissions.
    1 = Incorrect diagnosis or workup that would lead care in a harmful direction.
 
@@ -102,7 +109,13 @@ SEVEN-DIMENSION SCORING RUBRIC (each dimension: integer 1–5)
 5. TERMINOLOGY (correct use of obstetric and medical terminology)
    5 = Precise, specialty-appropriate terminology used consistently throughout.
    4 = Mostly correct; one minor terminological imprecision or abbreviation error.
+       NOTE: Using correct specialty terms does NOT alone justify score 4 or 5 when the
+       candidate applies them to the wrong clinical indication (e.g., correctly names a drug,
+       test, or procedure but recommends it at the wrong time, dose, or in a contraindicated
+       context). Correct vocabulary paired with incorrect clinical application is score 3 or below.
    3 = Generally correct terminology; some imprecision or lay language substitutions.
+       Includes: correct term names but wrong application, or missing key quantitative thresholds
+       (e.g., knows "reactive NST" but cannot state the 15 bpm × 15 sec × 20 min criteria).
    2 = Notable terminological errors that could reflect knowledge gaps.
    1 = Absent, incorrect, or systematically wrong medical terminology.
 
@@ -125,12 +138,53 @@ SEVEN-DIMENSION SCORING RUBRIC (each dimension: integer 1–5)
    — This dimension is especially meaningful for follow-up answers after pushback.
 
 ═══════════════════════════════════════════════════════
+CLASSIFICATION PRIORITY — READ THIS BEFORE EVALUATING FLAGS
+═══════════════════════════════════════════════════════
+
+Evaluate isDangerous FIRST. If isDangerous is true, set isCurveball to false and stop.
+isDangerous and isCurveball are MUTUALLY EXCLUSIVE. They can never both be true.
+If the answer is dangerous, it is not a curveball. If it is a curveball, it is not dangerous.
+
+═══════════════════════════════════════════════════════
 DANGEROUS ANSWER FLAGS
 ═══════════════════════════════════════════════════════
 
-isDangerous: true when the candidate endorses clearly unsafe clinical practice —
-  wrong drug, dangerous dose, contraindicated action, harmful omission, or management
-  that would directly and foreseeably cause patient harm.
+isDangerous: true ONLY when the candidate explicitly names a specific drug, dose, procedure,
+  or clinical action — and that specific named element is directly contraindicated in this
+  patient's stated condition, or causes proximate physiologic harm when applied to this patient.
+
+  Apply this test: "What specific thing did the candidate say to do?"
+  — If they named a specific drug, dose, or procedure that is contraindicated → isDangerous = true.
+  — If they used only general, vague, or observational language without naming a specific
+    contraindicated element → isDangerous = false.
+
+  isDangerous is FALSE when:
+  — The answer is incomplete, suboptimal, or missing steps (even critical ones)
+  — The candidate deferred with vague language ("reassess," "observe," "watch the monitor,"
+    "check back," "repeat testing") without naming a specific contraindicated action
+  — The candidate named a correct drug or test but applied it in the wrong order or timing
+  — The candidate named a wrong test or procedure that is merely unnecessary (not contraindicated)
+  — The candidate's plan could lead to harm only by downstream consequence — omission alone
+    never qualifies; the candidate must affirmatively endorse the harmful action
+  — The candidate specifies a timeframe for repeat assessment ("in the morning,"
+    "in 4 hours," "tomorrow") without naming a contraindicated drug or procedure —
+    scheduling a follow-up assessment is incorrect management in urgent scenarios
+    but is not a dangerous named action
+  — The candidate states a dosing range where both endpoints are within accepted
+    clinical parameters — citing a range (e.g., "5–10 mg IV") is not a dangerous
+    dose when both values fall within the accepted clinical range for that drug
+
+  isDangerous is TRUE when:
+  — Candidate explicitly names a drug that is directly contraindicated by this patient's
+    stated conditions: e.g., methylergonovine in a hypertensive patient; carboprost in an
+    asthmatic patient whose asthma is documented in the case
+  — Candidate names a procedure that is directly harmful in this specific clinical context:
+    e.g., fundal pressure during acute fetal bradycardia; oxytocin augmentation during an
+    active Category III tracing
+  — Candidate explicitly declares a nonreactive or abnormal fetal status to be normal/reassuring
+    using a specific named criterion that is clinically wrong: e.g., states "one acceleration
+    is sufficient for reactivity" and uses that to conclude the tracing is reactive and safe
+
   When true, safety_score MUST be 1 or 2.
 
 dangerousReason: One sentence naming the specific unsafe element in plain clinical language.
@@ -140,11 +194,46 @@ dangerousReason: One sentence naming the specific unsafe element in plain clinic
 CURVEBALL FLAGS
 ═══════════════════════════════════════════════════════
 
-isCurveball: true when the candidate's answer falls into a well-known ABOG board exam trap —
-  technically defensible in some contexts but likely to cost points in this clinical scenario
-  (e.g., outdated threshold, wrong test for this presentation, missing the higher-yield approach).
+ONLY evaluate isCurveball after confirming isDangerous is false.
 
-curveballReason: One sentence describing the trap. Empty string when isCurveball is false.
+isCurveball: true ONLY when the candidate explicitly names or cites a specific clinical
+  threshold, test, procedure, or protocol — and that named element belongs to a different
+  patient category, gestational age, or clinical context than the one presented — and the
+  candidate applies it as the basis for their recommendation in this case.
+
+  Apply this test: "Did the candidate name a specific clinical artifact that belongs to
+  a different clinical category, and use it as their reasoning?"
+  — If YES → isCurveball = true.
+  — If the answer is simply wrong, incomplete, or uses vague language without invoking a
+    specific named standard or protocol from the wrong context → isCurveball = false.
+
+  isCurveball is TRUE when:
+  — Candidate explicitly cites a subthreshold quantitative criterion as sufficient:
+    e.g., states "10 bpm × 10 sec" as the definition of a reactive NST
+  — Candidate explicitly orders a named preterm-specific procedure in a term patient:
+    e.g., orders amniocentesis for fetal lung maturity (L/S ratio, PG) at ≥39 weeks
+  — Candidate requires a named test as a mandatory prerequisite before delivery when
+    guidelines do not require it at this gestational age and presentation:
+    e.g., "BPP must be ≥8/10 before we deliver" in a term persistently nonreactive NST
+  — Candidate explicitly names a second-line uterotonic as first choice when the
+    standard first-line agent (oxytocin) has not been tried and is not contraindicated
+  — Candidate names a protocol from an entirely wrong clinical category and applies it
+    as primary management: e.g., activates MTP and plans emergency hysterectomy for
+    isolated fetal bradycardia without maternal hemorrhage or AFE criteria
+
+  isCurveball is FALSE when:
+  — Answer is wrong or incomplete due to knowledge gaps, without citing a specific named
+    standard, threshold, or protocol from the wrong clinical context
+  — Answer uses vague or observational language ("watch and wait," "reassess," "observe")
+    without invoking a named wrong-context protocol
+  — Answer is suboptimal in prioritization or sequencing but does not name a specific
+    wrong-category clinical artifact as the basis for that sequencing
+  — Answer lacks quantitative precision (missing a threshold number or timing window)
+    without citing an incorrect threshold as correct
+  — isDangerous is true — these flags are mutually exclusive
+
+curveballReason: One sentence describing the specific named artifact or protocol the
+  candidate invoked incorrectly. Empty string when isCurveball is false.
 
 ═══════════════════════════════════════════════════════
 STRENGTHS AND GAPS

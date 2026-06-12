@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react'
 
 const VOICE_ID = '21m00Tcm4TlvDq8ikWAM'           // Rachel
-const MODEL_ID = 'eleven_monolingual_v1'
+const MODEL_ID = 'eleven_flash_v2_5'
 const API_URL  = `https://api.elevenlabs.io/v1/text-to-speech/${VOICE_ID}`
 
 export function useElevenLabs() {
