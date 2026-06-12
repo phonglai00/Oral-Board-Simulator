@@ -1,4 +1,8 @@
-import { buildScoringPrompt, parseScoringResponse } from '../utils/scoringPrompt'
+import {
+  buildScoringPrompt, parseScoringResponse,
+  buildFastScoringPrompt, parseFastScoringResponse,
+  buildEnrichmentPrompt, parseEnrichmentResponse,
+} from '../utils/scoringPrompt'
 
 const API_URL = 'https://api.anthropic.com/v1/messages'
 
@@ -57,4 +61,47 @@ export async function scoreAnswer({
   )
   const raw = await callAPI([{ role: 'user', content: user }], 900, system)
   return parseScoringResponse(raw)
+}
+
+export async function scoreAnswerFast({
+  question,
+  idealAnswer,
+  candidateAnswer,
+  caseContext,
+  caseId,
+  difficulty,
+  isFollowUp  = false,
+  priorAnswer = '',
+}) {
+  const { system, user } = buildFastScoringPrompt(
+    question,
+    candidateAnswer,
+    caseContext || idealAnswer,
+    caseId      || '',
+    difficulty  || 'standard',
+    isFollowUp,
+    priorAnswer,
+  )
+  const raw = await callAPI([{ role: 'user', content: user }], 250, system)
+  return parseFastScoringResponse(raw)
+}
+
+export async function scoreAnswerEnrich({
+  question,
+  candidateAnswer,
+  caseContext,
+  caseId,
+  difficulty,
+  fastResult,
+}) {
+  const { system, user } = buildEnrichmentPrompt(
+    question,
+    candidateAnswer,
+    caseContext || '',
+    caseId      || '',
+    difficulty  || 'standard',
+    fastResult,
+  )
+  const raw = await callAPI([{ role: 'user', content: user }], 700, system)
+  return parseEnrichmentResponse(raw)
 }
