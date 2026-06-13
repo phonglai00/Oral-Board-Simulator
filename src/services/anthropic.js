@@ -91,7 +91,7 @@ export async function scoreAnswerFast({
     followUpDepth,
     priorTargetedElement,
   )
-  const raw = await callAPI([{ role: 'user', content: user }], 250, system)
+  const raw = await callAPI([{ role: 'user', content: user }], 400, system)
   return parseFastScoringResponse(raw)
 }
 
