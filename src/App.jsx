@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { ApiTest } from './components/ApiTest'
 import { StartScreen } from './components/StartScreen'
 import { ExamSession } from './components/ExamSession'
@@ -10,6 +10,15 @@ import { useGraderV2DevMode } from './hooks/useGraderV2DevMode'
 
 const SCREEN = { API_TEST: 'api_test', START: 'start', EXAM: 'exam', SCORE: 'score' }
 
+function shuffle(arr) {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
 export default function App() {
   const [screen, setScreen] = useState(SCREEN.API_TEST)
   // isDevMode drives the hidden Grader v2 comparison panel — no UI exposure
@@ -17,7 +26,16 @@ export default function App() {
   const [results, setResults] = useState([])
   const [questions, setQuestions] = useState([])
   const [transcript, setTranscript] = useState([])
-  const caseData = CASES[0]
+
+  // Shuffled queue — refills when all cases have been presented once
+  const queueRef = useRef(shuffle(CASES))
+  const [caseData, setCaseData] = useState(queueRef.current[0])
+
+  function nextCase() {
+    queueRef.current = queueRef.current.slice(1)
+    if (queueRef.current.length === 0) queueRef.current = shuffle(CASES)
+    setCaseData(queueRef.current[0])
+  }
 
   function handleComplete(r, q, t) {
     setResults(r)
@@ -30,6 +48,7 @@ export default function App() {
     setResults([])
     setQuestions([])
     setTranscript([])
+    nextCase()
     setScreen(SCREEN.START)
   }
 
