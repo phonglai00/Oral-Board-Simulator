@@ -70,8 +70,10 @@ export async function scoreAnswerFast({
   caseContext,
   caseId,
   difficulty,
-  isFollowUp  = false,
-  priorAnswer = '',
+  isFollowUp           = false,
+  priorAnswer          = '',
+  followUpDepth        = 0,
+  priorTargetedElement = '',
 }) {
   const { system, user } = buildFastScoringPrompt(
     question,
@@ -81,6 +83,8 @@ export async function scoreAnswerFast({
     difficulty  || 'standard',
     isFollowUp,
     priorAnswer,
+    followUpDepth,
+    priorTargetedElement,
   )
   const raw = await callAPI([{ role: 'user', content: user }], 250, system)
   return parseFastScoringResponse(raw)
