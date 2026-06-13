@@ -285,9 +285,12 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
 
       // ── 4. PROBE: scores 2–3 on either dimension ──────────────────────────
       if (shouldShowProbe(result)) {
-        speak(PROBE_TEXT)
         setExaminerText(PROBE_TEXT)
         setPhase(PHASE.PROBE)
+        setMicReady(false)
+        speak(PROBE_TEXT).then(() => {
+          setTimeout(() => setMicReady(true), 500)
+        })
         return
       }
 
@@ -492,6 +495,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
           <FollowUp
             probe={PROBE_TEXT}
             onSubmit={handleProbeAnswer}
+            micReady={micReady}
           />
         )}
 
