@@ -266,9 +266,12 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
       // ── 2. PUSHBACK: reflect or consequence ───────────────────────────────
       if (result.pushbackMode === 'reflect' || result.pushbackMode === 'consequence') {
         const line = result.pushbackLine || PROBE_TEXT
-        speak(line)
         setExaminerText(line)
         setPhase(PHASE.PUSHBACK_PROBE)
+        setMicReady(false)
+        speak(line).then(() => {
+          setTimeout(() => setMicReady(true), 500)
+        })
         return
       }
 
@@ -349,9 +352,12 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
         followUpDepthRef.current   = followUpDepthRef.current + 1
         targetedElementRef.current = followUpResult.targetedElement
         const line = followUpResult.pushbackLine || PROBE_TEXT
-        speak(line)
         setExaminerText(line)
         setPhase(PHASE.PUSHBACK_PROBE)
+        setMicReady(false)
+        speak(line).then(() => {
+          setTimeout(() => setMicReady(true), 500)
+        })
         return
       }
 
@@ -477,6 +483,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
           <FollowUp
             probe={examinerText}
             onSubmit={handlePushbackAnswer}
+            micReady={micReady}
           />
         )}
 
