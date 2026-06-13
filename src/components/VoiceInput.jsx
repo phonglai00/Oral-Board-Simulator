@@ -19,6 +19,8 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
   const startedAtRef   = useRef(0)
   // Ref mirror of `listening` — safe to read inside SR event handlers
   const listeningRef   = useRef(false)
+  const userStoppedRef  = useRef(false)
+  const restartCountRef = useRef(0)
 
   // Keep listeningRef in sync with state
   useEffect(() => { listeningRef.current = listening }, [listening])
@@ -54,6 +56,8 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
       for (let i = 0; i < e.results.length; i++) t += e.results[i][0].transcript
       setText(t)
 
+      restartCountRef.current = 0
+
       // Reset the 8-second silence timer on every input event
       clearTimeout(silenceTimerRef.current)
       setStatus(s => s === 'still-listening' ? '' : s)
@@ -63,10 +67,47 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
     }
 
     r.onend = () => {
+      clearTimeout(silenceTimerRef.current)
+
+      // Auto-restart if browser terminated the session (not a user or submit stop)
+      // and mic is supposed to still be active and we haven't exceeded restart limit
+      // and not iOS (iOS requires user gesture to restart)
+      if (
+        listeningRef.current === true &&
+        userStoppedRef.current === false &&
+        restartCountRef.current < 3 &&
+        !isIOS
+      ) {
+        restartCountRef.current += 1
+        setStatus('reconnecting')
+        setTimeout(() => {
+          if (listeningRef.current && !userStoppedRef.current) {
+            try {
+              recogRef.current.start()
+              setStatus('')
+              silenceTimerRef.current = setTimeout(() => {
+                if (listeningRef.current) setStatus('still-listening')
+              }, 8000)
+            } catch {
+              // start() failed — fall through to stop state
+              setListening(false)
+              listeningRef.current = false
+              setStatus(s => (s === 'still-listening' || s === 'warming' || s === 'reconnecting') ? '' : s)
+            }
+          }
+        }, 150)
+        return
+      }
+
+      // Normal stop — user initiated, submit initiated, iOS, or restart limit reached
+      if (restartCountRef.current >= 3) {
+        // Three consecutive restarts with no speech — show text fallback
+        failCountRef.current += 1
+        if (failCountRef.current >= 2) setShowFallback(true)
+      }
       setListening(false)
       listeningRef.current = false
-      clearTimeout(silenceTimerRef.current)
-      setStatus(s => (s === 'still-listening' || s === 'warming') ? '' : s)
+      setStatus(s => (s === 'still-listening' || s === 'warming' || s === 'reconnecting') ? '' : s)
     }
 
     r.onerror = () => {
@@ -114,6 +155,8 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
   // Called synchronously on iOS (from click handler), or after 300 ms on others.
   const doStart = useCallback(() => {
     if (!recogRef.current) return
+    userStoppedRef.current  = false
+    restartCountRef.current = 0
     setText('')
     clearTimeout(silenceTimerRef.current)
     try {
@@ -136,6 +179,7 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
     if (disabled || !micReady) return
 
     if (listening) {
+      userStoppedRef.current = true
       try { recogRef.current?.stop() } catch { /* ignore */ }
       setListening(false)
       listeningRef.current = false
@@ -156,6 +200,7 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
   // ── Submit handler ──────────────────────────────────────────────────────
   function handleSubmit() {
     if (listening) {
+      userStoppedRef.current = true
       try { recogRef.current?.stop() } catch { /* ignore */ }
       setListening(false)
       listeningRef.current = false
@@ -195,6 +240,9 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
       {/* Status messages */}
       {status === 'retrying' && (
         <p className="mic-status">Retrying&hellip;</p>
+      )}
+      {status === 'reconnecting' && (
+        <p className="mic-status">Reconnecting&hellip;</p>
       )}
       {status === 'still-listening' && (
         <p className="mic-status">Still listening&hellip;</p>
