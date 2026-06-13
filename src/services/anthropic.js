@@ -23,7 +23,7 @@ async function callAPI(messages, maxTokens = 800, system = null) {
   }
   if (system) body.system = system
 
-  const callLabel = maxTokens <= 250 ? 'fast' : maxTokens <= 700 ? 'enrich' : 'full'
+  const callLabel = maxTokens <= 400 ? 'fast' : maxTokens <= 700 ? 'enrich' : 'full'
   const t_anthropic_start = performance.now()
   console.log('[LATENCY]', { event: 'anthropic_start', label: callLabel, timestamp: Date.now() })
 
