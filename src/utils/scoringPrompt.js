@@ -111,6 +111,7 @@ Use EXACTLY ONE of these four values for pushbackMode:
     - NEVER correct or teach
   Example: "So to confirm, you would apply fundal pressure in this situation — walk me through your reasoning on that."
   Example: "You mentioned discharging her home — can you tell me more about what's guiding that decision?"
+  targetedElement must be populated with the shortest possible plain-language label of the specific incorrect clinical element being challenged.
 
 'consequence':
   The candidate said something that would cause clear, immediate patient harm if acted upon.
@@ -300,14 +301,21 @@ export function buildFastScoringPrompt(
   question,
   userAnswer,
   caseContext,
-  caseId     = '',
-  difficulty = 'standard',
-  isFollowUp = false,
-  priorAnswer = '',
+  caseId             = '',
+  difficulty         = 'standard',
+  isFollowUp         = false,
+  priorAnswer        = '',
+  followUpDepth      = 0,
+  priorTargetedElement = '',
 ) {
-  const followUpContext = isFollowUp && priorAnswer
-    ? `\n\nNOTE: This is a follow-up response. The candidate's original answer was:\n"${priorAnswer}"\nThe examiner pushed back and the candidate has now responded. If the candidate is doubling down on a dangerous or clinically wrong position, set pushbackMode to "pivot". If they have corrected themselves or added important information, score accordingly.`
-    : ''
+  let followUpContext = ''
+  if (isFollowUp && priorAnswer) {
+    if (followUpDepth === 1 && priorTargetedElement) {
+      followUpContext = `\n\nNOTE: This is a depth-2 follow-up. The candidate was already challenged on: '${priorTargetedElement}'. If the candidate's response introduces a new incorrect element (different from what was already challenged), set pushbackMode to 'reflect' and target the new element in pushbackLine and targetedElement. If the candidate is still addressing the same element from the prior challenge, score their response normally and set pushbackMode to 'none' if acceptable or 'pivot' if they are doubling down. Maximum depth has been reached after this exchange — do not set pushbackMode to 'reflect' again.`
+    } else {
+      followUpContext = `\n\nNOTE: This is a follow-up response. The candidate's original answer was:\n"${priorAnswer}"\nThe examiner pushed back and the candidate has now responded. If the candidate is doubling down on a dangerous or clinically wrong position, set pushbackMode to "pivot". If they have corrected themselves or added important information, score accordingly.`
+    }
+  }
 
   const system = `You are an expert ABOG oral board examiner scoring a physician candidate's response.
 Score with the precision of a chief examiner preparing a candidate for oral boards.
@@ -324,7 +332,8 @@ JSON shape (9 fields ONLY — do NOT generate feedback, teaching_points, or acog
   "pushbackMode": "<one of: 'none' | 'reflect' | 'consequence' | 'pivot'>",
   "pushbackLine": "<exact words the examiner speaks for reflect or consequence modes — empty string for none and pivot>",
   "isDangerous": <true if the answer contains something an ABOG examiner would consider unsafe or dangerous clinical practice, otherwise false>,
-  "isCurveball": <true if the candidate walked into a common board exam trap — technically defensible in isolation but likely to cost points in this clinical context, otherwise false>
+  "isCurveball": <true if the candidate walked into a common board exam trap — technically defensible in isolation but likely to cost points in this clinical context, otherwise false>,
+  "targetedElement": "<the specific clinical element that is wrong — e.g. 'applying fundal pressure during acute fetal bradycardia' or '10-gram magnesium bolus dosing' — shortest possible plain-language label; empty string when pushbackMode is 'none' or 'pivot'>"
 }
 
 ═══ SCORING RUBRICS ═══
@@ -363,6 +372,7 @@ Use EXACTLY ONE of these four values for pushbackMode:
     - NEVER correct or teach
   Example: "So to confirm, you would apply fundal pressure in this situation — walk me through your reasoning on that."
   Example: "You mentioned discharging her home — can you tell me more about what's guiding that decision?"
+  targetedElement must be populated with the shortest possible plain-language label of the specific incorrect clinical element being challenged.
 
 'consequence':
   The candidate said something that would cause clear, immediate patient harm if acted upon.
@@ -448,6 +458,7 @@ export function parseFastScoringResponse(rawResponse) {
     pushbackLine:            '',
     isDangerous:             false,
     isCurveball:             false,
+    targetedElement:         '',
     // pre-populated scorecard fallbacks
     feedback:                '',
     dangerousReason:         '',
@@ -482,6 +493,7 @@ export function parseFastScoringResponse(rawResponse) {
         : '',
       isDangerous:             parsed.isDangerous === true,
       isCurveball:             parsed.isCurveball === true,
+      targetedElement:         parsed.targetedElement || '',
       // scorecard fallbacks — filled in by enrichment
       feedback:                '',
       dangerousReason:         '',

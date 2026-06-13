@@ -12,6 +12,8 @@ import { scoreAnswerV2 } from '../services/graderV2'
 import { logV2Comparison } from '../utils/graderV2Log'
 import { GraderV2Panel } from './GraderV2Panel'
 
+const ENABLE_RABBIT_HOLE_DEPTH_2 = true
+
 // ── Phase constants ───────────────────────────────────────────────────────────
 // Per-question flow:
 //   INPUT → SCORING →
@@ -75,8 +77,11 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
   const [v2Result,      setV2Result]      = useState(null)
   const [v2Loading,     setV2Loading]     = useState(false)
 
-  const resultsRef   = useRef([])
-  const questionsRef = useRef([])
+  const resultsRef          = useRef([])
+  const questionsRef        = useRef([])
+  const followUpDepthRef    = useRef(0)
+  const targetedElementRef  = useRef('')
+  const originalScoreRef    = useRef(null)
 
   const { speak, stop, replay, isSpeaking, isLoading } = useElevenLabs()
 
@@ -146,6 +151,9 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
       setMicReady(false)
       setV2Result(null)
       setV2Loading(false)
+      followUpDepthRef.current   = 0
+      targetedElementRef.current = ''
+      originalScoreRef.current   = null
       setQIdx(i => i + 1)
       setPhase(PHASE.INPUT)
     }
@@ -162,6 +170,9 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
     ]
     setCurrentResult(pivoted)
     speak(pivotPhrase)
+    followUpDepthRef.current   = 0
+    targetedElementRef.current = ''
+    originalScoreRef.current   = null
     // Allow speech to start before UI jumps
     setTimeout(advance, 2500)
   }, [speak, advance])
@@ -197,6 +208,9 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
 
       resultsRef.current = [...resultsRef.current, fullResult]
       setCurrentResult(fullResult)
+
+      originalScoreRef.current   = { correctness: fullResult.correctness, completeness: fullResult.completeness }
+      targetedElementRef.current = fullResult.targetedElement || ''
 
       // ── Enrichment: fire non-blocking; merges scorecard fields when resolved ──
       const enrichQid = question.id
@@ -301,14 +315,16 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
 
     try {
       const followUpResult = await scoreAnswerFast({
-        question:        question.question,
-        idealAnswer:     question.idealAnswer,
-        candidateAnswer: followUpText,
+        question:             question.question,
+        idealAnswer:          question.idealAnswer,
+        candidateAnswer:      followUpText,
         caseContext,
-        caseId:          `Case ${caseData.id}`,
+        caseId:               `Case ${caseData.id}`,
         difficulty,
-        isFollowUp:      true,
-        priorAnswer:     currentResult.candidateAnswer,
+        isFollowUp:           true,
+        priorAnswer:          currentResult.candidateAnswer,
+        followUpDepth:        followUpDepthRef.current,
+        priorTargetedElement: targetedElementRef.current,
       })
 
       // Student doubled down → pivot
@@ -320,6 +336,22 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
         ]
         setCurrentResult(withFollowUp)
         commitPivot(withFollowUp)
+        return
+      }
+
+      // Depth-2 rabbit hole: new incorrect element found at depth 0 → go deeper
+      if (
+        ENABLE_RABBIT_HOLE_DEPTH_2 &&
+        followUpResult.pushbackMode === 'reflect' &&
+        followUpDepthRef.current < 1 &&
+        followUpResult.targetedElement
+      ) {
+        followUpDepthRef.current   = followUpDepthRef.current + 1
+        targetedElementRef.current = followUpResult.targetedElement
+        const line = followUpResult.pushbackLine || PROBE_TEXT
+        speak(line)
+        setExaminerText(line)
+        setPhase(PHASE.PUSHBACK_PROBE)
         return
       }
 
