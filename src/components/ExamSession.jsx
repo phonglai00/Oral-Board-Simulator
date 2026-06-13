@@ -179,6 +179,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
 
   // ── Primary answer handler ────────────────────────────────────────────────────
   const handleAnswer = useCallback(async (candidateAnswer) => {
+    console.log('[LATENCY]', { event: 'submit', timestamp: Date.now() })
     stop()
     setMicReady(false)
     setPhase(PHASE.SCORING)
@@ -195,6 +196,9 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
         caseId:         `Case ${caseData.id}`,
         difficulty,
       })
+
+      const t_llm_done = performance.now()
+      console.log('[LATENCY]', { event: 'llm_complete', timestamp: Date.now() })
 
       const fullResult = {
         questionId:     question.id,
@@ -259,6 +263,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
 
       // ── 1. PIVOT: complete absence of core knowledge ──────────────────────
       if (result.pushbackMode === 'pivot') {
+        console.log('[LATENCY]', { event: 'llm_to_speak_call', ms: Math.round(performance.now() - t_llm_done), timestamp: Date.now() })
         commitPivot(fullResult)
         return
       }
@@ -269,6 +274,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
         setExaminerText(line)
         setPhase(PHASE.PUSHBACK_PROBE)
         setMicReady(false)
+        console.log('[LATENCY]', { event: 'llm_to_speak_call', ms: Math.round(performance.now() - t_llm_done), timestamp: Date.now() })
         speak(line).then(() => {
           setTimeout(() => setMicReady(true), 500)
         })
@@ -278,6 +284,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
       // ── 3. STRONG ANSWER: interrupt and auto-advance ──────────────────────
       if (isStrongAnswer(result)) {
         const phrase = pick(INTERRUPT[difficulty] || INTERRUPT.standard, question.id)
+        console.log('[LATENCY]', { event: 'llm_to_speak_call', ms: Math.round(performance.now() - t_llm_done), timestamp: Date.now() })
         speak(phrase)
         setTimeout(advance, 600)
         return
@@ -288,6 +295,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
         setExaminerText(PROBE_TEXT)
         setPhase(PHASE.PROBE)
         setMicReady(false)
+        console.log('[LATENCY]', { event: 'llm_to_speak_call', ms: Math.round(performance.now() - t_llm_done), timestamp: Date.now() })
         speak(PROBE_TEXT).then(() => {
           setTimeout(() => setMicReady(true), 500)
         })
@@ -296,6 +304,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
 
       // ── 5. NEUTRAL ACKNOWLEDGMENT ─────────────────────────────────────────
       const phrase = pick(NEUTRAL[difficulty] || NEUTRAL.standard, question.id)
+      console.log('[LATENCY]', { event: 'llm_to_speak_call', ms: Math.round(performance.now() - t_llm_done), timestamp: Date.now() })
       speak(phrase)
       setExaminerText(phrase)
       setPhase(PHASE.EXAMINER)
