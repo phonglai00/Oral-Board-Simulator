@@ -169,12 +169,10 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
       pivoted,
     ]
     setCurrentResult(pivoted)
-    speak(pivotPhrase)
     followUpDepthRef.current   = 0
     targetedElementRef.current = ''
     originalScoreRef.current   = null
-    // Allow speech to start before UI jumps
-    setTimeout(advance, 2500)
+    speak(pivotPhrase).then(() => advance())
   }, [speak, advance])
 
   // ── Primary answer handler ────────────────────────────────────────────────────
@@ -285,8 +283,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
       if (isStrongAnswer(result)) {
         const phrase = pick(INTERRUPT[difficulty] || INTERRUPT.standard, question.id)
         console.log('[LATENCY]', { event: 'llm_to_speak_call', ms: Math.round(performance.now() - t_llm_done), timestamp: Date.now() })
-        speak(phrase)
-        setTimeout(advance, 600)
+        speak(phrase).then(() => advance())
         return
       }
 
