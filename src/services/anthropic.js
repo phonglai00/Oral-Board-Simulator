@@ -23,7 +23,7 @@ async function callAPI(messages, maxTokens = 800, system = null) {
   }
   if (system) body.system = system
 
-  const callLabel = maxTokens <= 400 ? 'fast' : maxTokens <= 700 ? 'enrich' : 'full'
+  const callLabel = maxTokens <= 600 ? 'fast' : maxTokens <= 700 ? 'enrich' : 'full'
   const t_anthropic_start = performance.now()
   console.log('[LATENCY]', { event: 'anthropic_start', label: callLabel, timestamp: Date.now() })
 
@@ -91,7 +91,7 @@ export async function scoreAnswerFast({
     followUpDepth,
     priorTargetedElement,
   )
-  const raw = await callAPI([{ role: 'user', content: user }], 400, system)
+  const raw = await callAPI([{ role: 'user', content: user }], 600, system)
   return parseFastScoringResponse(raw)
 }
 
