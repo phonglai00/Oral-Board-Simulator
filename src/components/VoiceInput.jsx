@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 // from within a user-gesture handler — no async gap allowed.
 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
 
-export function VoiceInput({ onSubmit, disabled, micReady }) {
+export function VoiceInput({ onSubmit, disabled, micReady, phase = 'unknown' }) {
   const [text,         setText]         = useState('')
   const [listening,    setListening]    = useState(false)
   const [hasVoice,     setHasVoice]     = useState(false)
@@ -50,10 +50,16 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
     r.continuous     = true
     r.interimResults = true
     r.lang           = 'en-US'
+    console.log('[SR_DIAG]', { event: 'recognition_created', phase, timestamp: Date.now(), isIOS })
+
+    r.onstart = () => {
+      console.log('[SR_DIAG]', { event: 'onstart', phase, timestamp: Date.now(), isIOS })
+    }
 
     r.onresult = (e) => {
       let t = ''
       for (let i = 0; i < e.results.length; i++) t += e.results[i][0].transcript
+      console.log('[SR_DIAG]', { event: 'onresult', phase, timestamp: Date.now(), isIOS, transcriptLength: t.length })
       setText(t)
 
       restartCountRef.current = 0
@@ -67,6 +73,7 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
     }
 
     r.onend = () => {
+      console.log('[SR_DIAG]', { event: 'onend', phase, timestamp: Date.now(), isIOS })
       clearTimeout(silenceTimerRef.current)
 
       // Auto-restart if browser terminated the session (not a user or submit stop)
@@ -83,14 +90,18 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
         setTimeout(() => {
           if (listeningRef.current && !userStoppedRef.current) {
             try {
+              console.log('[SR_DIAG]', { event: 'start_called', phase, timestamp: Date.now(), isIOS, context: 'onend_restart' })
               recogRef.current.start()
+              console.log('[SR_DIAG]', { event: 'start_returned', phase, timestamp: Date.now(), isIOS, context: 'onend_restart' })
               setStatus('')
               silenceTimerRef.current = setTimeout(() => {
                 if (listeningRef.current) setStatus('still-listening')
               }, 8000)
-            } catch {
+            } catch (e) {
+              console.log('[SR_DIAG]', { event: 'start_exception', phase, timestamp: Date.now(), isIOS, context: 'onend_restart', error: e?.message })
               // start() failed — fall through to stop state
               setListening(false)
+              console.log('[SR_DIAG]', { event: 'listening_false', phase, timestamp: Date.now(), isIOS, context: 'onend_restart_catch' })
               listeningRef.current = false
               setStatus(s => (s === 'still-listening' || s === 'warming' || s === 'reconnecting') ? '' : s)
             }
@@ -106,16 +117,19 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
         if (failCountRef.current >= 2) setShowFallback(true)
       }
       setListening(false)
+      console.log('[SR_DIAG]', { event: 'listening_false', phase, timestamp: Date.now(), isIOS, context: 'onend_normal' })
       listeningRef.current = false
       setStatus(s => (s === 'still-listening' || s === 'warming' || s === 'reconnecting') ? '' : s)
     }
 
-    r.onerror = () => {
+    r.onerror = (e) => {
+      console.log('[SR_DIAG]', { event: 'onerror', phase, timestamp: Date.now(), isIOS, errorType: e?.error })
       const elapsed = Date.now() - startedAtRef.current
       if (elapsed < 500) {
         // Failed to start — retry once, then offer text fallback
         failCountRef.current += 1
         setListening(false)
+        console.log('[SR_DIAG]', { event: 'listening_false', phase, timestamp: Date.now(), isIOS, context: 'onerror_start_fail' })
         listeningRef.current = false
 
         if (failCountRef.current >= 2) {
@@ -126,10 +140,14 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
           setTimeout(() => {
             try {
               startedAtRef.current = Date.now()
+              console.log('[SR_DIAG]', { event: 'start_called', phase, timestamp: Date.now(), isIOS, context: 'onerror_retry' })
               r.start()
+              console.log('[SR_DIAG]', { event: 'start_returned', phase, timestamp: Date.now(), isIOS, context: 'onerror_retry' })
               setListening(true)
+              console.log('[SR_DIAG]', { event: 'listening_true', phase, timestamp: Date.now(), isIOS, context: 'onerror_retry' })
               listeningRef.current = true
-            } catch {
+            } catch (e) {
+              console.log('[SR_DIAG]', { event: 'start_exception', phase, timestamp: Date.now(), isIOS, context: 'onerror_retry', error: e?.message })
               failCountRef.current += 1
               setShowFallback(true)
               setStatus('')
@@ -139,6 +157,7 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
       } else {
         // Mid-session error — just stop cleanly
         setListening(false)
+        console.log('[SR_DIAG]', { event: 'listening_false', phase, timestamp: Date.now(), isIOS, context: 'onerror_midsession' })
         listeningRef.current = false
         setStatus('')
       }
@@ -146,7 +165,10 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
 
     recogRef.current = r
     return () => {
-      try { r.abort() } catch { /* ignore */ }
+      try {
+        console.log('[SR_DIAG]', { event: 'abort_called', phase, timestamp: Date.now(), isIOS, context: 'cleanup' })
+        r.abort()
+      } catch { /* ignore */ }
       clearTimeout(silenceTimerRef.current)
     }
   }, [])
@@ -161,15 +183,19 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
     clearTimeout(silenceTimerRef.current)
     try {
       startedAtRef.current = Date.now()
+      console.log('[SR_DIAG]', { event: 'start_called', phase, timestamp: Date.now(), isIOS, context: 'doStart' })
       recogRef.current.start()
+      console.log('[SR_DIAG]', { event: 'start_returned', phase, timestamp: Date.now(), isIOS, context: 'doStart' })
       setListening(true)
+      console.log('[SR_DIAG]', { event: 'listening_true', phase, timestamp: Date.now(), isIOS, context: 'doStart' })
       listeningRef.current = true
       setStatus('')
       // Begin 8-second silence watchdog
       silenceTimerRef.current = setTimeout(() => {
         if (listeningRef.current) setStatus('still-listening')
       }, 8000)
-    } catch {
+    } catch (e) {
+      console.log('[SR_DIAG]', { event: 'start_exception', phase, timestamp: Date.now(), isIOS, context: 'doStart', error: e?.message })
       // Ignore "already started" errors
     }
   }, [])
@@ -180,8 +206,10 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
 
     if (listening) {
       userStoppedRef.current = true
+      console.log('[SR_DIAG]', { event: 'stop_called', phase, timestamp: Date.now(), isIOS, context: 'toggleMic' })
       try { recogRef.current?.stop() } catch { /* ignore */ }
       setListening(false)
+      console.log('[SR_DIAG]', { event: 'listening_false', phase, timestamp: Date.now(), isIOS, context: 'toggleMic' })
       listeningRef.current = false
       clearTimeout(silenceTimerRef.current)
       setStatus('')
@@ -201,8 +229,10 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
   function handleSubmit() {
     if (listening) {
       userStoppedRef.current = true
+      console.log('[SR_DIAG]', { event: 'stop_called', phase, timestamp: Date.now(), isIOS, context: 'handleSubmit' })
       try { recogRef.current?.stop() } catch { /* ignore */ }
       setListening(false)
+      console.log('[SR_DIAG]', { event: 'listening_false', phase, timestamp: Date.now(), isIOS, context: 'handleSubmit' })
       listeningRef.current = false
     }
     clearTimeout(silenceTimerRef.current)

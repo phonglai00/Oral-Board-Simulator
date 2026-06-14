@@ -120,6 +120,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
       await new Promise(r => setTimeout(r, 500))
       if (cancelled) return
 
+      console.log('[SR_DIAG]', { event: 'micReady_true', phase, timestamp: Date.now(), context: 'question_audio_effect' })
       setMicReady(true)
     }
 
@@ -148,6 +149,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
     } else {
       setCurrentResult(null)
       setExaminerText('')
+      console.log('[SR_DIAG]', { event: 'micReady_false', phase, timestamp: Date.now(), context: 'advance' })
       setMicReady(false)
       setV2Result(null)
       setV2Loading(false)
@@ -179,6 +181,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
   const handleAnswer = useCallback(async (candidateAnswer) => {
     console.log('[LATENCY]', { event: 'submit', timestamp: Date.now() })
     stop()
+    console.log('[SR_DIAG]', { event: 'micReady_false', phase, timestamp: Date.now(), context: 'handleAnswer' })
     setMicReady(false)
     setPhase(PHASE.SCORING)
     setError(null)
@@ -271,9 +274,11 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
         const line = result.pushbackLine || PROBE_TEXT
         setExaminerText(line)
         setPhase(PHASE.PUSHBACK_PROBE)
+        console.log('[SR_DIAG]', { event: 'micReady_false', phase: PHASE.PUSHBACK_PROBE, timestamp: Date.now(), context: 'handleAnswer_pushback' })
         setMicReady(false)
         console.log('[LATENCY]', { event: 'llm_to_speak_call', ms: Math.round(performance.now() - t_llm_done), timestamp: Date.now() })
         speak(line).then(() => {
+          console.log('[SR_DIAG]', { event: 'micReady_true', phase: PHASE.PUSHBACK_PROBE, timestamp: Date.now(), context: 'handleAnswer_pushback_after_audio' })
           setTimeout(() => setMicReady(true), 500)
         })
         return
@@ -291,9 +296,11 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
       if (shouldShowProbe(result)) {
         setExaminerText(PROBE_TEXT)
         setPhase(PHASE.PROBE)
+        console.log('[SR_DIAG]', { event: 'micReady_false', phase: PHASE.PROBE, timestamp: Date.now(), context: 'handleAnswer_probe' })
         setMicReady(false)
         console.log('[LATENCY]', { event: 'llm_to_speak_call', ms: Math.round(performance.now() - t_llm_done), timestamp: Date.now() })
         speak(PROBE_TEXT).then(() => {
+          console.log('[SR_DIAG]', { event: 'micReady_true', phase: PHASE.PROBE, timestamp: Date.now(), context: 'handleAnswer_probe_after_audio' })
           setTimeout(() => setMicReady(true), 500)
         })
         return
@@ -363,8 +370,10 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
         const line = followUpResult.pushbackLine || PROBE_TEXT
         setExaminerText(line)
         setPhase(PHASE.PUSHBACK_PROBE)
+        console.log('[SR_DIAG]', { event: 'micReady_false', phase: PHASE.PUSHBACK_PROBE, timestamp: Date.now(), context: 'handlePushback_depth2' })
         setMicReady(false)
         speak(line).then(() => {
+          console.log('[SR_DIAG]', { event: 'micReady_true', phase: PHASE.PUSHBACK_PROBE, timestamp: Date.now(), context: 'handlePushback_depth2_after_audio' })
           setTimeout(() => setMicReady(true), 500)
         })
         return
@@ -428,6 +437,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
   // Safety fields (isDangerous, isCurveball, feedback, etc.) are never overwritten.
   const handleProbeAnswer = useCallback(async (followUpText) => {
     stop()
+    console.log('[SR_DIAG]', { event: 'micReady_false', phase, timestamp: Date.now(), context: 'handleProbeAnswer' })
     setMicReady(false)
     setPhase(PHASE.SCORING)
 
@@ -508,6 +518,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
               onSubmit={handleAnswer}
               disabled={false}
               micReady={micReady}
+              phase={phase}
             />
           </>
         )}
@@ -525,6 +536,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
             probe={examinerText}
             onSubmit={handlePushbackAnswer}
             micReady={micReady}
+            phase={phase}
           />
         )}
 
@@ -534,6 +546,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
             probe={PROBE_TEXT}
             onSubmit={handleProbeAnswer}
             micReady={micReady}
+            phase={phase}
           />
         )}
 
