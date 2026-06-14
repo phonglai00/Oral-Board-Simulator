@@ -427,23 +427,55 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
   }, [currentResult, question, caseContext, caseData.id, difficulty, commitPivot, stop])
 
   // ── Follow-up after standard "Is there anything else?" probe ─────────────────
-  // Stores the follow-up text and advances. No further probes or pivots.
-  const handleProbeAnswer = useCallback((followUpText) => {
-    const updated = {
-      ...currentResult,
-      followUpAnswer: followUpText || null,
+  // Re-scores the probe answer (completeness-capped at 4, never lowers original).
+  // Safety fields (isDangerous, isCurveball, feedback, etc.) are never overwritten.
+  const handleProbeAnswer = useCallback(async (followUpText) => {
+    stop()
+    setMicReady(false)
+    setPhase(PHASE.SCORING)
+
+    try {
+      const probeResult = await scoreAnswerFast({
+        question:        question.question,
+        candidateAnswer: followUpText || '',
+        caseContext,
+        caseId:          `Case ${caseData.id}`,
+        difficulty,
+        isFollowUp:      true,
+        priorAnswer:     currentResult.candidateAnswer,
+      })
+
+      const finalCorrectness  = Math.max(currentResult.correctness,  Math.min(probeResult.correctness,  4))
+      const finalCompleteness = Math.max(currentResult.completeness, Math.min(probeResult.completeness, 4))
+
+      const updated = {
+        ...currentResult,
+        correctness:  finalCorrectness,
+        completeness: finalCompleteness,
+        followUpAnswer: followUpText || null,
+      }
+      resultsRef.current = [
+        ...resultsRef.current.filter(r => r.questionId !== currentResult.questionId),
+        updated,
+      ]
+      setCurrentResult(updated)
+    } catch (e) {
+      const updated = {
+        ...currentResult,
+        followUpAnswer: followUpText || null,
+      }
+      resultsRef.current = [
+        ...resultsRef.current.filter(r => r.questionId !== currentResult.questionId),
+        updated,
+      ]
+      setCurrentResult(updated)
     }
-    resultsRef.current = [
-      ...resultsRef.current.filter(r => r.questionId !== currentResult.questionId),
-      updated,
-    ]
-    setCurrentResult(updated)
 
     const phrase = pick(NEUTRAL[difficulty] || NEUTRAL.standard, question.id)
     speak(phrase)
     setExaminerText(phrase)
     setPhase(PHASE.EXAMINER)
-  }, [currentResult, question.id, difficulty, speak])
+  }, [currentResult, question, caseContext, caseData.id, difficulty, speak, stop])
 
   // ── Timer expiry ──────────────────────────────────────────────────────────────
   const handleTimeExpire = useCallback(() => {
