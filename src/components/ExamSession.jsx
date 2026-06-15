@@ -77,6 +77,10 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
   const [v2Result,      setV2Result]      = useState(null)
   const [v2Loading,     setV2Loading]     = useState(false)
 
+  // iOS needs extra time after audio ends before mic activation (audio session handoff)
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
+  const postAudioMicDelay = isIOS ? 1500 : 500
+
   const resultsRef          = useRef([])
   const questionsRef        = useRef([])
   const followUpDepthRef    = useRef(0)
@@ -279,7 +283,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
         console.log('[LATENCY]', { event: 'llm_to_speak_call', ms: Math.round(performance.now() - t_llm_done), timestamp: Date.now() })
         speak(line).then(() => {
           console.log('[SR_DIAG]', { event: 'micReady_true', phase: PHASE.PUSHBACK_PROBE, timestamp: Date.now(), context: 'handleAnswer_pushback_after_audio' })
-          setTimeout(() => setMicReady(true), 500)
+          setTimeout(() => setMicReady(true), postAudioMicDelay)
         })
         return
       }
@@ -301,7 +305,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
         console.log('[LATENCY]', { event: 'llm_to_speak_call', ms: Math.round(performance.now() - t_llm_done), timestamp: Date.now() })
         speak(PROBE_TEXT).then(() => {
           console.log('[SR_DIAG]', { event: 'micReady_true', phase: PHASE.PROBE, timestamp: Date.now(), context: 'handleAnswer_probe_after_audio' })
-          setTimeout(() => setMicReady(true), 500)
+          setTimeout(() => setMicReady(true), postAudioMicDelay)
         })
         return
       }
@@ -374,7 +378,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
         setMicReady(false)
         speak(line).then(() => {
           console.log('[SR_DIAG]', { event: 'micReady_true', phase: PHASE.PUSHBACK_PROBE, timestamp: Date.now(), context: 'handlePushback_depth2_after_audio' })
-          setTimeout(() => setMicReady(true), 500)
+          setTimeout(() => setMicReady(true), postAudioMicDelay)
         })
         return
       }
