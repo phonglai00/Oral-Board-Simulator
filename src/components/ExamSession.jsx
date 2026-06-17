@@ -118,7 +118,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
       if (cancelled) return
 
       const segments = [question.context, question.question].filter(Boolean)
-      await speak(segments)     // resolves when audio playback ends
+      await speak(segments, { questionId: question.id, qIdx, phase, textType: 'question' })     // resolves when audio playback ends
       if (cancelled) return
 
       await new Promise(r => setTimeout(r, 500))
@@ -178,7 +178,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
     followUpDepthRef.current   = 0
     targetedElementRef.current = ''
     originalScoreRef.current   = null
-    speak(pivotPhrase).then(() => advance())
+    speak(pivotPhrase, { questionId: existingResult.questionId, qIdx, phase, textType: 'pivot' }).then(() => advance())
   }, [speak, advance])
 
   // ── Primary answer handler ────────────────────────────────────────────────────
@@ -281,7 +281,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
         console.log('[SR_DIAG]', { event: 'micReady_false', phase: PHASE.PUSHBACK_PROBE, timestamp: Date.now(), context: 'handleAnswer_pushback' })
         setMicReady(false)
         console.log('[LATENCY]', { event: 'llm_to_speak_call', ms: Math.round(performance.now() - t_llm_done), timestamp: Date.now() })
-        speak(line).then(() => {
+        speak(line, { questionId: question.id, qIdx, phase, textType: 'pushback' }).then(() => {
           console.log('[SR_DIAG]', { event: 'micReady_true', phase: PHASE.PUSHBACK_PROBE, timestamp: Date.now(), context: 'handleAnswer_pushback_after_audio' })
           setTimeout(() => setMicReady(true), postAudioMicDelay)
         })
@@ -292,7 +292,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
       if (isStrongAnswer(result)) {
         const phrase = pick(INTERRUPT[difficulty] || INTERRUPT.standard, question.id)
         console.log('[LATENCY]', { event: 'llm_to_speak_call', ms: Math.round(performance.now() - t_llm_done), timestamp: Date.now() })
-        speak(phrase).then(() => advance())
+        speak(phrase, { questionId: question.id, qIdx, phase, textType: 'interrupt' }).then(() => advance())
         return
       }
 
@@ -303,7 +303,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
         console.log('[SR_DIAG]', { event: 'micReady_false', phase: PHASE.PROBE, timestamp: Date.now(), context: 'handleAnswer_probe' })
         setMicReady(false)
         console.log('[LATENCY]', { event: 'llm_to_speak_call', ms: Math.round(performance.now() - t_llm_done), timestamp: Date.now() })
-        speak(PROBE_TEXT).then(() => {
+        speak(PROBE_TEXT, { questionId: question.id, qIdx, phase, textType: 'probe' }).then(() => {
           console.log('[SR_DIAG]', { event: 'micReady_true', phase: PHASE.PROBE, timestamp: Date.now(), context: 'handleAnswer_probe_after_audio' })
           setTimeout(() => setMicReady(true), postAudioMicDelay)
         })
@@ -313,7 +313,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
       // ── 5. NEUTRAL ACKNOWLEDGMENT ─────────────────────────────────────────
       const phrase = pick(NEUTRAL[difficulty] || NEUTRAL.standard, question.id)
       console.log('[LATENCY]', { event: 'llm_to_speak_call', ms: Math.round(performance.now() - t_llm_done), timestamp: Date.now() })
-      speak(phrase)
+      speak(phrase, { questionId: question.id, qIdx, phase, textType: 'neutral' })
       setExaminerText(phrase)
       setPhase(PHASE.EXAMINER)
 
@@ -376,7 +376,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
         setPhase(PHASE.PUSHBACK_PROBE)
         console.log('[SR_DIAG]', { event: 'micReady_false', phase: PHASE.PUSHBACK_PROBE, timestamp: Date.now(), context: 'handlePushback_depth2' })
         setMicReady(false)
-        speak(line).then(() => {
+        speak(line, { questionId: question.id, qIdx, phase, textType: 'pushback' }).then(() => {
           console.log('[SR_DIAG]', { event: 'micReady_true', phase: PHASE.PUSHBACK_PROBE, timestamp: Date.now(), context: 'handlePushback_depth2_after_audio' })
           setTimeout(() => setMicReady(true), postAudioMicDelay)
         })
@@ -423,14 +423,14 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
       }).catch(() => {})
 
       const phrase = pick(NEUTRAL[difficulty] || NEUTRAL.standard, question.id)
-      speak(phrase)
+      speak(phrase, { questionId: question.id, qIdx, phase, textType: 'neutral' })
       setExaminerText(phrase)
       setPhase(PHASE.EXAMINER)
 
     } catch (err) {
       // On error: fall through to EXAMINER with original scores
       const phrase = pick(NEUTRAL[difficulty] || NEUTRAL.standard, question.id)
-      speak(phrase)
+      speak(phrase, { questionId: question.id, qIdx, phase, textType: 'neutral' })
       setExaminerText(phrase)
       setPhase(PHASE.EXAMINER)
     }
@@ -483,7 +483,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
     }
 
     const phrase = pick(NEUTRAL[difficulty] || NEUTRAL.standard, question.id)
-    speak(phrase)
+    speak(phrase, { questionId: question.id, qIdx, phase, textType: 'neutral' })
     setExaminerText(phrase)
     setPhase(PHASE.EXAMINER)
   }, [currentResult, question, caseContext, caseData.id, difficulty, speak, stop])
