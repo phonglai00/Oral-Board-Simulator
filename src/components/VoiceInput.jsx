@@ -21,6 +21,11 @@ export function VoiceInput({ onSubmit, disabled, micReady, phase = 'unknown' }) 
   const listeningRef   = useRef(false)
   const userStoppedRef  = useRef(false)
   const restartCountRef = useRef(0)
+  // iOS silent-session watchdog — onstart fires but onresult never arrives
+  const silentStartWatchdogRef   = useRef(null)
+  const watchdogRestartPendingRef = useRef(false)
+  const watchdogRetryCountRef    = useRef(0)
+  const watchdogRecoveredRef     = useRef(false)
 
   // Keep listeningRef in sync with state
   useEffect(() => { listeningRef.current = listening }, [listening])
@@ -54,6 +59,40 @@ export function VoiceInput({ onSubmit, disabled, micReady, phase = 'unknown' }) 
 
     r.onstart = () => {
       console.log('[SR_DIAG]', { event: 'onstart', phase, timestamp: Date.now(), isIOS })
+
+      // iOS-only: onend auto-restart is disabled on iOS (requires user gesture),
+      // so a silent zombie session (onstart fires, onresult never arrives) would
+      // otherwise hang forever. Arm a watchdog that force-stops it.
+      if (isIOS) {
+        clearTimeout(silentStartWatchdogRef.current)
+        silentStartWatchdogRef.current = setTimeout(() => {
+          if (!listeningRef.current) return
+          console.log('[SR_DIAG]', { event: 'silent_watchdog_fired', phase, timestamp: Date.now(), isIOS, watchdogRetryCount: watchdogRetryCountRef.current })
+
+          if (watchdogRetryCountRef.current < 3) {
+            watchdogRetryCountRef.current += 1
+            watchdogRestartPendingRef.current = true
+            try {
+              console.log('[SR_DIAG]', { event: 'stop_called', phase, timestamp: Date.now(), isIOS, context: 'watchdog' })
+              recogRef.current?.stop()
+            } catch { /* ignore */ }
+          } else {
+            // Exhausted retries — terminate the live session and fall back to text input
+            try {
+              console.log('[SR_DIAG]', { event: 'stop_called', phase, timestamp: Date.now(), isIOS, context: 'watchdog_exhausted' })
+              recogRef.current?.stop()
+            } catch { /* ignore */ }
+            clearTimeout(silenceTimerRef.current)
+            clearTimeout(silentStartWatchdogRef.current)
+            failCountRef.current += 1
+            setShowFallback(true)
+            setListening(false)
+            console.log('[SR_DIAG]', { event: 'listening_false', phase, timestamp: Date.now(), isIOS, context: 'watchdog_exhausted' })
+            listeningRef.current = false
+            setStatus('')
+          }
+        }, 2500)
+      }
     }
 
     r.onresult = (e) => {
@@ -63,6 +102,14 @@ export function VoiceInput({ onSubmit, disabled, micReady, phase = 'unknown' }) 
       setText(t)
 
       restartCountRef.current = 0
+
+      // Real transcript activity — the session is alive, disarm the watchdog
+      clearTimeout(silentStartWatchdogRef.current)
+      watchdogRetryCountRef.current = 0
+      if (watchdogRecoveredRef.current) {
+        console.log('[SR_DIAG]', { event: 'silent_watchdog_recovered', phase, timestamp: Date.now(), isIOS })
+        watchdogRecoveredRef.current = false
+      }
 
       // Reset the 8-second silence timer on every input event
       clearTimeout(silenceTimerRef.current)
@@ -75,6 +122,22 @@ export function VoiceInput({ onSubmit, disabled, micReady, phase = 'unknown' }) 
     r.onend = () => {
       console.log('[SR_DIAG]', { event: 'onend', phase, timestamp: Date.now(), isIOS })
       clearTimeout(silenceTimerRef.current)
+
+      // Watchdog-triggered stop — restart via doStart() once the session has
+      // fully terminated (mirrors the existing 150 ms restart pattern below).
+      if (watchdogRestartPendingRef.current) {
+        watchdogRestartPendingRef.current = false
+        if (listeningRef.current && !userStoppedRef.current) {
+          setStatus('reconnecting')
+          setTimeout(() => {
+            if (listeningRef.current && !userStoppedRef.current) {
+              watchdogRecoveredRef.current = true
+              doStart({ fromWatchdog: true })
+            }
+          }, 150)
+        }
+        return
+      }
 
       // Auto-restart if browser terminated the session (not a user or submit stop)
       // and mic is supposed to still be active and we haven't exceeded restart limit
@@ -170,15 +233,22 @@ export function VoiceInput({ onSubmit, disabled, micReady, phase = 'unknown' }) 
         r.abort()
       } catch { /* ignore */ }
       clearTimeout(silenceTimerRef.current)
+      clearTimeout(silentStartWatchdogRef.current)
     }
   }, [])
 
   // ── doStart: the actual SR.start() call ────────────────────────────────
   // Called synchronously on iOS (from click handler), or after 300 ms on others.
-  const doStart = useCallback(() => {
+  // `fromWatchdog` distinguishes a watchdog-driven restart from a genuine
+  // user-initiated start, so the retry counter survives across the cycle.
+  const doStart = useCallback(({ fromWatchdog = false } = {}) => {
     if (!recogRef.current) return
     userStoppedRef.current  = false
     restartCountRef.current = 0
+    if (!fromWatchdog) {
+      watchdogRetryCountRef.current = 0
+      watchdogRecoveredRef.current  = false
+    }
     setText('')
     clearTimeout(silenceTimerRef.current)
     try {
@@ -212,6 +282,8 @@ export function VoiceInput({ onSubmit, disabled, micReady, phase = 'unknown' }) 
       console.log('[SR_DIAG]', { event: 'listening_false', phase, timestamp: Date.now(), isIOS, context: 'toggleMic' })
       listeningRef.current = false
       clearTimeout(silenceTimerRef.current)
+      clearTimeout(silentStartWatchdogRef.current)
+      watchdogRestartPendingRef.current = false
       setStatus('')
     } else {
       failCountRef.current = 0
@@ -236,6 +308,8 @@ export function VoiceInput({ onSubmit, disabled, micReady, phase = 'unknown' }) 
       listeningRef.current = false
     }
     clearTimeout(silenceTimerRef.current)
+    clearTimeout(silentStartWatchdogRef.current)
+    watchdogRestartPendingRef.current = false
     setStatus('')
     const trimmed = text.trim()
     if (!trimmed) return
