@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 // from within a user-gesture handler — no async gap allowed.
 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
 
-export function VoiceInput({ onSubmit, disabled, micReady }) {
+export function VoiceInput({ onSubmit, disabled, micReady, phase = 'unknown' }) {
   const [text,         setText]         = useState('')
   const [listening,    setListening]    = useState(false)
   const [hasVoice,     setHasVoice]     = useState(false)
@@ -19,6 +19,8 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
   const startedAtRef   = useRef(0)
   // Ref mirror of `listening` — safe to read inside SR event handlers
   const listeningRef   = useRef(false)
+  const userStoppedRef  = useRef(false)
+  const restartCountRef = useRef(0)
 
   // Keep listeningRef in sync with state
   useEffect(() => { listeningRef.current = listening }, [listening])
@@ -48,11 +50,19 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
     r.continuous     = true
     r.interimResults = true
     r.lang           = 'en-US'
+    console.log('[SR_DIAG]', { event: 'recognition_created', phase, timestamp: Date.now(), isIOS })
+
+    r.onstart = () => {
+      console.log('[SR_DIAG]', { event: 'onstart', phase, timestamp: Date.now(), isIOS })
+    }
 
     r.onresult = (e) => {
       let t = ''
       for (let i = 0; i < e.results.length; i++) t += e.results[i][0].transcript
+      console.log('[SR_DIAG]', { event: 'onresult', phase, timestamp: Date.now(), isIOS, transcriptLength: t.length })
       setText(t)
+
+      restartCountRef.current = 0
 
       // Reset the 8-second silence timer on every input event
       clearTimeout(silenceTimerRef.current)
@@ -63,18 +73,63 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
     }
 
     r.onend = () => {
-      setListening(false)
-      listeningRef.current = false
+      console.log('[SR_DIAG]', { event: 'onend', phase, timestamp: Date.now(), isIOS })
       clearTimeout(silenceTimerRef.current)
-      setStatus(s => (s === 'still-listening' || s === 'warming') ? '' : s)
+
+      // Auto-restart if browser terminated the session (not a user or submit stop)
+      // and mic is supposed to still be active and we haven't exceeded restart limit
+      // and not iOS (iOS requires user gesture to restart)
+      if (
+        listeningRef.current === true &&
+        userStoppedRef.current === false &&
+        restartCountRef.current < 3 &&
+        !isIOS
+      ) {
+        restartCountRef.current += 1
+        setStatus('reconnecting')
+        setTimeout(() => {
+          if (listeningRef.current && !userStoppedRef.current) {
+            try {
+              console.log('[SR_DIAG]', { event: 'start_called', phase, timestamp: Date.now(), isIOS, context: 'onend_restart' })
+              recogRef.current.start()
+              console.log('[SR_DIAG]', { event: 'start_returned', phase, timestamp: Date.now(), isIOS, context: 'onend_restart' })
+              setStatus('')
+              silenceTimerRef.current = setTimeout(() => {
+                if (listeningRef.current) setStatus('still-listening')
+              }, 8000)
+            } catch (e) {
+              console.log('[SR_DIAG]', { event: 'start_exception', phase, timestamp: Date.now(), isIOS, context: 'onend_restart', error: e?.message })
+              // start() failed — fall through to stop state
+              setListening(false)
+              console.log('[SR_DIAG]', { event: 'listening_false', phase, timestamp: Date.now(), isIOS, context: 'onend_restart_catch' })
+              listeningRef.current = false
+              setStatus(s => (s === 'still-listening' || s === 'warming' || s === 'reconnecting') ? '' : s)
+            }
+          }
+        }, 150)
+        return
+      }
+
+      // Normal stop — user initiated, submit initiated, iOS, or restart limit reached
+      if (restartCountRef.current >= 3) {
+        // Three consecutive restarts with no speech — show text fallback
+        failCountRef.current += 1
+        if (failCountRef.current >= 2) setShowFallback(true)
+      }
+      setListening(false)
+      console.log('[SR_DIAG]', { event: 'listening_false', phase, timestamp: Date.now(), isIOS, context: 'onend_normal' })
+      listeningRef.current = false
+      setStatus(s => (s === 'still-listening' || s === 'warming' || s === 'reconnecting') ? '' : s)
     }
 
-    r.onerror = () => {
+    r.onerror = (e) => {
+      console.log('[SR_DIAG]', { event: 'onerror', phase, timestamp: Date.now(), isIOS, errorType: e?.error })
       const elapsed = Date.now() - startedAtRef.current
       if (elapsed < 500) {
         // Failed to start — retry once, then offer text fallback
         failCountRef.current += 1
         setListening(false)
+        console.log('[SR_DIAG]', { event: 'listening_false', phase, timestamp: Date.now(), isIOS, context: 'onerror_start_fail' })
         listeningRef.current = false
 
         if (failCountRef.current >= 2) {
@@ -85,10 +140,14 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
           setTimeout(() => {
             try {
               startedAtRef.current = Date.now()
+              console.log('[SR_DIAG]', { event: 'start_called', phase, timestamp: Date.now(), isIOS, context: 'onerror_retry' })
               r.start()
+              console.log('[SR_DIAG]', { event: 'start_returned', phase, timestamp: Date.now(), isIOS, context: 'onerror_retry' })
               setListening(true)
+              console.log('[SR_DIAG]', { event: 'listening_true', phase, timestamp: Date.now(), isIOS, context: 'onerror_retry' })
               listeningRef.current = true
-            } catch {
+            } catch (e) {
+              console.log('[SR_DIAG]', { event: 'start_exception', phase, timestamp: Date.now(), isIOS, context: 'onerror_retry', error: e?.message })
               failCountRef.current += 1
               setShowFallback(true)
               setStatus('')
@@ -98,6 +157,7 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
       } else {
         // Mid-session error — just stop cleanly
         setListening(false)
+        console.log('[SR_DIAG]', { event: 'listening_false', phase, timestamp: Date.now(), isIOS, context: 'onerror_midsession' })
         listeningRef.current = false
         setStatus('')
       }
@@ -105,7 +165,10 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
 
     recogRef.current = r
     return () => {
-      try { r.abort() } catch { /* ignore */ }
+      try {
+        console.log('[SR_DIAG]', { event: 'abort_called', phase, timestamp: Date.now(), isIOS, context: 'cleanup' })
+        r.abort()
+      } catch { /* ignore */ }
       clearTimeout(silenceTimerRef.current)
     }
   }, [])
@@ -114,19 +177,25 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
   // Called synchronously on iOS (from click handler), or after 300 ms on others.
   const doStart = useCallback(() => {
     if (!recogRef.current) return
+    userStoppedRef.current  = false
+    restartCountRef.current = 0
     setText('')
     clearTimeout(silenceTimerRef.current)
     try {
       startedAtRef.current = Date.now()
+      console.log('[SR_DIAG]', { event: 'start_called', phase, timestamp: Date.now(), isIOS, context: 'doStart' })
       recogRef.current.start()
+      console.log('[SR_DIAG]', { event: 'start_returned', phase, timestamp: Date.now(), isIOS, context: 'doStart' })
       setListening(true)
+      console.log('[SR_DIAG]', { event: 'listening_true', phase, timestamp: Date.now(), isIOS, context: 'doStart' })
       listeningRef.current = true
       setStatus('')
       // Begin 8-second silence watchdog
       silenceTimerRef.current = setTimeout(() => {
         if (listeningRef.current) setStatus('still-listening')
       }, 8000)
-    } catch {
+    } catch (e) {
+      console.log('[SR_DIAG]', { event: 'start_exception', phase, timestamp: Date.now(), isIOS, context: 'doStart', error: e?.message })
       // Ignore "already started" errors
     }
   }, [])
@@ -136,8 +205,11 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
     if (disabled || !micReady) return
 
     if (listening) {
+      userStoppedRef.current = true
+      console.log('[SR_DIAG]', { event: 'stop_called', phase, timestamp: Date.now(), isIOS, context: 'toggleMic' })
       try { recogRef.current?.stop() } catch { /* ignore */ }
       setListening(false)
+      console.log('[SR_DIAG]', { event: 'listening_false', phase, timestamp: Date.now(), isIOS, context: 'toggleMic' })
       listeningRef.current = false
       clearTimeout(silenceTimerRef.current)
       setStatus('')
@@ -156,8 +228,11 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
   // ── Submit handler ──────────────────────────────────────────────────────
   function handleSubmit() {
     if (listening) {
+      userStoppedRef.current = true
+      console.log('[SR_DIAG]', { event: 'stop_called', phase, timestamp: Date.now(), isIOS, context: 'handleSubmit' })
       try { recogRef.current?.stop() } catch { /* ignore */ }
       setListening(false)
+      console.log('[SR_DIAG]', { event: 'listening_false', phase, timestamp: Date.now(), isIOS, context: 'handleSubmit' })
       listeningRef.current = false
     }
     clearTimeout(silenceTimerRef.current)
@@ -195,6 +270,9 @@ export function VoiceInput({ onSubmit, disabled, micReady }) {
       {/* Status messages */}
       {status === 'retrying' && (
         <p className="mic-status">Retrying&hellip;</p>
+      )}
+      {status === 'reconnecting' && (
+        <p className="mic-status">Reconnecting&hellip;</p>
       )}
       {status === 'still-listening' && (
         <p className="mic-status">Still listening&hellip;</p>

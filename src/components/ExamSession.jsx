@@ -77,6 +77,10 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
   const [v2Result,      setV2Result]      = useState(null)
   const [v2Loading,     setV2Loading]     = useState(false)
 
+  // iOS needs extra time after audio ends before mic activation (audio session handoff)
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
+  const postAudioMicDelay = isIOS ? 1500 : 500
+
   const resultsRef          = useRef([])
   const questionsRef        = useRef([])
   const followUpDepthRef    = useRef(0)
@@ -120,6 +124,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
       await new Promise(r => setTimeout(r, 500))
       if (cancelled) return
 
+      console.log('[SR_DIAG]', { event: 'micReady_true', phase, timestamp: Date.now(), context: 'question_audio_effect' })
       setMicReady(true)
     }
 
@@ -148,6 +153,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
     } else {
       setCurrentResult(null)
       setExaminerText('')
+      console.log('[SR_DIAG]', { event: 'micReady_false', phase, timestamp: Date.now(), context: 'advance' })
       setMicReady(false)
       setV2Result(null)
       setV2Loading(false)
@@ -169,17 +175,17 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
       pivoted,
     ]
     setCurrentResult(pivoted)
-    speak(pivotPhrase)
     followUpDepthRef.current   = 0
     targetedElementRef.current = ''
     originalScoreRef.current   = null
-    // Allow speech to start before UI jumps
-    setTimeout(advance, 2500)
+    speak(pivotPhrase).then(() => advance())
   }, [speak, advance])
 
   // ── Primary answer handler ────────────────────────────────────────────────────
   const handleAnswer = useCallback(async (candidateAnswer) => {
+    console.log('[LATENCY]', { event: 'submit', timestamp: Date.now() })
     stop()
+    console.log('[SR_DIAG]', { event: 'micReady_false', phase, timestamp: Date.now(), context: 'handleAnswer' })
     setMicReady(false)
     setPhase(PHASE.SCORING)
     setError(null)
@@ -195,6 +201,9 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
         caseId:         `Case ${caseData.id}`,
         difficulty,
       })
+
+      const t_llm_done = performance.now()
+      console.log('[LATENCY]', { event: 'llm_complete', timestamp: Date.now() })
 
       const fullResult = {
         questionId:     question.id,
@@ -259,6 +268,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
 
       // ── 1. PIVOT: complete absence of core knowledge ──────────────────────
       if (result.pushbackMode === 'pivot') {
+        console.log('[LATENCY]', { event: 'llm_to_speak_call', ms: Math.round(performance.now() - t_llm_done), timestamp: Date.now() })
         commitPivot(fullResult)
         return
       }
@@ -266,30 +276,43 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
       // ── 2. PUSHBACK: reflect or consequence ───────────────────────────────
       if (result.pushbackMode === 'reflect' || result.pushbackMode === 'consequence') {
         const line = result.pushbackLine || PROBE_TEXT
-        speak(line)
         setExaminerText(line)
         setPhase(PHASE.PUSHBACK_PROBE)
+        console.log('[SR_DIAG]', { event: 'micReady_false', phase: PHASE.PUSHBACK_PROBE, timestamp: Date.now(), context: 'handleAnswer_pushback' })
+        setMicReady(false)
+        console.log('[LATENCY]', { event: 'llm_to_speak_call', ms: Math.round(performance.now() - t_llm_done), timestamp: Date.now() })
+        speak(line).then(() => {
+          console.log('[SR_DIAG]', { event: 'micReady_true', phase: PHASE.PUSHBACK_PROBE, timestamp: Date.now(), context: 'handleAnswer_pushback_after_audio' })
+          setTimeout(() => setMicReady(true), postAudioMicDelay)
+        })
         return
       }
 
       // ── 3. STRONG ANSWER: interrupt and auto-advance ──────────────────────
       if (isStrongAnswer(result)) {
         const phrase = pick(INTERRUPT[difficulty] || INTERRUPT.standard, question.id)
-        speak(phrase)
-        setTimeout(advance, 600)
+        console.log('[LATENCY]', { event: 'llm_to_speak_call', ms: Math.round(performance.now() - t_llm_done), timestamp: Date.now() })
+        speak(phrase).then(() => advance())
         return
       }
 
       // ── 4. PROBE: scores 2–3 on either dimension ──────────────────────────
       if (shouldShowProbe(result)) {
-        speak(PROBE_TEXT)
         setExaminerText(PROBE_TEXT)
         setPhase(PHASE.PROBE)
+        console.log('[SR_DIAG]', { event: 'micReady_false', phase: PHASE.PROBE, timestamp: Date.now(), context: 'handleAnswer_probe' })
+        setMicReady(false)
+        console.log('[LATENCY]', { event: 'llm_to_speak_call', ms: Math.round(performance.now() - t_llm_done), timestamp: Date.now() })
+        speak(PROBE_TEXT).then(() => {
+          console.log('[SR_DIAG]', { event: 'micReady_true', phase: PHASE.PROBE, timestamp: Date.now(), context: 'handleAnswer_probe_after_audio' })
+          setTimeout(() => setMicReady(true), postAudioMicDelay)
+        })
         return
       }
 
       // ── 5. NEUTRAL ACKNOWLEDGMENT ─────────────────────────────────────────
       const phrase = pick(NEUTRAL[difficulty] || NEUTRAL.standard, question.id)
+      console.log('[LATENCY]', { event: 'llm_to_speak_call', ms: Math.round(performance.now() - t_llm_done), timestamp: Date.now() })
       speak(phrase)
       setExaminerText(phrase)
       setPhase(PHASE.EXAMINER)
@@ -349,9 +372,14 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
         followUpDepthRef.current   = followUpDepthRef.current + 1
         targetedElementRef.current = followUpResult.targetedElement
         const line = followUpResult.pushbackLine || PROBE_TEXT
-        speak(line)
         setExaminerText(line)
         setPhase(PHASE.PUSHBACK_PROBE)
+        console.log('[SR_DIAG]', { event: 'micReady_false', phase: PHASE.PUSHBACK_PROBE, timestamp: Date.now(), context: 'handlePushback_depth2' })
+        setMicReady(false)
+        speak(line).then(() => {
+          console.log('[SR_DIAG]', { event: 'micReady_true', phase: PHASE.PUSHBACK_PROBE, timestamp: Date.now(), context: 'handlePushback_depth2_after_audio' })
+          setTimeout(() => setMicReady(true), postAudioMicDelay)
+        })
         return
       }
 
@@ -409,23 +437,56 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
   }, [currentResult, question, caseContext, caseData.id, difficulty, commitPivot, stop])
 
   // ── Follow-up after standard "Is there anything else?" probe ─────────────────
-  // Stores the follow-up text and advances. No further probes or pivots.
-  const handleProbeAnswer = useCallback((followUpText) => {
-    const updated = {
-      ...currentResult,
-      followUpAnswer: followUpText || null,
+  // Re-scores the probe answer (completeness-capped at 4, never lowers original).
+  // Safety fields (isDangerous, isCurveball, feedback, etc.) are never overwritten.
+  const handleProbeAnswer = useCallback(async (followUpText) => {
+    stop()
+    console.log('[SR_DIAG]', { event: 'micReady_false', phase, timestamp: Date.now(), context: 'handleProbeAnswer' })
+    setMicReady(false)
+    setPhase(PHASE.SCORING)
+
+    try {
+      const probeResult = await scoreAnswerFast({
+        question:        question.question,
+        candidateAnswer: followUpText || '',
+        caseContext,
+        caseId:          `Case ${caseData.id}`,
+        difficulty,
+        isFollowUp:      true,
+        priorAnswer:     currentResult.candidateAnswer,
+      })
+
+      const finalCorrectness  = Math.max(currentResult.correctness,  Math.min(probeResult.correctness,  4))
+      const finalCompleteness = Math.max(currentResult.completeness, Math.min(probeResult.completeness, 4))
+
+      const updated = {
+        ...currentResult,
+        correctness:  finalCorrectness,
+        completeness: finalCompleteness,
+        followUpAnswer: followUpText || null,
+      }
+      resultsRef.current = [
+        ...resultsRef.current.filter(r => r.questionId !== currentResult.questionId),
+        updated,
+      ]
+      setCurrentResult(updated)
+    } catch (e) {
+      const updated = {
+        ...currentResult,
+        followUpAnswer: followUpText || null,
+      }
+      resultsRef.current = [
+        ...resultsRef.current.filter(r => r.questionId !== currentResult.questionId),
+        updated,
+      ]
+      setCurrentResult(updated)
     }
-    resultsRef.current = [
-      ...resultsRef.current.filter(r => r.questionId !== currentResult.questionId),
-      updated,
-    ]
-    setCurrentResult(updated)
 
     const phrase = pick(NEUTRAL[difficulty] || NEUTRAL.standard, question.id)
     speak(phrase)
     setExaminerText(phrase)
     setPhase(PHASE.EXAMINER)
-  }, [currentResult, question.id, difficulty, speak])
+  }, [currentResult, question, caseContext, caseData.id, difficulty, speak, stop])
 
   // ── Timer expiry ──────────────────────────────────────────────────────────────
   const handleTimeExpire = useCallback(() => {
@@ -461,6 +522,7 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
               onSubmit={handleAnswer}
               disabled={false}
               micReady={micReady}
+              phase={phase}
             />
           </>
         )}
@@ -477,6 +539,8 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
           <FollowUp
             probe={examinerText}
             onSubmit={handlePushbackAnswer}
+            micReady={micReady}
+            phase={phase}
           />
         )}
 
@@ -485,6 +549,8 @@ export function ExamSession({ caseData, onComplete, isDevMode = false }) {
           <FollowUp
             probe={PROBE_TEXT}
             onSubmit={handleProbeAnswer}
+            micReady={micReady}
+            phase={phase}
           />
         )}
 

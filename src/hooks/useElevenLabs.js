@@ -12,6 +12,8 @@ export function useElevenLabs() {
   const blobUrlRef = useRef(null)   // cached URL for replay
   const abortRef   = useRef(null)   // AbortController for in-flight fetch
   const queueRef   = useRef(Promise.resolve())  // promise chain — serializes speak() calls
+  const tSpeakCalledRef  = useRef(0)
+  const tBlobCompleteRef = useRef(0)
 
   // ── Play a blob URL; returns a Promise that resolves when audio ends ──────
   const playBlobUrl = useCallback((url) => {
@@ -23,7 +25,12 @@ export function useElevenLabs() {
       }
       const audio = new Audio(url)
       audioRef.current = audio
-      audio.onplay  = () => setIsSpeaking(true)
+      audio.onplay  = () => {
+        const t_play = performance.now()
+        console.log('[LATENCY]', { event: 'blob_to_audio_play', ms: Math.round(t_play - tBlobCompleteRef.current), timestamp: Date.now() })
+        console.log('[LATENCY]', { event: 'audio_play', timestamp: Date.now() })
+        setIsSpeaking(true)
+      }
       audio.onended = () => { setIsSpeaking(false); resolve() }
       // Resolve (not reject) on error so the queue always advances
       audio.onerror = () => { setIsSpeaking(false); resolve() }
@@ -33,9 +40,13 @@ export function useElevenLabs() {
 
   // ── Internal: fetch TTS + play; returns a Promise ────────────────────────
   const _doSpeak = useCallback(async (segments, signal) => {
+    const t_doSpeak_entry = performance.now()
+    console.log('[LATENCY]', { event: 'queue_stall', ms: Math.round(t_doSpeak_entry - tSpeakCalledRef.current), timestamp: Date.now() })
+
     const text = segments.join('\n\n')
 
     const tryFetch = async () => {
+      const t_tts_start = performance.now()
       const res = await fetch(API_URL, {
         method: 'POST',
         signal,
@@ -54,7 +65,12 @@ export function useElevenLabs() {
         const err = await res.json().catch(() => ({}))
         throw new Error(err?.detail?.message || `ElevenLabs error ${res.status}`)
       }
-      return res.blob()
+      const t_tts_ttfb = performance.now()
+      console.log('[LATENCY]', { event: 'elevenlabs_ttfb', ms: Math.round(t_tts_ttfb - t_tts_start), timestamp: Date.now() })
+      const blob = await res.blob()
+      tBlobCompleteRef.current = performance.now()
+      console.log('[LATENCY]', { event: 'elevenlabs_blob_download', ms: Math.round(tBlobCompleteRef.current - t_tts_ttfb), timestamp: Date.now() })
+      return blob
     }
 
     setIsLoading(true)
@@ -89,6 +105,7 @@ export function useElevenLabs() {
   // If a previous speak is in-flight its fetch is aborted so _doSpeak()
   // exits immediately — the new call starts right after.
   const speak = useCallback((input) => {
+    tSpeakCalledRef.current = performance.now()
     const segments = (Array.isArray(input) ? input : [input]).filter(Boolean)
     if (!segments.length) return Promise.resolve()
 
