@@ -37,11 +37,21 @@ export function useElevenLabs() {
       audio.onended = () => { setIsSpeaking(false); resolve() }
       // Resolve (not reject) on error so the queue always advances
       audio.onerror = () => {
-        console.log('[TTS_DIAG]', { event: 'audio_play_failed', ...meta, blobId, timestamp: Date.now() })
+        console.log('[TTS_DIAG]', {
+          event: 'audio_play_failed',
+          audioErrorCode: audio.error?.code,
+          audioErrorMessage: audio.error?.message,
+          ...meta, blobId, timestamp: Date.now(),
+        })
         setIsSpeaking(false); resolve()
       }
-      audio.play().catch(() => {
-        console.log('[TTS_DIAG]', { event: 'audio_play_failed', ...meta, blobId, timestamp: Date.now() })
+      audio.play().catch((err) => {
+        console.log('[TTS_DIAG]', {
+          event: 'audio_play_failed',
+          errorName: err?.name,
+          errorMessage: err?.message,
+          ...meta, blobId, timestamp: Date.now(),
+        })
         setIsSpeaking(false); resolve()
       })
     })
