@@ -1,0 +1,41 @@
+{
+  "artifactId": "assessment-planning-architecture-v1",
+  "filename": "Assessment_Planning_Architecture_v1.md",
+  "displayName": "Assessment Planning Architecture",
+  "version": "1.1",
+  "status": "FROZEN",
+  "frozen": true,
+  "freezeDate": "2026-06-20",
+  "owner": "Architecture — AI ABOG Oral Board Simulator",
+  "lastGovernanceReview": "2026-06-20",
+  "reviewType": "Architecture Acceptance Review + Acceptance Revision",
+  "amendmentRequiredForChanges": true,
+  "amendmentPolicy": "OralBoardSimulator_Architecture/project architecure/assessment planning/FREEZE_RECORD.md",
+  "repositoryPath": "OralBoardSimulator_Architecture/project architecure/assessment planning/Assessment_Planning_Architecture_v1.md",
+  "governingDocuments": [
+    "ABOG_Examiner_Constitution_v1_1_Consolidated.md",
+    "Case_Simulation_Engine_Architecture_v1.md",
+    "Examiner_Runtime_State_Schema_v1.md",
+    "Candidate_Assessment_Architecture_v1.md",
+    "Implementation_Roadmap_v1.md"
+  ],
+  "downstreamDependents": [
+    "Examiner_Decision_Engine_Architecture_v1.md",
+    "Examiner_Knowledge_Corpus_Architecture_v1.md",
+    "Case_Blueprint_Schema_Update.md"
+  ],
+  "keySchemas": [
+    "AssessmentPlan",
+    "AssessmentIntent",
+    "CompetencyTarget",
+    "EvidenceGoal",
+    "PermittedAssessmentMechanisms",
+    "CaseSelection",
+    "ComplicationReviewSpec",
+    "Encounter",
+    "SessionCompletionRecord",
+    "Level1Transform"
+  ],
+  "architecturalInvariants": 13,
+  "examinationModes": ["STANDARD", "HYPOTHETICAL_BRANCH_FOCUS", "COMPLICATION_REVIEW"]
+}
